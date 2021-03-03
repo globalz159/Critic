@@ -171,7 +171,115 @@ Os softwares que serão adquiridos para compor o sistema são:
 > (em elaboração)
 ## Descrições dos casos de uso
 
-> (em elaboração)
+1.3.1	CSU01 – Fazer Registro
+
+Identificador	CSU01
+Nome	Fazer registro
+Atores	Membro
+Sumário	Qualquer pessoa da empresa pode se registrar nesta rede social.
+No momento do registro, o usuário deverá fornecer os seguintes dados: nome completo, username que deseja utilizar, senha que usará para acessar o sistema, data de nascimento, cidade e estado.
+Complexidade	Médio
+Regras de Negócio	N/D
+Pré-condições	N/D
+Pós-condição	É registrado no sistema o cadastro do membro
+Pontos de Inclusão	Atualizar os dados do seu perfil.
+Pontos de Extensão	N/D
+
+Fluxo Principal
+Ações do Ator	                                          Ações do Sistema
+1. O Membro informa os dados pessoais e a senha 	
+	                                                      2. O Sistema verifica se os dados e senha são válidos ( Verifica se os dados e senha pertencem a uma conta)
+	                                                      3. O Sistema registra o membro. Caso de Uso é encerrado
+
+Fluxo de Exceção 1: 3a. O Sistema não valida o membro
+Ações do Ator	                                          Ações do Sistema
+	                                                      1. O Sistema recusa os dados e senha do membro e exibe uma mensagem
+	                                                      2. Volta ao passo 1 do Fluxo Principal.
+
+1.3.1	CSU02 – Fazer Cadastro
+
+Identificador	CSU02
+Nome	Fazer cadastro
+Atores	Membro
+Sumário	Qualquer membro da rede social pode fazer o cadastro de filmes, séries e/ou livros.
+Complexidade	Médio
+Regras de Negócio	N/D
+Pré-condições	Ser registrado na rede social
+Pós-condição	N/D
+Pontos de Inclusão	N/D
+Pontos de Extensão	Cadastrar Filme
+Cadastrar Séries
+Cadastrar Livros
+
+Fluxo Principal
+Ações do Ator	                                       Ações do Sistema
+1. O Membro escolhe a opção de cadastramento	
+	                                                   2. O Sistema abre a página para o cadastramento
+3. O membro fornece os dados específicos	
+	                                                   4. O Sistema registra o cadastramento. Caso de Uso é encerrado
+
+Fluxo Principal
+Ações do Ator	                                      Ações do Sistema
+1. O Membro escolhe a opção de cadastrar “Livros”	
+	                                                  2. O Sistema abre a página para o cadastramento
+3. O membro fornece os dados: título, autor(es), editora, país, ano de lançamento.	
+	                                                  4. O Sistema registra o cadastramento. Caso de Uso é encerrado
+
+Fluxo Principal
+Ações do Ator	                                       Ações do Sistema
+1. O Membro escolhe a opção de cadastrar “Filmes”	
+	                                                   2. O Sistema abre a página para o cadastramento
+3. O membro fornece os dados: título, diretor, elenco principal, país, ano.	
+	                                                   4. O Sistema registra o cadastramento. Caso de Uso é encerrado
+
+Fluxo Principal
+Ações do Ator	                                       Ações do Sistema
+1. O Membro escolhe a opção de cadastrar “Séries”	
+	                                                    2. O Sistema abre a página para o cadastramento
+3. O membro fornece os dados: título, diretor,
+ elenco principal, país, ano, número de temporadas.	
+                                                      4. O Sistema registra o cadastramento. Caso de Uso é encerrado
+
+1.3.1	CSU03 – Fazer Avaliação
+
+Identificador	CSU03
+Nome	Fazer avaliação
+Atores	Membro
+Sumário	Cada membro poderá avaliar os filmes, séries e livros que desejar.
+Complexidade	Médio
+Regras de Negócio	N/D
+Pré-condições	Para entrar uma avaliação, o membro seleciona o tipo de item (livro, filme ou série), busca pelo nome do item, atribui uma nota de 0 a 10 (somente valores inteiros) e escreve os comentários que julgar relevantes (com limite de 1024 caracteres).
+Pós-condição	N/D
+Pontos de Inclusão	N/D
+Pontos de Extensão	Fazer Validação
+
+Fluxo Principal
+Ações do Ator	                                 Ações do Sistema
+1. O Membro escolhe a opção de avaliação	
+	                                             2. O sistema abre a página de validação
+3. Seleciona o tipo de item(Livro, filme ou série)	
+4. Busca pelo nome do item	
+5. Atribui uma nota de 0 a 10	
+6. Escreve os comentários que julgar relevantes	
+	                                             7. O sistema registra a avaliação. O caso de uso é encerrado.
+
+Fluxo Principal
+Ações do Ator	                                 Ações do Sistema
+1. O administrador verifica o cadastramento 	
+	                                             2. O Sistema abre a página do cadastramento
+3. Valida o cadastramento	
+	                                             4. O Sistema faz a validação. Caso de uso é encerrado
+
+
+Fluxo Principal
+Ações do Ator                                  	Ações do Sistema
+1. O administrador verifica o cadastramento 	
+	                                             2. O Sistema abre a página do cadastramento
+	                                             3. O sistema verifica que o item já existe 
+4. Indica item	
+5. Vincula a avaliação ao item já existente.	
+	                                             6. O Sistema faz a validação. Caso de uso é encerrado
+
 
 # Wireframes
 
