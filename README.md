@@ -49,69 +49,69 @@ Serviço de Atendimento ao Consumidor(SAC): O sistema reduzirá a carga de traba
 # Objetivos funcionais
 
 
-1. O cadastro do usuário deverá conter: nome completo, username, senha que usará para acessar o sistema, data de nascimento, cidade e estado.
+RF1 O cadastro do usuário deverá conter: nome completo, username, senha que usará para acessar o sistema, data de nascimento, cidade e estado.
 
    Isto reduzirá a quantidade de acessos a informações desatualizadas.
 
    Isto eliminará a atualização da informação em diversos documentos.
    
-2. O sistema permitirá que os usuários façam alterações em seus cadastros.
+RF2 O sistema permitirá que os usuários façam alterações em seus cadastros.
 
    Para os clientes, isto eliminará a demora atual entre a sua decisão de comprar e a realização do pedido.
 
    Isto também reduzirá o tempo que o vendedor gasta para elaborar um pedido.
 
-3. O sistema deve permitir que o usuário possa excluir o seu cadastro pessoal.
+RF3 O sistema deve permitir que o usuário possa excluir o seu cadastro pessoal.
 
    Isto fará com que o membro possa excluir o seu cadastro quando quiser encerrar a sua participação na rede social.
 
-4. O sistema permitirá que cada membro possa avaliar filmes, séries e livro que desejar.
+RF4 O sistema permitirá que cada membro possa avaliar filmes, séries e livro que desejar.
 
    Isto aumentará o número de avaliações.
 
-5. O cadastro de um livro deverá conter: título, autor(es), editora, país, ano de lançamento.
+RF5 O cadastro de um livro deverá conter: título, autor(es), editora, país, ano de lançamento.
 
    Isto melhorará as informações sobre os detalhes dos livros.
 
-6. O cadastro de um filme deverá conter: título, diretor, elenco principal, país, ano.
+RF6 O cadastro de um filme deverá conter: título, diretor, elenco principal, país, ano.
 
   Isto melhorará as informações sobre os detalhes dos filmes.
 
 
-8. O cadastro de uma série deverá conter: título, diretor, elenco principal, país, ano, número de temporadas
+RF7 O cadastro de uma série deverá conter: título, diretor, elenco principal, país, ano, número de temporadas
 
    Isto melhorará as informações sobre os detalhes das séries.
 
-7. O sistema deverá permitir que sejam realizadas pesquisas em todo o texto das páginas web a que o usuário tem acesso. O sistema deverá permitir as seguintes pesquisas:
+RF8 O sistema deverá permitir que sejam realizadas pesquisas em todo o texto das páginas web a que o usuário tem acesso. O sistema deverá permitir as seguintes pesquisas:
    * pesquisar todas as palavras
    * pesquisar qualquer uma das palavras
    * pesquisar a frase exata
 
-9. O sistema permitirá o acesso dos usuários através do login e senha.
+RF9 O sistema permitirá o acesso dos usuários através do login e senha.
 
     Isto melhorará o controle sobre o seu perfil na rede social.
 
-10. O sistema deve permitir a realização de adicionar comentários às avaliações feitas pelo outro, desde que tenham relacionamento de amizade.
+RF10 O sistema deve permitir a realização de adicionar comentários às avaliações feitas pelo outro, desde que tenham relacionamento de amizade.
 
     Isto fará com que aumente o número de opiniões diferentes sobre o determinado filme,série ou livro.
 
-11. O sistema deve permitir que o usuário possa “reagir” a avaliação do usuário através de um emoticon “joinha”.
+RF11 O sistema deve permitir que o usuário possa “reagir” a avaliação do usuário através de um emoticon “joinha”.
 
     Isto fará com que a sua opinião possa ter maiores formas de disseminação. 
    
-12. O sistema deve permitir que o usuário que reagiu a avaliação de outro usuário, possa retirar o “joinha” dado.
+RF12 O sistema deve permitir que o usuário que reagiu a avaliação de outro usuário, possa retirar o “joinha” dado.
 
 
 
-13. O sistema deve permitir que um usuário possa pedir relacionamento de amizade a outro usuário
+RF13 O sistema deve permitir que um usuário possa pedir relacionamento de amizade a outro usuário
 
    Esta informação fará com que o ciclo de amizade aumente.
    
-14. O sistema deve mostrar os amigos em comum, quando um usuário visita a página de outro.
+RF14 O sistema deve mostrar os amigos em comum, quando um usuário visita a página de outro.
 
    Esta informação fará com que o ciclo de amizade aumente através de amigos em comum entre os membros.
 
-15. O sistema deve sugerir amizades de usuários para o outro usuário
+RF15 O sistema deve sugerir amizades de usuários para o outro usuário
 
    Isto melhorará o serviço a interatividade entre os membros da rede social, trazendo um maior número de recomendações.
 
