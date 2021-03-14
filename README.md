@@ -10,148 +10,155 @@
 
 # Introdução
 
-Este é um documento de especificação de requisitos para um novo aplicativo para recomendação de filmes, séries e livros.A promoção do engajamento de colaboradores é fundamental para o desenvolvimento de bons trabalhos no mundo corporativo. Nesta linha, empresas buscam formas de criar situações de compartilhamento de experiências para que as pessoas envolvidas se conheçam e promovam sinergia entre as pessoas, de modo a promover maior desempenho em grupos multidisciplinares, também conhecidos por Squads.Considerando que os serviços de streaming nunca estiveram tão em alta graças à pandemia do coronavírus, bem como, escolher entre milhares de filmes, séries ou livros disponíveis pode ser uma tarefa um tanto quanto estressante. Sendo assim, nossa empresa, optou por criar um aplicativo de recomendação para Filmes, Séries e Livros, capaz de permitir acesso e participação dos nossoscolaboradores, de modo a prover interação com contribuições na forma de dicas e recomendações sobre filmes, séries e livros
+Este é um documento de especificação de requisitos para um novo aplicativo para recomendações de filmes, séries e livros. A promoção do engajamento de colaboradores é fundamental para o desenvolvimento de bons trabalhos no mundo corporativo. Nesta linha, empresas buscam formas de criar situações de compartilhamento de experiências para que as pessoas envolvidas se conheçam e promovam sinergia entre as pessoas, de modo a promover maior desempenho em grupos multidisciplinares, também conhecidos por Squads. Considerando que os serviços de streaming nunca estiveram tão em alta graças à pandemia do coronavírus, bem como, escolher entre milhares de filmes, séries ou livros disponíveis pode ser uma tarefa um tanto quanto estressante. Sendo assim, nossa empresa, optou por criar um aplicativo de recomendação para Filmes, Séries e Livros, capaz de permitir acesso e participação dos nossos colaboradores, de modo a prover interação com contribuições na forma de dicas e recomendações sobre filmes, séries e livros. 
 
-Este documento descreve os requisitos não-funcionais, modela os requisitos funcionais com casos de uso e modela os conceitos do domínio do problema.
+Este documento descreve os requisitos não funcionais, modelagem dos requisitos funcionais com casos de uso e modelar os conceitos do domínio do problema.
+
 
 # Informações sobre a empresa
 
-A Empresa Solar Systems vende equipamentos para a geração de energia de formas alternativas e identificou tendências que causarão um aumento significativo na demanda por seus produtos.
+O aplicativo X, chegou no mercado como mais uma forma interativa de recomendações de filmes, séries e livros. Essa rede social é a primeira desenvolvida pela empresa Y e o nosso objetivo é facilitar as conexões sociais entre as pessoas que compartilham do mesmo interesse e/ou valores, levando a uma interação favorável para todos. A base de dados da plataforma é imensa, onde reúne várias informações sobre as características de filmes, séries e livros, desde os clássicos até os recentes. A nossa plataforma é atualizada diariamente com filmes, séries e livros, para que os nossos membros aproveitem essas conexões.
+Devido à natureza técnica e inovadora do nosso produto, a empresa possui uma equipe de suporte para eventuais falhas, administradores que serão capazes de orientar e validar os cadastramentos. Esses administradores são especialistas no assunto, e estão focados na geração de documentos técnicos e nas especificações da rede social.
 
-Devido à natureza técnica e inovadora de seus produtos, a empresa possui vendedores capazes de orientar os clientes no processo de escolher um sistema de energia alternativa. A empresa possui também funcionários que têm a função de gerente do produto. O gerente do produto é um especialista em um determinado produto ou em uma determinada linha de produtos. Ele produz os *whitepapers*, documentos altamente técnicos e focados nas especificações dos produtos.
 
 
 # Escopo do projeto
 
-O escopo deste projeto é um sistema web que dá suporte à venda de produtos da empresa diretamente aos clientes, bem como à rede de vendedores. A publicidade de produtos, o controle de estoque e a cobrança não são parte deste projeto.
+O escopo do projeto é um aplicativo de uma rede social, que dará recomendações, cadastramento e avaliações sobre filmes, séries e livros, através de membros, que podem ser qualquer usuários. Além disso, poderá montar sua própria lista indicações e terá a sua própria lista sobre filmes, livros e séries que desejam ver futuramente. A publicidade e a cobrança não são parte deste projeto
+A engine de pesquisa sobre filmes, séries e livros será adquirida como um componente pronto para o novo sistema. Os detalhes internos não serão tratados no projeto. Questões de segurança do site, além da proteção por senha no próprio site, somente pessoas autorizadas podem ter acessos às informações e recursos, onde o acesso do membro será feito somente a recursos que ele tem permissão. O acesso aos recursos mais importantes será feito por pessoas autorizadas e se for feito por outros usuários, o acesso será monitorado constantemente. Preservado a segurança da nossa rede social, existirá a verificação da integridade e vulnerabilidade, autenticação de usuários, ferramentas de segurança de rede, focando no acesso e trafego da rede. Focamos em criar programas seguros, fazendo com que o sistema seja mais difícil de ser invadido com as técnicas mais comuns de invasões.
 
-A engine de pesquisa web será adquirida como um componente pronto para o novo sistema. Os detalhes internos desta engine não fazem parte deste projeto. Questões de segurança do site, além da proteção por senha no próprio site, também não são parte do projeto.
-
-> Observação do professor: neste exemplo, deixei como parte do projeto somente a proteção por senha, assumindo que as demais questões de segurança serão tratadas pela equipe de operações. No caso do projeto do seu grupo, será necessário tratar destes outros aspectos de segurança.
 
 # Interessados
 
 Aqueles que irão se beneficiar diretamente e aqueles que serão afetados pelo novo sistema:
 
-* Clientes: Conseguirão navegar pelo site para encontrar e fazer pedidos de produtos. Poderão escolher entre pedir diretamente da empresa ou através de um vendedor.
+Membros: Conseguirão navegar pelo site para cadastrar, recomendar, avaliar, os filmes, livros e séries. Terão uma vasta quantidade de opções de mecanismo na rede social.
 
-* Vendedores: Conseguirão navegar pelo site e obter informações atualizadas, precisas e detalhadas dos produtos. Serão informados de clientes em potencial e conseguirão se comunicar com o gerente do produto.
+Administradores: Conseguirão navegar pelo site e serão responsáveis pela validação e verificação dos cadastramentos.
 
-* Gerentes do produto: Conseguirão atualizar diretamente as informações de seus produtos.
+Suporte: Em eventuais dúvidas e/ou falhas, eles serão responsáveis por facilitar essas informações.
 
-* Serviço de Atendimento ao Consumidor (SAC): O sistema reduzirá a carga de trabalho no SAC, pois os clientes conseguirão encontrar de forma mais fácil as informações que necessitam.
+Departamento de Marketing: Os dados de navegação no site poderiam ser enviados para o departamento de marketing. Entendendo como um membro usa o site ao fazer uma recomendação ou cadastramento, por exemplo,  fazendo com que possa propor melhores implementações para manter o nosso usuário ativo. 
 
-* Departamento de Marketing:: Os dados de navegação no site poderiam ser enviados para o departamento de marketing. Entendendo como um cliente usa o site ao fazer um pedido, o departamento poderá propor e implementar melhorias para manter os clientes.
+Departamento de Tecnologia da Informação: Será responsável pela implementação da nova base de dados, hospedagem da aplicação e manutenção do sistema
 
-* Departamento de Contabilidade: As informações dos pedidos serão enviadas diretamente para a contabilidade, permitindo uma cobrança mais ágil e eficiente.
+Serviço de Atendimento ao Consumidor(SAC): O sistema reduzirá a carga de trabalho no SAC, pois os clientes conseguirão encontrar de forma mais fácil as informações que necessitam
 
-* Departamento de Logística: As informações dos pedidos serão enviadas diretamente para o departamento de logística, que dará baixa no estoque e providenciará o envio do produto.
-
-* Departamento de Tecnologia da Informação: Será responsável pela implementação da nova base de dados, hospedagem da aplicação web e manutenção do sistema.
 
 
 # Objetivos funcionais
 
-1. O sistema permitirá que os usuários façam alterações em seus cadastros.
+
+1. O cadastro do usuário deverá conter: nome completo, username, senha que usará para acessar o sistema, data de nascimento, cidade e estado.
+
+   Isto reduzirá a quantidade de acessos a informações desatualizadas.
+
+   Isto eliminará a atualização da informação em diversos documentos.
+   
+2. O sistema permitirá que os usuários façam alterações em seus cadastros.
 
    Para os clientes, isto eliminará a demora atual entre a sua decisão de comprar e a realização do pedido.
 
    Isto também reduzirá o tempo que o vendedor gasta para elaborar um pedido.
 
-2. O cadastro do usuário deverá conter: nome completo, username, senha que usará para acessar o sistema, data de nascimento, cidade e estado.
-
-   Isto reduzirá a quantidade de acessos a informações desatualizadas.
-
-   Isto eliminará a atualização da informação em diversos documentos.
-
 3. O sistema deve permitir que o usuário possa excluir o seu cadastro pessoal.
 
-   Isto reduzirá o tempo para um funcionário encontrar e entrar em contato com o gerente de um determinado produto.
+   Isto fará com que o membro possa excluir o seu cadastro quando quiser encerrar a sua participação na rede social.
 
 4. O sistema permitirá que cada membro possa avaliar filmes, séries e livro que desejar.
 
-   Isto reduzirá o tempo para o cliente enviar uma requisição e receber uma resposta.
+   Isto aumentará o número de avaliações.
 
 5. O cadastro de um livro deverá conter: título, autor(es), editora, país, ano de lançamento.
 
-   Isto melhorará o atendimento ao cliente reduzindo problemas relacionados à cobrança.
+   Isto melhorará as informações sobre os detalhes dos livros.
 
 6. O cadastro de um filme deverá conter: título, diretor, elenco principal, país, ano.
 
-   Isto permitirá maior agilidade no processamento dos pedidos e na atualização do estoque.
+  Isto melhorará as informações sobre os detalhes dos filmes.
+
+
+8. O cadastro de uma série deverá conter: título, diretor, elenco principal, país, ano, número de temporadas
+
+   Isto melhorará as informações sobre os detalhes das séries.
 
 7. O sistema deverá permitir que sejam realizadas pesquisas em todo o texto das páginas web a que o usuário tem acesso. O sistema deverá permitir as seguintes pesquisas:
    * pesquisar todas as palavras
    * pesquisar qualquer uma das palavras
    * pesquisar a frase exata
 
-8. O cadastro de uma série deverá conter: título, diretor, elenco principal, país, ano, número de temporadas
-
-   Isto permitirá que os clientes encontrem sozinhos as informações, reduzindo o custo de suporte ao cliente.
-
 9. O sistema permitirá o acesso dos usuários através do login e senha.
 
-    Isto reduzirá o tempo de visita do usuário, pois ele não precisará fornecer novamente dados que ele já entrou em uma visita anterior.
+    Isto melhorará o controle sobre o seu perfil na rede social.
 
 10. O sistema deve permitir a realização de adicionar comentários às avaliações feitas pelo outro, desde que tenham relacionamento de amizade.
 
-   Esta informação permitirá que o marketing determine qual informação disparou a compra e ajudará a abordar clientes em potencial de forma mais efetiva.
+    Isto fará com que aumente o número de opiniões diferentes sobre o determinado filme,série ou livro.
 
 11. O sistema deve permitir que o usuário possa “reagir” a avaliação do usuário através de um emoticon “joinha”.
 
-   Isto melhorará o serviço ao cliente e reduzirá o número de chamadas ao suporte por clientes estrangeiros.
+    Isto fará com que a sua opinião possa ter maiores formas de disseminação. 
    
 12. O sistema deve permitir que o usuário que reagiu a avaliação de outro usuário, possa retirar o “joinha” dado.
 
-   Esta informação permitirá que o marketing determine qual informação disparou a compra e ajudará a abordar clientes em potencial de forma mais efetiva.
+
 
 13. O sistema deve permitir que um usuário possa pedir relacionamento de amizade a outro usuário
 
-   Isto melhorará o serviço ao cliente e reduzirá o número de chamadas ao suporte por clientes estrangeiros.
+   Esta informação fará com que o ciclo de amizade aumente.
    
 14. O sistema deve mostrar os amigos em comum, quando um usuário visita a página de outro.
 
-   Esta informação permitirá que o marketing determine qual informação disparou a compra e ajudará a abordar clientes em potencial de forma mais efetiva.
+   Esta informação fará com que o ciclo de amizade aumente através de amigos em comum entre os membros.
 
 15. O sistema deve sugerir amizades de usuários para o outro usuário
 
-   Isto melhorará o serviço ao cliente e reduzirá o número de chamadas ao suporte por clientes estrangeiros.
+   Isto melhorará o serviço a interatividade entre os membros da rede social, trazendo um maior número de recomendações.
 
 # Objetivos não-funcionais
 
-a. O sistema deverá estar completamente operacional pelo menos 99.99% do tempo.
+RNF1	Após o sistema ter pelo menos 10 membros cadastrados e cada membro 10 avaliações, o sistema passará a apresentar para cada membro recomendações de filmes, séries e livros.
 
-b. O tempo fora do ar após uma falha não deverá exceder 0.5 hora.
+RNF2	O sistema deverá utilizar um algoritmo colaborativo para oferecer as recomendações a um determinado membro.
+RNF3	O sistema deverá receber a sugestão de 3 membros que poderiam ser seus amigos
+RNF4	O sistema deverá permitir o número médio de amigos dos membros da rede social.
 
-c. O vendedor deverá ser capaz de utilizar o sistema em seu trabalho após um treinamento de 2 dias.
+RNF5	O sistema deverá permitir uma lista com os 10 membros mais conectados
 
-d. Um usuário que já sabe qual produto lhe interessa deve ser capaz de localizar e ver a página do produto em 20 segundos.
+RNF6	O sistema deverá um gráfico mostrando a relação entre o número de amigos e o estado onde mora.
 
-e. O número de páginas web pelas quais o usuário precisa navegar para acessar a informação do produto a partir da página principal não deve ser maior do que 2.
+RNF7	É desejável que o tempo de carga para uma página não seja superior a 5 segundos.
 
-f. O sistema deverá ser capaz de suportar 1000 usuários simultâneos.
+RNF8	Os dados devem ser persistidos em uma base de dados
 
-g. O tempo médio para visualizar uma página web em uma conexão de 1Mbps não deverá exceder 5 segundos.
+RNF9	A disponibilidade da aplicação deverá atender o padrão 99.99%, em regime 24x7.
 
-h. O tempo médio para baixar e visualizar um *whitepaper* em uma conexão de 1Mbps não deverá exceder 10 segundos.
+RNF10	A documentação do sistema deverá apresentar indicativos de como os dados cadastrais e transacionais estão assegurados contra eventuais invasões ao site do sistema.
 
-i. O sistema deverá oferecer acesso protegido por senha para páginas web que são acessadas somente por funcionários.
+RNF11	Os membros deverão acessar as funções da rede social através da web ou por aplicativos móveis
 
-j. Os dados de transação devem ser transmitidos de forma criptografada.
+RNF12	A aplicação deve ser responsiva e leve, evitando demoras no carregamento das funcionalidades.
 
-k. O sistema deverá ser capaz de acomodar novos produtos e novas linhas de produto sem necessidade de alterações na sua implementação.
+RNF13	A aplicação deve ser implantada em um provedor de serviços na Internet .
+RNF14	Desenvolvedores terão que dar suporte para os usuários e eventuais problemas no sistema.
+RNF15	O sistema deverá ser acessado completamente via browser HTTP/HTML.
+RNF16	O produto será disponibilizado em português, mas de forma a permitir que versões em línguas diferentes possam ser produzidas sem necessidade de ter acesso ao código fonte.
+RNF17	Suporte ao produto será feito exclusivamente através de site Web, com acesso a Base de Conhecimento sobre o aplicativo.
+RNF18	Deve emitir relatórios por membros cadastrados.
 
-l. O site web do sistema deverá ser visível nos navegadores Mozilla Firefox (versão $\ge$ 75.0.0), Google Chrome (versão $\ge$ 81.0.0) e Microsoft Edge (versão $\ge$ 5.0.0).
+RNF19	Deve emitir relatórios por filmes, séries e livros cadastrados.
 
-m. O sistema deverá disponibilizar uma página web que explica como navegar pelo site. A página deverá ser customizada com base nas páginas que o usuário pode acessar. Esta página de ajuda deverá ser acessível a partir de todas as outras páginas.
+RNF20	Deve ser executável em qualquer plataforma
 
-o. O sistema deverá ter interface com
+RNF21	Funcionar somente com acesso à internet.
+RNF22	Ser desenvolvido na linguagem Python.
+RNF23	Ser utilizado o framework Django para desenvolvimento do aplicativo.
+RNF24	O sistema deve garantir que somente usuários com permissão tenham acesso às informações.
+RNF25	Integridade das informações: o sistema deve garantir a integridade das informações gravadas em banco de dados.
+RNF25	O sistema deve ter interfaces simplificadas, legível e sem poluição visual.
+RNF26	As informações do sistema devem ser de fácil consulta e possuir cadastros rápidos, menos de 5 minutos.
+RNF27	O sistema deve manter o tempo de timeout ativo enquanto o usuário estiver utilizando.
 
-* Uma base de dados relacional para informações dos produtos e dos pedidos.
-* O sistema atual de contabilidade da empresa.
-* O sistema atual do departamento de logística.
-* O tradutor (a ser adquirido).
-* A engine de pesquisa (a ser adquirida).
 
 
 # COTS (Commercial Off-The-Shelf)
@@ -171,115 +178,6 @@ Os softwares que serão adquiridos para compor o sistema são:
 
 > (em elaboração)
 ## Descrições dos casos de uso
-
-1.3.1	CSU01 – Fazer Registro
-
-Identificador	CSU01
-Nome	Fazer registro
-Atores	Membro
-Sumário	Qualquer pessoa da empresa pode se registrar nesta rede social.
-No momento do registro, o usuário deverá fornecer os seguintes dados: nome completo, username que deseja utilizar, senha que usará para acessar o sistema, data de nascimento, cidade e estado.
-Complexidade	Médio
-Regras de Negócio	N/D
-Pré-condições	N/D
-Pós-condição	É registrado no sistema o cadastro do membro
-Pontos de Inclusão	Atualizar os dados do seu perfil.
-Pontos de Extensão	N/D
-
-Fluxo Principal
-Ações do Ator	                                          Ações do Sistema
-1. O Membro informa os dados pessoais e a senha 	
-	                                                      2. O Sistema verifica se os dados e senha são válidos ( Verifica se os dados e senha pertencem a uma conta)
-	                                                      3. O Sistema registra o membro. Caso de Uso é encerrado
-
-Fluxo de Exceção 1: 3a. O Sistema não valida o membro
-Ações do Ator	                                          Ações do Sistema
-	                                                      1. O Sistema recusa os dados e senha do membro e exibe uma mensagem
-	                                                      2. Volta ao passo 1 do Fluxo Principal.
-
-1.3.1	CSU02 – Fazer Cadastro
-
-Identificador	CSU02
-Nome	Fazer cadastro
-Atores	Membro
-Sumário	Qualquer membro da rede social pode fazer o cadastro de filmes, séries e/ou livros.
-Complexidade	Médio
-Regras de Negócio	N/D
-Pré-condições	Ser registrado na rede social
-Pós-condição	N/D
-Pontos de Inclusão	N/D
-Pontos de Extensão	Cadastrar Filme
-Cadastrar Séries
-Cadastrar Livros
-
-Fluxo Principal
-Ações do Ator	                                       Ações do Sistema
-1. O Membro escolhe a opção de cadastramento	
-	                                                   2. O Sistema abre a página para o cadastramento
-3. O membro fornece os dados específicos	
-	                                                   4. O Sistema registra o cadastramento. Caso de Uso é encerrado
-
-Fluxo Principal
-Ações do Ator	                                      Ações do Sistema
-1. O Membro escolhe a opção de cadastrar “Livros”	
-	                                                  2. O Sistema abre a página para o cadastramento
-3. O membro fornece os dados: título, autor(es), editora, país, ano de lançamento.	
-	                                                  4. O Sistema registra o cadastramento. Caso de Uso é encerrado
-
-Fluxo Principal
-Ações do Ator	                                       Ações do Sistema
-1. O Membro escolhe a opção de cadastrar “Filmes”	
-	                                                   2. O Sistema abre a página para o cadastramento
-3. O membro fornece os dados: título, diretor, elenco principal, país, ano.	
-	                                                   4. O Sistema registra o cadastramento. Caso de Uso é encerrado
-
-Fluxo Principal
-Ações do Ator	                                       Ações do Sistema
-1. O Membro escolhe a opção de cadastrar “Séries”	
-	                                                    2. O Sistema abre a página para o cadastramento
-3. O membro fornece os dados: título, diretor,
- elenco principal, país, ano, número de temporadas.	
-                                                      4. O Sistema registra o cadastramento. Caso de Uso é encerrado
-
-1.3.1	CSU03 – Fazer Avaliação
-
-Identificador	CSU03
-Nome	Fazer avaliação
-Atores	Membro
-Sumário	Cada membro poderá avaliar os filmes, séries e livros que desejar.
-Complexidade	Médio
-Regras de Negócio	N/D
-Pré-condições	Para entrar uma avaliação, o membro seleciona o tipo de item (livro, filme ou série), busca pelo nome do item, atribui uma nota de 0 a 10 (somente valores inteiros) e escreve os comentários que julgar relevantes (com limite de 1024 caracteres).
-Pós-condição	N/D
-Pontos de Inclusão	N/D
-Pontos de Extensão	Fazer Validação
-
-Fluxo Principal
-Ações do Ator	                                 Ações do Sistema
-1. O Membro escolhe a opção de avaliação	
-	                                             2. O sistema abre a página de validação
-3. Seleciona o tipo de item(Livro, filme ou série)	
-4. Busca pelo nome do item	
-5. Atribui uma nota de 0 a 10	
-6. Escreve os comentários que julgar relevantes	
-	                                             7. O sistema registra a avaliação. O caso de uso é encerrado.
-
-Fluxo Principal
-Ações do Ator	                                 Ações do Sistema
-1. O administrador verifica o cadastramento 	
-	                                             2. O Sistema abre a página do cadastramento
-3. Valida o cadastramento	
-	                                             4. O Sistema faz a validação. Caso de uso é encerrado
-
-
-Fluxo Principal
-Ações do Ator                                  	Ações do Sistema
-1. O administrador verifica o cadastramento 	
-	                                             2. O Sistema abre a página do cadastramento
-	                                             3. O sistema verifica que o item já existe 
-4. Indica item	
-5. Vincula a avaliação ao item já existente.	
-	                                             6. O Sistema faz a validação. Caso de uso é encerrado
 
 
 # Wireframes
