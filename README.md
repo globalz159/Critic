@@ -140,10 +140,15 @@ RNF11	Os membros deverão acessar as funções da rede social através da web ou
 RNF12	A aplicação deve ser responsiva e leve, evitando demoras no carregamento das funcionalidades.
 
 RNF13	A aplicação deve ser implantada em um provedor de serviços na Internet .
+
 RNF14	Desenvolvedores terão que dar suporte para os usuários e eventuais problemas no sistema.
+
 RNF15	O sistema deverá ser acessado completamente via browser HTTP/HTML.
+
 RNF16	O produto será disponibilizado em português, mas de forma a permitir que versões em línguas diferentes possam ser produzidas sem necessidade de ter acesso ao código fonte.
+
 RNF17	Suporte ao produto será feito exclusivamente através de site Web, com acesso a Base de Conhecimento sobre o aplicativo.
+
 RNF18	Deve emitir relatórios por membros cadastrados.
 
 RNF19	Deve emitir relatórios por filmes, séries e livros cadastrados.
@@ -151,12 +156,19 @@ RNF19	Deve emitir relatórios por filmes, séries e livros cadastrados.
 RNF20	Deve ser executável em qualquer plataforma
 
 RNF21	Funcionar somente com acesso à internet.
+
 RNF22	Ser desenvolvido na linguagem Python.
+
 RNF23	Ser utilizado o framework Django para desenvolvimento do aplicativo.
+
 RNF24	O sistema deve garantir que somente usuários com permissão tenham acesso às informações.
+
 RNF25	Integridade das informações: o sistema deve garantir a integridade das informações gravadas em banco de dados.
+
 RNF25	O sistema deve ter interfaces simplificadas, legível e sem poluição visual.
+
 RNF26	As informações do sistema devem ser de fácil consulta e possuir cadastros rápidos, menos de 5 minutos.
+
 RNF27	O sistema deve manter o tempo de timeout ativo enquanto o usuário estiver utilizando.
 
 
