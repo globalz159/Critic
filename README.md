@@ -187,10 +187,15 @@ Os softwares que serão adquiridos para compor o sistema são:
 
 ## Diagrama de casos de uso
 
+![Diagrama de casos de uso](diagramas/CasosDeUso/casos_de_uso.png)
 
-> (em elaboração)
-## Descrições dos casos de uso
+## Especificações dos casos de uso
 
+![Fazer Avaliação](diagramas/CasosDeUso/Especificacoes/FazerAvaliacao.png)
+
+![Reagir Avaliação](diagramas/CasosDeUso/Especificacoes/ReagirAvaliacao.png)
+
+![Validar Cadastro](diagramas/CasosDeUso/Especificacoes/ValidarCadastro.png)
 
 # Wireframes
 
