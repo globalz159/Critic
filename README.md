@@ -182,8 +182,6 @@ Os softwares que serão adquiridos para compor o sistema são:
 
 
 # Casos de uso
-
-
 ## Diagrama de casos de uso
 
 ![Diagrama de casos de uso](diagramas/CasosDeUso/casos_de_uso.png)
