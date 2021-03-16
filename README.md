@@ -49,127 +49,126 @@ Serviço de Atendimento ao Consumidor(SAC): O sistema reduzirá a carga de traba
 # Objetivos funcionais
 
 
-RF1 O cadastro do usuário deverá conter: nome completo, username, senha que usará para acessar o sistema, data de nascimento, cidade e estado.
+**RF1** O cadastro do usuário deverá conter: nome completo, username, senha que usará para acessar o sistema, data de nascimento, cidade e estado.
 
-   Isto reduzirá a quantidade de acessos a informações desatualizadas.
+    Isto reduzirá a quantidade de acessos a informações desatualizadas.
 
-   Isto eliminará a atualização da informação em diversos documentos.
+    Isto eliminará a atualização da informação em diversos documentos.
    
-RF2 O sistema permitirá que os usuários façam alterações em seus cadastros.
+**RF2** O sistema permitirá que os usuários façam alterações em seus cadastros.
 
-   Para os clientes, isto eliminará a demora atual entre a sua decisão de comprar e a realização do pedido.
+    Para os clientes, isto eliminará a demora atual entre a sua decisão de comprar e a realização do pedido.
 
-   Isto também reduzirá o tempo que o vendedor gasta para elaborar um pedido.
+    Isto também reduzirá o tempo que o vendedor gasta para elaborar um pedido.
 
-RF3 O sistema deve permitir que o usuário possa excluir o seu cadastro pessoal.
+**RF3** O sistema deve permitir que o usuário possa excluir o seu cadastro pessoal.
 
-   Isto fará com que o membro possa excluir o seu cadastro quando quiser encerrar a sua participação na rede social.
+    Isto fará com que o membro possa excluir o seu cadastro quando quiser encerrar a sua participação na rede social.
 
-RF4 O sistema permitirá que cada membro possa avaliar filmes, séries e livro que desejar.
+**RF4** O sistema permitirá que cada membro possa avaliar filmes, séries e livro que desejar.
 
-   Isto aumentará o número de avaliações.
+    Isto aumentará o número de avaliações.
 
-RF5 O cadastro de um livro deverá conter: título, autor(es), editora, país, ano de lançamento.
+**RF5** O cadastro de um livro deverá conter: título, autor(es), editora, país, ano de lançamento.
 
-   Isto melhorará as informações sobre os detalhes dos livros.
+    Isto melhorará as informações sobre os detalhes dos livros.
 
-RF6 O cadastro de um filme deverá conter: título, diretor, elenco principal, país, ano.
+**RF6** O cadastro de um filme deverá conter: título, diretor, elenco principal, país, ano.
 
-  Isto melhorará as informações sobre os detalhes dos filmes.
+    Isto melhorará as informações sobre os detalhes dos filmes.
 
 
-RF7 O cadastro de uma série deverá conter: título, diretor, elenco principal, país, ano, número de temporadas
+**RF7** O cadastro de uma série deverá conter: título, diretor, elenco principal, país, ano, número de temporadas
 
-   Isto melhorará as informações sobre os detalhes das séries.
+    Isto melhorará as informações sobre os detalhes das séries.
 
-RF8 O sistema deverá permitir que sejam realizadas pesquisas em todo o texto das páginas web a que o usuário tem acesso. O sistema deverá permitir as seguintes pesquisas:
+**RF8** O sistema deverá permitir que sejam realizadas pesquisas em todo o texto das páginas web a que o usuário tem acesso. O sistema deverá permitir as seguintes pesquisas:
    * pesquisar todas as palavras
    * pesquisar qualquer uma das palavras
    * pesquisar a frase exata
 
-RF9 O sistema permitirá o acesso dos usuários através do login e senha.
+**RF9** O sistema permitirá o acesso dos usuários através do login e senha.
 
     Isto melhorará o controle sobre o seu perfil na rede social.
 
-RF10 O sistema deve permitir a realização de adicionar comentários às avaliações feitas pelo outro, desde que tenham relacionamento de amizade.
-
+**RF10** O sistema deve permitir a realização de adicionar comentários às avaliações feitas pelo outro, desde que tenham relacionamento de amizade.
     Isto fará com que aumente o número de opiniões diferentes sobre o determinado filme,série ou livro.
 
-RF11 O sistema deve permitir que o usuário possa “reagir” a avaliação do usuário através de um emoticon “joinha”.
+**RF11** O sistema deve permitir que o usuário possa “reagir” a avaliação do usuário através de um emoticon “joinha”.
 
     Isto fará com que a sua opinião possa ter maiores formas de disseminação. 
    
-RF12 O sistema deve permitir que o usuário que reagiu a avaliação de outro usuário, possa retirar o “joinha” dado.
+**RF12** O sistema deve permitir que o usuário que reagiu a avaliação de outro usuário, possa retirar o “joinha” dado.
 
 
 
-RF13 O sistema deve permitir que um usuário possa pedir relacionamento de amizade a outro usuário
+**RF13** O sistema deve permitir que um usuário possa pedir relacionamento de amizade a outro usuário
 
-   Esta informação fará com que o ciclo de amizade aumente.
+    Esta informação fará com que o ciclo de amizade aumente.
    
-RF14 O sistema deve mostrar os amigos em comum, quando um usuário visita a página de outro.
+**RF14** O sistema deve mostrar os amigos em comum, quando um usuário visita a página de outro.
 
-   Esta informação fará com que o ciclo de amizade aumente através de amigos em comum entre os membros.
+    Esta informação fará com que o ciclo de amizade aumente através de amigos em comum entre os membros.
 
-RF15 O sistema deve sugerir amizades de usuários para o outro usuário
+**RF15** O sistema deve sugerir amizades de usuários para o outro usuário
 
-   Isto melhorará o serviço a interatividade entre os membros da rede social, trazendo um maior número de recomendações.
+    Isto melhorará o serviço a interatividade entre os membros da rede social, trazendo um maior número de recomendações.
 
 # Objetivos não-funcionais
 
-RNF1	Após o sistema ter pelo menos 10 membros cadastrados e cada membro 10 avaliações, o sistema passará a apresentar para cada membro recomendações de filmes, séries e livros.
+**RNF1**	Após o sistema ter pelo menos 10 membros cadastrados e cada membro 10 avaliações, o sistema passará a apresentar para cada membro recomendações de filmes, séries e livros.
 
-RNF2	O sistema deverá utilizar um algoritmo colaborativo para oferecer as recomendações a um determinado membro.
-RNF3	O sistema deverá receber a sugestão de 3 membros que poderiam ser seus amigos
-RNF4	O sistema deverá permitir o número médio de amigos dos membros da rede social.
+**RNF2**	O sistema deverá utilizar um algoritmo colaborativo para oferecer as recomendações a um determinado membro.
+**RNF3**	O sistema deverá receber a sugestão de 3 membros que poderiam ser seus amigos
+**RNF4**	O sistema deverá permitir o número médio de amigos dos membros da rede social.
 
-RNF5	O sistema deverá permitir uma lista com os 10 membros mais conectados
+**RNF5**	O sistema deverá permitir uma lista com os 10 membros mais conectados
 
-RNF6	O sistema deverá um gráfico mostrando a relação entre o número de amigos e o estado onde mora.
+**RNF6**	O sistema deverá um gráfico mostrando a relação entre o número de amigos e o estado onde mora.
 
-RNF7	É desejável que o tempo de carga para uma página não seja superior a 5 segundos.
+**RNF7**	É desejável que o tempo de carga para uma página não seja superior a 5 segundos.
 
-RNF8	Os dados devem ser persistidos em uma base de dados
+**RNF8**	Os dados devem ser persistidos em uma base de dados
 
-RNF9	A disponibilidade da aplicação deverá atender o padrão 99.99%, em regime 24x7.
+**RNF9**	A disponibilidade da aplicação deverá atender o padrão 99.99%, em regime 24x7.
 
-RNF10	A documentação do sistema deverá apresentar indicativos de como os dados cadastrais e transacionais estão assegurados contra eventuais invasões ao site do sistema.
+**RNF10**	A documentação do sistema deverá apresentar indicativos de como os dados cadastrais e transacionais estão assegurados contra eventuais invasões ao site do sistema.
 
-RNF11	Os membros deverão acessar as funções da rede social através da web ou por aplicativos móveis
+**RNF11**	Os membros deverão acessar as funções da rede social através da web ou por aplicativos móveis
 
-RNF12	A aplicação deve ser responsiva e leve, evitando demoras no carregamento das funcionalidades.
+**RNF12**	A aplicação deve ser responsiva e leve, evitando demoras no carregamento das funcionalidades.
 
-RNF13	A aplicação deve ser implantada em um provedor de serviços na Internet .
+**RNF13**	A aplicação deve ser implantada em um provedor de serviços na Internet .
 
-RNF14	Desenvolvedores terão que dar suporte para os usuários e eventuais problemas no sistema.
+**RNF14**	Desenvolvedores terão que dar suporte para os usuários e eventuais problemas no sistema.
 
-RNF15	O sistema deverá ser acessado completamente via browser HTTP/HTML.
+**RNF15**	O sistema deverá ser acessado completamente via browser HTTP/HTML.
 
-RNF16	O produto será disponibilizado em português, mas de forma a permitir que versões em línguas diferentes possam ser produzidas sem necessidade de ter acesso ao código fonte.
+**RNF16**	O produto será disponibilizado em português, mas de forma a permitir que versões em línguas diferentes possam ser produzidas sem necessidade de ter acesso ao código fonte.
 
-RNF17	Suporte ao produto será feito exclusivamente através de site Web, com acesso a Base de Conhecimento sobre o aplicativo.
+**RNF17**	Suporte ao produto será feito exclusivamente através de site Web, com acesso a Base de Conhecimento sobre o aplicativo.
 
-RNF18	Deve emitir relatórios por membros cadastrados.
+**RNF18**	Deve emitir relatórios por membros cadastrados.
 
-RNF19	Deve emitir relatórios por filmes, séries e livros cadastrados.
+**RNF19**	Deve emitir relatórios por filmes, séries e livros cadastrados.
 
-RNF20	Deve ser executável em qualquer plataforma
+**RNF20**	Deve ser executável em qualquer plataforma
 
-RNF21	Funcionar somente com acesso à internet.
+**RNF21**	Funcionar somente com acesso à internet.
 
-RNF22	Ser desenvolvido na linguagem Python.
+**RNF22**	Ser desenvolvido na linguagem Python.
 
-RNF23	Ser utilizado o framework Django para desenvolvimento do aplicativo.
+**RNF23**	Ser utilizado o framework Django para desenvolvimento do aplicativo.
 
-RNF24	O sistema deve garantir que somente usuários com permissão tenham acesso às informações.
+**RNF24**	O sistema deve garantir que somente usuários com permissão tenham acesso às informações.
 
-RNF25	Integridade das informações: o sistema deve garantir a integridade das informações gravadas em banco de dados.
+**RNF25**	Integridade das informações: o sistema deve garantir a integridade das informações gravadas em banco de dados.
 
-RNF25	O sistema deve ter interfaces simplificadas, legível e sem poluição visual.
+**RNF26**	O sistema deve ter interfaces simplificadas, legível e sem poluição visual.
 
-RNF26	As informações do sistema devem ser de fácil consulta e possuir cadastros rápidos, menos de 5 minutos.
+**RNF27**	As informações do sistema devem ser de fácil consulta e possuir cadastros rápidos, menos de 5 minutos.
 
-RNF27	O sistema deve manter o tempo de timeout ativo enquanto o usuário estiver utilizando.
+**RNF28**	O sistema deve manter o tempo de timeout ativo enquanto o usuário estiver utilizando.
 
 
 
@@ -191,11 +190,33 @@ Os softwares que serão adquiridos para compor o sistema são:
 
 ## Especificações dos casos de uso
 
+![Realizar Login](diagramas/CasosDeUso/Especificacoes/RealizarLogin.png)
+
+![Realizar Registro](diagramas/CasosDeUso/Especificacoes/RealizarRegistro.png)
+
+![Alterar Registro](diagramas/CasosDeUso/Especificacoes/AterarRegistro.png)
+
+![Excluir Registro](diagramas/CasosDeUso/Especificacoes/ExcluirRegistro.png)
+
+![Propor Relacionamento de Amizade](diagramas/CasosDeUso/Especificacoes/ProporRelacionamentoAmizade.png)
+
+![Cadastrar Item](diagramas/CasosDeUso/Especificacoes/CadastrarItem.png)
+
+![Cadastrar Livro](diagramas/CasosDeUso/Especificacoes/CadastrarLivro.png)
+
+![Cadastrar Filme](diagramas/CasosDeUso/Especificacoes/CadastrarFilme.png)
+
+![Cadastrar Serie](diagramas/CasosDeUso/Especificacoes/CadastrarSerie.png)
+
+![Validar Cadastro](diagramas/CasosDeUso/Especificacoes/ValidarCadastro.png)
+
 ![Fazer Avaliação](diagramas/CasosDeUso/Especificacoes/FazerAvaliacao.png)
 
 ![Reagir Avaliação](diagramas/CasosDeUso/Especificacoes/ReagirAvaliacao.png)
 
-![Validar Cadastro](diagramas/CasosDeUso/Especificacoes/ValidarCadastro.png)
+![Reagir Comentario](diagramas/CasosDeUso/Especificacoes/ReagirComentario.png)
+
+![Responder Comentario](diagramas/CasosDeUso/Especificacoes/ResponderComentario.png)
 
 # Wireframes
 
