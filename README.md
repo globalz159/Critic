@@ -315,6 +315,9 @@ Os softwares que serão adquiridos para compor o sistema são:
 ![Responder Comentario](diagramas/Sequencias/Seq_Responder_Comentario.jpeg)
 &nbsp;
 
-# Diagrama de classes de domínio
+# Diagrama de Classes
 
 ![Diagrama de Classes](diagramas/Classes/classes.png)
+&nbsp;
+
+# Diagrama de Domínio
