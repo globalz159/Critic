@@ -278,7 +278,52 @@ Os softwares que serão adquiridos para compor o sistema são:
 &nbsp;
 &nbsp;
 
+# Diagramas de Sequencias
+&nbsp;
+
+## Realizar Login
+![Realizar Login](diagramas/Sequencias/Seq_Fazer_Login.png)
+&nbsp;
+## Realizar Registro
+![Realizar Registro](diagramas/Sequencias/Seq_Fazer_Registro.png)
+&nbsp;
+## Alterar Registro
+![Alterar Registro](diagramas/Sequencias/Seq_Atualizar_Registro.png)
+&nbsp;
+## Excluir Registro
+![Excluir Registro](diagramas/Sequencias/Seq_Excluir_Registro.png)
+&nbsp;
+## Propor Relacionamento de Amizade
+![Propor Relacionamento de Amizade](diagramas/Sequencias/Seq_Propor_Amizade%20.jpeg)
+&nbsp;
+## Cadastrar Item
+![Cadastrar Item](diagramas/Sequencias/Seq_Cadastrar_Item.png)
+&nbsp;
+## Cadastrar Livro
+![Cadastrar Livro](diagramas/Sequencias/Seq_Cadastrar_Livro.png)
+&nbsp;
+## Cadastrar Filme
+![Cadastrar Filme](diagramas/Sequencias/Seq_Cadastrar_Filme.png)
+&nbsp;
+## Cadastrar Serie
+![Cadastrar Serie](diagramas/Sequencias/Seq_Cadastrar_Serie.png)
+&nbsp;
+## Validar Cadastro
+![Validar Cadastro](diagramas/Sequencias/Seq_Validar_Item.png)
+&nbsp;
+## Fazer Avaliação
+![Fazer Avaliação](diagramas/Sequencias/Seq_Fazer_Avaliacao.png)
+&nbsp;
+## Reagir Avaliação
+![Reagir Avaliação](diagramas/Sequencias/Seq_Reagir_Avaliacao.png)
+&nbsp;
+## Reagir Comentario
+![Reagir Comentario](diagramas/Sequencias/Seq_Reagir_Comentario.jpeg)
+&nbsp;
+## Responder Comentario
+![Responder Comentario](diagramas/Sequencias/Seq_Responder_Comentario.jpeg)
+&nbsp;
 
 # Diagrama de classes de domínio
 
-> (em elaboração)
+![Diagrama de Classes](diagramas/Classes/classes.png)
