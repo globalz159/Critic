@@ -217,8 +217,67 @@ Os softwares que serão adquiridos para compor o sistema são:
 ![Responder Comentario](diagramas/CasosDeUso/Especificacoes/ResponderComentario.png)
 
 # Wireframes
+###1. Tela de Login
+![Realizar Login](diagramas/Wireframes/FazerLogin.png)
+&nbsp;
+&nbsp;
+###2. Tela de Registro de Usuário
+![Realizar Registro](diagramas/Wireframes/FazerRegistro.png)
+&nbsp;
+&nbsp;
+###3. Alterar Registro
+![Alterar Registro](diagramas/Wireframes/AlterarRegistro.png)
+&nbsp;
+&nbsp;
+###4. Excluir Registro
+![Excluir Registro](diagramas/Wireframes/ExcluirRegistro.png)
+&nbsp;
+&nbsp;
+###5. Menu de opções no perfil do usuário
+![Menu de opções do perfil](diagramas/Wireframes/MenuOpcoesPerfil.png)
+&nbsp;
+&nbsp;
+###6. Tela Principal de Cadastro
+![Principal de Cadastro](diagramas/Wireframes/PrincipalDeCadastro.jpeg)
+&nbsp;
+&nbsp;
+###7. Tela de Cadastro de Filme
+![Principal de Cadastro](diagramas/Wireframes/CadastrarFilme.jpeg)
+&nbsp;
+&nbsp;
+###8. Tela de Cadastro de Serie
+![Principal de Cadastro](diagramas/Wireframes/CadastrarSerie.jpeg)
+&nbsp;
+&nbsp;
+###9. Tela de Cadastro de Livro
+![Principal de Cadastro](diagramas/Wireframes/CadastrarLivro.jpeg)
+&nbsp;
+&nbsp;
+###10. Tela de Cadastro Efetuado
+![Cadastro Efetuado](diagramas/Wireframes/CadastroEfetuado.jpeg)
+&nbsp;
+&nbsp;
+###11. Tela de Nova Avaliação
+![Nova Avaliação](diagramas/Wireframes/FazerAvaliacao.png)
+&nbsp;
+&nbsp;
+###12. Tela de Reagir e Comentar Avaliações e Comentários
+![Reações e comentarios](diagramas/Wireframes/ReagirAvaliacao.png)
+&nbsp;
+&nbsp;
+###13. Tela de Itens cadastrados a serem validados
+![Itens cadastrados](diagramas/Wireframes/ValidarCadastros.png)
+&nbsp;
+&nbsp;
+###14. Tela de validar Cadastro de Item
+![Validar cadastro](diagramas/Wireframes/ValidarCadastro.png)
+&nbsp;
+&nbsp;
+###15. Tela de Procurar Amigos
+![Validar cadastro](diagramas/Wireframes/ProcurarAmigos.jpeg)
+&nbsp;
+&nbsp;
 
-> (em elaboração)
 
 # Diagrama de classes de domínio
 
