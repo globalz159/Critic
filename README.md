@@ -321,3 +321,4 @@ Os softwares que serão adquiridos para compor o sistema são:
 &nbsp;
 
 # Diagrama de Domínio
+![Diagrama de Dominio](diagramas/Dominio/Dominio.jpeg)
