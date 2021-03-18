@@ -7,7 +7,9 @@
 ### Turmas 05K 
 ### 1º semestre de 2021
 
-                                 UNIVERSIDADE PRESBITERIANA MACKENZIE FACULDADE DE COMPUTAÇÃO E INFORMÁTICA
+                                                     UNIVERSIDADE PRESBITERIANA MACKENZIE
+                                                     FACULDADE DE COMPUTAÇÃO E INFORMÁTICA
+
 
 
 
@@ -28,8 +30,9 @@
 
 
 
-                                              Aplicativo para Recomendação de Filmes, Séries e Livros 
-                                                                 Critic Hub
+
+                                                Aplicativo para Recomendação de Filmes, Séries e Livros 
+                                                                  Critic Hub
 
 
 
@@ -42,7 +45,7 @@
 
 
 
-                                                                   SÃO PAULO 
+                                                                    SÃO PAULO 
                                                                       2021
 
 
