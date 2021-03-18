@@ -13,6 +13,8 @@
 
 
 
+
+
                                                        FELIPE MARTINEZ SILVA - TIA: 31923224
                                                        FERNANDO SAETA REBELATO - TIA: 31944078
                                                        GABRIEL NOVAES LEE - TIA: 31920462
@@ -25,8 +27,8 @@
 
 
 
-                                   Aplicativo para Recomendação de Filmes, Séries e Livros 
-                                                     Critic Hub
+                                            Aplicativo para Recomendação de Filmes, Séries e Livros 
+                                                                Critic Hub
 
 
 
@@ -39,8 +41,8 @@
 
 
 
-                                                    SÃO PAULO 
-                                                     2021
+                                                                  SÃO PAULO 
+                                                                     2021
 
 
 
