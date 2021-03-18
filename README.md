@@ -7,6 +7,15 @@
 ### Turmas 05K 
 ### 1º semestre de 2021
 
+                                                      UNIVERSIDADE PRESBITERIANA MACKENZIE FACULDADE DE COMPUTAÇÃO E INFORMÁTICA
+
+
+
+                                                                    FELIPE MARTINEZ SILVA 
+                                                                    FERNANDO SAETA REBELATO 
+                                                                    GABRIEL NOVAES LEE
+                                                                    GUSTAVO GONTARZIK
+
 
 # Introdução
 
