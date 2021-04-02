@@ -1,0 +1,115 @@
+Curso Framework Django
+
+- arquitetura cliente-servidor
+
+# protocolo http :
+ documentação na "RFC 7540" fornecida pela IETF 
+
+ Hyper Text Transfer Protocol  ==  Protocolo de Transferência de HiperTexto
+
+ porta http: porta 80      -> dados não criptografados
+ porta https: porta 443    -> dados criptografados
+
+> Ações do protocolo
+ > Get              - buscar recursos
+ > Post             - criar um novo recurso
+ > Put / Patch      - atualizar um recurso
+ > Delete           - deletar um recurso
+
+
+
+#   Front-End      /    Back-End
+   - telas           - banco de dados
+   - client view     - comunica-se com front-end
+   - html,css...     - segurança
+   - arquitetura     - python,java,C
+   - estático        - dinâmico
+
+- Aplicações Web: Aplicações que rodam no navegador
+
+- Linguagem Dinâmica:
+   - processada no servidor
+   - back-end
+- Linguagem Estática:
+   - processada no navegador
+   - front-end
+
+
+# PYTHON SERVER HTTP
+
+- Servidor incorporado no python 3
+- Iniciar server na porta 8000:
+   - entrar com o terminal na pasta do html e rodar:
+   $ python3 -m http.server 8000
+
+
+# INICIAR AMBIENTE
+
+1- # Criar um ambiente virtual(venv) na pasta do projeto
+
+
+2- # Instala o Django no venv:  $ pip install django
+
+
+3- # Adiciona requirements.txt:  $ pip freeze > requirements.txt
+
+
+4- # No terminal inicializar projeto:
+  
+$ django-admin startproject nome_projeto .
+                 ou
+$ django-admin startproject nome_projeto  
+
+Inicializar com '.' > cria o projeto e o arquivo manager.py na pasta atual
+Sem o '.' ->  cria uma pasta com o nome do projeto que tem o arquivo manager e outra pasta com o nome do projeto
+
+
+
+
+# Arquivos da Estrutura Django:
+
+> manage.py
+
+> settings.py
+ - Debug True   -> para desenvolvimento
+ - Debug False  -> produção (deve especificar ALLOWED_HOSTS)
+
+
+# Aplicações:    -> São como módulos no Odoo
+
+$ django-admin startapp nome_aplicação
+
+- Um projeto possui várias aplicações
+
+________
+> Views
+- São declaradas como funções
+- recebem request como parametro
+- retorna a função render(request, 'nome_arquivo.html')
+- index é a view principal
+
+exemplo definição de view:
+
+def index(request):
+    return render(request, 'index.html')
+
+
+________
+> Urls
+- Arquivo onde preparamos as rotas para as views
+- podemos importar as views de 2 formas:
+1- Importando as funções(views) do arquivo Views de determinada aplicação
+
+from core.views import index, cadastro
+	path('', index)
+
+
+2- Importando o arquivo urls da aplicação e usando o *include na lista 'urlpatterns'
+ - Include deve ser importado da biblioteca django.urls junto com path
+
+from django.urls import path, include
+urlpatterns = [
+	path('', include('core.urls'))
+]
+
+
