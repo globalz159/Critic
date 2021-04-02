@@ -5,6 +5,7 @@
 .directory
 **/src/venv
 **/src/.idea
+*.sqlite3
 
 # User-specific files
 *.rsuser
