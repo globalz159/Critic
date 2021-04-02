@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+
 from django.contrib import admin
 from django.urls import path, include
 
@@ -21,5 +23,5 @@ from core.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='indx'),
+    path('', include('core.urls')) # -> Se a url for na raiz (http://localhost:8000/) vai utilizar as urlpatterns no arquivo urls.py do core
 ]
