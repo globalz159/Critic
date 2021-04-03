@@ -130,16 +130,46 @@ exemplo definição de view:
 def index(request):
     return render(request, 'index.html')
 
+# Contexto
+- views podem ter um contexto para passar parâmetros do python para o html
+- o contexto é um dicionario definido na função
+- é passado como parâmetro na função render
+
+exemplo de view com contexto:
+
+def index(request):
+    contexto = {'mensagem': 'Essa é uma mensagem no contexto'}
+    return render(request, 'index.html', contexto)
 
 _________
 > Templates
-- Diretório que contém os arquivos HTML
+- São os arquivos HTML
+- Os templates devem ter o mesmo nome das views, assim ja carrega automaticamente com a view
 - Normalmente é criado um diretório 'templates' em cada aplicação
+- Adiciona os arquivos .html nesse diretório templates
+
+- Contextos podem ser utilizados no html usando {{chave_do_contexto}}
+exemplo:
+<h1>{{item_do_contexto}}</h1>
 
 
+________
+> Models
+- models.py é o arquivo onde são definidos os modelos de dados
+- Os modelos são definidos por classes que herdam do models.Model
+- Os atributos são declarados como variáveis models.TipodeDado()
+exemplo de modelo:
 
+class Produto(models.Model):
+    nome = models.CharField("Nome", max_length=100)
+    preco = models.DecimalField("Preço", decimal_places=2, max_digits=5)
 
-
+# Migrations
+- após criar ou alterar models deve realizar as migrations para essas models
+- as migrations a serem feitas são alertadas na execução do servidor
+- para realizar as migrations deve rodar os comandos
+$ python manage.py makemigrations      -> para adicionar as migrations no diretório migrations
+$ python manage.py migrate             -> para executar as migrations
 
 
 
