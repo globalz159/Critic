@@ -1,8 +1,8 @@
-# Curso Framework Django
+# Anotações Framework Django
 
 - arquitetura cliente-servidor
 
-# protocolo http :
+## protocolo http :
  documentação na "RFC 7540" fornecida pela IETF 
 
  Hyper Text Transfer Protocol  ==  Protocolo de Transferência de HiperTexto
@@ -18,24 +18,34 @@
 
 
 
-#   Front-End      /    Back-End
-   - telas           - banco de dados
-   - client view     - comunica-se com front-end
-   - html,css...     - segurança
-   - arquitetura     - python,java,C
-   - estático        - dinâmico
+##   Front-End      /    Back-End
+- #### Front-End
+  - telas
+  - client view
+  - html,css...
+  - arquitetura
+  - estático
 
-- Aplicações Web: Aplicações que rodam no navegador
+- #### Back-End
+  - banco de dados
+  - comunica-se com front-end
+  - segurança
+  - python,java,C
+  - dinâmico
+<br><br>
 
-- Linguagem Dinâmica:
+- **Aplicações Web**: Aplicações que rodam no navegador
+<br>
+
+- **Linguagem Dinâmica**:
    - processada no servidor
    - back-end
-- Linguagem Estática:
+- **Linguagem Estática**:
    - processada no navegador
    - front-end
 
 
-# PYTHON SERVER HTTP
+### PYTHON SERVER HTTP
 
 - Servidor incorporado no python 3
 - Iniciar server na porta 8000:
@@ -43,30 +53,33 @@
    $ python3 -m http.server 8000
 
 
-# INICIAR NOVO PROJETO
+## INICIAR NOVO PROJETO
 
-1- # Criar um ambiente virtual(venv) na pasta do projeto
+1. Criar um ambiente virtual(venv) na pasta do projeto
 
-2- # Instala o Django no venv:  $ pip install django
+2. Instala o Django no venv: `$ pip install django`
 
-3- # Adiciona requirements.txt:  $ pip freeze > requirements.txt
+3. Adiciona requirements.txt: `$ pip freeze > requirements.txt`
 
-4- # No terminal inicializar projeto:
-$ django-admin startproject nome_projeto .
-                 ou
-$ django-admin startproject nome_projeto  
+4. No terminal inicializar projeto:
+`$ django-admin startproject nome_projeto .`
+   ou        
+`$ django-admin startproject nome_projeto`
 
 OBS:
-  Inicializar com '.' > cria o projeto e o arquivo manager.py na pasta atual
+>Inicializar com '.' > cria o projeto e o arquivo manager.py na pasta atual
   
-  Sem o '.' ->  cria uma pasta com o nome do projeto que tem o arquivo manager e outra pasta com o nome do projeto
+>Sem o '.' ->  cria uma pasta com o nome do projeto que tem o arquivo manager e outra pasta com o nome do projeto
 
 
-# Estrutura de arquivos do projeto Django:
-- Para rodar o projeto deve digitar o comando
-$ python manage.py startserver
+## Rodar a aplicação 
+- Para rodar o projeto deve rodar o comando
+`$ python manage.py startserver`
 - Depois acessar o localhost na porta 8000 :  localhost:8000/
 - Para terminar a execução do servidor, digitar Ctrl + C no terminal que estiver sendo executado
+
+
+## Estrutura de arquivos do projeto Django:
 
 > manage.py
  - Arquivo main que roda a aplicação
@@ -77,99 +90,128 @@ $ python manage.py startserver
  - Declara caminho dos templates
  - Declara as aplicações existentes
 
--> urls.py
+> urls.py
  - Mapear rotas para views
  - Arquivo onde preparamos as rotas para as views
- - podemos importar as views de 2 formas:
+ - Deve ter um arquivo urls.py na pasta do projeto e um na pasta de cada aplicação. 
+ - importamos as views de 2 formas:
+   1. Importando as funções da aplicação
+   2. Importando o arquivo urls.py das aplicações
 
-# Importando Views
+ ##### Mapeando rotas das  Views
 
-1- Importando as funções(views) do arquivo Views de determinada aplicação
-- adiciona a view na lista urlpatterns
-- sintaxe = path('caminho_na_url', view) 
+1. Importando as Views(funções) declaradas no arquivo Views da aplicação
+**Utiliza esse método no urls.py das aplicações*
+   - importa as views do arquivo views
+   - adiciona a view na lista urlpatterns usando a função path
+   - `path('extensão_da_url', nome_da_view)` 
 
 exemplo mapeando rota para view:
 
-from core.views import index, cadastro
+    from django.urls import path
+    from .views import index, cadastro
 
-urlpatterns = [
-  path('', index)
-}
-
-
-! O RECOMENDADO É CRIAR UM ARQUIVO 'urls.py' EM CADA APLICAÇÃO E USAR O INCLUDE (próximo item)!
-2- Importando o arquivo urls da aplicação e usando o *include na lista 'urlpatterns'
- - Include deve ser importado da biblioteca django.urls junto com path
-
-from django.urls import path, include
-
-urlpatterns = [
-  path('', include('core.urls'))
-]
+    urlpatterns = [
+        path('', index)
+        path('cadastro', cadastro)
+    }
 
 
+2. Importando o arquivo urls da aplicação e usando o *include na lista 'urlpatterns'
+**Utiliza esse método no arquivo urls.py da pasta do projeto*
+   - Include deve ser importado da biblioteca django.urls junto com path
 
-# Aplicações:   -> São como módulos no Odoo
+exemplo mapeando urls:
 
-> Criar nova aplicação:
-$ django-admin startapp nome_aplicação
+    from django.urls import path, include
+
+    urlpatterns = [
+        path('core', include('core.urls'))
+    ]
+
+
+## Aplicações:   
+**São como módulos no Odoo*
+
+- Criar nova aplicação
+`$ django-admin startapp nome_aplicação`
 
 - Um projeto possui várias aplicações
-- As aplicações criadas devem ser declaradas no arquivo settings na variável INSTALLED_APPS
+- As aplicações criadas devem ser declaradas no arquivo settings.py na variável INSTALLED_APPS
+- O Django ja vem com algumas aplicações padrão
+      
+      INSTALLED_APPS = [
+          'django.contrib.admin',
+          'django.contrib.auth',
+          'django.contrib.contenttypes',
+          'django.contrib.sessions',
+          'django.contrib.messages',
+          'django.contrib.staticfiles',
 
-# Estrutura da aplicação:
-________
-> Views
+          'core',  # <- aplicação criada
+      ]
+
+
+## Estrutura das aplicações:
+#### Views
 - São declaradas como funções
 - recebem request como parametro
 - retorna a função render(request, 'nome_arquivo.html')
-- index é a view principal
+- definir index como a view principal
 
-exemplo definição de view:
+exemplo definição da view 'index':
 
-def index(request):
-    return render(request, 'index.html')
-
-# Contexto
+    def index(request):
+        return render(request, 'index.html')
+***Contexto das views***
 - views podem ter um contexto para passar parâmetros do python para o html
 - o contexto é um dicionario definido na função
 - é passado como parâmetro na função render
 
 exemplo de view com contexto:
 
-def index(request):
-    contexto = {'mensagem': 'Essa é uma mensagem no contexto'}
-    return render(request, 'index.html', contexto)
+    def index(request):
+        contexto = {'mensagem': 'Essa é uma mensagem no contexto'}
+        return render(request, 'index.html', contexto)
 
 _________
-> Templates
+#### Templates
 - São os arquivos HTML
 - Os templates devem ter o mesmo nome das views, assim ja carrega automaticamente com a view
 - Normalmente é criado um diretório 'templates' em cada aplicação
 - Adiciona os arquivos .html nesse diretório templates
 
 - Contextos podem ser utilizados no html usando {{chave_do_contexto}}
-exemplo:
-<h1>{{item_do_contexto}}</h1>
 
+exemplo:
+
+    <h1>Bem vindo, {{user_name}}</h1>
+*será renderizado como:*
+## Bem vindo, Fulano
+<br>
 
 ________
-> Models
+
+#### Models
 - models.py é o arquivo onde são definidos os modelos de dados
 - Os modelos são definidos por classes que herdam do models.Model
-- Os atributos são declarados como variáveis models.TipodeDado()
-exemplo de modelo:
+  - cada classe é um model
+- Os atributos são declarados como variáveis models.TipoDeDado(*parametros)
 
-class Produto(models.Model):
-    nome = models.CharField("Nome", max_length=100)
-    preco = models.DecimalField("Preço", decimal_places=2, max_digits=5)
+exemplo do model 'Produto':
 
-# Migrations
+    class Produto(models.Model):
+        nome = models.CharField("Nome", max_length=100)
+        preco = models.DecimalField("Preço", decimal_places=2, max_digits=5)
+
+***Migrations:***
 - após criar ou alterar models deve realizar as migrations para essas models
+- as migrations são como controle de arquivos do git
 - as migrations a serem feitas são alertadas na execução do servidor
 - para realizar as migrations deve rodar os comandos
-$ python manage.py makemigrations      -> para adicionar as migrations no diretório migrations
-$ python manage.py migrate             -> para executar as migrations
+
+       $ python manage.py makemigrations   -> para adicionar as migrations no diretório migrations
+       $ python manage.py migrate          -> para executar as migrations
 
 
 
