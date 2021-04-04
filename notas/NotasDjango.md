@@ -153,8 +153,14 @@ exemplo mapeando urls:
 
 
 ## Estrutura das aplicações:
-#### Views
-- São declaradas como funções
+> views
+> urls
+> models
+> templates
+> admin
+> tests
+### Views
+- São declaradas como funções no arquivo views.py
 - recebem request como parametro
 - retorna a função render(request, 'nome_arquivo.html')
 - definir index como a view principal
@@ -175,7 +181,7 @@ exemplo de view com contexto:
         return render(request, 'index.html', contexto)
 
 _________
-#### Templates
+### Templates
 - São os arquivos HTML
 - Os templates devem ter o mesmo nome das views, assim ja carrega automaticamente com a view
 - Normalmente é criado um diretório 'templates' em cada aplicação
@@ -192,7 +198,7 @@ exemplo:
 
 ________
 
-#### Models
+### Models
 - models.py é o arquivo onde são definidos os modelos de dados
 - Os modelos são definidos por classes que herdam do models.Model
   - cada classe é um model
@@ -212,6 +218,51 @@ exemplo do model 'Produto':
 
        $ python manage.py makemigrations   -> para adicionar as migrations no diretório migrations
        $ python manage.py migrate          -> para executar as migrations
+
+__________
+
+### Admin
+- Podemos acessar a área administrativa do Django adicionando `/admin` na url
+- Deve criar uma conta superuser para acessar a área administrativa
+
+      $ python manage.py createsuperuser
+
+- Para os Models aparecerem na área administrativa devem ser importados no arquivo admin.py da aplicação
+- No arquivo admin.py deve adicionar as models da seguinte maneira:
+
+      from django.contrib import admin
+
+      from .models import Nome_model1, Nome_model2
+
+      admin.site.register(Nome_model1)
+      admin.site.register(Nome_model2)
+
+
+***Vizualização Admin***
+
+- Acessaando a página de administração podemos controlar modelos de dados, grupos e usuários.
+
+- A vizualização da tabela dos models pode ser editada usando classes que herdam do `admin.ModelAdmin` da seguinte forma:
+
+      
+      from django.contrib import admin
+
+      from .models import Filme, Livro, Serie
+
+      class FilmeAdmin(admin.ModelAdmin):
+          list_display = ('titulo', 'diretor', ano_lancamento)
+
+      admin.site.register(Filme, FilmeAdmin)
+      admin.site.register(Livro)
+      admin.site.register(Serie)
+
+______
+##Sessão 2 - Programação com Banco de Dados 
+------
+
+
+
+
 
 
 
