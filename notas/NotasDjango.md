@@ -272,8 +272,6 @@ ______
 * Django usa por padrão o banco de dados sqlite
 * Os bancos de dados são especificados no arquivo settings.py
 
-### Tabelas BD
-
 ### Manage Shell
 
 * Abre o terminal python com as propriedades do Django
@@ -288,6 +286,9 @@ ______
 Exemplo:
 `>>> from core.views import index`
 `>>> print(dir(index))`
+
+
+## Tabelas BD
 
 ### Instanciando Objetos
 
@@ -304,9 +305,27 @@ Exemplo:
       new_cliente = Cliente(nome="Fernando", sobrenome="Saeta", email="fernando@gmail.com")
 
 
+### Consulta na tabela
 
+* A consulta ocorre utilizando o atributo objects da classe: `Filme.objects`
+* Podemos obter todos os objetos na tabela utilizando `objects.all()`
+* Para fazer selects podemos utilizar o `objects.filter` ou o `objects.get`
 
+exemplos:
 
+    from .models import Filme
+
+    # Todos os Objetos
+    todos_filmes = Filme.objects.all()
+
+    # Filme de ID = 1
+    filme_1 = Filme.objects.filter(id=1)
+
+    # Filmes do Tarantino
+    filme_tarantino = Filme.objects.filter(diretor='Quentin Tarantino')
+
+    # Filmes de 2016
+    filmes_2016 = Filme.objects.get(ano_lancamento=2016) # <- consulta com get lança erro se não encontrar nenhum objeto
 
 
 
