@@ -257,13 +257,32 @@ __________
       admin.site.register(Serie)
 
 ______
-##Sessão 2 - Programação com Banco de Dados 
+## Sessão 2 - Programação com Banco de Dados 
+
 ------
 
 
+### Consulta na tabela
 
+* A consulta ocorre utilizando o atributo objects da classe: `Filme.objects`
+* Podemos obter todos os objetos na tabela utilizando `objects.all()`
+* Para fazer selects podemos utilizar o `objects.filter` ou o `objects.get`
 
+exemplos:
 
+    from .models import Filme
+
+    # Todos os Objetos
+    todos_filmes = Filme.objects.all()
+
+    # Filme de ID = 1
+    filme_1 = Filme.objects.filter(id=1)
+
+    # Filmes do Tarantino
+    filme_tarantino = Filme.objects.filter(diretor='Quentin Tarantino')
+
+    # Filmes de 2016
+    filmes_2016 = Filme.objects.get(ano_lancamento=2016) # <- consulta com get lança erro se não encontrar nenhum objeto
 
 
 
