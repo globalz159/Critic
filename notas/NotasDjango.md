@@ -83,12 +83,19 @@ OBS:
 
 > manage.py
  - Arquivo main que roda a aplicação
+   `$ python manage.py --options`
+Alguns usos:
+`$ python manage.py runserver` - Rodar a aplicação
+`$ python manage.py makemigrations` - Criar as migrations
+`$ python manage.py migrate` - Executar as migrations
+`$ python manage.py shell` - Rodar o shell
 
 > settings.py
  - Debug True   -> para desenvolvimento
  - Debug False  -> produção (deve especificar ALLOWED_HOSTS)
  - Declara caminho dos templates
  - Declara as aplicações existentes
+ - Especifíca banco de dados
 
 > urls.py
  - Mapear rotas para views
@@ -257,8 +264,44 @@ __________
       admin.site.register(Serie)
 
 ______
-##Sessão 2 - Programação com Banco de Dados 
+
+# Sessão 2 - Programação com Banco de Dados
+
 ------
+## Banco de dados
+* Django usa por padrão o banco de dados sqlite
+* Os bancos de dados são especificados no arquivo settings.py
+
+### Tabelas BD
+
+### Manage Shell
+
+* Abre o terminal python com as propriedades do Django
+* Rodar o manage.py passando o parâmetro shell:
+`$ python manage.py shell`
+* O shell é uma boa forma para descobrir funcionalidades usando a função dir()
+* Bom para encontrar erros e tirar dúvidas
+
+##### Função dir()
+* A função dir recebe um objeto como parâmetro e retorna uma lista de atributos/funções que podem ser acessadas a partir desse objeto
+* Pode ser passado Strings, Funções, Objetos, qualquer tipo de dado
+Exemplo:
+`>>> from core.views import index`
+`>>> print(dir(index))`
+
+### Instanciando Objetos
+
+* Um objeto é instanciado da mesma forma que no python
+* Dada a classe 'Cliente':
+
+      class Cliente(models.Model):
+          nome = models.CharField("Nome", max_length=100)
+          sobrenome = models.CharField("Sobrenome", max_length=100)
+          email = models.EmailField("Email")
+   
+* Para criar um Objeto e adicionar ao banco de dados deve instanciar a classe Python :
+
+      new_cliente = Cliente(nome="Fernando", sobrenome="Saeta", email="fernando@gmail.com")
 
 
 
