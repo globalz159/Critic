@@ -4,5 +4,7 @@ from .views import index, cadastro
 
 urlpatterns = [
     path('', index),
-    path('cadastro', cadastro)
+    path('cadastro', cadastro, name='cadastro')
 ]
+
+

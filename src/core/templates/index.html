@@ -1,32 +1,107 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head> 
+<head>
+	<title>Login</title>
 	<meta charset="UTF-8">
-	<title>Inicio</title>
-  </head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
 	
-  <body>
-	<h1>Página Inicial</h1>
-
-    <h2>Essa é a página inicial do projeto</h2>
-
-    <li>View e template definidos na aplicação core</li>
-    <li>Arquivo Url do core definindo o caminho na raiz</li>
-    <li>Template é o arquivo .html que será renderizado para as páginas</li>
-    <br/>
-
-    <h2>Criando Views</h2>
-    <li>Adicionar view como uma função no arquivo views.py</li>
-    <li>Mapear a rota no arquivo urls.py</li>
-    <h4>Exemplos: </h4>
-    <p>def index(request):</p>
-    <p><span>_____</span>return render(request, 'index.html')</p>
-    
-
-
-    <footer>
-	  <!-- dados de rodapé, usado tambem para scripts -->
+  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+  {% load static %}	
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+  <link type="text/css" href="{% static 'css/util.css' %}" rel="stylesheet">
+	<link  type="text/css" href="{% static 'css/main.css'%}" rel="stylesheet">
+	<script src="{% static 'static/core/main.js' %}" ></script>
 	
-	</footer>
-  </body>
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter" style="background-image: url({% static 'images/fundo.png' %})" >
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form">
+					
+					<span class="login100-form-title p-b-34 p-t-27">
+						<img src="{% static 'images/logo_critichub2.png' %}" alt="" width="300" height="200">
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter username" >
+						<input class="input100" type="text" name="username" placeholder="Nome de usuário">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" name="senha" placeholder="Senha">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+					<div class="contact100-form-checkbox">
+						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+						<label class="label-checkbox100" for="ckb1">
+							Lembrar-me
+						</label>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							<h2 style = font-family:Georgia;font-size:12px;> Entrar</h2>
+						</button>
+					</div>
+
+          <br>
+
+          <div class="container-login100-form-btn">
+						<a href= "{% url 'cadastro' %}">
+							<p style = font-size:18px;color:white; >Registrar</p>
+						</a>
+					</div>
+
+					<div class="text-center p-t-90">
+						<a class="txt1" href="#">
+							<p style = font-size:15px;color:white;>Esqueci minha senha</p>
+						</a><h2 style = font-family:Georgia;font-size:12px;> 
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
 </html>
