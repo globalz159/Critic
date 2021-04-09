@@ -8,6 +8,7 @@ class Usuario(models.Model):
     username = models.CharField("Nome de Usuário", max_length=30)
     email = models.EmailField("Email", max_length=255)
     senha = models.CharField("Senha", max_length=100)
+    data_nascimento = models.DateField("Data de Nascimento")
 
 
 

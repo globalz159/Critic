@@ -18,10 +18,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf.urls.static import static
+from django.conf import settings
+
 # importando views da aplicação core
 from core.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')) # -> Se a url for na raiz (http://localhost:8000/) vai utilizar as urlpatterns no arquivo urls.py do core
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

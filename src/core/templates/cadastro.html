@@ -1,14 +1,18 @@
+{% load static %}
+
+{% load bootstrap4 %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 	<title>Cadastro</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% bootstrap_css %}
 <!--===============================================================================================-->	
 	
   <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
-  {% load static %}	
   <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -34,7 +38,9 @@
 	<div class="limiter" style="background-image: url({% static 'images/fundo.png' %})" >
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+			  <div class="container">
+				<form action="{% url 'cadastro' %}" method="post" autocomplete="off" enctype="multipart/form-data" class="login100-form validate-form form">
+					{% csrf_token %}
 					
 					<span class="login100-form-title p-b-34 p-t-27">
 						<img src="{% static 'images/logo_critichub2.png' %}" alt="" width="300" height="200">
@@ -42,50 +48,24 @@
 
 					<h2 style="text-align: center; color:white">Cadastro</h2>
 
-					<div class="wrap-input100 validate-input" data-validate = "Enter name" >
-						<input class="input100" type="text" name="name" placeholder="Nome">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
+					{% bootstrap_messages %}
 
-					<div class="wrap-input100 validate-input" data-validate = "Enter surname" >
-						<input class="input100" type="text" name="surname" placeholder="Sobrenome">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Enter birthday" >
-						<input class="input100" type="date" name="birthday" placeholder="Data de nascimento">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Enter state" >
-						<input class="input100" type="text" name="state" placeholder="Estado">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Enter city" >
-						<input class="input100" type="text" name="city" placeholder="Cidade">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Enter username" >
-						<input class="input100" type="text" name="username" placeholder="Nome de usuário">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="senha" placeholder="Senha">
-						<span class="focus-input100" data-placeholder="&#xf191;"></span>
-					</div>
+					{% bootstrap_form form %}
+					<h1>{{nome}}</h1>
+					<h1>{{snome}}</h1>
 
           <br>
 
           <div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							<h2 style = font-family:Georgia;font-size:12px;> Registrar</h2>
+			  		{% buttons %}
+						<button type="submit" class="login100-form-btn btn btn-primary">
+							<h2 style = font-family:Georgia;font-size:12px;> Enviar Mensagem</h2>
 						</button>
+					{% endbuttons %}
 					</div>
 
 				</form>
+			  </div>
 			</div>
 		</div>
 	</div>
@@ -93,6 +73,7 @@
 
 	<div id="dropDownSelect1"></div>
 	
+	{% bootstrap_javascript jquery='full' %}
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
