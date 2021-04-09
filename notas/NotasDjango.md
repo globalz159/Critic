@@ -194,7 +194,11 @@ _________
 - Normalmente é criado um diretório 'templates' em cada aplicação
 - Adiciona os arquivos .html nesse diretório templates
 
-- Contextos podem ser utilizados no html usando {{chave_do_contexto}}
+- Contextos podem ser utilizados no html usando `{{chave_do_contexto}}`
+- Nos arquivos html a sintaxe `{% %}` é bastante utilizada em vários casos, como:
+  - passar link: `<a href="{% url 'index' %}"></a>`
+  - estrutura de for: `{% for filme in filmes %}... {% endfor %}`
+  - Importando static: `{% load static %}`
 
 exemplo:
 
@@ -202,6 +206,23 @@ exemplo:
 *será renderizado como:*
 ## Bem vindo, Fulano
 <br>
+
+***Static Files (CSS, JS, Imagens)***
+
+- Arquivos estáticos devem ser adicionados em uma pasta chamada static na aplicação
+- Essa pasta deve ser declarada no arquivo settings adicionando a variavel STATIC_ROOT:
+
+      STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+- CSS: static/css/file.css
+- JS: static/js/file.js
+- Imagens: static/images/file.png
+
+
+Importar os arquivos estáticos no html:
+- deve adicionar no começo do html `{% load static %}`
+- no link de referência do arquivo deve utilizar `{% static 'css/estilo.css' %}`
 
 ________
 
