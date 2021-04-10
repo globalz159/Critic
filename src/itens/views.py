@@ -10,6 +10,15 @@ def filme(request, pk):
     }
     return render(request, 'filme.html', context)
 
+def filmes(request):
+    filmes = Filme.objects.all()
+    
+    context = {
+        'filmes': filmes
+    }
+    return render(request, 'filme.html', context)
+
+{%  %}
 
 def livro(request, pk):
     livro_obj = get_object_or_404(Livro, id=pk)

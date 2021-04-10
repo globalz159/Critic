@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'core.apps.CoreConfig',
+    'itens.apps.ItensConfig',
     'bootstrap4',
     'stdimage'
 ]
