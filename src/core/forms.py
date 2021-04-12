@@ -10,3 +10,6 @@ class CadastroModelForm(forms.ModelForm):
             'data_nascimento': forms.DateInput(attrs={'type': 'date'}),
             'password': forms.PasswordInput
         }
+        labels = {
+            'username': 'User Name'
+        }
