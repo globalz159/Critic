@@ -3,8 +3,8 @@ from django.contrib import messages
 
 from .forms import CadastroModelForm
 
-def index(request):
-    return render(request, 'index.html')
+def login(request):
+    return render(request, 'login.html')
 
 def cadastro(request):
     if str(request.method) == 'POST':

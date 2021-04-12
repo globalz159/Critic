@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 # importando views da aplicação core
-from core.views import index
+from core.views import login
 
 urlpatterns = [
     path('admin/', admin.site.urls),

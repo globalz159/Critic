@@ -11,5 +11,5 @@ class CadastroModelForm(forms.ModelForm):
             'password': forms.PasswordInput
         }
         labels = {
-            'username': 'User Name'
+            'username': 'Nome de usuário'
         }

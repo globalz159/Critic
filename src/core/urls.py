@@ -1,9 +1,9 @@
 from django.urls import path
 
-from .views import index, cadastro
+from .views import login, cadastro
 
 urlpatterns = [
-    path('', index, name='index'),
+    path('', login, name='login'),
     path('cadastro', cadastro, name='cadastro')
 ]
 
