@@ -10,14 +10,12 @@ def cadastro(request):
     if str(request.method) == 'POST':
         form = CadastroModelForm(request.POST, request.FILES)
 
+        # Validando formulário
         if form.is_valid():
-            
             form.save()
-            messages.success(request, "Cadastro realizado com sucesso !")
-
+            messages.success(request, " Cadastro realizado com sucesso !")
         else:
-            messages.success(request, "Algo está errado !")
-
+            messages.error(request, " Campos inválidos !")
         form = CadastroModelForm()
     else:
         form = CadastroModelForm()
