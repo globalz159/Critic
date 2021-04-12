@@ -1,10 +1,19 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
+
 from django.contrib import messages
 
 from .forms import CadastroModelForm
 
+## Class Based View
+class IndexView(TemplateView):
+    template_name = 'index.html'
+
+## Function Based View
+"""
 def index(request):
     return render(request, 'index.html')
+"""
 
 def cadastro(request):
     if str(request.method) == 'POST':

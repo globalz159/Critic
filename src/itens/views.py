@@ -18,7 +18,6 @@ def filmes(request):
     }
     return render(request, 'filme.html', context)
 
-{%  %}
 
 def livro(request, pk):
     livro_obj = get_object_or_404(Livro, id=pk)
