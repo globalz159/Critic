@@ -4,13 +4,15 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # Produção
-#**/src/Projeto/settings.py
+# *settings.py
 # ---------
 
 .directory
-**/src/venv
-**/src/.idea
+**/venv
+**/.idea
 *.sqlite3
+
+**venv
 
 __pycache__
 *.pyc
