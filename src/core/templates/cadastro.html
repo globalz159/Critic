@@ -10,27 +10,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{% bootstrap_css %}
 <!--===============================================================================================-->	
-	
-  <link rel="icon" type="image/png" href="{% static 'images/logo_critichub.png'%}"/>
+    <link rel="icon" type="image/png" href="{% static 'images/logo_critichub.png'%}"/>
 <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-  <link type="text/css" href="{% static 'css/util.css' %}" rel="stylesheet">
-	<link  type="text/css" href="{% static 'css/main.css'%}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/util.css' %}" rel="stylesheet">
+    <link  type="text/css" href="{% static 'css/main.css'%}" rel="stylesheet">
+    <link  type="text/css" href="{% static 'css/cadastro.css'%}" rel="stylesheet">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -50,7 +34,7 @@
 
 					{% bootstrap_messages %}
 
-					{% bootstrap_form form %}
+					{{ form.as_p }}
 					
           			<div class="container-login100-form-btn">
 			  		{% buttons %}
@@ -65,8 +49,6 @@
 			</div>
 		</div>
 	</div>
-	
-
 	<div id="dropDownSelect1"></div>
 	
 	{% bootstrap_javascript jquery='full' %}
