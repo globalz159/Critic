@@ -11,6 +11,7 @@
 .directory
 **/src/venv
 **/src/.idea
+**/.idea
 *.sqlite3
 
 __pycache__
