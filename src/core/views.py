@@ -13,6 +13,9 @@ class IndexView(TemplateView):
 
 def index(request):
     usuario = request.user
+    if usuario == "AnonymousUser":
+        messages.warning(request, f"Você está logado como: '{usuario}'")
+        return redirect('/login')
     print(usuario)
     print(dir(usuario))
     
