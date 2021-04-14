@@ -21,3 +21,6 @@ class CadastroModelForm(forms.ModelForm):
         labels = {
             'username': 'Nome de usuário',
         }
+
+class LoginForm(forms.Form):
+    pass

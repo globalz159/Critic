@@ -2,15 +2,17 @@ from django.contrib import admin
 
 from .models import Livro, Serie, Filme
 
-class FilmeAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'pais', 'diretor', 'ano_lancamento')
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'slug', 'pais', 'ano_lancamento')
 
+@admin.register(Filme)
+class FilmeAdmin(ItemAdmin):
+    list_display = ItemAdmin.list_display + ('diretor',)
+
+@admin.register(Livro)
 class LivroAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'pais', 'autor', 'ano_lancamento')
+    list_display = ItemAdmin.list_display + ('autor',)
 
+@admin.register(Serie)
 class SerieAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'pais', 'diretor', 'ano_lancamento')
-
-admin.site.register(Filme, FilmeAdmin)
-admin.site.register(Livro, LivroAdmin)
-admin.site.register(Serie, SerieAdmin)
+    list_display = ItemAdmin.list_display + ('diretor',)
