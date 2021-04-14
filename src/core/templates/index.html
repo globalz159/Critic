@@ -1,34 +1,22 @@
+{% load static %}
+
+{% load bootstrap4 %}
+
 <!DOCTYPE html>
+
 <html lang="pt-br">
 <head>
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
 <!--===============================================================================================-->	
-{% load static %}	
   <link rel="icon" type="image/png" href="{% static 'images/logo_critichub.png' %}"/>
 <!--===============================================================================================-->
- 
-  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
+{% bootstrap_css %}
   <link type="text/css" href="{% static 'css/util.css' %}" rel="stylesheet">
-	<link  type="text/css" href="{% static 'css/main.css'%}" rel="stylesheet">
-	<script src="{% static 'static/core/main.js' %}" ></script>
-	
+  <link  type="text/css" href="{% static 'css/main.css'%}" rel="stylesheet">
+  	
 <!--===============================================================================================-->
 </head>
 <body>
@@ -85,5 +73,6 @@
 	
 	<div id="dropDownSelect1"></div>
 
+	<script src="{% static 'js/main.js' %}" ></script>
 </body>
 </html>

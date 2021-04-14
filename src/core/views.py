@@ -12,6 +12,9 @@ class IndexView(TemplateView):
 ## Function Based View
 
 def index(request):
+    usuario = request.user
+    print(usuario)
+    print(dir(usuario))
     
     return render(request, 'index.html')
 
@@ -41,4 +44,7 @@ def cadastro(request):
 
 
 def login(request):
+    usuario = request.user
+    if usuario != "AnonymousUser":
+        messages.warning(request, f"Você está logado como: '{usuario}'")
     return render(request, 'login.html')

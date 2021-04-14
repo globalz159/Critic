@@ -1,3 +1,7 @@
+{% load static %}
+
+{% load bootstrap4 %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,30 +9,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-{% load static %}	
-  <link rel="icon" type="image/png" href="{% static 'images/logo_critichub.png' %}"/>
+    {% bootstrap_css %}
+    <link rel="icon" type="image/png" href="{% static 'images/logo_critichub.png' %}"/>
 <!--===============================================================================================-->
- 
-  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
-  <link type="text/css" href="{% static 'css/util.css' %}" rel="stylesheet">
-	<link  type="text/css" href="{% static 'css/main.css'%}" rel="stylesheet">
-	<script src="{% static 'static/core/main.js' %}" ></script>
-	
+    <link type="text/css" href="{% static 'css/util.css' %}" rel="stylesheet">
+    <link  type="text/css" href="{% static 'css/main.css'%}" rel="stylesheet">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -36,11 +21,13 @@
 	<div class="limiter" style="background-image: url({% static 'images/fundo.png' %})" >
 		<div class="container-login100">
 			<div class="wrap-login100">
+				<span class="login100-form-title p-b-34 p-t-27">
+					<img src="{% static 'images/logo_critichub2.png' %}" alt="" width="300" height="200">
+				</span>
+
+				{% bootstrap_messages %}
+				
 				<form class="login100-form validate-form">
-					
-					<span class="login100-form-title p-b-34 p-t-27">
-						<img src="{% static 'images/logo_critichub2.png' %}" alt="" width="300" height="200">
-					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username" >
 						<input class="input100" type="text" name="username" placeholder="Nome de usuário">
@@ -84,6 +71,6 @@
 	</div>
 	
 	<div id="dropDownSelect1"></div>
-
+	<script src="{% static 'static/core/main.js' %}" ></script>
 </body>
 </html>

@@ -27,5 +27,6 @@ from core.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('core.urls')) # -> Se a url for na raiz (http://localhost:8000/) vai utilizar as urlpatterns no arquivo urls.py do core
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
