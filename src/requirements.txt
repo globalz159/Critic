@@ -16,6 +16,7 @@ Pillow==8.2.0
 psycopg2-binary==2.8.6
 python-dateutil==1.5
 pytz==2021.1
+pyUFbr==0.1.0
 requests==2.25.1
 soupsieve==2.2.1
 sqlparse==0.4.1
