@@ -3,7 +3,8 @@ from django.views.generic import TemplateView
 
 from django.contrib import messages
 
-from .forms import CadastroModelForm
+from django.contrib.auth import login, authenticate
+from .forms import UsuarioCreateForm
 
 ## Class Based View
 class IndexView(TemplateView):
@@ -25,19 +26,22 @@ def index(request):
 def cadastro(request):
     print(request.user)
     if str(request.method) == 'POST':
-        form = CadastroModelForm(request.POST, request.FILES)
+        form = UsuarioCreateForm(request.POST, request.FILES)
         print(form.as_p())
         # Validando formulário
         if form.is_valid():
             form.save()
             messages.success(request, " Cadastro realizado com sucesso !")
             # Redirecionando para index após o cadastro
-            return redirect('/login')
+            return redirect('/conta/login')
         else:
-            messages.error(request, " Campos inválidos !")
-        form = CadastroModelForm()
+            error_fields = "Campos "
+            for erro in form.errors:
+                error_fields += erro + ', '
+            messages.error(request, f"{error_fields} inválidos !")
+        form = UsuarioCreateForm()
     else:
-        form = CadastroModelForm()
+        form = UsuarioCreateForm()
 
     context = {
         'form': form,
@@ -45,9 +49,3 @@ def cadastro(request):
 
     return render(request, 'cadastro.html', context)
 
-
-def login(request):
-    usuario = request.user
-    if usuario != "AnonymousUser":
-        messages.warning(request, f"Você está logado como: '{usuario}'")
-    return render(request, 'login.html')
