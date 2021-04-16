@@ -1,5 +1,3 @@
-
-{% load static %}
 (function ($) {
     "use strict";
 
@@ -86,3 +84,5 @@
 
 
 })(jQuery);
+
+
