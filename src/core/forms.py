@@ -20,7 +20,7 @@ class UsuarioCreateForm(UserCreationForm):
         for field in self.fields.keys():
             self.fields[field].required = True
             if field in ('username','email', 'password1','password2'):
-                pass #self.fields[field].help_text = ''
+                self.fields[field].help_text = ''
             if field == 'cidade':
                 self.fields[field].required = False
     
