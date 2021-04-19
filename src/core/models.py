@@ -4,6 +4,17 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 from pyUFbr.baseuf import ufbr
 
+class Estado(models.Model):
+    sigla = models.CharField("Sigla", max_length=2)
+
+    def __str__(self):
+        return self.sigla
+class Cidade(models.Model):
+    estado = models.ForeignKey(Estado, on_delete=models.CASCADE, verbose_name="Estado")
+    nome = models.CharField("Nome", max_length=60)
+
+    def __str__(self):
+        return self.nome
 
 def choice_cidades():
     lista_cidades = []
@@ -49,8 +60,12 @@ class Usuario(AbstractUser):
     # os campos: username, password, first_name, last_name vem de AbstractUser
     email = models.EmailField('E-mail', unique=True)
     
-    estado = models.CharField("Estado", choices=choice_estados(), max_length=100)
-    cidade = models.CharField("Cidade", choices=choice_cidades(), max_length=100)
+    #estado = models.CharField("Estado", choices=choice_estados(), max_length=100)
+    estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, verbose_name="Estado")
+    cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True, verbose_name="Cidade")
+    
+    #cidade = models.CharField("Cidade", choices=[], max_length=100)
+    cidade = models.ForeignKey("Cidade", on_delete=models.SET_NULL, null=True)
     data_nascimento = models.DateField("Data de Nascimento", null=True)
 
     USERNAME_FIELD = 'username'
@@ -58,6 +73,3 @@ class Usuario(AbstractUser):
 
     objects = UsuarioManager()
 
-
-class Cidades(models.Model):
-    estado = models.CharField("Estado", max_length=2)
