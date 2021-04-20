@@ -59,13 +59,10 @@ class Usuario(AbstractUser):
     # PK = username
     # os campos: username, password, first_name, last_name vem de AbstractUser
     email = models.EmailField('E-mail', unique=True)
-    
-    #estado = models.CharField("Estado", choices=choice_estados(), max_length=100)
+
     estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, verbose_name="Estado")
     cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True, verbose_name="Cidade")
-    
-    #cidade = models.CharField("Cidade", choices=[], max_length=100)
-    cidade = models.ForeignKey("Cidade", on_delete=models.SET_NULL, null=True)
+
     data_nascimento = models.DateField("Data de Nascimento", null=True)
 
     USERNAME_FIELD = 'username'
