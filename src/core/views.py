@@ -11,7 +11,6 @@ from .models import Cidade, Estado
 from pyUFbr.baseuf import ufbr
 
 def adicionar_cidades():
-    import pdb; pdb.set_trace()
     lista_cidades = []
     for es in ufbr.list_uf:
         estado = Estado(sigla=es)
