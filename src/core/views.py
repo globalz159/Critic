@@ -82,3 +82,10 @@ def carregar_cidades(request):
     print(f"Estado ID = {estado}")
     cidades = filter_cidades(estado)
     return render(request, 'hr/city_dropdown_list_options.html', {'cidades': cidades})
+
+def v404(request):
+    return render(request, '404.html')
+
+def v500(request):
+    return render(request, '500.html')
+
