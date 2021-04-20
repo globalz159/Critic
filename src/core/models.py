@@ -4,6 +4,17 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 from pyUFbr.baseuf import ufbr
 
+class Estado(models.Model):
+    sigla = models.CharField("Sigla", max_length=2)
+
+    def __str__(self):
+        return self.sigla
+class Cidade(models.Model):
+    estado = models.ForeignKey(Estado, on_delete=models.CASCADE, verbose_name="Estado")
+    nome = models.CharField("Nome", max_length=60)
+
+    def __str__(self):
+        return self.nome
 
 def choice_cidades():
     lista_cidades = []
@@ -27,23 +38,21 @@ class UsuarioManager(BaseUserManager):
     def _create_user(self, username, email, first_name, last_name, password=None, **extra_fields):
         if not email:
             raise ValueError('O campo email é obrigatório')
-        import pdb; pdb.set_trace()
         email = self.normalize_email(email)
-        user = self.model(email=email, username=email, **extra_fields)
+        user = self.model(email=email, username=username, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
     
     def create_user(self, username, email, first_name, last_name, password=None, **extra_fields):
         extra_fields.setdefault('is_superuser', False)
-        return self._create_user(email, password, **extra_fields)
+        return self._create_user(username, email, first_name, last_name, password, **extra_fields)
     
 
     def create_superuser(self, username, email, first_name, last_name, password=None, **extra_fields):
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_staff', True)
-        import pdb; pdb.set_trace()
-        return self._create_user(email, password, **extra_fields)
+        return self._create_user(username, email, first_name, last_name, password, **extra_fields)
 
 
 class Usuario(AbstractUser):
@@ -51,8 +60,12 @@ class Usuario(AbstractUser):
     # os campos: username, password, first_name, last_name vem de AbstractUser
     email = models.EmailField('E-mail', unique=True)
     
-    estado = models.CharField("Estado", choices=choice_estados(), max_length=100)
-    cidade = models.CharField("Cidade", choices=choice_cidades(), max_length=100)
+    #estado = models.CharField("Estado", choices=choice_estados(), max_length=100)
+    estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, verbose_name="Estado")
+    cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True, verbose_name="Cidade")
+    
+    #cidade = models.CharField("Cidade", choices=[], max_length=100)
+    cidade = models.ForeignKey("Cidade", on_delete=models.SET_NULL, null=True)
     data_nascimento = models.DateField("Data de Nascimento", null=True)
 
     USERNAME_FIELD = 'username'
@@ -60,6 +73,3 @@ class Usuario(AbstractUser):
 
     objects = UsuarioManager()
 
-
-class Cidades(models.Model):
-    estado = models.CharField("Estado", max_length=2)

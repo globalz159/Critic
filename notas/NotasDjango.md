@@ -284,6 +284,30 @@ __________
       admin.site.register(Livro)
       admin.site.register(Serie)
 
+
+### Forms
+
+- Os formularios podem ser simples ou estarem relacionados a um modelo de dados.
+  - simples: **forms.Form**
+  - modelo: **forms.ModelForm** 
+- Usa-se o import `from django import forms` em todos os formularios.
+- Os campos de forms são similares aos campos de models, mas importam de forms.
+
+exemplo:
+
+    class UsuarioCreateForm(forms.ModelForm):
+        class Meta(UserCreationForm.Meta):
+            model = Usuario
+            fields = ['username', 'email', 'first_name', 'last_name', 'data_nascimento', 'estado', 'cidade']
+            widgets = {
+                'data_nascimento': forms.DateInput(attrs={'type': 'date'}),
+                'password': forms.PasswordInput
+            }
+            labels = {
+                'username': 'Username',
+            }
+
+***Envio de E-mails***
 ______
 
 # Sessão 2 - Programação com Banco de Dados
