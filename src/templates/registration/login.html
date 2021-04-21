@@ -6,25 +6,27 @@
 {% if user.is_authenticated %}
     <h1>Você ja está autenticado !</h1>
     <a class="btn btn-primary" href="{% url 'index' %}">Voltar para Index</a>
+    <a class="btn btn-primary" href="{% url 'logout' %}">Fazer Logout</a>
 {% else %}
     <div class="container-login100">     
         <div class="wrap-login100">
             {% if form.errors %}
                 <h5>Nome de usuário ou senha inválidos</h5>
             {% endif %}
-        
-            <h5>Usuário Autenticado !</h5>
+
             <span class="login100-form-title p-b-34 p-t-27">
-                <img src="{% static 'images/logo_critichub2.png' %}" alt="" width="300" height="200">
+                <img src="{% static 'images/logo_critichub2.png' %}" alt="" width="350" height="140">
             </span>
+            
+            {% bootstrap_messages %}
             
             <form class="form-signin login100-form validate-form" method="post" action="{% url 'login' %}" autocomplete="off">
                 {% csrf_token %}
 
                 <div class="wrap-input100 validate-input" data-validate="Enter username" >
-                    <label for="username" class="sr-only">Email</label>
+                    <label for="username" class="sr-only">Nome de usuário</label>
                     <!--{{ form.username }}-->
-                    <input class="input100 form-control" type="text" id="username" name="username" placeholder="Seu Email" required autofocus>
+                    <input class="input100 form-control" type="text" id="username" name="username" placeholder="Nome de usuário" required autofocus>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
@@ -39,15 +41,15 @@
                     </label>
                 </div>
 
-                <div class="container">
-                    <button class="btn btn-primary btn-block" type="submit">Acessar</button>
+                <div class="container-login100-form-btn">
+                    <button class="btn btn-primary btn-block" type="submit" style = font-size:18px;color:white;>Acessar</button>
                 </div>
                 <br/>
 
                 <div class="container-login100-form-btn">
-                    <a href= "{% url 'cadastro' %}">
-                        <p style = font-size:18px;color:white; >Registrar</p>
-                    </a>
+                    <button class="btn btn-primary btn-block" type="submit">
+                        <a href="{% url 'cadastro' %}" style = font-size:18px;color:white; >Registrar</a>
+                    </button>
                 </div>
 
                 <div class="text-center p-t-90">

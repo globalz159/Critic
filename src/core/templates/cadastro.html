@@ -10,14 +10,15 @@
 	<div class="container-login100">
 		<div class="wrap-login100">
 			<div class="container">
-			<form action="{% url 'cadastro' %}" method="post" autocomplete="off" enctype="multipart/form-data" class="login100-form validate-form form">
-				{% csrf_token %}
-				
-				<span class="login100-form-title p-b-34 p-t-27">
-					<img src="{% static 'images/logo_critichub2.png' %}" alt="" width="300" height="200">
-				</span>
 
-				<h2 style="text-align: center; color:white">Cadastro</h2>
+			  <img src="{% static 'images/logo_critichub2.png' %}" alt="" width="350" height="140">
+			
+			  <form action="{% url 'cadastro' %}" method="post" autocomplete="off" 
+			      enctype="multipart/form-data" class="login100-form validate-form form"
+				  id="cadastroForm" data-cities-data="{% url 'get-cidades' %}">
+				{% csrf_token %}
+					
+				<h1 style="text-align: center; color:white">Cadastro</h1>
 
 				{% bootstrap_messages %}
 
@@ -25,13 +26,16 @@
 				
 				<div class="container-login100-form-btn">
 				{% buttons %}
-					<button type="submit" class="login100-form-btn btn btn-primary">
-						<h2 style = font-family:Georgia;font-size:12px;>Cadastrar Conta</h2>
+					<button type="submit" class="login100-form-btn btn btn-secondary">
+						<h2 style = color:black;font-size:14px;>Criar Conta</h2>
+					</button>
+					<button type="submit" class="btn" 
+							style="display:flex; margin-top: 10px; margin-left: 25%;">
+						<a href="{% url 'login' %}" style = color:black;font-size:14px;>Voltar</a>
 					</button>
 				{% endbuttons %}
 				</div>
-
-			</form>
+			  </form>
 			</div>
 		</div>
 	</div>
@@ -41,5 +45,30 @@
 {% bootstrap_javascript jquery='full' %}
 
 <script src=https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js></script>
+<script type='text/javascript'>
+    $(function(){
+        var cidade = $('select[name=cidade]');
+		var url = $("#cadastroForm").attr("data-cities-url");
+        cidade.empty();
+        cidade.prepend('<option value="Not selected" selected disabled></option>');
+        $('select[name=estado]').change(function(){
+            if($("#idEstado option:selected").text() != ("YOU SHOULD INSERT THE INITIAL VALUE OF THE setor FIELD WHEN IT IS NOT SELECTED")) {
+                var estado_id = $('select[name=estado]').val();
+
+                request_url = url;
+                $.ajax({
+                    url: request_url,
+                    type: "GET",
+                    success: function(data){
+                        cidade.empty();
+                        $.each(data, function(key, value){
+                            cidade.append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                })
+            }
+        })
+    });
+</script>
 
 {% endblock %}

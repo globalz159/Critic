@@ -6,11 +6,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-    <h1>Você ja está autenticado !</h1>
-	<form method="post">
-		{% csrf_token %}
-    	<button type="submit" name="adicionar_cidades" class="btn btn-secondary">Adicionar Cidades</button>
-	</form>
+    <h1>Você está autenticado como {{ user }} !</h1>
 
 {% endif %}
 <div class="limiter" style="background-image: url({% static 'images/fundo.png' %})" >

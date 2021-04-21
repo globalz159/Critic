@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
+
 from django.views.generic import TemplateView
 
 from django.contrib import messages
@@ -9,6 +11,7 @@ from .forms import UsuarioCreateForm
 from .models import Cidade, Estado
 
 from pyUFbr.baseuf import ufbr
+import json
 
 def adicionar_cidades():
     lista_cidades = []
@@ -40,9 +43,9 @@ class IndexView(TemplateView):
 
 def index(request):
     usuario = request.user
-    if usuario == "AnonymousUser":
-        messages.warning(request, f"Você está logado como: '{usuario}'")
-        return redirect('/login')
+    if usuario.is_anonymous:
+        messages.warning(request, f"Você precisa estar logado para acessar o site !")
+        return redirect('/conta/login')
     print(usuario)
     if request.method == 'POST' and 'adicionar_cidades' in request.POST:
         adicionar_cidades()
@@ -75,12 +78,19 @@ def cadastro(request):
     return render(request, 'cadastro.html', context)
 
 def carregar_cidades(request):
-    estado = None
-    while estado == None:
+    import pdb; pdb.set_trace()
+    estado_id = request.GET.get('estado')
+    estado = Estado.objects.get(pk=estado_id)
+    cidades = Cidade.objects.all()
+    cidades_dict = {}
+    for cidade in cidades:
+        cidades_dict[cidade.id] = cidade.id
+    """while estado == None:
         estado = request.GET.get('estado')
     print(f"Estado ID = {estado}")
-    cidades = filter_cidades(estado)
-    return render(request, 'hr/city_dropdown_list_options.html', {'cidades': cidades})
+    cidades = filter_cidades(estado)"""
+    
+    return HttpResponse(json.dumps(cidades_dict), content_type="application/json")
 
 def v404(request):
     return render(request, '404.html')
