@@ -1,0 +1,45 @@
+{% extends 'base_login.html' %}
+
+
+{% load static %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="limiter" style="background-image: url({% static 'images/fundo.png' %})" >
+	<div class="container-login100">
+		<div class="wrap-login100">
+			<div class="container">
+			<form action="{% url 'cadastro' %}" method="post" autocomplete="off" enctype="multipart/form-data" class="login100-form validate-form form">
+				{% csrf_token %}
+				
+				<span class="login100-form-title p-b-34 p-t-27">
+					<img src="{% static 'images/logo_critichub2.png' %}" alt="" width="300" height="200">
+				</span>
+
+				<h2 style="text-align: center; color:white">Cadastro</h2>
+
+				{% bootstrap_messages %}
+
+				{% bootstrap_form form %}
+				
+				<div class="container-login100-form-btn">
+				{% buttons %}
+					<button type="submit" class="login100-form-btn btn btn-primary">
+						<h2 style = font-family:Georgia;font-size:12px;>Cadastrar Conta</h2>
+					</button>
+				{% endbuttons %}
+				</div>
+
+			</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="dropDownSelect1"></div>
+
+{% bootstrap_javascript jquery='full' %}
+
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js></script>
+
+{% endblock %}
