@@ -1,7 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base_error.html' %}
 {% load static %}
 {% load bootstrap4 %}
-
 {% block content %}
 <div class="vc-container">
   <div class="vc-content">
@@ -9,6 +8,7 @@
     <p class="vc-sub-heading">Internal Server <span class="blink-infinite">Error</span></p>
 	  <p>É sempre hora de uma pausa para o café.</p>
 	  <p>Devemos estar de volta quando você terminar seu café.</p>
+      <a class='btn_1' href="{% url 'index' %}" >Home</a>
   </div>
 </div>
 {% endblock %}

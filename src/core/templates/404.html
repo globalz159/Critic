@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_error.html' %}
 {% load static %}
 {% load bootstrap4 %}
 
@@ -16,6 +16,7 @@
             <hr>
             <div class='_1'>THE PAGE</div>
             <div class='_2'>A página que você está procurando não existe. Como você chegou aqui é um mistério. Mas você pode clicar no botão abaixo para voltar à página inicial</div>
-            <a class='btn' href='#'>Voltar para a Home</a>
+            <a class='btn' href="{% url 'index' %}" >Voltar para a Home</a>
         </div>
+
 {% endblock %}
