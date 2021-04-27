@@ -1,5 +1,4 @@
 {% extends 'base_login.html' %}
-{% load core_filters %}
 
 {% load static %}
 
@@ -9,34 +8,37 @@
 <div class="limiter" style="background-image: url({% static 'images/fundo.png' %})" >
 	<div class="container-login100">
 		<div class="wrap-login100">
-			<div class="container">
-
-			  <img src="{% static 'images/logo_critichub2.png' %}" alt="" width="350" height="140">
 			
-			  <form action="{% url 'cadastro' %}" method="post" autocomplete="off" 
-			      enctype="multipart/form-data" class="login100-form validate-form form"
-				  id="cadastroForm" data-cities-data="{% url 'get-cidades' %}">
-				{% csrf_token %}
-					
-				<h1 style="text-align: center; color:white">Cadastro</h1>
+			<span class="login100-form-title p-b-34 p-t-27">
+				<img src="{% static 'images/logo_critichub2.png' %}" alt="Logo" width="350" height="140">
+			</span>
 
-				{% bootstrap_messages %}
+			<form method="post" autocomplete="off" 
+				enctype="multipart/form-data" class="login100-form validate-form form"
+				id="cadastroForm" data-cities-data="{% url 'get-cidades-ajax' %}">
 
-				{% bootstrap_form form %}
-				
-				<div class="container-login100-form-btn">
-				{% buttons %}
-					<button type="submit" class="login100-form-btn btn btn-secondary">
-						<h2 style = color:black;font-size:14px;>Criar Conta</h2>
-					</button>
-					<button type="submit" class="btn" 
-							style="display:flex; margin-top: 10px; margin-left: 25%;">
-						<a href="{% url 'login' %}" style = color:black;font-size:14px;>Voltar</a>
-					</button>
-				{% endbuttons %}
-				</div>
-			  </form>
+			{% csrf_token %}
+			{{ form.media.js }}
+
+			<h1 style="text-align: center; color:white">Cadastro</h1>
+
+			{% bootstrap_messages %}
+
+			{% bootstrap_form form %}
+			
+			<div class="container-login100-form-btn">
+			{% buttons %}
+				<button type="submit" class="login100-form-btn btn btn-secondary">
+					<h2 style = color:black;font-size:14px;>Criar Conta</h2>
+				</button>
+				<button type="submit" class="btn" 
+						style="display:flex; margin-top: 10px; margin-left: 25%;">
+					<a href="{% url 'login' %}" style = color:black;font-size:14px;>Voltar</a>
+				</button>
+			{% endbuttons %}
 			</div>
+
+		 </form>
 		</div>
 	</div>
 </div>
@@ -44,31 +46,27 @@
 
 {% bootstrap_javascript jquery='full' %}
 
-<script src=https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js></script>
-<script type='text/javascript'>
-    $(function(){
-        var cidade = $('select[name=cidade]');
-		var url = $("#cadastroForm").attr("data-cities-url");
-        cidade.empty();
-        cidade.prepend('<option value="Not selected" selected disabled></option>');
-        $('select[name=estado]').change(function(){
-            if($("#idEstado option:selected").text() != ("YOU SHOULD INSERT THE INITIAL VALUE OF THE setor FIELD WHEN IT IS NOT SELECTED")) {
-                var estado_id = $('select[name=estado]').val();
 
-                request_url = url;
-                $.ajax({
-                    url: request_url,
-                    type: "GET",
-                    success: function(data){
-                        cidade.empty();
-                        $.each(data, function(key, value){
-                            cidade.append('<option value="' + key + '">' + value + '</option>');
-                        });
-                    }
-                })
-            }
-        })
-    });
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type='text/javascript'>
+	$('#id_estado').change(function(){
+		var url = $("#cadastroForm").attr("data-cities-url");
+		var estado_id = $('#id_estado').val();
+
+		$.ajax({
+			url: url,
+			type: 'GET',
+			data:{
+				'estado': estado_id
+			},
+			success: function(data){
+				console.log("TESTE -------------------");
+				console.log(data);
+				$('#id_cidade').html("<option value=\"\">TESTE</option>");
+			}
+		});
+		//$('select[name=cidade]').load("{% url 'get-cidades-ajax' %}");
+	});
 </script>
 
 {% endblock %}

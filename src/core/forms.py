@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django import forms
 
-from .models import Usuario
+from .models import Usuario, Cidade, Estado
 
 class UsuarioCreateForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
@@ -23,6 +23,17 @@ class UsuarioCreateForm(UserCreationForm):
                 self.fields[field].help_text = ''
             if field == 'cidade':
                 self.fields[field].required = False
+                self.fields[field].queryset = Cidade.objects.none()
+
+        if 'estado' in self.data:
+            try:
+                estado_id = int(self.data.get('estado'))
+                self.fields['cidade'].queryset = Cidade.objects.filter(estado_id=estado_id).order_by('nome')
+            except (ValueError, TypeError):
+                print("Deu erro !")
+        elif self.instance.pk:
+            self.fields['cidade'].queryset = self.instance.estado.cidade_set.order_by('nome')
+
     
     def save(self, commit=True):
         user = super().save(commit=False)

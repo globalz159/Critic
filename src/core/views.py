@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 
 from django.contrib import messages
 
 from django.contrib.auth import login, authenticate
 from .forms import UsuarioCreateForm
 
-from .models import Cidade, Estado
+from .models import Cidade, Estado, Usuario
 
 from pyUFbr.baseuf import ufbr
 import json
@@ -78,19 +79,15 @@ def cadastro(request):
     return render(request, 'cadastro.html', context)
 
 def carregar_cidades(request):
-    import pdb; pdb.set_trace()
     estado_id = request.GET.get('estado')
     estado = Estado.objects.get(pk=estado_id)
     cidades = Cidade.objects.all()
-    cidades_dict = {}
-    for cidade in cidades:
-        cidades_dict[cidade.id] = cidade.id
-    """while estado == None:
+    while estado == None:
         estado = request.GET.get('estado')
     print(f"Estado ID = {estado}")
-    cidades = filter_cidades(estado)"""
+    cidades = filter_cidades(estado)
     
-    return HttpResponse(json.dumps(cidades_dict), content_type="application/json")
+    return render(request, 'hr/city_dropdown_list_options.html', {'cidades', cidades})
 
 def v404(request):
     return render(request, '404.html')

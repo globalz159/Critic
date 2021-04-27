@@ -8,7 +8,7 @@ urlpatterns = [
     path('404', v404, name='v404'),
     path('500', v500, name='v500'),
 
-    path('get-cidades', carregar_cidades, name='get-cidades'),
+    path('ajax/get-cidades-ajax/', carregar_cidades, name='get-cidades-ajax'),
 ]
 
 
