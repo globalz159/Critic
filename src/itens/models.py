@@ -4,6 +4,7 @@ from django.db import models
 
 from django.db.models import signals
 from django.template.defaultfilters import slugify
+from stdimage.models import StdImageField
 
 class Itens(models.Model):
     data_criacao = models.DateField("Data de Criação", auto_now_add=True, null=True)
@@ -13,6 +14,8 @@ class Itens(models.Model):
     pais = models.CharField("Pais", max_length=100)
     ano_lancamento = models.DateField("Ano de lançamento")
     slug = models.SlugField("Slug", max_length=100, blank=True, editable=False)
+    imagem = StdImageField ("Imagem de capa", null=True, upload_to='itens', variations={'thumb': (124, 124)})
+
     
     class Meta:
         abstract = True
