@@ -38,21 +38,23 @@
   font-weight: 100;
   animation: blink 6s ease-in-out;
 }
-
-.btn_1{
-                background-color: rgb( 255, 255, 255 );
+ .btn{
+                background-color: black;
                 position: relative;
                 display: inline-block;
                 width: 358px;
                 padding: 10px;
                 z-index: 5;
-                font-size: 55px;
+                font-size: 25px;
                 margin:30px;
-                color:#c80000;
+                color:white;
+                font-weight: bold;
                 text-decoration: none;
                 margin-right: 10px
             }
-
+ .btn:hover {
+            color: white;
+        }
 .vc-sub-heading {
   margin: 0;
   font-size: 2em;

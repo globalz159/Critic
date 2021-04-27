@@ -92,6 +92,15 @@ def carregar_cidades(request):
 def v404(request):
     return render(request, '404.html')
 
+
 def v500(request):
     return render(request, '500.html')
 
+def livros(request):
+    return render(request, 'livros.html')
+
+def filmes(request):
+    return render(request, 'filmes.html')
+
+def series(request):
+    return render(request, 'series.html')

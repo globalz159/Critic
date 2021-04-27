@@ -287,7 +287,19 @@ footer {
     text-align: center;
     font-size: 15px;
   }
-
+  .btn{
+                background-color: rgb( 255, 255, 255 );
+                position: relative;
+                display: inline-block;
+                width: 358px;
+                padding: 10px;
+                z-index: 5;
+                font-size: 25px;
+                margin:30px;
+                color:#c80000;
+                text-decoration: none;
+                margin-right: 10px
+            }
   
 
   
