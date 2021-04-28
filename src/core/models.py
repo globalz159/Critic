@@ -65,6 +65,8 @@ class Usuario(AbstractUser):
 
     data_nascimento = models.DateField("Data de Nascimento", null=True)
 
+    amigos = models.ManyToManyField("self", db_table="Amigos", blank=True)
+
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email', 'first_name', 'last_name']
 

@@ -44,8 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    'avaliacoes.apps.AvaliacoesConfig',
+    'comentarios.apps.ComentariosConfig',
     'core.apps.CoreConfig',
     'itens.apps.ItensConfig',
+
     'bootstrap4',
     'stdimage'
 ]
