@@ -95,12 +95,3 @@ def v404(request):
 
 def v500(request):
     return render(request, '500.html')
-
-def livros(request):
-    return render(request, 'livros.html')
-
-def filmes(request):
-    return render(request, 'filmes.html')
-
-def series(request):
-    return render(request, 'series.html')

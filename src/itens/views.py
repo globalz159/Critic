@@ -111,4 +111,13 @@ def cadastro_livro(request):
         'form': form,
     }
 
-    return render(request, 'cadastro_livro.html', context)            
+    return render(request, 'cadastro_livro.html', context)
+
+def livros(request):
+    return render(request, 'livros.html')
+
+def filmes(request):
+    return render(request, 'filmes.html')
+
+def series(request):
+    return render(request, 'series.html')
