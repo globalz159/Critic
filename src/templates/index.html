@@ -2,6 +2,7 @@
 
 {% load static %}
 
+{% load bootstrap4 %}
 
 {% block content %}
 {% if user.is_authenticated %}
@@ -26,14 +27,20 @@
       <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
       <a href="#">Account</a>        
     </nav>  
-    <nav class="amigos">
+    <div>
+      {% buttons %}
+      <input id="botao" type="button" value="Amigos">   
+      {% endbuttons %}
+    </div>
+    <div id="espaco"class="espaco">
+      <p>dsahdshadhasdhas</p>
+    </div>
+    <aside class="amigos" id="amigos">
       <p>asdsadhasdhasdhs</p>
-      <input id="action-btn" type="button" value="Amigos">   
-      </div>
-    </nav>
+    </aside>
   </header>
   <!-- END OF HEADER -->
-  
+
   <!-- MAIN CONTAINER -->
   <section class="main-container" >
     <div class="location" id="home">
@@ -126,8 +133,25 @@
     <p>Gustavo Gontarzik - 31949142 &copy 2021</p>
   </footer>
   
+{% bootstrap_javascript jquery='full' %}
 
-<script src="{% static 'js/forms.js' %}" ></script>
-<script src="{% static 'js/index.js' %}" ></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type='text/javascript'>
+	var button = document.getElementById("botao");
+  
+  button.addEventListener("click",function(){
+      var amigos = document.getElementById("amigos");
+      var espaco = document.getElementById("espaco");
+
+      if(amigos.style.display === "block"){
+        amigos.style.display = "none"
+          espaco.style.display = "none"
+      } else {
+          amigos.style.display = "block"
+          espaco.style.display = "block"
+      }
+
+});
+</script>
 
 {% endblock %}

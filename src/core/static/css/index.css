@@ -45,7 +45,26 @@ header {
   height: 100px;
   
 }
-
+.amigos{
+  display: none;
+  background-color: red;
+  height: 100%;
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  padding-top: 20px;
+}
+#botao{
+  margin-right:15px;
+}
+.espaco{
+  display: none;
+  width: 400px;
+  padding-left: 15px;
+}
 .netflixLogo {
   grid-area: nt;
   object-fit: cover;
@@ -91,7 +110,7 @@ header {
 
 .sub-nav {
   grid-area: sb;
-  padding: 0 40px 0 40px;
+  padding: 0 20px 0 20px;
 }
 
 .sub-nav a {
