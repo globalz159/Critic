@@ -1,6 +1,8 @@
 from django.db import models
 
 from core.models import Usuario
+from comentarios.models import Comentario
+
 
 class Avaliacao(models.Model):
     VALOR_CHOICES = (
@@ -13,5 +15,5 @@ class Avaliacao(models.Model):
 
     valor = models.IntegerField("Avaliação", choices=VALOR_CHOICES)
     user_id = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True, verbose_name="user_id")
-    msg = models.TextField("Mensagem")
+    comentario = models.ForeignKey(Comentario, on_delete=models.CASCADE, null=True)
 
