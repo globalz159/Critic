@@ -15,7 +15,7 @@
 <body class="body">
 	<header>
 		<div class="netflixLogo">
-		  <a id="logo" href="#home"><img src="{% static 'images/logo_critichub2.png' %}" alt="Logo Image" ></a>
+		  <a id="logo" href="{% url 'index' %}"><img src="{% static 'images/logo_critichub2.png' %}" alt="Logo Image" ></a>
 		</div>      
 		<nav class="main-nav">                
 		  <a class='btn' href="{% url 'index' %}">Home</a>

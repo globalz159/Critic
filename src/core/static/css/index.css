@@ -42,7 +42,7 @@ header {
   background-color: #CFCFCF;
   width: 100%;
   margin-bottom: 0px;  
-  height: 100px;
+  max-height: 100px;
   
 }
 .amigos{
@@ -69,15 +69,16 @@ header {
   grid-area: nt;
   object-fit: cover;
   width: 275px;
-  max-height: 200px;
+  max-height: 150px;
   
   padding-left: 30px;
   padding-top: 0px; 
   margin-top: -50px; 
 }
 
-.netflixLogo img {  
-  height: 150px;  
+.netflixLogo img {
+  padding-top: 30px;
+  height: 105px;  
   width: 275px;   
 }
 
