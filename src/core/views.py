@@ -41,12 +41,17 @@ class IndexView(TemplateView):
     template_name = 'index.html'
 
 ## Function Based View
+def bloqueando_acesso(request):
+    if request.user.is_anonymous:
+        messages.warning(request, "Acesso negado! Faça login ou crie uma conta para acessar o app")
+        return redirect('/conta/login')
 
 def index(request):
+    bloquear = bloqueando_acesso(request)
+    if bloquear:
+        return bloquear
+
     usuario = request.user
-    if usuario.is_anonymous:
-        messages.warning(request, f"Você precisa estar logado para acessar o site !")
-        return redirect('/conta/login')
     print(usuario)
     if request.method == 'POST' and 'adicionar_cidades' in request.POST:
         adicionar_cidades()
