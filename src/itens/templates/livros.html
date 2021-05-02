@@ -1,50 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 
+<!-- TÍTULO -->
 {% block title %}/ Livros{% endblock %}
 
+<!-- BLOCK CONTENT PRINCIPAL-->
 {% block content %}
-{% if user.is_authenticated %}
 
-{% endif %}
-
-<div class="wrapper">
-
-  <!-- HEADER -->
-
-  <!-- END OF HEADER -->
-  
+<div class="wrapper">  
   <!-- MAIN CONTAINER -->
   <section class="main-container" >
-    <div class="location" id="home">
-        <h1 id="home">Adicionado Recentemente</h1>
-        <div class="box">
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p1.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p2.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p3.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p4.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p5.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p6.PNG?raw=true" alt=""></a>
-  
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p7.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p8.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p9.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p10.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p11.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p12.PNG?raw=true" alt=""></a>        
-        </div>
-    </div>
-    
 
-    <h1 id="myList">Indicados para você</h1>
-    <div class="box">
-      <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/t1.PNG?raw=true" alt=""></a>
-      <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/t2.PNG?raw=true" alt=""></a>
-      <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/t3.PNG?raw=true" alt=""></a>
-      <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/t4.PNG?raw=true" alt=""></a>
-      <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/t5.PNG?raw=true" alt=""></a>
-      <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/t6.PNG?raw=true" alt=""></a>                  
-    </div>
+    {% include 'add_recentemente.html' %}
+
+    {% include 'indicados_p_vc.html' %}
 
     <h1 id="originals">Livros</h1>
     <div class="box">
@@ -69,15 +38,6 @@
   </section>
   <!-- END OF LINKS -->
 
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy 2021 CriticHub, Inc.</p>
-    <p>Felipe Martinez - 31923224 &copy 2021</p>
-    <p>Fernando Saeta - 31944078 &copy 2021</p>
-    <p>Gabriel Lee - 31920462 &copy 2021</p>
-    <p>Gustavo Gontarzik - 31949142 &copy 2021</p>
-  </footer>
-  
 
 <script src="{% static 'js/forms.js' %}" ></script>
 
