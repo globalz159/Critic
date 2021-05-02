@@ -15,6 +15,6 @@ class Like(models.Model):
 class Comentario(models.Model):
     create_date = models.DateTimeField(auto_now=True)
     user_id = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    comentario_pai = models.ForeignKey("Comentario", on_delete=models.CASCADE, null=True)
+    comentario_pai = models.ForeignKey("Comentario", on_delete=models.CASCADE, null=True, blank=True)
     likes = models.ManyToManyField(Like, symmetrical=False)
     texto = models.TextField("Comentario")
