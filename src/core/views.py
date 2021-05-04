@@ -53,9 +53,17 @@ def index(request):
 
     usuario = request.user
     print(usuario)
-    if request.method == 'POST' and 'adicionar_cidades' in request.POST:
-        adicionar_cidades()
-        print("Cidades adicionadas")
+    
+    # Botões Submit
+    if request.method == 'POST':
+        if 'adicionar_cidades' in request.POST:
+            adicionar_cidades()
+            print("Cidades adicionadas")
+        elif 'view_cadastro' in request.POST:
+            return redirect('/cadastro')
+        elif 'do_logout' in request.POST:
+            return redirect('/conta/logout')
+
     return render(request, 'index.html')
 
 
