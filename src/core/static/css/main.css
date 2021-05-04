@@ -339,6 +339,9 @@ iframe {
 
 /*------------------------------------------------------------------
 [ Button ]*/
+#recuperar_senha{
+  padding-top: 30px;
+}
 .container-login100-form-btn {
   width: 100%;
   display: -webkit-box;
