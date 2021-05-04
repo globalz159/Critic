@@ -1,0 +1,49 @@
+{% load static %}
+{% load bootstrap4 %}
+<div>
+  {% buttons %}
+  <a id="botao" href="#" style="text-decoration: none; color:black;"><i class="fas fa-user-friends fa-2x"></i>Amigos</a>  
+  {% endbuttons %}
+</div>
+<div id="espaco"class="espaco">
+  
+</div>
+<aside class="amigos" id="amigos">
+    <!-- Header da aba de Amigos -->
+    <div class="header-amigos">
+        <table>
+            <tr>
+                <td id="title-amigos">
+                    <h2>Seus Amigos</h2>
+                </td>
+                <td class="count-amigos">
+                    <i class="fas fa-user-friends fa-lg">  {{ user.amigos.count }}</i>
+                </td>
+            </tr>
+        </table>
+
+        <nav class="sub-nav-search">
+            <a href="#"><i class="fas fa-user-plus">  Adicionar amigos</i></a>
+            <a href="#"><i class="fas fa-search"> Buscar amigo</i></a>
+        </nav> 
+    </div>
+
+    <!-- Barra de Ações -->
+    
+
+    {% for amigo in user.amigos.all %}
+    <div class="amigos-box">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <h2>{{ amigo.username }}</h2>
+                </td>
+                <td>
+                    <i id="icon-add" class="fas fa-user-plus"></i>
+                    <i id="icon-rm" class="fas fa-user-alt-slash amigo-box-icon"></i>
+                </td>
+            </tr>
+        </table>
+    </div>
+    {% endfor %}
+</aside>

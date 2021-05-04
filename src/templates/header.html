@@ -1,5 +1,6 @@
 {% load static %}
 {% load bootstrap4 %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
 <header>
     <div class="netflixLogo">
       <a id="logo" href="{% url 'index' %}"><img src="{% static 'images/logo_critichub2.png' %}" alt="Logo Image" ></a>
@@ -10,20 +11,12 @@
       <a class='btn' href="{% url 'series' %}">Séries</a>
       <a class='btn' href="{% url 'livros' %}">Livros</a>
     </nav>
-    <nav class="sub-nav">
-      <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
-      <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
-      <a href="#">Account</a>        
-    </nav>  
+
     <div>
       {% buttons %}
-      <input id="botao" type="button" value="Amigos">   
+      <a id="conta" href="#" style="text-decoration: none; color:black;"><i class="fas fa-user-circle fa-2x"></i>Conta</a>  
       {% endbuttons %}
     </div>
-    <div id="espaco"class="espaco">
-      <p>dsahdshadhasdhas</p>
-    </div>
-    <aside class="amigos" id="amigos">
-      <p>asdsadhasdhasdhs</p>
-    </aside>
+
+    {% include 'nav_amigos.html' %}
 </header>

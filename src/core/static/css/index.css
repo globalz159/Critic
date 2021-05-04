@@ -45,26 +45,92 @@ header {
   max-height: 100px;
   
 }
+/* Conta */
+#conta{
+  margin-right:15px;
+}
+#conta i{
+  margin-right:15px;
+  display: block;
+  text-align: center;
+}
+
+/* AMIGOS */
 .amigos{
   display: none;
-  background-color: red;
   height: 100%;
   width: 400px;
   position: fixed;
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: #111;
   padding-top: 20px;
+  background-color: #202020;
 }
+
 #botao{
   margin-right:15px;
+}
+#botao i{
+  margin-right:15px;
+  display: block;
+  text-align: center;
 }
 .espaco{
   display: none;
   width: 400px;
   padding-left: 15px;
 }
+#title-amigos{
+  margin-left: 20px;
+  display: inline-flex;
+}
+.header-amigos{
+  margin-left: 20px;
+  margin-bottom: 10px;
+  width: 90%;
+  height: 80px;
+  background-color: #3F003D;
+  display: inline-block;
+}
+.header-amigos table{
+  width: 100%;
+  background-color: #3F003D;
+}
+.count-amigos{
+  text-align: right;
+  padding-right: 10px;
+}
+.amigos-box{
+  width: 85%;
+  height: 100px;
+  color: black;
+  margin-left: 20px;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #3F003D;
+  background-color: blanchedalmond;
+}
+.sub-nav-search{
+  border-bottom: 15px solid #3F003D ;
+  background-color: grey;
+}
+.sub-nav-search a{
+  padding-left: 10px;
+  text-decoration: none;
+  color: #F3F3F3;
+}
+#icon-add{
+  color: green;
+  padding-right: 10px;
+  float: right;
+}
+#icon-rm{
+  color: red;
+  padding-right: 10px;
+  float: right;
+}
+/* LOGO */
 .netflixLogo {
   grid-area: nt;
   object-fit: cover;
@@ -127,6 +193,7 @@ header {
 
 /* MAIN CONTIANER */
 .main-container {
+  margin-top: 10px;
   padding: 50px;
 }
 
@@ -195,14 +262,28 @@ footer {
 /* MEDIA QUERIES */
 
 @media(max-width: 900px) {
+  .main-nav {
+    grid-area: mn;
+    text-align: center;
+    float:none;
+  }
+}
+
+@media(max-width: 900px) {
 
   header {
-    display: grid;
+    display: flex;
+    max-height: 680px;
     grid-gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-areas: 
     "nt nt nt  .  .  . sb . . . "
     "mn mn mn mn mn mn  mn mn mn mn";
+  }
+
+  .main-container {
+    margin-top: 40px;
+    padding: 50px;
   }
 
   .box {
@@ -211,6 +292,18 @@ footer {
     grid-template-columns: repeat(4, minmax(100px, 1fr));
   }
 
+  .main-nav{
+    margin-top: -15px;
+    text-decoration: none;
+    text-align: left;
+  }
+  .main-nav a {
+    color: var(--light);
+    text-decoration: none;
+    margin: 15px;  
+    font-size: 24px;
+    color:#341933;
+  }
 }
 
 @media(max-width: 700px) {
@@ -234,6 +327,26 @@ footer {
     display: grid;
     grid-gap: 20px;
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .netflixLogo {
+    max-width: 100%;
+    margin: auto;
+    padding-right: 20px;
+  }
+
+  .main-nav {
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: repeat(1, 1fr);
+    text-align: center;
+  }
+  .main-nav a {
+    color: var(--light);
+    text-decoration: none;
+    margin: 15px;  
+    font-size: 20px;
+    color:#341933;
   }
    
 }
@@ -306,19 +419,27 @@ footer {
     text-align: center;
     font-size: 15px;
   }
-  .btn{
-                background-color: rgb( 255, 255, 255 );
-                position: relative;
-                display: inline-block;
-                width: 358px;
-                padding: 10px;
-                z-index: 5;
-                font-size: 25px;
-                margin:30px;
-                color:#c80000;
-                text-decoration: none;
-                margin-right: 10px
-            }
+.btn{
+  background-color: rgb( 255, 255, 255 );
+  position: relative;
+  display: inline-block;
+  width: 358px;
+  padding: 10px;
+  z-index: 5;
+  font-size: 20px;
+  margin:30px;
+  color:#c80000;
+  text-decoration: none;
+  margin-right: 10px
+}
+
+.main-nav a {
+  color: var(--light);
+  text-decoration: none;
+  margin: 15px;  
+  font-size: 16px;
+  color:#341933;
+}
   
 
   
