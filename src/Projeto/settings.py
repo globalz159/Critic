@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'comentarios.apps.ComentariosConfig',
     'core.apps.CoreConfig',
     'itens.apps.ItensConfig',
+    'publicacoes.apps.PublicacoesConfig',
 
     'bootstrap4',
     'stdimage'
