@@ -23,7 +23,8 @@
         </table>
 
         <nav class="sub-nav-search">
-            <a href="#"><i class="fas fa-user-plus">  Adicionar amigos</i></a>
+            <a href="{% url 'add_amigos' %}"><i class="fas fa-user-plus">  Adicionar amigos</i></a>
+            <a href="#"><i class="fas fa-plus"> Pedidos de Amizade</i></a>
             <a href="#"><i class="fas fa-search"> Buscar amigo</i></a>
         </nav> 
     </div>
@@ -33,17 +34,9 @@
 
     {% for amigo in user.amigos.all %}
     <div class="amigos-box">
-        <table style="width: 100%;">
-            <tr>
-                <td>
-                    <h2>{{ amigo.username }}</h2>
-                </td>
-                <td>
-                    <i id="icon-add" class="fas fa-user-plus"></i>
-                    <i id="icon-rm" class="fas fa-user-alt-slash amigo-box-icon"></i>
-                </td>
-            </tr>
-        </table>
+        <h2>{{ amigo.username }}</h2>
+        <i id="icon-add" class="fas fa-user-plus"></i>
+        <i id="icon-rm" class="fas fa-user-alt-slash amigo-box-icon"></i>
     </div>
     {% endfor %}
 </aside>

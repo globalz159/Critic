@@ -101,6 +101,17 @@ header {
   text-align: right;
   padding-right: 10px;
 }
+.sub-nav-search{
+  border-bottom: 15px solid #3F003D ;
+  background-color: grey;
+}
+.sub-nav-search a{
+  padding-left: 10px;
+  text-decoration: none;
+  color: #F3F3F3;
+}
+
+/**** BOX AMIGOS ****/
 .amigos-box{
   width: 85%;
   height: 100px;
@@ -111,24 +122,15 @@ header {
   border-color: #3F003D;
   background-color: blanchedalmond;
 }
-.sub-nav-search{
-  border-bottom: 15px solid #3F003D ;
-  background-color: grey;
-}
-.sub-nav-search a{
-  padding-left: 10px;
-  text-decoration: none;
-  color: #F3F3F3;
+.amigos-box i{
+  padding-right: 10px;
+  float: right;
 }
 #icon-add{
   color: green;
-  padding-right: 10px;
-  float: right;
 }
 #icon-rm{
   color: red;
-  padding-right: 10px;
-  float: right;
 }
 /* LOGO */
 .netflixLogo {

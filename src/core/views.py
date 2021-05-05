@@ -108,3 +108,13 @@ def v404(request):
 
 def v500(request):
     return render(request, '500.html')
+
+
+def adicionar_amigos(request):
+    nao_amigos = [user for user in Usuario.objects.all() if user not in request.user.amigos.all() and user != request.user]
+
+    context = {
+        'nao_amigos': nao_amigos,
+    }
+
+    return render(request, 'adicionar_amigos.html', context)
