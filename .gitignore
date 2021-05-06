@@ -13,6 +13,7 @@
 **/src/.idea
 **/.idea
 *.sqlite3
+**/src/media
 
 __pycache__
 *.pyc
