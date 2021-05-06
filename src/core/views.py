@@ -4,13 +4,13 @@ from django.urls import reverse_lazy
 
 from django.views.generic import TemplateView, CreateView
 
-from django.contrib import messages
-
 from django.contrib.auth import login, authenticate
 from .forms import UsuarioCreateForm
 
 from .models import Cidade, Estado, Usuario
 
+from django.db.models import Q
+from django.contrib import messages
 from pyUFbr.baseuf import ufbr
 import json
 
@@ -109,6 +109,40 @@ def v404(request):
 def v500(request):
     return render(request, '500.html')
 
+def searchbar(request):
+    if request.method == 'GET':
+        search = request.GET.get('search', False)
+        users = Usuario.objects.all()
+        if search:
+            # Buscando objetos 
+            user_filtered = users.filter(username__icontains=search)
+            user_filtered |= users.filter(first_name__istartswith=search)
+
+            list_dict = []
+            user_amigos = {}
+            # Obtendo amigos em comum
+            for user in user_filtered:
+                amigos = user.amigos.all()
+                amigos_em_comum = [amigo for amigo in amigos if amigo in request.user.amigos.all()]
+                list_dict.append({'user': user, 'amigos_comum': amigos_em_comum, 'cont': len(amigos_em_comum)})
+                user_amigos.update({user: amigos_em_comum})
+            # Ordenando por mais amigos em comum
+            list_dict = sorted(list_dict, key=lambda k: k['cont'])
+            # Mapeando amigos em comum com usuario
+            users_to_show = []
+            for item in list_dict:
+                users_to_show.append(item['user'])
+        else:
+            users_to_show = []
+            user_amigos = False
+
+        context = {
+            'search_input': search, # -> String
+            'usuarios': users_to_show, # -> List
+            'user_amigos': user_amigos, # -> Dict
+            'len_resultados': len(users_to_show), # -> Int
+        }
+        return render(request, 'busca_amigos.html', context)
 
 def adicionar_amigos(request):
     nao_amigos = [user for user in Usuario.objects.all() if user not in request.user.amigos.all() and user != request.user]

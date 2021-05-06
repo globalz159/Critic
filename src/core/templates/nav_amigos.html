@@ -24,8 +24,22 @@
 
         <nav class="sub-nav-search">
             <a href="{% url 'add_amigos' %}"><i class="fas fa-user-plus">  Adicionar amigos</i></a>
+
             <a href="#"><i class="fas fa-plus"> Pedidos de Amizade</i></a>
-            <a href="#"><i class="fas fa-search"> Buscar amigo</i></a>
+
+            <a id="buscar_amigo" href="#"><i class="fas fa-search"> Buscar amigo</i></a>
+            <form id="searchbar-nav" style="display:none;" action="{% url 'searchbar' %}" method="get">
+                <table>
+                    <tr>
+                        <td style="width: 80%;">
+                            <input type="text" style="width:100%;"  name="search"/>
+                        </td>
+                        <td>
+                            <button type="submit">Pesquisar</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </nav> 
     </div>
 
@@ -34,9 +48,11 @@
 
     {% for amigo in user.amigos.all %}
     <div class="amigos-box">
-        <h2>{{ amigo.username }}</h2>
-        <i id="icon-add" class="fas fa-user-plus"></i>
-        <i id="icon-rm" class="fas fa-user-alt-slash amigo-box-icon"></i>
+        <h2 class="nome-amigo">{{ amigo.username }}</h2>
+        <div class="amigo-box-icon">
+            <i id="icon-add" class="fas fa-user-plus"></i>
+            <i id="icon-rm" class="fas fa-user-alt-slash"></i>
+        </div>
     </div>
     {% endfor %}
 </aside>

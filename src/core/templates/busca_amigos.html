@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="wrapper">
+    <section class="main-container" style="background-color: crimson;">
+        <div class="section-header" style="background-color: cornsilk;">
+        
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <h1 class="amigos-title">Resultados da busca para " {{ search_input }} "</h1>
+                    </td>
+                    <td>
+                        <p style="float: right; color: black;">{{ len_resultados }} Resultados</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="resultados-container">
+            {% if usuarios %}
+            {% for usuario in usuarios %}
+            <div class="usuarios-box">
+                <h2>{{ usuario.username }}</h2>
+                {% if usuario in user.amigos.all %}
+                <i id="icon-added" class="fas fa-user-check"> Amigos</i>
+                <i id="icon-rm" class="fas fa-user-alt-slash"> Remover Amigo</i>
+                {% else %}
+                <i id="icon-add" class="fas fa-user-plus">Adicionar Amigo</i>
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% else %}
+            <h1 style="margin-top: 40px; color: black;">Nenhum resultado encontrado</h1>
+            {% endif %}
+        </div>
+    </section>
+</div>
+{% endblock %}

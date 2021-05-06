@@ -1,0 +1,64 @@
+.amigos-title{
+    color:black;
+    font-size: 30px;
+    font-family:sans-serif;
+    margin-left: 30px;
+    display: flex;
+}
+
+#searchbar_nav{
+    position: absolute;
+}
+/**** BOX AMIGOS ****/
+.amigos-box{
+  width: 85%;
+  height: 80px;
+  color: black;
+  margin-left: 20px;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #3F003D;
+  background-color: blanchedalmond;
+}
+.nome-amigo{
+    display: inline;
+    padding-left: 5px;
+}
+.amigos-box i{
+  padding-right: 10px;
+  float: right;
+}
+.amigo-box-icon{
+    padding: 10px 0px 0px;
+    display: block;
+    float: right;
+}
+#icon-add{
+  color: green;
+}
+#icon-added{
+  color: #427eff;
+}
+#icon-rm{
+  color: red;
+}
+.resultados-container{
+  background-color: #1d031c;
+  width: 100%;
+}
+
+.section-header{
+    padding-bottom: 20px;
+}
+.usuarios-box{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    color: black;
+    border: solid #3F003D 5px;
+    /*border-style: solid;
+    border-width: 5px;
+    border-color: #3F003D;*/
+    background-color: blanchedalmond;
+}

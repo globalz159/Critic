@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="wrapper">
-    <section class="main-container">
-        <h1>Adicionar Amigos</h1>
-
+    <section class="main-container" style="background-color: crimson;">
+        <div class="section-header" style="background-color: cornsilk;">
+            
+            <h1 class="amigos-title">Adicionar Amigos</h1>
+            <form action="{% url 'searchbar' %}" method="get">
+                <input type="text" name="search"/>
+                <button type="submit">Pesquisar</button>
+            </form>
+        </div>
     </section>
 </div>
 {% endblock %}

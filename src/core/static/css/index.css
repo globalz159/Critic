@@ -111,27 +111,6 @@ header {
   color: #F3F3F3;
 }
 
-/**** BOX AMIGOS ****/
-.amigos-box{
-  width: 85%;
-  height: 100px;
-  color: black;
-  margin-left: 20px;
-  border-style: solid;
-  border-width: 10px;
-  border-color: #3F003D;
-  background-color: blanchedalmond;
-}
-.amigos-box i{
-  padding-right: 10px;
-  float: right;
-}
-#icon-add{
-  color: green;
-}
-#icon-rm{
-  color: red;
-}
 /* LOGO */
 .netflixLogo {
   grid-area: nt;
