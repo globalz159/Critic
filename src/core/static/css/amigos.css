@@ -1,13 +1,14 @@
-.header-title{
-    color:black;
-    font-size: 30px;
-    font-family:sans-serif;
-    margin-left: 30px;
-    display: flex;
-}
-
-#searchbar_nav{
-    position: absolute;
+/**** Aba dos amigos ****/
+.amigos{
+  display: none;
+  height: 100%;
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  padding-top: 20px;
+  background-color: #202020;
 }
 /**** BOX AMIGOS ****/
 .amigos-box{
@@ -17,7 +18,7 @@
   margin-left: 20px;
   border-style: solid;
   border-width: 10px;
-  border-color: #3F003D;
+  border-color: var(--primary);
   background-color: blanchedalmond;
 }
 .nome-amigo{
@@ -49,21 +50,13 @@
 .sem-resultados{
   padding: 25px;
 }
-.section-header{
-  padding-bottom: 20px;
-}
-.barra-busca{
-  padding-top: 30px;
-}
+
 .usuarios-box{
     width: 80%;
     margin-left: auto;
     margin-right: auto;
     height: 100px;
     color: black;
-    border: solid #3F003D 5px;
-    /*border-style: solid;
-    border-width: 5px;
-    border-color: #3F003D;*/
+    border: solid var(--primary) 5px;
     background-color: blanchedalmond;
 }

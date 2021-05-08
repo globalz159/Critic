@@ -1,6 +1,6 @@
 {% load static %}
 <!-- Header de Sections com barra de busca -->
-<div class="section-header" style="background-color: cornsilk;">
+<div class="section-header">
     <table style="width: 100%;">
         <tr>
             <!-- Coluna - Titulo da Página -->
@@ -46,7 +46,7 @@
             {% else %}
             <td style="width: 20%;">
             {% endif %}
-                <p style="padding-left: 15px; margin-right: 20px; float: right; color: black;">
+                <p style="padding-left: 15px; margin-right: 20px; float: right;">
                 {% if app_name != 'amigos' %}
                     {{len_resultados}} Resultados de {{app_name}}
                 {% else %}

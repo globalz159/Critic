@@ -1,0 +1,73 @@
+
+/** MAIN HEADER **/
+header {
+  padding-top: 20px;
+  position: fixed;
+  top: 0;
+  display: grid;  
+  grid-gap:5px;
+  grid-template-columns: 1fr 4fr;
+  grid-template-areas: 
+   "nt mn mn sb . . . "; 
+  background-color: #cebcff;
+  width: 100%;
+  margin-bottom: 0px;  
+  max-height: 100px;
+  
+}
+/* LOGO */
+.netflixLogo { /* Div do logo */
+    grid-area: nt;
+    object-fit: cover;
+    width: 275px;
+    max-height: 150px;
+    padding-left: 30px;
+    margin-top: -50px; 
+}
+  
+.netflixLogo img {
+    padding-top: 30px;
+    height: 105px;
+    width: 275px;
+    
+}
+
+/* Botões 'Conta' e 'Amigos' */
+.btn-icon{
+    margin-right:15px;
+    text-decoration: none;
+    color:black;
+}
+.btn-icon i{
+    margin-right:15px;
+    padding-bottom: 3px;
+    display: block;
+    text-align: center;
+}
+.espaco{
+    display: none;
+    width: 400px;
+    padding-left: 15px;
+}
+
+@media(max-width: 725px){
+
+}
+
+/** SECTION HEADER **/
+.section-header{
+    margin-top: 60px;
+    padding-bottom: 10px;
+    background-color: #7c0076;
+    color: white;
+}
+.header-title{
+    color:white;
+    font-size: 34px;
+    font-family: arial;
+    margin-left: 30px;
+    display: flex;
+}
+.barra-busca{
+    padding-top: 10px;
+}

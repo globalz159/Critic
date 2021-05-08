@@ -6,19 +6,19 @@
         
         <!-- Filtro de Objeto -->
         <div style="display: none;">
-            <label style="color: black;" for="app_name">Buscar por: </label>
+            <label for="app_name">Buscar por: </label>
             <select type="checkbox" name="select_app">
                 <option value="{{app_name}}" selected>app</option>
             </select>
         </div>
 
         <!-- Barra -->
-        <label style="color: black;" for="search">Buscar por {{app_name}}: </label>
+        <label for="search">Buscar por {{app_name}}: </label>
         <input type="text" name="search" style="width: 100%;"/> 
 
         <!-- Adicionando filtro de busca para buscar por itens -->
         {% if app_name != 'amigos' and app_name != 'usarios' %}
-            <label style="color: black;" for="select_filter">Filtro: </label>
+            <label for="select_filter">Filtro: </label>
             <select type="checkbox" name="select_filter">
             {% for filter in search_filters %}
                 <option value="{{filter}}" selected>{{filter}}</option>
