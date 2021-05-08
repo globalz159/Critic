@@ -28,9 +28,14 @@ def filmes(request):
         return bloquear
 
     filmes = Filme.objects.all()
+    app_name = 'filme'
+    search_params = ('titulo', 'pais', 'diretor')
     
     context = {
-        'filmes': filmes
+        'filmes': filmes,
+        'app_name': app_name,
+        'search_filters': search_params,
+        'len_resultados': len(filmes),
     }
     return render(request, 'filmes.html', context)
 
@@ -53,9 +58,14 @@ def livros(request):
         return bloquear
 
     livros = Livro.objects.all()
+    app_name = 'livro'
+    search_params = ('titulo', 'pais', 'autor')
     
     context = {
-        'livros': livros
+        'livros': livros,
+        'app_name': app_name,
+        'search_filters': search_params,
+        'len_resultados': len(livros),
     }
     return render(request, 'livros.html', context)    
 
@@ -78,9 +88,14 @@ def series(request):
         return bloquear
 
     series = Serie.objects.all()
+    app_name = 'serie'
+    search_params = ('titulo', 'pais', 'diretor')
     
     context = {
-        'series': series
+        'series': series,
+        'app_name': app_name,
+        'search_filters': search_params,
+        'len_resultados': len(series),
     }
     return render(request, 'series.html', context)    
 
