@@ -46,9 +46,14 @@
   background-color: #1d031c;
   width: 100%;
 }
-
+.sem-resultados{
+  padding: 25px;
+}
 .section-header{
-    padding-bottom: 20px;
+  padding-bottom: 20px;
+}
+.barra-busca{
+  padding-top: 30px;
 }
 .usuarios-box{
     width: 80%;

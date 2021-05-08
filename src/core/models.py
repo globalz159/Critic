@@ -56,6 +56,8 @@ class UsuarioManager(BaseUserManager):
 
 
 class Usuario(AbstractUser):
+    # new_user = Usuario(username='teste', email='teste@teste.com', first_name='teste', last_name='teste', password='Teste@123')
+    
     # PK = username
     # os campos: username, password, first_name, last_name vem de AbstractUser
     email = models.EmailField('E-mail', unique=True)

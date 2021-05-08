@@ -18,7 +18,7 @@ class Itens(models.Model):
     imagem = StdImageField("Imagem de capa", null=True, upload_to='itens', variations={'thumb': (124, 124)})
 
     avaliacoes = models.ManyToManyField(Avaliacao)
-    ativo = models.BooleanField("Estagio", default=False)
+    ativo = models.BooleanField("Ativo", default=False)
 
     class Meta:
         abstract = True
