@@ -12,8 +12,8 @@
 **/venv
 **/.idea
 *.sqlite3
-
 **venv
+**/media
 
 __pycache__
 *.pyc
