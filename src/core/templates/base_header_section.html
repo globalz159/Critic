@@ -1,0 +1,59 @@
+{% load static %}
+<!-- Header de Sections com barra de busca -->
+<div class="section-header" style="background-color: cornsilk;">
+    <table style="width: 100%;">
+        <tr>
+            <!-- Coluna - Titulo da Página -->
+            {% if searching %}
+            <td style="width: 55%;">
+            {% else %}
+            <td style="width: 30%;">
+            {% endif %}
+
+            {% if searching and app_name != 'amigos' %}
+            <h1 class="header-title">
+                Resultados da busca para " {{ search_input }} "
+            </h1>
+            {% else %}
+            <h1 class="header-title">
+                    {% if app_name == 'filme' %}
+                        Filmes
+                    {% elif app_name == 'livro' %}
+                        Livros
+                    {% elif app_name == 'serie' %}
+                        Séries
+                    {% elif app_name == 'amigos' %}
+                        Seus Amigos
+                    {% elif app_name == 'usuarios' %}
+                        Usuários
+                    {% endif %}
+                </h1>
+            {% endif %}
+                
+            </td>
+            <!-- Coluna - Barra de Busca -->
+            {% if searching %}
+            <td style="width: 30%; padding-right: 30px;">
+            {% else %}
+            <td style="width: 40%; padding-right: 30px;">
+            {% endif %}
+                <!-- Incluindo barra de busca -->
+                {% include 'busca/barra_busca.html' %}
+            </td>
+            <!-- Coluna - Direita com infos da busca -->
+            {% if searching %}
+            <td style="width: 10%;">
+            {% else %}
+            <td style="width: 20%;">
+            {% endif %}
+                <p style="padding-left: 15px; margin-right: 20px; float: right; color: black;">
+                {% if app_name != 'amigos' %}
+                    {{len_resultados}} Resultados de {{app_name}}
+                {% else %}
+                    {{len_resultados}} {{app_name}}
+                {% endif %}
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>

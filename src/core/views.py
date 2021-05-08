@@ -8,6 +8,7 @@ from django.contrib.auth import login, authenticate
 from .forms import UsuarioCreateForm
 
 from .models import Cidade, Estado, Usuario
+from itens.models import Filme, Livro, Serie
 
 from django.db.models import Q
 from django.contrib import messages
@@ -111,44 +112,94 @@ def v500(request):
 
 def searchbar(request):
     if request.method == 'GET':
+        context = {}
+        objs_to_show = []
+
         search = request.GET.get('search', False)
+        app_name = request.GET.get('select_app', 'usuario')
         users = Usuario.objects.all()
         if search:
-            # Buscando objetos 
-            user_filtered = users.filter(username__icontains=search)
-            user_filtered |= users.filter(first_name__istartswith=search)
+            if app_name in ('usuario', 'amigos'):
+                # Buscando objetos 
+                if app_name == 'amigos':
+                    users = request.user.amigos.all()
+                user_filtered = users.filter(username__icontains=search)
+                user_filtered |= users.filter(first_name__istartswith=search)
 
-            list_dict = []
-            user_amigos = {}
-            # Obtendo amigos em comum
-            for user in user_filtered:
-                amigos = user.amigos.all()
-                amigos_em_comum = [amigo for amigo in amigos if amigo in request.user.amigos.all()]
-                list_dict.append({'user': user, 'amigos_comum': amigos_em_comum, 'cont': len(amigos_em_comum)})
-                user_amigos.update({user: amigos_em_comum})
-            # Ordenando por mais amigos em comum
-            list_dict = sorted(list_dict, key=lambda k: k['cont'])
-            # Mapeando amigos em comum com usuario
-            users_to_show = []
-            for item in list_dict:
-                users_to_show.append(item['user'])
+                list_dict = []
+                user_amigos = {}
+                # Obtendo amigos em comum
+                for user in user_filtered:
+                    amigos = user.amigos.all()
+                    amigos_em_comum = [amigo for amigo in amigos if amigo in request.user.amigos.all()]
+                    list_dict.append({'user': user, 'amigos_comum': amigos_em_comum, 'cont': len(amigos_em_comum)})
+                    user_amigos.update({user: amigos_em_comum})
+                # Ordenando por mais amigos em comum
+                list_dict = sorted(list_dict, key=lambda k: k['cont'])
+                # Mapeando amigos em comum com usuario
+                for item in list_dict:
+                    objs_to_show.append(item['user'])
+                context.update({
+                    'usuarios': objs_to_show, # -> List
+                    'user_amigos': user_amigos, # -> Dict
+                })
+
+            elif app_name in ('filme', 'serie', 'livro'):
+                # Obtendo Objetos
+                if app_name == 'filme':
+                    objs = Filme.objects.all()
+                    search_params = ('titulo', 'pais', 'diretor')
+
+                elif app_name == 'livro':
+                    objs = Livro.objects.all()
+                    search_params = ('titulo', 'pais', 'autor')
+
+                elif app_name == 'serie':
+                    objs = Serie.objects.all()
+                    search_params = ('titulo', 'pais', 'diretor')
+
+                # Filtrando objetos
+                #### -- Implementar filtro de busca ---- ####
+                objs_filtered = objs.filter(titulo__icontains=search)
+                #objs_filtered |= objs.filter(first_name__istartswith=search)
+                #### ------- ####
+
+                for item in objs_filtered:
+                    objs_to_show.append(item)
+
+                context.update({
+                    'itens': objs_to_show, # -> List
+                })
+
+            
+            else:
+                user_amigos = False
+
         else:
-            users_to_show = []
             user_amigos = False
 
-        context = {
+        context.update({
             'search_input': search, # -> String
-            'usuarios': users_to_show, # -> List
-            'user_amigos': user_amigos, # -> Dict
-            'len_resultados': len(users_to_show), # -> Int
-        }
-        return render(request, 'busca_amigos.html', context)
+            'len_resultados': len(objs_to_show), # -> Int
+            'app_name': app_name,
+            'searching': True,
+        })
+        return render(request, 'busca/base_busca.html', context)
+
+def seus_amigos(request):
+    amigos = [user for user in Usuario.objects.all() if user in request.user.amigos.all() and user != request.user]
+    app_name = 'amigos'
+    context = {
+        'amigos': amigos,
+        'app_name': app_name,
+    }
+    return render(request, 'busca/base_busca.html', context)
 
 def adicionar_amigos(request):
     nao_amigos = [user for user in Usuario.objects.all() if user not in request.user.amigos.all() and user != request.user]
-
+    app_name = 'usuarios'
     context = {
         'nao_amigos': nao_amigos,
+        'app_name': app_name,
     }
-
-    return render(request, 'adicionar_amigos.html', context)
+    return render(request, 'busca/base_busca.html', context)
