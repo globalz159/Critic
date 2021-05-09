@@ -1,0 +1,20 @@
+{% extends 'base_item.html' %}
+
+{% load static %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="wrapper">
+  <section class="main-container" style="background-color: rgb(0, 0, 0);">
+      <div class="section-header" style="background-color: rgb(205, 145, 245);">
+          <h1  style="color:black">Título - {{filme.titulo}}</h1>
+          {{filme.imagem}}
+          <p  style="color:black">Diretor - {{filme.diretor}}</p>
+          <p  style="color:black" id='item-description'>País - {{filme.pais}}</p>
+          <p  style="color:black">Ano de lançamento - {{filme.ano_lancamento}}</p>
+          <p  style="color:black">Elenco - {{filme.elenco}}</p>
+      </div>
+  </section>
+</div>
+{% endblock %}

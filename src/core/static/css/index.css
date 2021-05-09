@@ -335,7 +335,10 @@ footer {
   color:#341933;
 }
   
+#item-description {
+  text-align: center;
+  color: green;
+}  
 
-  
-   
+
 }
