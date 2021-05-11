@@ -15,17 +15,37 @@ from django.contrib import messages
 from pyUFbr.baseuf import ufbr
 import json
 
+# DECORATOR DE BLOQUEAR ACESSO !!!!
+def bloquear_acesso(view_func):
+    def bloquear(request):
+        if request.user.is_anonymous:
+            messages.warning(request, "Acesso negado! Faça login ou crie uma conta para acessar o app")
+            return redirect('/conta/login')
+        return view_func(request)
+    return bloquear
+
+def bloquear_acesso_admin(view_func):
+    def bloquear(request):
+        if not request.user.is_superuser:
+            messages.error(request, "Acesso negado! Essa área é restrita apenas aos administradores do site")
+            return redirect('/')
+        return view_func(request)
+    return bloquear
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 def adicionar_cidades():
     lista_cidades = []
     for es in ufbr.list_uf:
         estado = Estado(sigla=es)
         estado.save()
+        print(f"-> {es}")
 
         lista_cidades = [cidade for cidade in ufbr.list_cidades(es)]
         for nome in lista_cidades:
             cidade = Cidade(estado=estado, nome=nome)
             cidade.save()
-    return lista_cidades
+        print(lista_cidades)
+        print(" ----------------------------------------------- ")
 
 def filter_cidades(estado):
     lista_cidades = [cidade for cidade in ufbr.list_cidades(estado)]
@@ -42,16 +62,8 @@ class IndexView(TemplateView):
     template_name = 'index.html'
 
 ## Function Based View
-def bloqueando_acesso(request):
-    if request.user.is_anonymous:
-        messages.warning(request, "Acesso negado! Faça login ou crie uma conta para acessar o app")
-        return redirect('/conta/login')
-
+@bloquear_acesso
 def index(request):
-    bloquear = bloqueando_acesso(request)
-    if bloquear:
-        return bloquear
-
     usuario = request.user
     print(usuario)
     
@@ -110,6 +122,7 @@ def v404(request):
 def v500(request):
     return render(request, '500.html')
 
+@bloquear_acesso
 def searchbar(request):
     if request.method == 'GET':
         context = {}
@@ -186,6 +199,7 @@ def searchbar(request):
         })
         return render(request, 'busca/base_busca.html', context)
 
+@bloquear_acesso
 def seus_amigos(request):
     amigos = [user for user in Usuario.objects.all() if user in request.user.amigos.all() and user != request.user]
     app_name = 'amigos'
@@ -195,6 +209,7 @@ def seus_amigos(request):
     }
     return render(request, 'busca/base_busca.html', context)
 
+@bloquear_acesso
 def adicionar_amigos(request):
     nao_amigos = [user for user in Usuario.objects.all() if user not in request.user.amigos.all() and user != request.user]
     app_name = 'usuarios'

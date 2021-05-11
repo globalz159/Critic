@@ -4,17 +4,10 @@ from django.contrib import messages
 from .models import Filme, Livro, Serie
 from .forms import CadastroFilme, CadastroSerie, CadastroLivro
 
-def bloqueando_acesso(request):
-    if request.user.is_anonymous:
-        messages.warning(request, "Acesso negado! Faça login ou crie uma conta para acessar o app")
-        return redirect('/conta/login')
-    
+from core.views import bloquear_acesso, bloquear_acesso_admin
 
+@bloquear_acesso
 def filme(request, pk):
-    bloquear = bloqueando_acesso(request)
-    if bloquear:
-        return bloquear
-
     filme_obj = get_object_or_404(Filme, id=pk)
     
     context = {
@@ -22,11 +15,8 @@ def filme(request, pk):
     }
     return render(request, 'filme.html', context)
 
+@bloquear_acesso
 def filmes(request):
-    bloquear = bloqueando_acesso(request)
-    if bloquear:
-        return bloquear
-
     filmes = Filme.objects.all()
     app_name = 'filme'
     search_params = ('titulo', 'pais', 'diretor')
@@ -40,11 +30,8 @@ def filmes(request):
     return render(request, 'filmes.html', context)
 
 
+@bloquear_acesso
 def livro(request, pk):
-    bloquear = bloqueando_acesso(request)
-    if bloquear:
-        return bloquear
-
     livro_obj = get_object_or_404(Livro, id=pk)
 
     context = {
@@ -52,11 +39,8 @@ def livro(request, pk):
     }
     return render(request, 'livro.html', context)
 
+@bloquear_acesso
 def livros(request):
-    bloquear = bloqueando_acesso(request)
-    if bloquear:
-        return bloquear
-
     livros = Livro.objects.all()
     app_name = 'livro'
     search_params = ('titulo', 'pais', 'autor')
@@ -70,11 +54,8 @@ def livros(request):
     return render(request, 'livros.html', context)    
 
 
+@bloquear_acesso
 def serie(request, pk):
-    bloquear = bloqueando_acesso(request)
-    if bloquear:
-        return bloquear
-
     serie_obj = get_object_or_404(Serie, id=pk)
 
     context = {
@@ -82,11 +63,8 @@ def serie(request, pk):
     }
     return render(request, 'serie.html', context)
 
+@bloquear_acesso
 def series(request):
-    bloquear = bloqueando_acesso(request)
-    if bloquear:
-        return bloquear
-
     series = Serie.objects.all()
     app_name = 'serie'
     search_params = ('titulo', 'pais', 'diretor')
@@ -99,11 +77,8 @@ def series(request):
     }
     return render(request, 'series.html', context)    
 
+@bloquear_acesso
 def cadastro_filme(request):
-    bloquear = bloqueando_acesso(request)
-    if bloquear:
-        return bloquear
-
     if str(request.method) == 'POST':
         form = CadastroFilme(request.POST, request.FILES)
 
@@ -123,11 +98,8 @@ def cadastro_filme(request):
 
     return render(request, 'cadastro_filme.html', context)  
 
+@bloquear_acesso
 def cadastro_serie(request):
-    bloquear = bloqueando_acesso(request)
-    if bloquear:
-        return bloquear
-
     if str(request.method) == 'POST':
         form = CadastroSerie(request.POST, request.FILES)
 
@@ -147,11 +119,8 @@ def cadastro_serie(request):
 
     return render(request, 'cadastro_serie.html', context)  
 
+@bloquear_acesso_admin
 def cadastro_livro(request):
-    bloquear = bloqueando_acesso(request)
-    if bloquear:
-        return bloquear
-
     if str(request.method) == 'POST':
         form = CadastroLivro(request.POST, request.FILES)
 
@@ -171,6 +140,7 @@ def cadastro_livro(request):
 
     return render(request, 'cadastro_livro.html', context)
 
+@bloquear_acesso
 def itens_a_validar(request, tipo_item):
     if tipo_item == 'filme':
         objects = Filme.objects.filter(aprovado=False)
