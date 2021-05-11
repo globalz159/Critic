@@ -7,6 +7,9 @@ from django.db.models import signals
 from django.template.defaultfilters import slugify
 from stdimage.models import StdImageField
 
+class CategoriaItem(models.Model):
+    categoria = models.CharField("Categoria", max_length=255)
+
 class Itens(models.Model):
     data_criacao = models.DateField("Data de Criação", auto_now_add=True, null=True)
     data_atualizacao = models.DateField("Data de Atualização", auto_now=True)
@@ -17,8 +20,8 @@ class Itens(models.Model):
     slug = models.SlugField("Slug", max_length=100, blank=True, editable=False)
     imagem = StdImageField("Imagem de capa", null=True, upload_to='itens', variations={'thumb': (300, 300)})
 
-    avaliacoes = models.ManyToManyField(Avaliacao, blank=True)
     ativo = models.BooleanField("Ativo", default=False)
+    categoria = models.ManyToManyField(CategoriaItem, verbose_name="Categoria")
 
     class Meta:
         abstract = True
