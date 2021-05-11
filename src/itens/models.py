@@ -1,5 +1,4 @@
 from datetime import datetime
-from avaliacoes.models import Avaliacao
 
 from django.db import models
 
