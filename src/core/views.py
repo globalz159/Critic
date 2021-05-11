@@ -132,7 +132,7 @@ def searchbar(request):
         app_name = request.GET.get('select_app', 'usuario')
         users = Usuario.objects.all()
         if search:
-            if app_name in ('usuario', 'amigos'):
+            if app_name in ('usuarios', 'amigos'):
                 # Buscando objetos 
                 if app_name == 'amigos':
                     users = request.user.amigos.all()
