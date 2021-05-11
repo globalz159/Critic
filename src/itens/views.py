@@ -50,7 +50,7 @@ def livro(request, pk):
     context = {
         'livro': livro_obj
     }
-    return render(request, 'livro.html', context, name="livro")
+    return render(request, 'livro.html', context)
 
 def livros(request):
     bloquear = bloqueando_acesso(request)
@@ -80,7 +80,7 @@ def serie(request, pk):
     context = {
         'serie': serie_obj
     }
-    return render(request, 'serie.html', context, name="serie")
+    return render(request, 'serie.html', context)
 
 def series(request):
     bloquear = bloqueando_acesso(request)

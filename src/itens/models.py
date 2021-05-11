@@ -18,8 +18,7 @@ class Itens(models.Model):
     pais = models.CharField("Pais", max_length=100)
     ano_lancamento = models.DateField("Ano de lançamento")
     slug = models.SlugField("Slug", max_length=100, blank=True, editable=False)
-    imagem = StdImageField("Imagem de capa", null=True, upload_to='itens', variations={'thumb': (300, 300)})
-
+    imagem = StdImageField("Imagem de capa", null=True, upload_to='itens', variations={'thumbnail': (300, 300)})
     ativo = models.BooleanField("Ativo", default=False)
     categoria = models.ManyToManyField(CategoriaItem, verbose_name="Categoria")
 
