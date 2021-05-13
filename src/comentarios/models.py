@@ -6,9 +6,8 @@ from publicacoes.models import Publicacao
 class Comentario(models.Model):
     create_date = models.DateTimeField(auto_now=True)
     user_id = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    publicacao = models.ForeignKey(Publicacao, on_delete=models.CASCADE, default=False)
-    comentario_pai = models.ForeignKey("Comentario", on_delete=models.CASCADE, null=True, blank=True)
-    texto = models.TextField("Comentario", max_length="500")
+    publicacao = models.ForeignKey(Publicacao, on_delete=models.CASCADE)
+    texto = models.TextField("Comentario", max_length="1024")
 
     class Meta:
         verbose_name = "Comentario"
@@ -24,6 +23,6 @@ class Like(models.Model):
         (2, 'Deslike')
     )
     create_date = models.DateTimeField(auto_now=True)
-    user_id = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True, verbose_name="user_id")
+    user_id = models.ForeignKey(Usuario, on_delete=models.CASCADE, verbose_name="user_id")
     like = models.IntegerField("Like", choices=LIKE_CHOICES)
-    comentario = models.ForeignKey(Comentario, on_delete=models.CASCADE, default=False)
+    comentario = models.ForeignKey(Comentario, on_delete=models.CASCADE)
