@@ -62,8 +62,8 @@ class Usuario(AbstractUser):
     # os campos: username, password, first_name, last_name vem de AbstractUser
     email = models.EmailField('E-mail', unique=True)
 
-    estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, verbose_name="Estado")
-    cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True, verbose_name="Cidade")
+    estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, verbose_name="Estado", null=True)
+    cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, verbose_name="Cidade", null=True)
 
     data_nascimento = models.DateField("Data de Nascimento", null=True)
 
