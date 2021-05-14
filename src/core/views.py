@@ -127,11 +127,16 @@ def searchbar(request):
     if request.method == 'GET':
         context = {}
         objs_to_show = []
-
+        
+        # Obtendo parâmetros da busca
         search = request.GET.get('search', False)
-        app_name = request.GET.get('select_app', 'usuario')
+        app_name = request.GET.get('select_app', 'usuarios')
+        filtro_busca = request.GET.get('select_filter', 'titulo')
+
         users = Usuario.objects.all()
-        if search:
+        
+        if search:  # Executando se a barra de busca estiver preenchida
+            
             if app_name in ('usuarios', 'amigos'):
                 # Buscando objetos 
                 if app_name == 'amigos':
@@ -170,29 +175,47 @@ def searchbar(request):
                 elif app_name == 'serie':
                     objs = Serie.objects.all()
                     search_params = ('titulo', 'pais', 'diretor')
-
+                
                 # Filtrando objetos
-                #### -- Implementar filtro de busca ---- ####
-                objs_filtered = objs.filter(titulo__icontains=search)
-                #objs_filtered |= objs.filter(first_name__istartswith=search)
-                #### ------- ####
+                if filtro_busca == 'titulo':
+                    objs_filtered = objs.filter(titulo__icontains=search)
+                elif filtro_busca == 'pais':
+                    objs_filtered = objs.filter(pais__istartswith=search)
+                elif filtro_busca == 'diretor':
+                    objs_filtered = objs.filter(diretor__istartswith=search)
+                elif filtro_busca == 'autor':
+                    objs_filtered = objs.filter(autor__istartswith=search)
+                else:
+                    objs_filtered = objs
 
                 for item in objs_filtered:
                     objs_to_show.append(item)
-
                 context.update({
                     'itens': objs_to_show, # -> List
+                    'search_filters': search_params,
                 })
 
-            
-            else:
-                user_amigos = False
+        else: # Executando se a barra de busca não estiver preenchida
+            if app_name in ('filme', 'livro', 'serie'):
+                if app_name == 'filme':
+                    objs = Filme.objects.all()
+                    search_params = ('titulo', 'pais', 'diretor')
+                    context['filmes'] = objs
+                elif app_name == 'livro':
+                    objs = Livro.objects.all()
+                    search_params = ('titulo', 'pais', 'autor')
+                    context['livros'] = objs
+                elif app_name == 'serie':
+                    objs = Serie.objects.all()
+                    search_params = ('titulo', 'pais', 'diretor')
+                    context['filmes'] = objs
+                context['search_filters'] = search_params
+                return redirect(f'/itens/{app_name}s')
 
-        else:
-            user_amigos = False
-
+        # Atualizando contexto
         context.update({
             'search_input': search, # -> String
+            'objs': objs_to_show,
             'len_resultados': len(objs_to_show), # -> Int
             'app_name': app_name,
             'searching': True,
