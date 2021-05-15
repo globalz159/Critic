@@ -200,9 +200,22 @@ _________
   - estrutura de for: `{% for filme in filmes %}... {% endfor %}`
   - Importando static: `{% load static %}`
 
-exemplo:
+exemplos:
 
     <h1>Bem vindo, {{user_name}}</h1>
+
+    <table>
+       <tr>
+         <th> Nome </th>
+         <th> Preço </th>
+       </tr>
+       {% for produto in produto %}
+         <tr>
+            <td> {{produto.nome}} </td>
+            <td> {{produto.preco}} </td>
+         </tr>
+       {% endfor %}
+    </table>
 *será renderizado como:*
 ## Bem vindo, Fulano
 <br>
