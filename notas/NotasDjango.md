@@ -146,26 +146,27 @@ exemplo mapeando urls:
 - Um projeto possui várias aplicações
 - As aplicações criadas devem ser declaradas no arquivo settings.py na variável INSTALLED_APPS
 - O Django ja vem com algumas aplicações padrão
-      
-      INSTALLED_APPS = [
-          'django.contrib.admin',
-          'django.contrib.auth',
-          'django.contrib.contenttypes',
-          'django.contrib.sessions',
-          'django.contrib.messages',
-          'django.contrib.staticfiles',
 
-          'core',  # <- aplicação criada
-      ]
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
 
+    'core',  # <- aplicação criada
+]
+```
 
 ## Estrutura das aplicações:
-> views
-> urls
-> models
-> templates
-> admin
-> tests
+>  - views
+>  - urls
+>  - models
+>  - templates
+>  - admin
+>  - tests
 ### Views
 - São declaradas como funções no arquivo views.py
 - recebem request como parametro
@@ -174,8 +175,11 @@ exemplo mapeando urls:
 
 exemplo definição da view 'index':
 
-    def index(request):
-        return render(request, 'index.html')
+```python
+def index(request):
+    return render(request, 'index.html')
+```
+
 ***Contexto das views***
 - views podem ter um contexto para passar parâmetros do python para o html
 - o contexto é um dicionario definido na função
@@ -183,10 +187,11 @@ exemplo definição da view 'index':
 
 exemplo de view com contexto:
 
-    def index(request):
-        contexto = {'mensagem': 'Essa é uma mensagem no contexto'}
-        return render(request, 'index.html', contexto)
-
+```python
+def index(request):
+    contexto = {'mensagem': 'Essa é uma mensagem no contexto'}
+    return render(request, 'index.html', contexto)
+```
 _________
 ### Templates
 - São os arquivos HTML
@@ -202,20 +207,23 @@ _________
 
 exemplos:
 
-    <h1>Bem vindo, {{user_name}}</h1>
+```html
+<h1>Bem vindo, {{user_name}}</h1>
 
-    <table>
-       <tr>
-         <th> Nome </th>
-         <th> Preço </th>
-       </tr>
-       {% for produto in produto %}
-         <tr>
-            <td> {{produto.nome}} </td>
-            <td> {{produto.preco}} </td>
-         </tr>
-       {% endfor %}
-    </table>
+<table>
+  <tr>
+    <th> Nome </th>
+    <th> Preço </th>
+  </tr>
+  {% for produto in produto %}
+  <tr>
+    <td> {{produto.nome}} </td>
+    <td> {{produto.preco}} </td>
+  </tr>
+  {% endfor %}
+</table>
+```
+
 *será renderizado como:*
 ## Bem vindo, Fulano
 <br>
@@ -247,9 +255,11 @@ ________
 
 exemplo do model 'Produto':
 
-    class Produto(models.Model):
-        nome = models.CharField("Nome", max_length=100)
-        preco = models.DecimalField("Preço", decimal_places=2, max_digits=5)
+```python
+class Produto(models.Model):
+    nome = models.CharField("Nome", max_length=100)
+    preco = models.DecimalField("Preço", decimal_places=2, max_digits=5)
+```
 
 ***Migrations:***
 - após criar ou alterar models deve realizar as migrations para essas models
@@ -285,18 +295,18 @@ __________
 
 - A vizualização da tabela dos models pode ser editada usando classes que herdam do `admin.ModelAdmin` da seguinte forma:
 
-      
-      from django.contrib import admin
+```python      
+from django.contrib import admin
 
-      from .models import Filme, Livro, Serie
+from .models import Filme, Livro, Serie
 
-      class FilmeAdmin(admin.ModelAdmin):
-          list_display = ('titulo', 'diretor', ano_lancamento)
+class FilmeAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'diretor', ano_lancamento)
 
-      admin.site.register(Filme, FilmeAdmin)
-      admin.site.register(Livro)
-      admin.site.register(Serie)
-
+admin.site.register(Filme, FilmeAdmin)
+admin.site.register(Livro)
+admin.site.register(Serie)
+```
 
 ### Forms
 
@@ -308,17 +318,20 @@ __________
 
 exemplo:
 
-    class UsuarioCreateForm(forms.ModelForm):
-        class Meta(UserCreationForm.Meta):
-            model = Usuario
-            fields = ['username', 'email', 'first_name', 'last_name', 'data_nascimento', 'estado', 'cidade']
-            widgets = {
-                'data_nascimento': forms.DateInput(attrs={'type': 'date'}),
-                'password': forms.PasswordInput
-            }
-            labels = {
-                'username': 'Username',
-            }
+```python
+class UsuarioCreateForm(forms.ModelForm):
+    class Meta(UserCreationForm.Meta):
+        model = Usuario
+        fields = ['username', 'email', 'first_name', 'last_name', 'data_nascimento', 'estado', 'cidade']
+        widgets = {
+            'data_nascimento': forms.DateInput(attrs={'type': 'date'}),
+            'password': forms.PasswordInput
+        }
+        labels = {
+            'username': 'Username',
+        }
+```
+
 
 ***Envio de E-mails***
 ______
@@ -353,11 +366,13 @@ Exemplo:
 * Um objeto é instanciado da mesma forma que no python
 * Dada a classe 'Cliente':
 
-      class Cliente(models.Model):
-          nome = models.CharField("Nome", max_length=100)
-          sobrenome = models.CharField("Sobrenome", max_length=100)
-          email = models.EmailField("Email")
-   
+```python
+class Cliente(models.Model):
+    nome = models.CharField("Nome", max_length=100)
+    sobrenome = models.CharField("Sobrenome", max_length=100)
+    email = models.EmailField("Email")
+```   
+
 * Para criar um Objeto e adicionar ao banco de dados deve instanciar a classe Python :
 
       new_cliente = Cliente(nome="Fernando", sobrenome="Saeta", email="fernando@gmail.com")
@@ -371,19 +386,33 @@ Exemplo:
 
 exemplos:
 
-    from .models import Filme
+```python
+from .models import Filme
 
-    # Todos os Objetos
-    todos_filmes = Filme.objects.all()
+# Todos os Objetos
+todos_filmes = Filme.objects.all()
 
-    # Filme de ID = 1
-    filme_1 = Filme.objects.filter(id=1)
+# Filme de ID = 1
+filme_1 = Filme.objects.filter(id=1)
 
-    # Filmes do Tarantino
-    filme_tarantino = Filme.objects.filter(diretor='Quentin Tarantino')
+# Filmes do Tarantino
+filme_tarantino = Filme.objects.filter(diretor='Quentin Tarantino')
 
-    # Filmes de 2016
-    filmes_2016 = Filme.objects.get(ano_lancamento=2016) # <- consulta com get lança erro se não encontrar nenhum objeto
+# Filmes de 2016
+filmes_2016 = Filme.objects.get(ano_lancamento=2016) # <- consulta com get lança erro se não encontrar nenhum objeto
+```
+
+# Sessão 3 Views - Function e Class based views
+
+> As Views podem ser de 2 tipos. Podem ser uma **função**, que são as views definidas por função, e podem ser uma **classe**.
+
+* Diferenças principais:
+
+| Class Based Views | Function Based Views|
+:---------------:|:---------------:
+ São definidas como uma Classe | São definidas como funções |
+ Herdam da classe de View superiora | recebem o request como parâmetro |
+ Possuem métodos definidos com base na herança | Deve ser implementado tudo |
 
 
 
