@@ -14,13 +14,14 @@
           <p>País - {{filme.pais}}</p>
           <p>Ano de lançamento - {{filme.ano_lancamento}}</p>
           <p>Elenco - {{filme.elenco}}</p>
-          <form action="{% url 'avaliar_filme' %}" method="post" autocomplete="off" enctype="multipart/form-data" class="login100-form validate-form form">
-            {% csrf_token %}
+          <form action="{% url 'cadastro' %}" method="post" autocomplete="off" enctype="multipart/form-data" class="login100-form validate-form form">
             {% buttons %}
-              <button type="submit" class="login100-form-btn btn btn-primary" href="{% url 'avaliar_filme' %}">
+              <button type="submit" class="login100-form-btn btn btn-primary">
                 <h2 style = font-family:Georgia;font-size:18px;>Fazer avaliação</h2>
               </button>
-            {% endbuttons %} 
+            {% endbuttons %}
+            </div>
+    
           </form>
       </div>
   </section>

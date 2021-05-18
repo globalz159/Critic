@@ -7,13 +7,21 @@
 {% block content %}
 <div class="wrapper">
   <section class="main-container" style="background-color: rgb(0, 0, 0);">
-      <div class="section-header" style="background-color: rgb(205, 145, 245);">
-          <h1  style="color:black">Título - {{serie.titulo}}</h1>
-          {{serie.imagem}}
-          <p  style="color:black">Diretor - {{serie.diretor}}</p>
-          <p  style="color:black">Número de temporadas - {{serie.qnt_temporadas}}</p>
-          <p  style="color:black">País - {{serie.pais}}</p>
-          <p  style="color:black">Ano de lançamento - {{serie.ano_lancamento}}</p>
+      <div class="item-description" class="section-header" style="background-color: rgb(205, 145, 245);">
+          <h1>Título - {{serie.titulo}}</h1>
+          <img src= "/media/{{serie.imagem.thumbnail}}"/>
+          <p>Diretor - {{serie.diretor}}</p>
+          <p>Número de temporadas - {{serie.qnt_temporadas}}</p>
+          <p>País - {{serie.pais}}</p>
+          <p>Ano de lançamento - {{serie.ano_lancamento}}</p>
+          <form action="{% url 'avaliar_serie' %}" method="post" autocomplete="off" enctype="multipart/form-data" class="login100-form validate-form form">
+            {% csrf_token %}
+            {% buttons %}
+              <button type="submit" class="login100-form-btn btn btn-primary" href="{% url 'avaliar_serie' %}">
+                <h2 style = font-family:Georgia;font-size:18px;>Fazer avaliação</h2>
+              </button>
+            {% endbuttons %} 
+          </form>
       </div>
   </section>
 </div>
