@@ -233,6 +233,11 @@ qualquer tipo de sistema operacional.
 
 ![Responder Comentario](diagramas/CasosDeUso/Especificacoes/ResponderComentario.png)
 
+# Diagrama de Navegação
+
+![Diagrama de Navegação](diagramas/Navegacao/navegacao.png)
+&nbsp;
+
 # Wireframes
 ###1. Tela de Login
 ![Realizar Login](diagramas/Wireframes/FazerLogin.png)
