@@ -60,3 +60,9 @@
     border: solid var(--primary) 5px;
     background-color: blanchedalmond;
 }
+
+.add_amigo{
+    background-color: rgb(33, 126, 33);
+    color: white;
+    font-size: 18px;
+}
