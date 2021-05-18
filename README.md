@@ -7,9 +7,22 @@
 ### Turmas 05K 
 ### 1º semestre de 2021
 
-                                                   UNIVERSIDADE PRESBITERIANA MACKENZIE
-                                                   
-                                                   FACULDADE DE COMPUTAÇÃO E INFORMÁTICA
+                UNIVERSIDADE PRESBITERIANA MACKENZIE
+                      
+                FACULDADE DE COMPUTAÇÃO E INFORMÁTICA
+
+
+
+
+
+
+
+
+
+                FELIPE MARTINEZ SILVA - TIA: 31923224
+                FERNANDO SAETA REBELATO - TIA: 31944078
+                GABRIEL NOVAES LEE - TIA: 31920462
+                GUSTAVO GONTARZIK - TIA: 31949142
 
 
 
@@ -20,22 +33,8 @@
 
 
 
-                                                     FELIPE MARTINEZ SILVA - TIA: 31923224
-                                                     FERNANDO SAETA REBELATO - TIA: 31944078
-                                                     GABRIEL NOVAES LEE - TIA: 31920462
-                                                     GUSTAVO GONTARZIK - TIA: 31949142
-
-
-
-
-
-
-
-
-
-
-                                             Aplicativo para Recomendação de Filmes, Séries e Livros 
-                                                                 Critic Hub
+          Aplicativo para Recomendação de Filmes, Séries e Livros 
+                              Critic Hub
 
 
 
@@ -49,8 +48,8 @@
 
 
 
-                                                                  SÃO PAULO 
-                                                                    2021
+                                SÃO PAULO
+                                  2021
 
 
 
