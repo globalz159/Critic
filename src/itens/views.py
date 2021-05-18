@@ -6,7 +6,7 @@ from .forms import CadastroFilme, CadastroSerie, CadastroLivro
 
 from core.views import bloquear_acesso, bloquear_acesso_admin
 
-@bloquear_acesso
+#@bloquear_acesso
 def filme(request, pk):
     filme_obj = get_object_or_404(Filme, id=pk)
     
@@ -30,7 +30,7 @@ def filmes(request):
     return render(request, 'filmes.html', context)
 
 
-@bloquear_acesso
+#@bloquear_acesso
 def livro(request, pk):
     livro_obj = get_object_or_404(Livro, id=pk)
 
@@ -54,7 +54,7 @@ def livros(request):
     return render(request, 'livros.html', context)    
 
 
-@bloquear_acesso
+#@bloquear_acesso
 def serie(request, pk):
     serie_obj = get_object_or_404(Serie, id=pk)
 

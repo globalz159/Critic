@@ -74,3 +74,11 @@ class Usuario(AbstractUser):
 
     objects = UsuarioManager()
 
+class PedidosAmizade(models.Model):
+    create_date = models.DateField(auto_now=True)
+    remetente = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='remetente')
+    destinatario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='destinatario')
+    aceito = models.BooleanField('Aceito', default=False)
+
+    def __str__(self):
+        return f'{self.remetente} -> {self.destinatario}'

@@ -15,6 +15,6 @@ urlpatterns = [
     path('livros', livros, name='livros'),
     path('filmes', filmes, name='filmes'),
     path('series', series, name='series'),
-   
+
 
 ]

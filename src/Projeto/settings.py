@@ -28,6 +28,8 @@ SECRET_KEY = '(#ly$5kd^#*kui8-nrb0%_w!4-rfbv#@h2u6y!--e#gtzn3hxh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ADMIN = ['Fernando', 'fernando.r.saeta@gmail.com']
+
 ALLOWED_HOSTS = ['*']
 
 

@@ -11,7 +11,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('conta/', include('django.contrib.auth.urls')),
     path('', include('core.urls')),
-    path('itens/', include('itens.urls'))
+    path('itens/', include('itens.urls')),
+    path('avaliacoes/', include('avaliacoes.urls'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

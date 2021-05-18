@@ -1,0 +1,38 @@
+{% load static %}
+
+<div class="resultados-container">
+    {% if usuarios %}
+    {% for usuario in usuarios %}
+    <div class="usuarios-box">
+        <table style="width:100%;">
+            <tr>
+                <td style="width:80%;">
+                    <h2>{{ usuario.username }}</h2>
+                </td>
+                <td>
+                    {% if usuario in user.amigos.all %}
+                    <i id="icon-added" class="fas fa-user-check"> Amigos</i>
+                    <i id="icon-rm" class="fas fa-user-alt-slash"> Remover Amigo</i>
+                    {% else %}
+
+                    <form action="{% url 'add_amigos' %}" method="post" style="display: flex; float: right;">
+                        {% csrf_token %}
+                        <input class="oculto_no_form" type="text" id="user_id" name="user_id" value="{{usuario.id}}">
+                        <button class="btn btn-primary btn-block" type="submit" id="add_amigo" name="add_amigo"><i id="icon-add" class="fas fa-user-plus">Adicionar Amigo</i></button>
+                    </form>
+
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="resultados-container">
+        <div class="sem-resultados">
+            <h2 style="color: white;">Nenhum resultado encontrado</h2>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
