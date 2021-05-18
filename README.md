@@ -90,10 +90,6 @@ Departamento de Tecnologia da Informação: Será responsável pela implementaç
 Serviço de Atendimento ao Consumidor(SAC): O sistema reduzirá a carga de trabalho no SAC, pois os clientes conseguirão encontrar de forma mais fácil as informações que necessitam
 
 
-
-# Objetivos funcionais
-
-
 RF1	O sistema deve permitir o cadastro do usuário e deverá conter: nome completo, username, senha , data de nascimento, cidade e estado.
 - O perfil do usuário sempre vai estar com as descrições importantes.
 
@@ -104,7 +100,7 @@ RF3	O sistema permitirá que os membros façam alterações em seus cadastros.
 - Isto fará com que os dados sejam alterados em eventuais mudanças.
 
 RF4	O sistema deve permitir que o usuário possa excluir o seu cadastro pessoal.
-- Isto fará com que o membro saia  permanentemente da rede social .
+- Isto fará com que o membro saia permanentemente da rede social .
 
 RF5	O sistema deve permitir incluir descrição no seu perfil de membro
 - Isto fará para melhorar o seu perfil.
@@ -115,47 +111,48 @@ RF6	O sistema deve permitir incluir fotos do membro em seu perfil
 RF7	O sistema deve apresentar uma descrição detalhada dos filmes, séries e livros.
 - Isto fará com que melhore a qualidade do conteúdo da rede social.
 
-RF8	O cadastro de um livro deverá conter: título, autor(es), editora, país, ano de lançamento.
-- Isto melhorará as informações sobre os detalhes dos livros.
+RF8	O sistema deve permitir o cadastro de livro e conter: título, autor(es), editora, país, ano de lançamento.
+- Isto melhorará as informações sobre os detalhes dos livros
 
-RF9	O cadastro de um filme deverá conter: título, diretor, elenco principal, país, ano.
+RF9	O sistema deve permitir o cadastro de filme e conter: título, diretor, elenco principal, país, ano.
 - Isto melhorará as informações sobre os detalhes dos filmes.
 
-RF10	O cadastro de uma série deverá conter: título, diretor, elenco principal, país, ano, número de temporadas.
+RF10	O sistema deve permitir o cadastro de série e conter: título, diretor, elenco principal, país, ano, número de temporadas.
 - Isto melhorará as informações sobre os detalhes das séries.
 
 RF11	O sistema deve permitir a realização de adicionar comentários às avaliações feitas pelo outro, desde que tenham relacionamento de amizade.
 -Isto fará com que aumente o número de opiniões diferentes sobre o determinado filme,série ou livro.
 
 RF12	O sistema deve permitir que o membro possa “reagir” a avaliação do membro através de um emoticon “joinha”.
- - Isto fará o aumento de opiniões e avaliações 
- 
+- Isto fará o aumento de opiniões e avaliações
+
 RF13	O sistema deve permitir que o membro que reagiu a avaliação de outro membro, possa retirar o “joinha” dado.
 - Isto fará com que opiniões podem ser mudadas
 
 RF14	O sistema deve permitir que um usuário possa pedir relacionamento de amizade a outro membro.
-- Está informação fará com que o ciclo de amizade aumente. 
+- Está informação fará com que o ciclo de amizade aumente.
 
 RF15	O sistema deve mostrar os amigos em comum, quando um usuário visita a página de outro.
-- Esta informação fará com que o ciclo de amizade aumente através de amigos em comum entre os membros.
+- Esta informação fará com que o ciclo de amizade aumente através de amigos em
+comum entre os membros.
 
 RF16	O sistema deve sugerir amizades de membros para o outro membro.
 - Isto melhorará o serviço de interatividade entre os membros da rede social, trazendo um maior número de recomendações.
 
-RF17	O sistema deve permitir que o administrador possa validar o cadastramento de filmes, livros e séries. 
+RF17	O sistema deve permitir que o administrador possa validar o cadastramento de filmes, livros e séries.
 - Isto melhorará a qualidade do conteúdo da rede social.
 
 RF18	O sistema deverá permitir que sejam realizados pesquisas em todo o texto das páginas web a que o membro tenha acesso.
 - Isto melhorará as formas de pesquisa do conteúdo.
 
+2.5	Requisitos Não Funcionais
 
-# Objetivos não-funcionais
-
-RNF1	O sistema deverá utilizar um algoritmo colaborativo para oferecer as recomendações a um determinado membro.
+RNF1	O sistema deverá utilizar um algoritmo colaborativo para oferecer as recomendações a um
+determinado membro.
 
 RNF2	Após o sistema ter pelo menos 10 membros cadastrados e cada membro 10 avaliações, o sistema passará a apresentar para cada membro recomendações de filmes, séries e livros.
 
-RNF3	O sistema deverá receber a sugestão de 3 membros que poderiam ser seus amigos
+RNF3	O sistema deverá receber a sugestão de 3 membros que poderiam ser seus amigos.
 
 RNF4	O sistema deverá permitir o número médio de amigos dos membros da rede social.
 
@@ -171,52 +168,35 @@ RNF9	A documentação do sistema deverá apresentar indicativos de como os dados
 
 RNF10	Os dados devem ser persistidos em uma base de dados
 
-RNF11	Os membros deverão acessar as funções da rede social através da web ou por aplicativos móveis
+RNF11	A aplicação deve ser responsiva e leve, evitando demoras no carregamento das funcionalidades.
 
-RNF12	A aplicação deve ser responsiva e leve, evitando demoras no carregamento das funcionalidades.
+RNF12	A aplicação deve ser implantada em um provedor de serviços na Internet .
 
-RNF13	A aplicação deve ser implantada em um provedor de serviços na Internet .
+RNF13	Desenvolvedores terão que dar suporte para os usuários e eventuais problemas no
+sistema.
 
-RNF14	Desenvolvedores terão que dar suporte para os usuários e eventuais problemas no sistema.
+RNF14	Deve emitir relatórios por membros cadastrados.
 
-RNF15	O sistema deverá ser acessado completamente via browser HTTP/HTML.
+RNF15	Deve emitir relatórios por filmes, séries e livros cadastrados.
 
-RNF16	O produto será disponibilizado em português, mas de forma a permitir que versões em línguas diferentes possam ser produzidas sem necessidade de ter acesso ao código fonte.
-RNF17	Suporte ao produto será feito exclusivamente através de site Web, com acesso a Base de Conhecimento sobre o aplicativo.
+RNF16	Deve ser executável em qualquer plataforma.
 
-RNF18	Deve emitir relatórios por membros cadastrados.
+RNF17	O sistema deve garantir que somente usuários com permissão tenham acesso às
+informações.
 
-RNF19	Deve emitir relatórios por filmes, séries e livros cadastrados.
+RNF18	Integridade das informações: o sistema deve garantir a integridade das informações
+gravadas em banco de dados.
 
-RNF20	Deve ser executável em qualquer plataforma
+RNF19	O sistema deve ter interfaces simplificadas, legível e sem poluição visual.
 
-RNF21	Ser desenvolvido na linguagem Python.
+RNF20	As informações do sistema devem ser de fácil consulta e possuir cadastros rápidos
 
-RNF22	Ser utilizado o framework Django para desenvolvimento do aplicativo.
+RNF21	O sistema deve manter o tempo de timeout ativo enquanto o usuário estiver utilizando.
 
-RNF23	O sistema deve garantir que somente usuários com permissão tenham acesso às informações.
+RNF22	O sistema deve estar sempre disponível.
 
-RNF24	Integridade das informações: o sistema deve garantir a integridade das informações gravadas em banco de dados.
-
-RNF25	O sistema deve ter interfaces simplificadas, legível e sem poluição visual.
-
-RNF26	As informações do sistema devem ser de fácil consulta e possuir cadastros rápidos
-
-RNF27	O sistema deve manter o tempo de timeout ativo enquanto o usuário estiver utilizando.
-
-RNF28	O sistema deve estar sempre disponível.
-
-RNF29	O sistema deve ser executado em computadores Intel Core i3 ou superior, aceitando qualquer tipo de sistema operacional.
-
-
-# COTS (Commercial Off-The-Shelf)
-
-Os softwares que serão adquiridos para compor o sistema são:
-
-* Tradutor do português para o inglês e do português para o espanhol.
-
-* Engine de pesquisa.
-
+RNF23	O sistema deve ser executado em computadores Intel Core i3 ou superior, aceitando
+qualquer tipo de sistema operacional.
 
 # Casos de uso
 ## Diagrama de casos de uso
@@ -319,46 +299,64 @@ Os softwares que serão adquiridos para compor o sistema são:
 &nbsp;
 
 ## Realizar Login
-![Realizar Login](diagramas/Sequencias/Seq_Fazer_Login.png)
+![Realizar Login](diagramas/Sequencias/Seq_Fazer_Login.jpg)
 &nbsp;
 ## Realizar Registro
-![Realizar Registro](diagramas/Sequencias/Seq_Fazer_Registro.png)
+![Realizar Registro](diagramas/Sequencias/Seq_Fazer_Registro.jpg)
 &nbsp;
 ## Alterar Registro
-![Alterar Registro](diagramas/Sequencias/Seq_Atualizar_Registro.png)
+![Alterar Registro](diagramas/Sequencias/Seq_Atualizar_Registro.jpg)
 &nbsp;
 ## Excluir Registro
-![Excluir Registro](diagramas/Sequencias/Seq_Excluir_Registro.png)
+![Excluir Registro](diagramas/Sequencias/Seq_Excluir_Registro.jpg)
 &nbsp;
 ## Propor Relacionamento de Amizade
-![Propor Relacionamento de Amizade](diagramas/Sequencias/Seq_Propor_Amizade%20.jpeg)
-&nbsp;
-## Cadastrar Item
-![Cadastrar Item](diagramas/Sequencias/Seq_Cadastrar_Item.png)
+![Propor Relacionamento de Amizade](diagramas/Sequencias/Seq_Propor_Amizade.jpg)
 &nbsp;
 ## Cadastrar Livro
-![Cadastrar Livro](diagramas/Sequencias/Seq_Cadastrar_Livro.png)
+![Cadastrar Livro](diagramas/Sequencias/Seq_Cadastrar_Livro.jpg)
 &nbsp;
 ## Cadastrar Filme
-![Cadastrar Filme](diagramas/Sequencias/Seq_Cadastrar_Filme.png)
+![Cadastrar Filme](diagramas/Sequencias/Seq_Cadastrar_Filme.jpg)
 &nbsp;
 ## Cadastrar Serie
-![Cadastrar Serie](diagramas/Sequencias/Seq_Cadastrar_Serie.png)
+![Cadastrar Serie](diagramas/Sequencias/Seq_Cadastrar_Serie.jpg)
 &nbsp;
 ## Validar Cadastro
-![Validar Cadastro](diagramas/Sequencias/Seq_Validar_Item.png)
+![Validar Cadastro](diagramas/Sequencias/Seq_Validar_Item.jpg)
 &nbsp;
 ## Fazer Avaliação
-![Fazer Avaliação](diagramas/Sequencias/Seq_Fazer_Avaliacao.png)
+![Fazer Avaliação](diagramas/Sequencias/Seq_Fazer_Avaliacao.jpg)
 &nbsp;
 ## Reagir Avaliação
-![Reagir Avaliação](diagramas/Sequencias/Seq_Reagir_Avaliacao.png)
+![Reagir Avaliação](diagramas/Sequencias/Seq_Reagir_Avaliacao.jpg)
 &nbsp;
 ## Reagir Comentario
-![Reagir Comentario](diagramas/Sequencias/Seq_Reagir_Comentario.jpeg)
+![Reagir Comentario](diagramas/Sequencias/Seq_Reagir_Comentario.jpg)
 &nbsp;
 ## Responder Comentario
-![Responder Comentario](diagramas/Sequencias/Seq_Responder_Comentario.jpeg)
+![Responder Comentario](diagramas/Sequencias/Seq_Responder_Comentario.jpg)
+&nbsp;
+## Receber recomendações
+![Receber recomendações](diagramas/Sequencias/Seq_Recomendacoes.jpg)
+&nbsp;
+## Receber sugestão de amizade
+![Receber sugestão de amizade](diagramas/Sequencias/Seq_Receber_Sugestoes_Amizades.jpg)
+&nbsp;
+## Fluxo de Exceção Cadastrar Filme
+![Fluxo de Exceção Cadastrar Filme](diagramas/Sequencias/Seq_Excecao_Cadastro_Filme.jpg)
+&nbsp;
+## Fluxo de Exceção Login
+![Fluxo de Exceção Login](diagramas/Sequencias/Seq_Excecao_Login.jpg)
+&nbsp;
+## Fluxo de exceção responder comentário
+![Fluxo de exceção responder comentário](diagramas/Sequencias/Seq_Excecao_Responder_Comentario.jpg)
+&nbsp;
+## Fluxo de exceção rejeitar cadastro
+![Fluxo de exceção rejeitar cadastro](diagramas/Sequencias/Seq_Excecao_Rejeitar_Cadastro.jpg)
+&nbsp;
+## Fluxo de exceção com joinha no comentário
+![Fluxo de exceção com joinha no comentário](diagramas/Sequencias/Seq_Excecao_Responder_Comentario.jpg)
 &nbsp;
 
 # Diagrama de Classes
