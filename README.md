@@ -255,48 +255,92 @@ qualquer tipo de sistema operacional.
 ![Excluir Registro](diagramas/Wireframes/ExcluirRegistro.png)
 &nbsp;
 &nbsp;
-###5. Menu de opções no perfil do usuário
+###5. Tela de senha/username incorretos
+![Excluir Registro](diagramas/Wireframes/LoginIncorreto.png)
+&nbsp;
+&nbsp;
+###6. Menu de opções no perfil do usuário
 ![Menu de opções do perfil](diagramas/Wireframes/MenuOpcoesPerfil.png)
 &nbsp;
 &nbsp;
-###6. Tela Principal de Cadastro
+###7. Tela Principal de Cadastro
 ![Principal de Cadastro](diagramas/Wireframes/PrincipalDeCadastro.jpeg)
 &nbsp;
 &nbsp;
-###7. Tela de Cadastro de Filme
+###8. Tela de Cadastro de Filme
 ![Principal de Cadastro](diagramas/Wireframes/CadastrarFilme.jpeg)
 &nbsp;
 &nbsp;
-###8. Tela de Cadastro de Serie
+###9. Tela de Cadastro de Serie
 ![Principal de Cadastro](diagramas/Wireframes/CadastrarSerie.jpeg)
 &nbsp;
 &nbsp;
-###9. Tela de Cadastro de Livro
+###10. Tela de Cadastro de Livro
 ![Principal de Cadastro](diagramas/Wireframes/CadastrarLivro.jpeg)
 &nbsp;
 &nbsp;
-###10. Tela de Cadastro Efetuado
+###11. Tela de Cadastro Efetuado
 ![Cadastro Efetuado](diagramas/Wireframes/CadastroEfetuado.jpeg)
 &nbsp;
 &nbsp;
-###11. Tela de Nova Avaliação
+###12. Tela de Cadastro de livro inválido
+![Cadastro de livro inválido](diagramas/Wireframes/LivroCadastrado.jpg)
+&nbsp;
+&nbsp;
+###13. Tela de Cadastro de série inválido
+![Cadastro de série inválido](diagramas/Wireframes/SerieCadastrada.jpg)
+&nbsp;
+&nbsp;
+###13. Tela de Cadastro de filme inválido
+![Cadastro de filme inválido](diagramas/Wireframes/FilmeCadastrado.jpg)
+&nbsp;
+&nbsp;
+###14. Tela de Nova Avaliação
 ![Nova Avaliação](diagramas/Wireframes/FazerAvaliacao.png)
 &nbsp;
 &nbsp;
-###12. Tela de Reagir e Comentar Avaliações e Comentários
+###15. Tela de Reagir e Comentar Avaliações e Comentários
 ![Reações e comentarios](diagramas/Wireframes/ReagirAvaliacao.png)
 &nbsp;
 &nbsp;
-###13. Tela de Itens cadastrados a serem validados
+###16. Tela de Itens cadastrados a serem validados
 ![Itens cadastrados](diagramas/Wireframes/ValidarCadastros.png)
 &nbsp;
 &nbsp;
-###14. Tela de validar Cadastro de Item
+###17. Tela de validar Cadastro de Item
 ![Validar cadastro](diagramas/Wireframes/ValidarCadastro.png)
 &nbsp;
 &nbsp;
-###15. Tela de Procurar Amigos
+###18. Tela de Procurar Amigos
 ![Validar cadastro](diagramas/Wireframes/ProcurarAmigos.jpeg)
+&nbsp;
+&nbsp;
+###19. Tela de Receber recomendações
+![Receber recomendações](diagramas/Wireframes/Recomendacoes.jpg)
+&nbsp;
+&nbsp;
+###20. Tela de Receber sugestões de amizades
+![Receber sugestões de amizades](diagramas/Wireframes/SugestoesAmizades.png)
+&nbsp;
+&nbsp;
+###21. Tela de Busca de amigos
+![Busca de amigos](diagramas/Wireframes/BuscaAmigos.png)
+&nbsp;
+&nbsp;
+###22. Tela de de amigos
+![Amigos](diagramas/Wireframes/Amigos.png)
+&nbsp;
+&nbsp;
+###23. Tela de Propor relacionamento
+![Propor relacionamento](diagramas/Wireframes/ProporRelacionamento.png)
+&nbsp;
+&nbsp;
+###24. Tela de avaliação excluida
+![Avaliação excluida](diagramas/Wireframes/AvaliacaoExcluida.png)
+&nbsp;
+&nbsp;
+###25. Tela de comentário excluido
+![Comentário excluido](diagramas/Wireframes/ComentarioExcluido.png)
 &nbsp;
 &nbsp;
 
