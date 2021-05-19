@@ -46,9 +46,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    # Nossas Aplicações
     'avaliacoes.apps.AvaliacoesConfig',
     'comentarios.apps.ComentariosConfig',
     'core.apps.CoreConfig',
+    'amigos.apps.AmigosConfig',
     'itens.apps.ItensConfig',
     'publicacoes.apps.PublicacoesConfig',
 

@@ -1,4 +1,5 @@
 {% load static %}
+{% load bootstrap4 %}
 <!-- Header de Sections com barra de busca -->
 <div class="section-header">
     <table style="width: 100%;">
@@ -16,20 +17,24 @@
             </h1>
             {% else %}
             <h1 class="header-title">
-                    {% if app_name == 'filme' %}
+                {% if app_name == 'filme' %}
                         Filmes
-                    {% elif app_name == 'livro' %}
+
+                {% elif app_name == 'livro' %}
                         Livros
-                    {% elif app_name == 'serie' %}
+
+                {% elif app_name == 'serie' %}
                         Séries
-                    {% elif app_name == 'amigos' %}
+
+                {% elif app_name == 'amigos' %}
                         Seus Amigos
-                    {% elif app_name == 'usuarios' %}
+
+                {% elif app_name == 'usuarios' %}
                         Usuários
-                    {% endif %}
+                {% endif %}
                 </h1>
             {% endif %}
-                
+
             </td>
             <!-- Coluna - Barra de Busca -->
             {% if searching %}
@@ -56,4 +61,13 @@
             </td>
         </tr>
     </table>
+
+    {% if app_name == 'amigos' %}
+    <div class="buttons-box" style="height: 30px; width: 100%; background-color: blanchedalmond;">
+        <form action="">
+            <a class="btn btn-secondary" href="{% url 'add_amigos' %}">Encontrar Amigos</a>
+        </form>
+    </div>
+    {% endif %}
+
 </div>
