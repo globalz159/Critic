@@ -115,14 +115,15 @@ Alguns usos:
 
 exemplo mapeando rota para view:
 
-    from django.urls import path
-    from .views import index, cadastro
+```python
+from django.urls import path
+from .views import index, cadastro
 
-    urlpatterns = [
-        path('', index)
-        path('cadastro', cadastro)
-    }
-
+urlpatterns = [
+    path('', index)
+    path('cadastro', cadastro)
+}
+```
 
 2. Importando o arquivo urls da aplicação e usando o *include na lista 'urlpatterns'
 **Utiliza esse método no arquivo urls.py da pasta do projeto*
