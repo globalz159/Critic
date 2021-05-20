@@ -1,7 +1,7 @@
 {% load static %}
 {% load bootstrap4 %}
 
-<form action="{% url 'searchbar' %}" method="get">
+<form action="{% url 'searchbar' app_name='{{app_name}}'%}" method="get">
     <div class="barra-busca">
         
         <!-- Filtro de Objeto -->

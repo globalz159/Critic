@@ -17,19 +17,19 @@ import json
 
 # DECORATOR DE BLOQUEAR ACESSO !!!!
 def bloquear_acesso(view_func):
-    def bloquear(request):
+    def bloquear(request, *args,**kwargs):
         if request.user.is_anonymous:
             messages.warning(request, "Acesso negado! Faça login ou crie uma conta para acessar o app")
             return redirect('/conta/login')
-        return view_func(request)
+        return view_func(request, *args,**kwargs)
     return bloquear
 
 def bloquear_acesso_admin(view_func):
-    def bloquear(request):
+    def bloquear(request, *args,**kwargs):
         if not request.user.is_superuser:
             messages.error(request, "Acesso negado! Essa área é restrita apenas aos administradores do site")
             return redirect('/')
-        return view_func(request)
+        return view_func(request, *args,**kwargs)
     return bloquear
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -122,32 +122,80 @@ def v404(request):
 def v500(request):
     return render(request, '500.html')
 
+def obtendo_objetos(app_name):
+    if app_name == 'filme':
+        objs = Filme.objects.all()
+    elif app_name == 'livro':
+        objs = Livro.objects.all()
+    elif app_name == 'serie':
+        objs = Serie.objects.all()    
+    elif app_name == 'usuarios':
+        objs = Usuario.objects.all()
+    elif app_name == 'amigos':
+        objs = Usuario.objects.all()
+    else:
+        objs = []
+    return objs
+
+def obtendo_parametros_busca(app_name):
+    if app_name == 'filme':
+        search_params = ('titulo', 'pais', 'diretor')
+    elif app_name == 'livro':
+        search_params = ('titulo', 'pais', 'autor')
+    elif app_name == 'serie':
+        search_params = ('titulo', 'pais', 'diretor')
+    else:
+        search_params = []
+    return search_params
+
+def filtrando_objetos(app_name, objs, search, search_filter):
+    if app_name in ('usuarios', 'amigos'):
+        objs_filtered = objs.filter(username__icontains=search)
+        objs_filtered |= objs.filter(first_name__istartswith=search)
+    
+    elif app_name in ('filme', 'serie', 'livro'):
+        # Filtrando objetos
+        if search_filter == 'titulo':
+            objs_filtered = objs.filter(titulo__icontains=search)
+        elif search_filter == 'pais':
+            objs_filtered = objs.filter(pais__istartswith=search)
+        elif search_filter == 'diretor':
+            objs_filtered = objs.filter(diretor__istartswith=search)
+        elif search_filter == 'autor':
+            objs_filtered = objs.filter(autor__istartswith=search)
+        else:
+            objs_filtered = objs
+    else:
+        objs_filtered = objs
+    return objs_filtered
+
+
 @bloquear_acesso
-def searchbar(request):
+def searchbar(request, app_name):
+    context = {}
+    objs_to_show = []
+    users = Usuario.objects.all()
+    app_name = request.GET.get('select_app', 'usuarios')
+    objs = obtendo_objetos(app_name)
+
     if request.method == 'GET':
-        context = {}
-        objs_to_show = []
-        
-        # Obtendo parâmetros da busca
+        if app_name == 'amigos':
+            objs = request.user.amigos.all()
+        search_params = obtendo_parametros_busca(app_name)
+
+        # Obtendo valores da busca
         search = request.GET.get('search', False)
-        app_name = request.GET.get('select_app', 'usuarios')
         filtro_busca = request.GET.get('select_filter', 'titulo')
 
-        users = Usuario.objects.all()
-        
         if search:  # Executando se a barra de busca estiver preenchida
+            # Filtrando objetos
+            objs_filtered = filtrando_objetos(app_name, objs, search, filtro_busca)
             
             if app_name in ('usuarios', 'amigos'):
-                # Buscando objetos 
-                if app_name == 'amigos':
-                    users = request.user.amigos.all()
-                user_filtered = users.filter(username__icontains=search)
-                user_filtered |= users.filter(first_name__istartswith=search)
-
                 list_dict = []
                 user_amigos = {}
                 # Obtendo amigos em comum
-                for user in user_filtered:
+                for user in objs_filtered:
                     amigos = user.amigos.all()
                     amigos_em_comum = [amigo for amigo in amigos if amigo in request.user.amigos.all()]
                     list_dict.append({'user': user, 'amigos_comum': amigos_em_comum, 'cont': len(amigos_em_comum)})
@@ -163,31 +211,6 @@ def searchbar(request):
                 })
 
             elif app_name in ('filme', 'serie', 'livro'):
-                # Obtendo Objetos
-                if app_name == 'filme':
-                    objs = Filme.objects.all()
-                    search_params = ('titulo', 'pais', 'diretor')
-
-                elif app_name == 'livro':
-                    objs = Livro.objects.all()
-                    search_params = ('titulo', 'pais', 'autor')
-
-                elif app_name == 'serie':
-                    objs = Serie.objects.all()
-                    search_params = ('titulo', 'pais', 'diretor')
-                
-                # Filtrando objetos
-                if filtro_busca == 'titulo':
-                    objs_filtered = objs.filter(titulo__icontains=search)
-                elif filtro_busca == 'pais':
-                    objs_filtered = objs.filter(pais__istartswith=search)
-                elif filtro_busca == 'diretor':
-                    objs_filtered = objs.filter(diretor__istartswith=search)
-                elif filtro_busca == 'autor':
-                    objs_filtered = objs.filter(autor__istartswith=search)
-                else:
-                    objs_filtered = objs
-
                 for item in objs_filtered:
                     objs_to_show.append(item)
                 context.update({
@@ -198,16 +221,10 @@ def searchbar(request):
         else: # Executando se a barra de busca não estiver preenchida
             if app_name in ('filme', 'livro', 'serie'):
                 if app_name == 'filme':
-                    objs = Filme.objects.all()
-                    search_params = ('titulo', 'pais', 'diretor')
                     context['filmes'] = objs
                 elif app_name == 'livro':
-                    objs = Livro.objects.all()
-                    search_params = ('titulo', 'pais', 'autor')
                     context['livros'] = objs
                 elif app_name == 'serie':
-                    objs = Serie.objects.all()
-                    search_params = ('titulo', 'pais', 'diretor')
                     context['filmes'] = objs
                 context['search_filters'] = search_params
                 return redirect(f'/itens/{app_name}s')
@@ -222,22 +239,3 @@ def searchbar(request):
         })
         return render(request, 'busca/base_busca.html', context)
 
-@bloquear_acesso
-def seus_amigos(request):
-    amigos = [user for user in Usuario.objects.all() if user in request.user.amigos.all() and user != request.user]
-    app_name = 'amigos'
-    context = {
-        'amigos': amigos,
-        'app_name': app_name,
-    }
-    return render(request, 'busca/base_busca.html', context)
-
-@bloquear_acesso
-def adicionar_amigos(request):
-    nao_amigos = [user for user in Usuario.objects.all() if user not in request.user.amigos.all() and user != request.user]
-    app_name = 'usuarios'
-    context = {
-        'nao_amigos': nao_amigos,
-        'app_name': app_name,
-    }
-    return render(request, 'busca/base_busca.html', context)
