@@ -1,6 +1,7 @@
 from django.db import models
 
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+from stdimage.models import StdImageField
 
 from pyUFbr.baseuf import ufbr
 
@@ -61,6 +62,7 @@ class Usuario(AbstractUser):
     # PK = username
     # os campos: username, password, first_name, last_name vem de AbstractUser
     email = models.EmailField('E-mail', unique=True)
+    imagem = StdImageField('Imagem Perfil', null=True, blank=True, upload_to='usuarios', variations={'thumbnail':(300,300)})
 
     estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, verbose_name="Estado", null=True)
     cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, verbose_name="Cidade", null=True)
