@@ -9,6 +9,8 @@ urlpatterns = [
     path('404', v404, name='v404'),
     path('500', v500, name='v500'),
 
+    path('minha-conta', minha_conta, name='perfil'),
+
     path('busca/<str:app_name>', searchbar, name='searchbar'),
 
     path('ajax/get-cidades-ajax/', carregar_cidades, name='get-cidades-ajax'),

@@ -239,3 +239,19 @@ def searchbar(request, app_name):
         })
         return render(request, 'busca/base_busca.html', context)
 
+
+def minha_conta(request):
+    user = request.user
+    av_filmes = user.avaliacaofilme_set.all()
+    av_livros = user.avaliacaolivro_set.all()
+    av_series = user.avaliacaoserie_set.all()
+
+    avaliacoes = av_filmes.union(av_livros)
+    avaliacoes = avaliacoes.union(av_series)
+    avaliacoes = avaliacoes.order_by('data_criacao')
+    
+    context = {
+        'user': user,
+        'avaliacoes':avaliacoes,
+    }
+    return render(request, 'minha_conta.html', context)
