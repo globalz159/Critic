@@ -53,9 +53,9 @@
             {% endif %}
                 <p style="padding-left: 15px; margin-right: 20px; float: right;">
                 {% if app_name != 'amigos' %}
-                    {{len_resultados}} Resultados de {{app_name}}
+                    {{len_resultados}} Resultado{% if len_resultados != 1 %}s{% endif %} de {{app_name}}
                 {% else %}
-                    {{len_resultados}} {{app_name}}
+                    {{len_resultados}} Amigo{% if len_resultados != 1 %}s{% endif %}
                 {% endif %}
                 </p>
             </td>
@@ -65,7 +65,16 @@
     {% if app_name == 'amigos' %}
     <div class="buttons-box" style="height: 30px; width: 100%; background-color: blanchedalmond;">
         <form action="">
-            <a class="btn btn-secondary" href="{% url 'add_amigos' %}">Encontrar Amigos</a>
+            <table class="sub-section-header" style="width:100%;text-align: center;">
+            <tr>
+                <td style="width:50%;">
+                    <a class="btn btn-secondary" href="{% url 'add_amigos' %}">Encontrar Amigos</a>
+                </td>
+                <td style="width:50%;">
+                    <a class="btn btn-secondary" href="{% url 'pedidos_amizade' %}">Pedidos de Amizade</a>
+                </td>
+            </tr>
+            </table>
         </form>
     </div>
     {% endif %}

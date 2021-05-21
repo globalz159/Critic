@@ -61,8 +61,19 @@
     background-color: blanchedalmond;
 }
 
+.user-box-btn{
+    display: flex;
+    float: right;
+    padding-right: 20px;
+}
+
 .add_amigo{
     background-color: rgb(33, 126, 33);
     color: white;
     font-size: 18px;
+}
+
+/*** PEDIDOS AMIZADE ***/
+.sub-section-header{
+    text-decoration: none;
 }

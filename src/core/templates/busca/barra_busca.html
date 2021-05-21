@@ -14,18 +14,22 @@
 
         <!-- Barra -->
         <label for="search">Buscar por {{app_name}}: </label>
-        <input type="text" name="search" style="width: 100%;"/> 
+        <input type="text" name="search" style="width: 100%;" {% if search_input %}value="{{search_input}}" {% endif %}/> 
 
         <!-- Adicionando filtro de busca para buscar por itens -->
-        {% if app_name != 'amigos' and app_name != 'usarios' %}
+        {% if app_name != 'amigos' and app_name != 'usuarios' %}
             <label for="select_filter">Filtro: </label>
             <select type="checkbox" name="select_filter">
             {% for filter in search_filters %}
-                <option value="{{filter}}" selected>{{filter}}</option>
+                {% if search_filter == filter  %}
+                    <option value="{{filter}}" selected>{{filter}}</option>
+                {% else %}
+                    <option value="{{filter}}">{{filter}}</option>
+                {% endif %}
             {% endfor %}
             </select>
         {% endif %}
-
+        {% if search_filter == filter  %} {% endif %}
         <!-- Botão -->
         <button class="search-btn" 
                 type="submit">Buscar
