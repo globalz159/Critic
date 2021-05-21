@@ -76,6 +76,18 @@ class Usuario(AbstractUser):
 
     objects = UsuarioManager()
 
+    def enviar_pedido_amizade(self, destinatario_id):
+        amigo_obj = Usuario.objects.get(pk=destinatario_id)
+        meus_pedidos = self.remetente.all()
+        if amigo_obj not in meus_pedidos.filter(destinatario=amigo_obj):
+            pedido_amizade = PedidosAmizade(remetente=self, destinatario=amigo_obj)
+            pedido_amizade.save()
+    
+    def remover_amigo(self, amigo_id):
+        amigo_obj = Usuario.objects.get(pk=amigo_id)
+        self.amigos.remove(amigo_obj)
+
+
 class PedidosAmizade(models.Model):
     create_date = models.DateField(auto_now=True)
     remetente = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='remetente')
@@ -84,3 +96,10 @@ class PedidosAmizade(models.Model):
 
     def __str__(self):
         return f'{self.remetente} -> {self.destinatario}'
+
+    def aceitar_pedido(self):
+        self.remetente.amigos.add(self.destinatario)
+        self.aceito = True
+    
+    def recusar_pedido(self):
+        self.delete()

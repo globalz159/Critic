@@ -15,47 +15,9 @@ from django.contrib import messages
 from pyUFbr.baseuf import ufbr
 import json
 
-# DECORATOR DE BLOQUEAR ACESSO !!!!
-def bloquear_acesso(view_func):
-    def bloquear(request, *args,**kwargs):
-        if request.user.is_anonymous:
-            messages.warning(request, "Acesso negado! Faça login ou crie uma conta para acessar o app")
-            return redirect('/conta/login')
-        return view_func(request, *args,**kwargs)
-    return bloquear
+from .backend import adicionar_cidades, filter_cidades, bloquear_acesso, bloquear_acesso_admin
+from .backend import obtendo_objetos, obtendo_parametros_busca, filtrando_objetos
 
-def bloquear_acesso_admin(view_func):
-    def bloquear(request, *args,**kwargs):
-        if not request.user.is_superuser:
-            messages.error(request, "Acesso negado! Essa área é restrita apenas aos administradores do site")
-            return redirect('/')
-        return view_func(request, *args,**kwargs)
-    return bloquear
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-def adicionar_cidades():
-    lista_cidades = []
-    for es in ufbr.list_uf:
-        estado = Estado(sigla=es)
-        estado.save()
-        print(f"-> {es}")
-
-        lista_cidades = [cidade for cidade in ufbr.list_cidades(es)]
-        for nome in lista_cidades:
-            cidade = Cidade(estado=estado, nome=nome)
-            cidade.save()
-        print(lista_cidades)
-        print(" ----------------------------------------------- ")
-
-def filter_cidades(estado):
-    lista_cidades = [cidade for cidade in ufbr.list_cidades(estado)]
-    cont = 0
-    choices_cidades = []
-    for cidade in lista_cidades:
-        item_cidade = CidadesChoice(estado+str(cont), cidade)
-        choices_cidades.append(item_cidade)
-        cont += 1
-    return choices_cidades
 
 ## Class Based View
 class IndexView(TemplateView):
@@ -66,7 +28,6 @@ class IndexView(TemplateView):
 def index(request):
     usuario = request.user
     print(usuario)
-    
     # Botões Submit
     if request.method == 'POST':
         if 'adicionar_cidades' in request.POST:
@@ -104,6 +65,7 @@ def cadastro(request):
 
     return render(request, 'cadastro.html', context)
 
+
 def carregar_cidades(request):
     estado_id = request.GET.get('estado')
     estado = Estado.objects.get(pk=estado_id)
@@ -122,53 +84,6 @@ def v404(request):
 def v500(request):
     return render(request, '500.html')
 
-def obtendo_objetos(app_name):
-    if app_name == 'filme':
-        objs = Filme.objects.all()
-    elif app_name == 'livro':
-        objs = Livro.objects.all()
-    elif app_name == 'serie':
-        objs = Serie.objects.all()    
-    elif app_name == 'usuarios':
-        objs = Usuario.objects.all()
-    elif app_name == 'amigos':
-        objs = Usuario.objects.all()
-    else:
-        objs = []
-    return objs
-
-def obtendo_parametros_busca(app_name):
-    if app_name == 'filme':
-        search_params = ('titulo', 'pais', 'diretor')
-    elif app_name == 'livro':
-        search_params = ('titulo', 'pais', 'autor')
-    elif app_name == 'serie':
-        search_params = ('titulo', 'pais', 'diretor')
-    else:
-        search_params = []
-    return search_params
-
-def filtrando_objetos(app_name, objs, search, search_filter):
-    if app_name in ('usuarios', 'amigos'):
-        objs_filtered = objs.filter(username__icontains=search)
-        objs_filtered |= objs.filter(first_name__istartswith=search)
-    
-    elif app_name in ('filme', 'serie', 'livro'):
-        # Filtrando objetos
-        if search_filter == 'titulo':
-            objs_filtered = objs.filter(titulo__icontains=search)
-        elif search_filter == 'pais':
-            objs_filtered = objs.filter(pais__istartswith=search)
-        elif search_filter == 'diretor':
-            objs_filtered = objs.filter(diretor__istartswith=search)
-        elif search_filter == 'autor':
-            objs_filtered = objs.filter(autor__istartswith=search)
-        else:
-            objs_filtered = objs
-    else:
-        objs_filtered = objs
-    return objs_filtered
-
 
 @bloquear_acesso
 def searchbar(request, app_name):
@@ -183,12 +98,21 @@ def searchbar(request, app_name):
             objs = request.user.amigos.all()
         search_params = obtendo_parametros_busca(app_name)
 
+        # import pdb; pdb.set_trace()
+
         # Obtendo valores da busca
         search = request.GET.get('search', False)
+        context['search_input'] = search
+
         filtro_busca = request.GET.get('select_filter', 'titulo')
+        context['search_filter'] = filtro_busca
 
         if search:  # Executando se a barra de busca estiver preenchida
+            search_url = request.get_full_path()
+            context['search_url'] = search_url
+
             # Filtrando objetos
+            # import pdb; pdb.set_trace()
             objs_filtered = filtrando_objetos(app_name, objs, search, filtro_busca)
             
             if app_name in ('usuarios', 'amigos'):
@@ -205,9 +129,15 @@ def searchbar(request, app_name):
                 # Mapeando amigos em comum com usuario
                 for item in list_dict:
                     objs_to_show.append(item['user'])
+                
+                usuarios_solicitados = []
+                for pedido in request.user.remetente.all():
+                    usuarios_solicitados.append(pedido.destinatario)
+
                 context.update({
                     'usuarios': objs_to_show, # -> List
                     'user_amigos': user_amigos, # -> Dict
+                    'usuarios_solicitados': usuarios_solicitados
                 })
 
             elif app_name in ('filme', 'serie', 'livro'):
@@ -229,15 +159,14 @@ def searchbar(request, app_name):
                 context['search_filters'] = search_params
                 return redirect(f'/itens/{app_name}s')
 
-        # Atualizando contexto
-        context.update({
-            'search_input': search, # -> String
-            'objs': objs_to_show,
-            'len_resultados': len(objs_to_show), # -> Int
-            'app_name': app_name,
-            'searching': True,
-        })
-        return render(request, 'busca/base_busca.html', context)
+    # Atualizando contexto
+    context.update({
+        'objs': objs_to_show,
+        'len_resultados': len(objs_to_show), # -> Int
+        'app_name': app_name,
+        'searching': True,
+    })
+    return render(request, 'busca/base_busca.html', context)
 
 
 def minha_conta(request):
