@@ -89,6 +89,10 @@ def v500(request):
 def searchbar(request, app_name):
     context = {}
     objs_to_show = []
+    itens_apps = ('filme', 'serie', 'livro')
+
+    context['itens_apps'] = itens_apps
+
     users = Usuario.objects.all()
     app_name = request.GET.get('select_app', 'usuarios')
     objs = obtendo_objetos(app_name)
@@ -108,11 +112,11 @@ def searchbar(request, app_name):
         context['search_filter'] = filtro_busca
 
         if search:  # Executando se a barra de busca estiver preenchida
-            search_url = request.get_full_path()
+            
+            search_url = request.get_full_path() # Obtendo URL da busca
             context['search_url'] = search_url
 
             # Filtrando objetos
-            # import pdb; pdb.set_trace()
             objs_filtered = filtrando_objetos(app_name, objs, search, filtro_busca)
             
             if app_name in ('usuarios', 'amigos'):
@@ -140,7 +144,7 @@ def searchbar(request, app_name):
                     'usuarios_solicitados': usuarios_solicitados
                 })
 
-            elif app_name in ('filme', 'serie', 'livro'):
+            elif app_name in itens_apps:
                 for item in objs_filtered:
                     objs_to_show.append(item)
                 context.update({
@@ -149,7 +153,7 @@ def searchbar(request, app_name):
                 })
 
         else: # Executando se a barra de busca não estiver preenchida
-            if app_name in ('filme', 'livro', 'serie'):
+            if app_name in itens_apps:
                 if app_name == 'filme':
                     context['filmes'] = objs
                 elif app_name == 'livro':
