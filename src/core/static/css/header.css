@@ -57,7 +57,7 @@ header {
 /** SECTION HEADER **/
 .section-header{
     margin-top: 60px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     background-color: #7c0076;
     color: white;
 }
@@ -70,4 +70,20 @@ header {
 }
 .barra-busca{
     padding-top: 10px;
+}
+
+.buttons-box{
+    height: 30px;
+    width: 100%;
+}
+
+.botao-estilizado {
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 10px 20px;
+
+    text-decoration: none;
+    color: white;
+
+    background: #395ca7;
 }
