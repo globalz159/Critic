@@ -1,0 +1,48 @@
+{% load static %}
+
+<div class="resultados-container">
+    <h1>{{objs}}</h1>
+    {% if objs %}
+        {% if app_name == 'usuarios' %}
+            {% for usuario in objs %}
+            <div class="usuarios-box">
+                <table style="width:100%;">
+                    <tr>
+                        <td style="width:80%;">
+                            <h2>{{ usuario.username }}</h2>
+                        </td>
+                        <td>
+                            <form class="user-box-btn" action="{% url 'add_amigos' %}" method="post">
+                            {% if usuario in user.amigos.all %}
+                                <i id="icon-added" class="fas fa-user-check"> Amigos</i>
+                                <i id="icon-rm" class="fas fa-user-alt-slash"> Remover Amigo</i>
+
+                            {% elif usuario in usuarios_solicitados %}
+                            
+                                <i id="icon-added" class="fas fa-check"> Solicitação enviada</i>
+
+                            {% else %}
+                               {% csrf_token %}
+                                <input style="display: none;" type="text" id="search_url" name="search_url" value="{{search_url}}">
+                                <input style="display: none;" type="text" id="implied_search" name="search" value="{{search_input}}">
+                                <input style="display: none;" type="text" id="user_id" name="user_id" value="{{usuario.id}}">
+
+                                <button type="submit" id="add_amigo" name="add_amigo"><i id="icon-add" class="fas fa-user-plus">Adicionar Amigo</i></button>
+                            
+
+                            {% endif %}
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            {% endfor %}
+        
+        {% endif %}
+    {% else %}
+        <div class="sem-resultados">
+            <h2 style="color: white;">Nenhum resultado encontrado</h2>
+        </div>
+    {% endif %}
+</div>
+

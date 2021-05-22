@@ -7,10 +7,26 @@
     <section class="main-container">
 
         {% include 'base_header_section.html' %}
-        {% include 'busca/resultado_busca.html' %}
 
+        {% if objs %}
 
-        {% include 'amigos/pedidos_amizade.html' %}
+            {% if app_name == 'usuarios' %}
+                {% include 'busca/resultado_busca_usuarios.html' %}
+            
+                {% elif app_name == 'amigos' %}
+                {% include 'amigos/resultado_busca_amigos.html' %}
+
+            {% elif app_name == 'filmes' %}
+
+            {% endif %}
+
+        {% else %}
+            <div class="resultados-container">
+                <div class="sem-resultados">
+                    <h2 style="color: white;">Nenhum resultado encontrado</h2>
+                </div>
+            </div>
+        {% endif %}
 
     </section>
 </div>

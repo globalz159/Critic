@@ -1,16 +1,33 @@
-{% load bootstrap4 %}
-<div class="pedidos-amizade">
+{% extends 'base.html' %}
+{% load static %}
 
-    <div id="recebidos" class="pedidos">
-        {% for pedido in p_enviados %}
+{% block title %}Pedidos de Amizade{% endblock %}
 
-        {% endfor %}
+{% block content %}
+<div class="wrapper">  
+  <section class="main-container" >
+
+    {% include 'base_header_section.html' %}
+
+    <div class="pedidos-amizade">
+
+        <div id="recebidos" class="box-pedidos">
+            {% for pedido in p_enviados %}
+                <div class="pedido">
+
+
+
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="enviados" class="box-pedidos">
+            {% for pedido in p_enviados %}
+
+            {% endfor %}
+        </div>
+
     </div>
-
-    <div id="enviados" class="pedidos">
-        {% for pedido in p_enviados %}
-
-        {% endfor %}
-    </div>
-
+  </section>
 </div>
+{% endblock %}
