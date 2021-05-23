@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="wrapper">
+  <section class="main-container">
+	<div class="container-login">
+
+	<form action="{% url 'cadastro_item' app_name=app_name %}" method="post" autocomplete="off" enctype="multipart/form-data" class="login100-form validate-form form">
+		{% csrf_token %}
+		<h2 style="text-align: center; color:white">Cadastrar {{obj_name}}</h2>
+
+		{{ form.as_p }}
+		
+		<div class="container-login100-form-btn">
+			<button type="submit">
+				<h2>Cadastrar</h2>
+			</button>
+		</div>
+
+	</form>
+	</div>
+  </section>
+</div>
+
+<div id="dropDownSelect1"></div>
+
+{% bootstrap_javascript jquery='full' %}
+
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js></script>
+
+{% endblock %}
