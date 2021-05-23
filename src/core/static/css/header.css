@@ -72,15 +72,20 @@ header {
     padding-top: 10px;
 }
 
-.buttons-box{
-    height: 30px;
+.sub-section-header{
+    height: 35px;
     width: 100%;
 }
-
+.buttons-box{
+    text-decoration: none;
+    margin-top: 10px;
+    margin-right: 5px;
+}
 .botao-estilizado {
     border-radius: 5px;
     overflow: hidden;
-    padding: 10px 20px;
+    padding: 7px 20px;
+    margin-right: 5px;
 
     text-decoration: none;
     color: white;

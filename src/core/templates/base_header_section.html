@@ -63,54 +63,47 @@
     </table>
 
     <!-- BOX DOS BOTÕES -->
-    <hr/>
-    <div class="buttons-box">
+    <hr style="margin:0px;"/>
+    <div class="sub-section-header">
         <form action="">
-            <table class="sub-section-header" style="width:100%;text-align: right;">
-            <tr>
-                <td style="width:50%;"> <!-- COLUNA 1 -->
-
-                    {% if app_name == 'amigos' %}
-                        <a class="botao-estilizado" href="{% url 'add_amigos' %}"><i class="fas fa-location-arrow"></i>  Encontrar Amigos</a>
-                    {% elif app_name == 'usuarios' %}
-                    
-                    {% else %}
-                    {% if app_name == 'filme' %}
-                    {% elif app_name == 'livro' %}
-                    {% elif app_name == 'serie' %}
+            <div class="buttons-box" style="text-align: right;float: right;">
+                <!-- Primeiro Botão -->
+                {% if app_name == 'amigos' %}
+                    <a class="botao-estilizado" href="{% url 'add_amigos' %}"><i class="fas fa-location-arrow"></i>  Encontrar Amigos</a>
+                {% elif app_name == 'usuarios' %}
+                    <a class="botao-estilizado" href="{% url 'seus_amigos' %}"><i class="fas fa-user-friends"></i>  Seus Amigos</a>
                 
-                    {% endif %}
+                {% else %}
+                {% if app_name == 'filme' %}
+                {% elif app_name == 'livro' %}
+                {% elif app_name == 'serie' %}
+                {% endif %}
 
-                    {% endif %}
-
-                </td>
-                <td style="width:50%;"> <!-- COLUNA 2 -->
-                    
-                    {% if app_name == 'amigos' or app_name == 'usuarios' %}
-                        {% if app_pedidos %}
-                            <a class="botao-estilizado" href="{% url 'seus_amigos' %}"><i class="fas fa-user-friends"></i>  Seus Amigos</a>
-                        {% else %}
-                            <a class="botao-estilizado" href="{% url 'pedidos_amizade' %}"><i class="fas fa-user-plus"></i>  Pedidos de Amizade</a>
-                        {% endif %}
-
+                {% endif %}
+                <!-- Segundo Botão -->
+                {% if app_name == 'amigos' or app_name == 'usuarios' %}
+                    {% if app_pedidos %}
+                        <a class="botao-estilizado" href="{% url 'seus_amigos' %}"><i class="fas fa-user-friends"></i>  Seus Amigos</a>
                     {% else %}
-                        {% if app_name == 'filme' %}
-                        <a class="botao-estilizado" href="{% url 'cadastro_filme' %}" >
-                            <i class="fas fa-plus"></i>  Cadastrar Filme
-                        </a>
-                        {% elif app_name == 'livro' %}
-                        <a class="botao-estilizado" href="{% url 'cadastro_livro' %}" >
-                            <i class="fas fa-plus"></i>  Cadastrar Livro
-                        </a>
-                        {% elif app_name == 'serie' %}
-                        <a class="botao-estilizado" href="{% url 'cadastro_serie' %}" >
-                            <i class="fas fa-plus"></i>  Cadastrar Série
-                        </a>
-                        {% endif %}
+                        <a class="botao-estilizado" href="{% url 'pedidos_amizade' %}"><i class="fas fa-user-plus"></i>  Pedidos de Amizade</a>
                     {% endif %}
-                </td>
-            </tr>
-            </table>
+
+                {% else %}
+                    {% if app_name == 'filme' %}
+                    <a class="botao-estilizado" href="{% url 'cadastro_filme' %}" >
+                        <i class="fas fa-plus"></i>  Cadastrar Filme
+                    </a>
+                    {% elif app_name == 'livro' %}
+                    <a class="botao-estilizado" href="{% url 'cadastro_livro' %}" >
+                        <i class="fas fa-plus"></i>  Cadastrar Livro
+                    </a>
+                    {% elif app_name == 'serie' %}
+                    <a class="botao-estilizado" href="{% url 'cadastro_serie' %}" >
+                        <i class="fas fa-plus"></i>  Cadastrar Série
+                    </a>
+                    {% endif %}
+                {% endif %}
+            </div>
         </form>
     </div>
 
