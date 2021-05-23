@@ -99,46 +99,46 @@ def cadastro_filme(request):
     return render(request, 'cadastro_filme.html', context)  
 
 @bloquear_acesso
-def cadastro_serie(request):
-    if str(request.method) == 'POST':
-        form = CadastroSerie(request.POST, request.FILES)
+def cadastro_confirmado(request):
+    context = {}
 
-        # Validando formulário
+    return render(request, 'cadastro_confirmado.html', context)  
+
+def cadastrar_item(request, app_name):
+    context = {}
+    context['app_name'] = app_name
+
+    if app_name == 'filme':
+        form = CadastroFilme()
+        obj_name = 'Filme'
+    elif app_name == 'livro':
+        form = CadastroLivro()
+        obj_name = 'Livro'
+    elif app_name == 'serie':
+        form = CadastroSerie()
+        obj_name = 'Série'
+    else:
+        return redirect('')
+
+    context['obj_name'] = obj_name
+
+    if request.method == 'POST':
+        if app_name == 'filme':
+            form = CadastroFilme(request.POST, request.FILES)
+        elif app_name == 'livro':
+            form = CadastroLivro(request.POST, request.FILES)
+        elif app_name == 'serie':
+            form = CadastroSerie(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, " Cadastro realizado com sucesso !")
-        else:
-            messages.error(request, " Campos inválidos !")
-        form = CadastroSerie()
-    else:
-        form = CadastroSerie()
+            return redirect('/itens/cadastro_confirmado')
+        
 
-    context = {
-        'form': form,
-    }
+    context['form'] = form
 
-    return render(request, 'cadastro_serie.html', context)  
 
-@bloquear_acesso
-def cadastro_livro(request):
-    if str(request.method) == 'POST':
-        form = CadastroLivro(request.POST, request.FILES)
+    return render(request, 'cadastro_item.html', context)
 
-        # Validando formulário
-        if form.is_valid():
-            form.save()
-            messages.success(request, " Cadastro realizado com sucesso !")
-        else:
-            messages.error(request, " Campos inválidos !")
-        form = CadastroLivro()
-    else:
-        form = CadastroLivro()
-
-    context = {
-        'form': form,
-    }
-
-    return render(request, 'cadastro_livro.html', context)
 
 @bloquear_acesso_admin
 def validar_itens(request, tipo_item):
@@ -151,6 +151,7 @@ def validar_itens(request, tipo_item):
     
     context = {
         'objects': objects,
+        'app_name': tipo_item,
     }
 
     return render(request, 'validar_itens.html', context)

@@ -87,19 +87,13 @@
                     {% endif %}
 
                 {% else %}
-                    {% if app_name == 'filme' %}
-                    <a class="botao-estilizado" href="{% url 'cadastro_filme' %}" >
-                        <i class="fas fa-plus"></i>  Cadastrar Filme
+                    <a class="botao-estilizado" href="{% url 'cadastro_item' app_name=app_name %}" >
+                        <i class="fas fa-plus"></i>  Cadastrar
+                        {% if app_name == 'filme' %} Filme
+                        {% elif app_name == 'livro' %} Livro
+                        {% elif app_name == 'serie' %} Série
+                        {% endif %}
                     </a>
-                    {% elif app_name == 'livro' %}
-                    <a class="botao-estilizado" href="{% url 'cadastro_livro' %}" >
-                        <i class="fas fa-plus"></i>  Cadastrar Livro
-                    </a>
-                    {% elif app_name == 'serie' %}
-                    <a class="botao-estilizado" href="{% url 'cadastro_serie' %}" >
-                        <i class="fas fa-plus"></i>  Cadastrar Série
-                    </a>
-                    {% endif %}
                 {% endif %}
             </div>
         </form>
