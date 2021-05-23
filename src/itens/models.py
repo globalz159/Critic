@@ -37,7 +37,7 @@ class Livro(Itens):
         return reverse("itens:livro", kwargs={'pk': self.pk})
 
 class Filme(Itens):
-    volume = models.PositiveSmallIntegerField("Volume")
+    volume = models.PositiveSmallIntegerField("Volume", null=True)
     diretor = models.CharField("Diretor", max_length=100)
     elenco = models.TextField("Elenco")
 
