@@ -1,7 +1,6 @@
 from django.urls import path
 
-from .views import filme, livro, serie, cadastro_filme, cadastro_serie, cadastro_livro, livros, filmes, series
-
+from .views import *
 
 urlpatterns = [
     path('filme/<int:pk>', filme, name="filme"),
@@ -16,5 +15,6 @@ urlpatterns = [
     path('filmes', filmes, name='filmes'),
     path('series', series, name='series'),
 
+    path('validar_itens/<str:tipo_item>', validar_itens, name="validar_itens")
 
 ]

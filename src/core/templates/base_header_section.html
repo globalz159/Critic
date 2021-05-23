@@ -74,11 +74,9 @@
                     <a class="botao-estilizado" href="{% url 'seus_amigos' %}"><i class="fas fa-user-friends"></i>  Seus Amigos</a>
                 
                 {% else %}
-                {% if app_name == 'filme' %}
-                {% elif app_name == 'livro' %}
-                {% elif app_name == 'serie' %}
-                {% endif %}
-
+                    {% if user.is_superuser %}
+                    <a class="botao-estilizado-admin" href="{% url 'validar_itens' tipo_item=app_name %}"><i class="fas fa-check-double"></i>  Validar Cadastros</a>
+                    {% endif %}
                 {% endif %}
                 <!-- Segundo Botão -->
                 {% if app_name == 'amigos' or app_name == 'usuarios' %}

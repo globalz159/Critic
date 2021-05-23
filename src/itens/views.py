@@ -119,7 +119,7 @@ def cadastro_serie(request):
 
     return render(request, 'cadastro_serie.html', context)  
 
-@bloquear_acesso_admin
+@bloquear_acesso
 def cadastro_livro(request):
     if str(request.method) == 'POST':
         form = CadastroLivro(request.POST, request.FILES)
@@ -140,18 +140,18 @@ def cadastro_livro(request):
 
     return render(request, 'cadastro_livro.html', context)
 
-@bloquear_acesso
-def itens_a_validar(request, tipo_item):
+@bloquear_acesso_admin
+def validar_itens(request, tipo_item):
     if tipo_item == 'filme':
-        objects = Filme.objects.filter(aprovado=False)
+        objects = Filme.objects.filter(ativo=False)
     elif tipo_item == 'livro':
-        objects = Livro.objects.filter(aprovado=False)
+        objects = Livro.objects.filter(ativo=False)
     elif tipo_item == 'serie':
-        objects = Serie.objects.filter(aprovado=False)
+        objects = Serie.objects.filter(ativo=False)
     
     context = {
         'objects': objects,
     }
 
-    return render(request, 'itens_nao_aprovados.html', context)
+    return render(request, 'validar_itens.html', context)
 

@@ -92,3 +92,16 @@ header {
 
     background: #395ca7;
 }
+
+.botao-estilizado-admin {
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 7px 20px;
+    margin-right: 5px;
+
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+
+    background: #c95613;
+}
