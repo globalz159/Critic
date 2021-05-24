@@ -77,26 +77,6 @@ def series(request):
     }
     return render(request, 'series.html', context)    
 
-@bloquear_acesso
-def cadastro_filme(request):
-    if str(request.method) == 'POST':
-        form = CadastroFilme(request.POST, request.FILES)
-
-        # Validando formulário
-        if form.is_valid():
-            form.save()
-            messages.success(request, " Cadastro realizado com sucesso !")
-        else:
-            messages.error(request, " Campos inválidos !")
-        form = CadastroFilme()
-    else:
-        form = CadastroFilme()
-
-    context = {
-        'form': form,
-    }
-
-    return render(request, 'cadastro_filme.html', context)  
 
 @bloquear_acesso
 def cadastro_confirmado(request):
@@ -143,27 +123,37 @@ def cadastrar_item(request, app_name):
 @bloquear_acesso_admin
 def validar_itens(request, tipo_item):
     context = {}
+    context['app_name'] = tipo_item
 
     if tipo_item == 'filme':
-        objects = Filme.objects.filter(ativo=False)
+        obj_class = Filme
         obj_name = 'Filme'
     elif tipo_item == 'livro':
-        objects = Livro.objects.filter(ativo=False)
+        obj_class = Livro
         obj_name = 'Livro'
     elif tipo_item == 'serie':
-        objects = Serie.objects.filter(ativo=False)
+        obj_class = Serie
         obj_name = 'Série'
+
+    if request.method == 'POST':
+        using_obj = obj_class.objects.get(pk=request.POST.get('item_id'))
+        
+        if 'aprovar_cadastro' in request.POST:
+            using_obj.aprovar_item(request.user)
+
+        elif 'excluir_cadastro' in request.POST:
+            using_obj.excluir_item(request.user)
+
+        elif 'revisar_cadastro' in request.POST:
+            using_obj.revisar_item(request.user)
+
+    objects = obj_class.objects.filter(ativo=False)
     
     context.update({
         'objects': objects,
         'len_objects': len(objects),
         'obj_name': obj_name,
-        'app_name': tipo_item,
     })
-
-    if request.method == 'POST':
-        pass
-
 
     return render(request, 'validar_itens.html', context)
 
