@@ -3,6 +3,7 @@ from datetime import datetime
 from django.db import models
 
 from django.db.models import signals
+from django.db.models.deletion import SET_NULL
 from django.template.defaultfilters import slugify
 from django.urls.base import reverse
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -23,7 +24,7 @@ class Itens(models.Model):
     slug = models.SlugField("Slug", max_length=100, editable=False, unique=False)
     imagem = StdImageField("Imagem de capa", null=True, blank=True, upload_to='itens', variations={'thumbnail': (300, 300)})
     ativo = models.BooleanField("Ativo", default=False)
-    categoria = models.ManyToManyField(CategoriaItem, verbose_name="Categoria")
+    categoria = models.ForeignKey(CategoriaItem, verbose_name="Categoria", on_delete=SET_NULL, null=True)
 
     class Meta:
         abstract = True
