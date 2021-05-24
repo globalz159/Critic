@@ -5,7 +5,19 @@
 
 <div class="wrapper">
     <section class="main-container">
-        <h1> Itens a Validar </h1>
+        {% include 'header_validar_itens.html' %}
+
+        <br>
+        <h2>{{len_objects}} {{obj_name}}{% if len_objects != 1 %}s{% endif %} para validar</h2>
+
+        <div class="itens-box">
+            {% for item in objects %}
+
+            {% include 'validar_item_box.html' %}
+
+            {% endfor %}
+
+        </div>
 
     </section>
 </div>

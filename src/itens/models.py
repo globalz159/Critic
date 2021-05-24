@@ -27,6 +27,27 @@ class Itens(models.Model):
 
     class Meta:
         abstract = True
+    
+    def aprovar_item(self, user):
+        if user.is_superuser():
+            self.ativo = True
+    
+    def excluir_item(self, user):
+        if user.is_superuser():
+            self.remove()
+    
+    def revisar_item(self, user):
+        pass
+
+    def get_item_values(self):
+        vals = {
+            'titulo': self.titulo,
+            'pais': self.pais,
+            'ano_lancamento': self.ano_lancamento,
+            'ativo': self.ativo
+        }
+        return vals
+
 
 class Livro(Itens):
     volume = models.PositiveSmallIntegerField("Volume")
@@ -35,6 +56,15 @@ class Livro(Itens):
 
     def get_absolute_url(self):
         return reverse("itens:livro", kwargs={'pk': self.pk})
+    
+    def get_item_values(self):
+        vals = super().get_item_values()
+        vals.update({
+            'volume': self.volume,
+            'autor': self.autor,
+            'editora': self.editora,
+        })
+        return vals
 
 class Filme(Itens):
     volume = models.PositiveSmallIntegerField("Volume", null=True)
@@ -43,6 +73,15 @@ class Filme(Itens):
 
     def get_absolute_url(self):
         return reverse("itens:filme", kwargs={'pk': self.pk})
+    
+    def get_item_values(self):
+        vals = super().get_item_values()
+        vals.update({
+            'volume': self.volume,
+            'diretor': self.diretor,
+            'elenco': self.elenco,
+        })
+        return vals
 
 class Serie(Itens):
     qtd_temporadas = models.PositiveSmallIntegerField("Número de temporadas")
@@ -51,6 +90,15 @@ class Serie(Itens):
 
     def get_absolute_url(self):
         return reverse("itens:serie", kwargs={'pk': self.pk})
+    
+    def get_item_values(self):
+        vals = super().get_item_values()
+        vals.update({
+            'qtd_temporadas': self.qtd_temporadas,
+            'diretor': self.diretor,
+            'elenco': self.elenco,
+        })
+        return vals
 
 def pre_save_itens(signal, instance, sender, **kwargs):
     instance.slug = slugify(instance.titulo)

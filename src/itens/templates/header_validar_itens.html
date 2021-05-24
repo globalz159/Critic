@@ -1,0 +1,53 @@
+<div class="section-header">
+    <table style="width: 100%;">
+    <tr>
+        <td style="width: 30%;">
+            <h1 class="header-title"> Itens a Validar </h1>
+        </td>
+        <td>
+            <div class="buttons-validar">
+            <table style="width: 100%; text-align: center;">
+            <tr>
+                <td>
+                {% if app_name == 'filme' %}
+                    <a class="botao-estilizado-admin" href="{% url 'validar_itens' tipo_item='filme' %}">
+                        <i class="fas fa-film"></i>  Filmes
+                    </a>
+                {% else %}
+                    <a class="botao-estilizado" href="{% url 'validar_itens' tipo_item='filme' %}">
+                        <i class="fas fa-film"></i>  Filmes
+                    </a>
+                {% endif %}
+                </td>
+
+                <td>
+                {% if app_name == 'livro' %}
+                    <a class="botao-estilizado-admin" href="{% url 'validar_itens' tipo_item='livro' %}">
+                        <i class="fas fa-book"></i>  Livros
+                    </a>
+                {% else %}
+                    <a class="botao-estilizado" href="{% url 'validar_itens' tipo_item='livro' %}">
+                        <i class="fas fa-book"></i>  Livros
+                    </a>
+                {% endif %}
+                </td>
+
+                <td>
+                {% if app_name == 'serie' %}
+                    <a class="botao-estilizado-admin" href="{% url 'validar_itens' tipo_item='serie'%}">
+                        <i class="fas fa-theater-masks 2f"></i>  Séries
+                    </a>
+                {% else %}
+                    <a class="botao-estilizado" href="{% url 'validar_itens' tipo_item='serie'%}">
+                        <i class="fas fa-theater-masks 2f"></i>  Séries
+                    </a>
+                {% endif %}
+                </td>
+
+            </tr>
+            </table>
+            </div>
+        </td>
+    </tr>
+    </table>
+</div>

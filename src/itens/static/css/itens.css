@@ -1,0 +1,64 @@
+.item-description {
+    text-align: center;
+    color: black;
+}
+
+.itens-box{
+
+}
+
+.dados-itens{
+  width: 100%;
+}
+
+.item-box{
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: thistle;
+  border-radius: 6px;
+  color: black;
+}
+
+.botao-aprovar {
+  width: 98px;
+  border-radius: 5px;
+  border: 1px solid black;
+
+  padding: 5px 16px;
+  margin-right: 5px;
+
+  text-decoration: none;
+  color: white;
+
+  background: #43a550;
+}
+
+.botao-revisar {
+  width: 98px;
+  border-radius: 5px;
+  border: 1px solid black;
+  
+  padding: 5px 16px;
+  margin-right: 5px;
+
+  text-decoration: none;
+  color: white;
+
+  background: #d37f00;
+}
+
+.botao-excluir {
+  width: 98px;
+  border-radius: 5px;
+  border: 1px solid black;
+  
+  padding: 5px 16px;
+  margin-right: 5px;
+
+  text-decoration: none;
+  color: white;
+
+  background: #d33100;
+}

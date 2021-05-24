@@ -142,17 +142,28 @@ def cadastrar_item(request, app_name):
 
 @bloquear_acesso_admin
 def validar_itens(request, tipo_item):
+    context = {}
+
     if tipo_item == 'filme':
         objects = Filme.objects.filter(ativo=False)
+        obj_name = 'Filme'
     elif tipo_item == 'livro':
         objects = Livro.objects.filter(ativo=False)
+        obj_name = 'Livro'
     elif tipo_item == 'serie':
         objects = Serie.objects.filter(ativo=False)
+        obj_name = 'Série'
     
-    context = {
+    context.update({
         'objects': objects,
+        'len_objects': len(objects),
+        'obj_name': obj_name,
         'app_name': tipo_item,
-    }
+    })
+
+    if request.method == 'POST':
+        pass
+
 
     return render(request, 'validar_itens.html', context)
 
