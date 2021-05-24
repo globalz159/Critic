@@ -27,7 +27,11 @@
                         Séries
 
                 {% elif app_name == 'amigos' %}
+                    {% if app_pedidos %}
+                        Pedidos de Amizade
+                    {% else %}
                         Seus Amigos
+                    {% endif %}
 
                 {% elif app_name == 'usuarios' %}
                         Usuários
