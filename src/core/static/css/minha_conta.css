@@ -1,0 +1,38 @@
+.fotoperfil{
+    width: 300px;
+    height: 300px;
+    margin-left: 750px;
+    margin-top: 50px;
+    
+    
+}
+.imagem{
+    margin-bottom:1000px;
+}
+.tabela-botao{
+   padding-left: 15px;
+}
+.fotonome{
+    margin-bottom: 200px;
+    margin-left: 50px
+    
+}
+.aside{
+    text-align: left;
+    border: 100px solid;
+}
+fieldset{
+    width: 100px;
+    position:center;
+    margin-left: 700px;
+    
+}
+.numeros{
+    text-align: left;
+     
+}
+.lista{
+
+
+}
+

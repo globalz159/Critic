@@ -6,10 +6,123 @@
 
 {% block content %}
 <!-- Todo o conteúdo da página deve estar dentro do block content -->
+
 <div class="wrapper">  
     <!-- MAIN CONTAINER -->
     <section class="main-container" >
-        <h1>Minha Conta</h1>
+        <h2>Minha Conta</h2>
+        <h1 align="center">Minha Conta</h1>
+      <table align="center">
+        <tr>
+          <td class="tabela-botao">
+              <input  type="submit" value="Minha Conta" /><br>
+          </td>
+          <td class="tabela-botao">
+              <input  type="submit" value="Editar Perfil" /><br>
+          </td>
+          <td class="tabela-botao">
+              <input  type="submit" value="Modificar Senha" /><br>
+          </td>
+          <td class="tabela-botao">
+              <input  type="submit" value="Logout Off" />
+         </td>
+      </tr>
+      </table>
+      <table>
+      <tr>
+        <td>
+          {% if user.imagem %}
+          {{user.imagem}}
+          {% else %}
+          <div class="fotoperfil">
+          <a id="" href=""><img src="{% static 'images/semfoto.jpeg' %}" alt="Imagem" ></a> 
+        </div>
+          {% endif %}
+        </td>
+        <td>
+        <div class="fotonome">
+          <p>Nome</p>
+          <a href="">Alterar foto de Perfil</a>
+        </div>
+        </td>
+        <td>
+    </tr>
+    </table>
+    <div  class="numeros">
+      <h2>Números de Amigos:</h2>
+      <h2>Números de Avaliações:</h2>
+      <h2>Filmes Cadastrados:</h2> 
+      <h2>Séries Cadastrados:</h2>  
+      <h2>Livros Cadastrados:</h2>
+    </div>
+      <hr>
+      <h1 align="center">Editar Perfil</h1>
+      <div>
+        <form  action="" method="post" border="1">
+            <fieldset >
+            <div>
+                <label for="user">Nome de Usuário:</label>
+                <input type="user" id="user" size="40" />
+            </div><br>
+            <div>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" size="40" />
+            </div><br>
+            <div>
+                <label for="nome">Primeiro Nome:</label>
+                <input type="text" id="nome" size="40"/>
+            </div><br>
+            <div>
+                <label for="nome">Ultimo Nome:</label>
+                <input type="text" id="nome" size="40" />
+            </div><br>
+            <div>
+                <label for="nome">Cidade:</label>
+                <input type="text" id="nome" size="40"/>
+            </div><br>
+            <div>
+                <label for="nome">Estado:</label>
+                <input type="text" id="nome" size="40" />
+            </div><br>
+            <div>
+                <label for="nome">Date de nascimento:</label>
+                <input type="date" id="nome" />
+            </div><br>
+            <input class="botao" type="submit" value="Mudar Perfil" />
+        </fieldset>
+        </form>
+      </div>
+      <hr>
+      <h2 align="center">Modificar Senha</h2>
+      <form  action="" method="post" border="1">
+        <fieldset >
+        <div>
+            <label for="user">Senha Antiga:</label>
+            <input type="password" id="user" size="40" />
+        </div><br>
+        <div>
+            <label for="email">Nova Senha:</label>
+            <input type="password" id="email" size="40" />
+        </div><br>
+        <div>
+            <label for="nome">Confirmar nova senha:</label>
+            <input type="password" id="nome" size="40"/>
+        </div><br>
+        <input class="botao" type="submit" value="Alterar Senha" />
+    </fieldset>
+    </form>
+      <hr>
+      <div align="center">
+      <h2>Logout Off</h2>
+      <a href="">Sair do CriticHub</a><br><br>
+      <a href="">Excluir Conta</a>
+    </div>
+
+      
+      
+           
+         
+     
 
     <!-- Escrever a página aqui -->
 
