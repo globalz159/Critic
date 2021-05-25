@@ -20,9 +20,10 @@ class Avaliacao(models.Model):
         (10, 10)
     )
 
-    data_criacao = models.DateField(auto_now=True)
-    user_id = models.ForeignKey(Usuario, on_delete=models.CASCADE, verbose_name="user_id")
+    data_criacao = models.DateField(auto_now=True, blank=True), 
+    user_id = models.ForeignKey(Usuario, on_delete=models.CASCADE, verbose_name="user_id", blank=True)
     valor = models.IntegerField("Avaliação", choices=VALOR_CHOICES)
+    avaliacao = models.CharField("Comentário", max_length=200, null=True)
 
     class Meta:
         verbose_name = "Avaliação"
@@ -30,10 +31,10 @@ class Avaliacao(models.Model):
         abstract = True
 
 class AvaliacaoFilme(Avaliacao):
-    item = models.ForeignKey(Filme, on_delete=models.CASCADE)
+    item = models.ForeignKey(Filme, on_delete=models.CASCADE, blank=True)
 
 class AvaliacaoLivro(Avaliacao):
-    item = models.ForeignKey(Livro, on_delete=models.CASCADE)
+    item = models.ForeignKey(Livro, on_delete=models.CASCADE, blank=True)
 
 class AvaliacaoSerie(Avaliacao):
-    item = models.ForeignKey(Serie, on_delete=models.CASCADE)
+    item = models.ForeignKey(Serie, on_delete=models.CASCADE, blank=True)
