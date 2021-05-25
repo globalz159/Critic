@@ -11,6 +11,13 @@
         <h2>{{len_objects}} {{obj_name}}{% if len_objects != 1 %}s{% endif %} para validar</h2>
 
         <div class="itens-box">
+            
+            {% if status_message %}
+            <div class="message-status">
+                {{status_message}}
+            </div>
+            {% endif %}
+
             {% for item in objects %}
 
             {% include 'validar_item_box.html' %}

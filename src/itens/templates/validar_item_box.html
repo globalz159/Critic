@@ -2,63 +2,72 @@
 
 
 <div class="item-box">
-    {% if app_name == 'filme' %}
+
+    <!--  Filme  -->
+    
     <table style="width: 100%;">
         <tr>
-            <td style="font-size: 24px; width: 35%;">
-                <b>Título:</b> {{item.titulo}}
+            <td class="coluna-validar" style="font-size: 18px; width: 35%;">
+                <p>
+                    <b>Título:</b> {{item.titulo}}
+                </p>
+                <p>
+                    {% if app_name != 'livro' %}
+                    <b>Diretor:</b> {{item.diretor}}
+                    {% else%}
+                    <b>Autor:</b> {{item.autor}}
+                    {% endif %}
+                </p>
+                <p>
+                    <b>País:</b> {{item.pais}}
+                </p>
             </td>
-            <td style="max-width: 35%;">
-                <b>Ano de lançamento:</b> {{item.ano_lancamento}}
+
+            <td class="coluna-validar" style="width: 35%; font-size: 14px;">
+                <p>
+                    <b>Lançamento:</b> {{item.ano_lancamento}}
+                </p>
+                <p>
+                    {% if app_name == 'livro' %}
+                    <b>Volume:</b> {{item.volume}}
+                    {% elif app_name == 'serie' %}
+                    <b>Nº Temporadas:</b> {{item.qtd_temporadas}}
+                    {%endif%}
+                </p>
+                {% if app_name != 'livro' %}
+                <p>
+                    <b>Elenco:</b> {{item.elenco}}
+                </p>
+                {% else %}
+                <p>
+                    <b>Editora:</b> {{item.editora}}
+                </p>
+                {% endif %}
             </td>
-            <td style="float:right;">
-                <form name="aprovar" action="{% url 'validar_itens' tipo_item=app_name %}" method="post">
+
+            <td class="coluna-validar" style="width: 15%; font-size: 14px;">
+                <p>
+                    <b>Categoria:</b> {{item.categoria}}
+                </p>
+            </td>
+
+            <td style="float:right;"> <!-- BOTÕES -->
+                <form name="validar" action="{% url 'validar_itens' tipo_item=app_name %}" method="post" style="padding: 5px;">
                     {% csrf_token %}
                     <input name="item_id" type="text" value="{{item.id}}" style="display: none;">
-                    <button class="botao-aprovar" type="submit" name="aprovar_cadastro">
+                    <button class="botao-validar validar-aprovar" type="submit" name="aprovar_cadastro">
                         <i class="fas fa-check"></i> Aprovar
                     </button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td style="font-size: 24px; width: 35%;">
-                <b>Diretor:</b> {{item.diretor}}
-            </td>
-            <td rowspan="2" style="width: 35%;">
-                <b>Elenco:</b> {{item.elenco}}
-            </td>
-            <td style="float:right;">
-                <form name="revisar" action="{% url 'validar_itens' tipo_item=app_name %}" method="post">
-                    {% csrf_token %}
-                    <input name="item_id" type="text" value="{{item.id}}" style="display: none;">
-                    <button class="botao-revisar" type="submit" name="revisar_cadastro">
+                    <br>
+                    <button class="botao-validar validar-revisar" type="submit" name="revisar_cadastro">
                         <i class="fas fa-edit"></i> Revisar
                     </button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td style="font-size: 24px; width: 35%;">
-                <b>País:</b> {{item.pais}}
-            </td>
-            <td style="float:right;">
-                <form name="excluir" action="{% url 'validar_itens' tipo_item=app_name %}" method="post">
-                    {% csrf_token %}
-                    <input name="item_id" type="text" value="{{item.id}}" style="display: none;">
-                    <button class="botao-excluir" type="submit" name="excluir_cadastro">
+                    <br>
+                    <button class="botao-validar validar-excluir" type="submit" name="excluir_cadastro">
                         <i class="fas fa-times"></i> Excluir
                     </button>
                 </form>
             </td>
         </tr>
     </table>
-
-    {% elif app_name == 'livro' %}
-
-
-    {% elif app_name == 'serie' %}
-
-
-    {% endif %}
 </div>

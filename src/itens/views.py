@@ -5,6 +5,7 @@ from .models import Filme, Livro, Serie
 from .forms import CadastroFilme, CadastroSerie, CadastroLivro
 
 from core.backend import bloquear_acesso, bloquear_acesso_admin
+from core.models import Usuario
 
 @bloquear_acesso
 def filme(request, pk):
@@ -124,6 +125,10 @@ def cadastrar_item(request, app_name):
 def validar_itens(request, tipo_item):
     context = {}
     context['app_name'] = tipo_item
+    
+    status_message = False
+
+    user = Usuario.objects.get(pk=request.user.id)
 
     if tipo_item == 'filme':
         obj_class = Filme
@@ -136,16 +141,20 @@ def validar_itens(request, tipo_item):
         obj_name = 'Série'
 
     if request.method == 'POST':
-        using_obj = obj_class.objects.get(pk=request.POST.get('item_id'))
+        using_obj = obj_class.objects.get(pk=int(request.POST.get('item_id')))
         
         if 'aprovar_cadastro' in request.POST:
-            using_obj.aprovar_item(request.user)
+            using_obj.aprovar_item(user)
+            status_message = "Cadastro foi aprovado com Sucesso!"
 
         elif 'excluir_cadastro' in request.POST:
-            using_obj.excluir_item(request.user)
+            using_obj.excluir_item(user)
+            status_message = "Cadastro foi Excluido!"
 
         elif 'revisar_cadastro' in request.POST:
-            using_obj.revisar_item(request.user)
+            using_obj.revisar_item(user)
+        
+        context['status_message'] = status_message
 
     objects = obj_class.objects.filter(ativo=False)
     

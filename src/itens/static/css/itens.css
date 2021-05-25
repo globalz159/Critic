@@ -21,44 +21,50 @@
   color: black;
 }
 
-.botao-aprovar {
+
+.botao-validar {
   width: 98px;
   border-radius: 5px;
   border: 1px solid black;
-
+  
   padding: 5px 16px;
-  margin-right: 5px;
+  margin: 4px;
 
   text-decoration: none;
   color: white;
+}
+.botao-validar:hover {
+  border-color: white;
+}
 
+.validar-excluir {
+  background: #d33100;
+}
+
+.validar-aprovar {
   background: #43a550;
 }
 
-.botao-revisar {
-  width: 98px;
-  border-radius: 5px;
-  border: 1px solid black;
-  
-  padding: 5px 16px;
-  margin-right: 5px;
-
-  text-decoration: none;
-  color: white;
-
-  background: #d37f00;
+.validar-revisar {
+  background: #fcaa2e;
 }
 
-.botao-excluir {
-  width: 98px;
-  border-radius: 5px;
-  border: 1px solid black;
-  
-  padding: 5px 16px;
-  margin-right: 5px;
+td p {
+  margin: 0px;
+  margin-top: 10px;
+  margin-left: 5px;
+  padding: 0;
+}
+.coluna-validar, .coluna-validar * {
+  vertical-align: top;
+}
 
-  text-decoration: none;
-  color: white;
-
-  background: #d33100;
+.message-status{
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 15px;
+  color: black;
+  border-radius: 10px;
+  background-color: rgb(196, 255, 169);
 }
