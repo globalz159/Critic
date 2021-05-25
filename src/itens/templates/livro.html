@@ -14,10 +14,10 @@
           <p>Editora - {{livro.editora}}</p>
           <p>País - {{livro.pais}}</p>
           <p>Ano de lançamento - {{livro.ano_lancamento}}</p>
-          <form action="{% url 'avaliar_livro' %}" method="post" autocomplete="off" enctype="multipart/form-data" class="login100-form validate-form form">
+          <form action="{% url 'avaliar_item' tipo_item=app_name item_id=livro.id %}" method="get" autocomplete="off" enctype="multipart/form-data" class="login100-form validate-form form">
             {% csrf_token %}
             {% buttons %}
-              <button type="submit" class="login100-form-btn btn btn-primary" href="{% url 'avaliar_livro' %}">
+              <button type="submit" class="login100-form-btn btn btn-primary">
                 <h2 style = font-family:Georgia;font-size:18px;>Fazer avaliação</h2>
               </button>
             {% endbuttons %} 
