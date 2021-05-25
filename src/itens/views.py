@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 
@@ -18,20 +19,6 @@ def filme(request, pk):
     }
     return render(request, 'filme.html', context)
 
-@bloquear_acesso
-def filmes(request):
-    filmes = Filme.objects.filter(ativo=True)
-    app_name = 'filme'
-    search_params = ('titulo', 'pais', 'diretor')
-    
-    context = {
-        'filmes': filmes,
-        'app_name': app_name,
-        'search_filters': search_params,
-        'len_resultados': len(filmes),
-    }
-    return render(request, 'filmes.html', context)
-
 
 @bloquear_acesso
 def livro(request, pk):
@@ -45,21 +32,6 @@ def livro(request, pk):
     return render(request, 'livro.html', context)
 
 @bloquear_acesso
-def livros(request):
-    livros = Livro.objects.filter(ativo=True)
-    app_name = 'livro'
-    search_params = ('titulo', 'pais', 'autor')
-    
-    context = {
-        'livros': livros,
-        'app_name': app_name,
-        'search_filters': search_params,
-        'len_resultados': len(livros),
-    }
-    return render(request, 'livros.html', context)    
-
-
-@bloquear_acesso
 def serie(request, pk):
     app_name = 'serie'
     serie_obj = get_object_or_404(Serie, id=pk)
@@ -70,30 +42,54 @@ def serie(request, pk):
     }
     return render(request, 'serie.html', context)
 
-@bloquear_acesso
-def series(request):
-    series = Serie.objects.filter(ativo=True)
-    app_name = 'serie'
-    search_params = ('titulo', 'pais', 'diretor')
-    
-    context = {
-        'series': series,
-        'app_name': app_name,
-        'search_filters': search_params,
-        'len_resultados': len(series),
-    }
-    return render(request, 'series.html', context)    
-
 
 @bloquear_acesso
-def cadastro_confirmado(request):
+def itens(request, tipo_item):
     context = {}
+    context['app_name'] = tipo_item
 
-    return render(request, 'cadastro_confirmado.html', context)  
+    if tipo_item == 'filme':
+        obj_class = Filme
+        obj_name = 'Filme'
+        plural_obj_name = 'Filmes'
+        search_params = ('titulo', 'pais', 'diretor')
+
+    elif tipo_item == 'livro':
+        obj_class = Livro
+        obj_name = 'Livro'
+        plural_obj_name = 'Livros'
+        search_params = ('titulo', 'pais', 'autor')
+
+    elif tipo_item == 'serie':
+        obj_class = Serie
+        obj_name = 'Série'
+        plural_obj_name = 'Séries'
+        search_params = ('titulo', 'pais', 'diretor')
+
+    objs = obj_class.objects.filter(ativo=True)
+    objs_add_recentemente = objs.order_by('data_atualizacao')
+
+    context.update({
+        'objs': objs,
+        'objs_add_recentemente': objs_add_recentemente,
+        'objs_indicados': [],
+
+        'obj_name': obj_name,
+        'plural_obj_name': plural_obj_name,
+
+        'search_filters': search_params,
+        'len_resultados': len(objs),
+    })
+
+    return render(request, 'itens.html', context)
+
 
 def cadastrar_item(request, app_name):
     context = {}
     context['app_name'] = app_name
+
+    status_message = False
+    request.session['status_message'] = status_message
 
     if app_name == 'filme':
         form = CadastroFilme()
@@ -118,7 +114,9 @@ def cadastrar_item(request, app_name):
             form = CadastroSerie(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/itens/cadastro_confirmado')
+            status_message = "Cadastro Realizado com sucesso! O item cadastrado estará disponível após um administrador validar."
+            request.session['status_message'] = status_message
+            return redirect(f'/itens/{app_name}')
         
 
     context['form'] = form

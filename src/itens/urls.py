@@ -8,11 +8,8 @@ urlpatterns = [
     path('serie/<int:pk>', serie, name="serie"),
 
     path('<str:app_name>/cadastrar', cadastrar_item, name="cadastro_item"),
-    path('cadastro_confirmado', cadastro_confirmado, name="cadastro_confirmado"),
 
-    path('livros', livros, name='livros'),
-    path('filmes', filmes, name='filmes'),
-    path('series', series, name='series'),
+    path('<str:tipo_item>/', itens, name='itens'),
 
     path('validar_itens/<str:tipo_item>', validar_itens, name="validar_itens"),
 
