@@ -16,14 +16,13 @@
 
                             {% if usuario in user.amigos.all %}
                                 <i id="icon-added" class="fas fa-user-check"> Amigos</i>
-                                <i id="icon-rm" class="fas fa-user-alt-slash"> Remover Amigo</i>
+                                <input name="amigo_id" type="text" value="{{usuario.id}}" style="display: none;">
+                                <button class="excluir_amigo" type="submit" name="excluir_cadastro">
+                                    <i id="icon-rm" class="fas fa-user-alt-slash"></i> Remover Amigo
+                                </button>
 
                             {% elif usuario in usuarios_solicitados %}
-
-                            {% else %}
-
-                                <input style="display: none;" type="text" id="user_id" name="user_id" value="{{usuario.id}}">
-                                <button type="submit" id="add_amigo" name="add_amigo"><i id="icon-add" class="fas fa-user-plus">Adicionar Amigo</i></button>
+                                <i id="icon-added" class="fas fa-check"> Solicitação enviada</i>
 
                             {% endif %}
                             </form>
