@@ -9,10 +9,12 @@ from core.models import Usuario
 
 @bloquear_acesso
 def filme(request, pk):
+    app_name = 'filme'
     filme_obj = get_object_or_404(Filme, id=pk)
     
     context = {
-        'filme': filme_obj
+        'filme': filme_obj, 
+        'app_name':app_name
     }
     return render(request, 'filme.html', context)
 
@@ -33,10 +35,12 @@ def filmes(request):
 
 @bloquear_acesso
 def livro(request, pk):
+    app_name = 'livro'
     livro_obj = get_object_or_404(Livro, id=pk)
 
     context = {
-        'livro': livro_obj
+        'livro': livro_obj,
+        'app_name':app_name
     }
     return render(request, 'livro.html', context)
 
@@ -57,10 +61,12 @@ def livros(request):
 
 @bloquear_acesso
 def serie(request, pk):
+    app_name = 'serie'
     serie_obj = get_object_or_404(Serie, id=pk)
 
     context = {
-        'serie': serie_obj
+        'serie': serie_obj,
+        'app_name':app_name
     }
     return render(request, 'serie.html', context)
 
