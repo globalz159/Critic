@@ -9,38 +9,38 @@ from core.backend import bloquear_acesso, bloquear_acesso_admin
 from core.models import Usuario
 
 @bloquear_acesso
-def filme(request, pk):
-    app_name = 'filme'
-    filme_obj = get_object_or_404(Filme, id=pk)
+def item(request, tipo_item, pk):
+    context = {}
+    context['app_name'] = tipo_item
+
+    if tipo_item == 'filme':
+        obj_class = Filme
+        obj_name = 'Filme'
+        plural_obj_name = 'Filmes'
+        search_params = ('titulo', 'pais', 'diretor')
+
+    elif tipo_item == 'livro':
+        obj_class = Livro
+        obj_name = 'Livro'
+        plural_obj_name = 'Livros'
+        search_params = ('titulo', 'pais', 'autor')
+
+    elif tipo_item == 'serie':
+        obj_class = Serie
+        obj_name = 'Série'
+        plural_obj_name = 'Séries'
+        search_params = ('titulo', 'pais', 'diretor')
+    
+    obj = get_object_or_404(obj_class, id=pk)
     
     context = {
-        'filme': filme_obj, 
-        'app_name':app_name
+        'obj': obj,
+        'obj_name': obj_name,
+        'plural_obj_name': plural_obj_name,
+
+        'search_filters': search_params,
     }
-    return render(request, 'filme.html', context)
-
-
-@bloquear_acesso
-def livro(request, pk):
-    app_name = 'livro'
-    livro_obj = get_object_or_404(Livro, id=pk)
-
-    context = {
-        'livro': livro_obj,
-        'app_name':app_name
-    }
-    return render(request, 'livro.html', context)
-
-@bloquear_acesso
-def serie(request, pk):
-    app_name = 'serie'
-    serie_obj = get_object_or_404(Serie, id=pk)
-
-    context = {
-        'serie': serie_obj,
-        'app_name':app_name
-    }
-    return render(request, 'serie.html', context)
+    return render(request, 'item.html', context)
 
 
 @bloquear_acesso
@@ -88,8 +88,9 @@ def cadastrar_item(request, app_name):
     context = {}
     context['app_name'] = app_name
 
-    status_message = False
-    request.session['status_message'] = status_message
+    """status_message = False
+    if 'status_message' in request.session:
+        del request.session['status_message']"""
 
     if app_name == 'filme':
         form = CadastroFilme()
