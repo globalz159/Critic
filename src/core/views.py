@@ -90,6 +90,7 @@ def searchbar(request, app_name):
     context = {}
     objs_to_show = []
     itens_apps = ('filme', 'serie', 'livro')
+    context['app_name'] = app_name
 
     context['itens_apps'] = itens_apps
 
@@ -161,13 +162,12 @@ def searchbar(request, app_name):
                 elif app_name == 'serie':
                     context['filmes'] = objs
                 context['search_filters'] = search_params
-                return redirect(f'/itens/{app_name}s')
+                return redirect(f'/itens/{app_name}')
 
     # Atualizando contexto
     context.update({
         'objs': objs_to_show,
         'len_resultados': len(objs_to_show), # -> Int
-        'app_name': app_name,
         'searching': True,
     })
     return render(request, 'busca/base_busca.html', context)
