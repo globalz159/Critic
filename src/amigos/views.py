@@ -49,7 +49,9 @@ def pedidos_amizade(request):
 
     pedidos_enviados = request.user.remetente.all()
     pedidos_recebidos = request.user.destinatario.all()
+    
     context.update({
+        'len_resultados': len(pedidos_recebidos),
         'p_enviados': pedidos_enviados,
         'p_recebidos': pedidos_recebidos,
         'app_name': app_name,

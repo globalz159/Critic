@@ -59,7 +59,13 @@
                 {% if app_name != 'amigos' %}
                     {{len_resultados}} Resultado{% if len_resultados != 1 %}s{% endif %} de {{app_name}}
                 {% else %}
+                    {% if app_pedidos %}
+
+                    {{len_resultados}} Pedido{% if len_resultados != 1 %}s{% endif %} de Amizade
+                    {% else %}
                     {{len_resultados}} Amigo{% if len_resultados != 1 %}s{% endif %}
+                
+                    {% endif %}
                 {% endif %}
                 </p>
             </td>

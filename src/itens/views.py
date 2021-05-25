@@ -18,7 +18,7 @@ def filme(request, pk):
 
 @bloquear_acesso
 def filmes(request):
-    filmes = Filme.objects.all()
+    filmes = Filme.objects.filter(ativo=True)
     app_name = 'filme'
     search_params = ('titulo', 'pais', 'diretor')
     
@@ -42,7 +42,7 @@ def livro(request, pk):
 
 @bloquear_acesso
 def livros(request):
-    livros = Livro.objects.all()
+    livros = Livro.objects.filter(ativo=True)
     app_name = 'livro'
     search_params = ('titulo', 'pais', 'autor')
     
@@ -66,7 +66,7 @@ def serie(request, pk):
 
 @bloquear_acesso
 def series(request):
-    series = Serie.objects.all()
+    series = Serie.objects.filter(ativo=True)
     app_name = 'serie'
     search_params = ('titulo', 'pais', 'diretor')
     
