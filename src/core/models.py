@@ -76,6 +76,9 @@ class Usuario(AbstractUser):
 
     objects = UsuarioManager()
 
+    def __str__(self):
+        return self.username
+
     def enviar_pedido_amizade(self, destinatario_id):
         amigo_obj = Usuario.objects.get(pk=destinatario_id)
         meus_pedidos = self.remetente.all()
@@ -100,6 +103,7 @@ class PedidosAmizade(models.Model):
     def aceitar_pedido(self):
         self.remetente.amigos.add(self.destinatario)
         self.aceito = True
+        self.save()
     
     def recusar_pedido(self):
         self.delete()
