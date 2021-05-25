@@ -7,9 +7,9 @@
     </div>      
     <nav class="main-nav">                
       <a class='btn' href="{% url 'index' %}">Home</a>
-      <a class='btn' href="{% url 'filmes' %}">Filmes</a>
-      <a class='btn' href="{% url 'series' %}">Séries</a>
-      <a class='btn' href="{% url 'livros' %}">Livros</a>
+      <a class='btn' href="{% url 'itens' tipo_item='filme' %}">Filmes</a>
+      <a class='btn' href="{% url 'itens' tipo_item='serie' %}">Séries</a>
+      <a class='btn' href="{% url 'itens' tipo_item='livro' %}">Livros</a>
     </nav>
 
     <!-- Conta -->
