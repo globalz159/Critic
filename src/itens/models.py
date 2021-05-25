@@ -30,12 +30,13 @@ class Itens(models.Model):
         abstract = True
     
     def aprovar_item(self, user):
-        if user.is_superuser():
+        if user.is_superuser:
             self.ativo = True
+            self.save()
     
     def excluir_item(self, user):
-        if user.is_superuser():
-            self.remove()
+        if user.is_superuser:
+            self.delete()
     
     def revisar_item(self, user):
         pass
