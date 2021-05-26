@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="wrapper">
+    <section class="main-container">
+        <div class="section-header">
+            <h1 class="header-title" style="padding-top: 10px;">
+                Avaliação d{% if app_name == 'serie' %}a{% else %}o{% endif %} {{obj_name}} ' {{item_obj.titulo}} '
+            </h1>
+
+        </div>
+
+        <div class="item-box" style="margin: 20px;">
+            <table style="width: 100%;">
+                <tr>
+                    <td class="coluna-validar" style="width: 30%;">
+                        <p>
+                            <b style="font-size: 20px;">
+                                {{obj_name}}: {{item_obj.titulo}}
+                                <br>
+                                Nota: {{obj.valor}}
+                                <br><br></b>
+                                </p>
+                    </td>
+                    <td class="coluna-validar">
+                        <p>Comentário: {{obj.avaliacao}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            Autor da avaliação: <a href="{% url 'item' tipo_item=app_name pk=item_obj.id %}">{{obj.user_id.username}}</a>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            Likes: {{}}
+                        </p>
+                    </td>
+                    <td>
+                        <button class="botao-avaliacao comentario"><i class="fa fa-comment"></i> Comentar</button>
+                        <button class="botao-avaliacao like"><i class="fa fa-thumbs-up"></i> Like</button>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+    </section>
+</div>
+{% endblock %}

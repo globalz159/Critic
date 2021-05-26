@@ -1,0 +1,18 @@
+.botao-avaliacao {
+    border-radius: 5px;
+    border: 1px solid black;
+    
+    padding: 8px 15px;
+    margin: 4px;
+    float: right;
+  
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+.like {
+    background: #395ca7;
+}
+.comentario {
+    background: #61828b;
+}

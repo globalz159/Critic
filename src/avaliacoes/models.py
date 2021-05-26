@@ -1,7 +1,6 @@
 from django.db import models
 
 from core.models import Usuario
-from comentarios.models import Comentario
 from itens.models import Filme, Livro, Serie
 
 
@@ -38,3 +37,19 @@ class AvaliacaoLivro(Avaliacao):
 
 class AvaliacaoSerie(Avaliacao):
     item = models.ForeignKey(Serie, on_delete=models.CASCADE, blank=True)
+
+class LikeAv(models.Model):
+    user_id = models.ForeignKey(Usuario, on_delete=models.CASCADE, verbose_name="user_id", blank=True)
+    class Meta:
+        abstract = True
+        verbose_name = 'Like'
+        verbose_name_plural = 'Likes'
+
+class LikeAvaliacaoFilme(LikeAv):
+    avaliacao = models.ForeignKey(AvaliacaoFilme, on_delete=models.CASCADE)
+
+class LikeAvaliacaoLivro(LikeAv):
+    avaliacao = models.ForeignKey(AvaliacaoLivro, on_delete=models.CASCADE)
+
+class LikeAvaliacaoSerie(LikeAv):
+    avaliacao = models.ForeignKey(AvaliacaoSerie, on_delete=models.CASCADE)

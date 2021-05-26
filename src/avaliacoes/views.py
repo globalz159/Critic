@@ -51,30 +51,36 @@ def avaliar_item(request, tipo_item, item_id):
 def avaliacao(request, tipo_item, item_id, av_id):
     context = {}
     context['app_name'] = tipo_item
-    context['id_item'] = item_id
+
+    import pdb; pdb.set_trace()
 
     if tipo_item == 'filme':
-        obj_class = Filme
+        obj_class = AvaliacaoFilme
+        item_class = Filme
         obj_name = 'Filme'
         plural_obj_name = 'Filmes'
         search_params = ('titulo', 'pais', 'diretor')
 
     elif tipo_item == 'livro':
-        obj_class = Livro
+        obj_class = AvaliacaoLivro
+        item_class = Livro
         obj_name = 'Livro'
         plural_obj_name = 'Livros'
         search_params = ('titulo', 'pais', 'autor')
 
     elif tipo_item == 'serie':
-        obj_class = Serie
+        obj_class = AvaliacaoSerie
+        item_class = Serie
         obj_name = 'Série'
         plural_obj_name = 'Séries'
         search_params = ('titulo', 'pais', 'diretor')
 
     obj = obj_class.objects.get(pk=av_id)
+    item_obj = item_class.objects.get(pk=item_id)
 
     context.update({
         'obj': obj,
+        'item_obj': item_obj,
         'obj_name': obj_name,
         'plural_obj_name': plural_obj_name,
         'search_filters': search_params,

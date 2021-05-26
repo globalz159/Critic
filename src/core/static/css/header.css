@@ -90,6 +90,7 @@ header {
 
     text-decoration: none;
     color: white;
+    cursor: pointer;
 
     background: #395ca7;
 }
@@ -103,6 +104,7 @@ header {
     text-decoration: none;
     font-weight: bold;
     color: white;
+    cursor: pointer;
 
     background: #c95613;
 }
