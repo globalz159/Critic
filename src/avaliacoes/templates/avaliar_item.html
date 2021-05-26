@@ -7,40 +7,48 @@
 {% block content %}
 <div class="wrapper">
   <section class="main-container" style="background-color: rgb(0, 0, 0);">
-    <div class="item-description">
+    <div class="fazer-avaliacao" style="background-color: rgb(184, 111, 190)">
       <form action="{% url 'avaliar_item' tipo_item=app_name item_id=obj.id  %}" method="post" enctype="multipart/form-data" class="login100-form validate-form form">
         {% csrf_token %}
-        <h2 style="text-align: center; color:white">Avaliar {{obj_name}} </h2>
-    
-        <label for="id_avaliacao">Comentário:</label> 
-          <input type="text" name="avaliacao" maxlength="200" required id="id_avaliacao">
-          <select name="item" id="id_item" style=" display: none;"> 
-          <option value="{{obj.id}}" selected>{{obj.id}}</option>   
-          </select>
+        <h1 style="text-align: center; color:rgb(34, 34, 34)">Avaliar {{obj_name}} </h1>
+        <h2>Título - {{obj.titulo}}</h2>
+        <img src= "/media/{{obj.imagem.thumbnail}}"/>
+        <br>
+        <br>
+        <div>
+          <label for="id_avaliacao">Comentário:</label> 
+            <textarea rows='10' name="avaliacao" maxlength="1500" required id="id_avaliacao" class="comentario"></textarea>
+            <select name="item" id="id_item" style=" display: none;"> 
+            <option value="{{obj.id}}" selected>{{obj.id}}</option>   
+            </select>
 
-          <select name="user_id" id="id_user_id" style=" display: none;"> 
-            <option value="{{user.id}}" selected>{{obj.id}}</option>   
+            <select name="user_id" id="id_user_id" style=" display: none;"> 
+              <option value="{{user.id}}" selected>{{obj.id}}</option>   
+            </select>
+            <br>
+            <br>
+            <br>
+            <label for="id_valor">Avaliação:</label> 
+            
+            <select 
+            name="valor" required id="id_valor">
+            <option value="" selected>---------</option> 
+            <option value="0">0</option>   
+            <option value="1">1</option>
+            <option value="2">2</option>   
+            <option value="3">3</option>
+            <option value="4">4</option>   
+            <option value="5">5</option>
+            <option value="6">6</option>   
+            <option value="7">7</option>
+            <option value="8">8</option>  
+            <option value="9">9</option>
+            <option value="10">10</option>
           </select>
-
-          <label for="id_valor">Avaliação:</label> 
-          
-          <select 
-          name="valor" required id="id_valor">
-          <option value="" selected>---------</option> 
-          <option value="0">0</option>   
-          <option value="1">1</option>
-          <option value="2">2</option>   
-          <option value="3">3</option>
-          <option value="4">4</option>   
-          <option value="5">5</option>
-          <option value="6">6</option>   
-          <option value="7">7</option>
-          <option value="8">8</option>  
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
-        
+        </div>  
         <div class="container-login100-form-btn">
+         <br>
+         <br> 
           <button type="submit" name="avaliar">
             <h2 style="text-align: center">Postar avaliação</h2>
           </button>

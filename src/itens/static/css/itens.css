@@ -10,8 +10,10 @@
     
 }
 
-.itens-box{
-
+.comentario{
+  padding-bottom: 100px;
+  margin-right: 85px;
+  width: 350px;
 }
 
 .dados-itens{
@@ -74,4 +76,23 @@ td p {
   color: black;
   border-radius: 10px;
   background-color: rgb(196, 255, 169);
+}
+
+.fazer-avaliacao {
+  text-align: center;
+  color: rgb(34, 34, 34);
+  width: 70%;
+  margin: auto;
+  border-radius: 8px;
+  padding: 20px 0px;
+  font-family: "Georgia";
+  padding-top: 5px;
+  width: 35%;
+  margin-top: 70px;
+  
+}
+
+.caixa-avaliacao {
+
+  
 }
