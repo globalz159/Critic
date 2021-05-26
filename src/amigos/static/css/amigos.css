@@ -104,3 +104,12 @@
 }
 
 /*** PEDIDOS AMIZADE ***/
+.message-status{
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 15px;
+  color: black;
+  border-radius: 10px;
+  background-color: rgb(196, 255, 169);
+}
