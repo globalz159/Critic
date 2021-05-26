@@ -17,7 +17,7 @@ class AvaliarFilme(forms.ModelForm):
 class AvaliarSerie(forms.ModelForm):
     class Meta:
         model = AvaliacaoSerie
-        fields = ['avaliacao', 'valor']
+        fields = ['avaliacao', 'valor', 'item', 'user_id']
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -28,7 +28,7 @@ class AvaliarSerie(forms.ModelForm):
 class AvaliarLivro(forms.ModelForm):
     class Meta:
         model = AvaliacaoLivro
-        fields = ['avaliacao', 'valor']
+        fields = ['avaliacao', 'valor', 'item', 'user_id']
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

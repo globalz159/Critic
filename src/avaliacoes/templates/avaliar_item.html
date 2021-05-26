@@ -1,0 +1,52 @@
+{% extends 'base_item.html' %}
+
+{% load static %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="wrapper">
+  <section class="main-container" style="background-color: rgb(0, 0, 0);">
+    <div class="item-description">
+      <form action="{% url 'avaliar_item' tipo_item=app_name item_id=obj.id  %}" method="post" enctype="multipart/form-data" class="login100-form validate-form form">
+        {% csrf_token %}
+        <h2 style="text-align: center; color:white">Avaliar {{obj_name}} </h2>
+    
+        <label for="id_avaliacao">Comentário:</label> 
+          <input type="text" name="avaliacao" maxlength="200" required id="id_avaliacao">
+          <select name="item" id="id_item" style=" display: none;"> 
+          <option value="{{obj.id}}" selected>{{obj.id}}</option>   
+          </select>
+
+          <select name="user_id" id="id_user_id" style=" display: none;"> 
+            <option value="{{user.id}}" selected>{{obj.id}}</option>   
+          </select>
+
+          <label for="id_valor">Avaliação:</label> 
+          
+          <select 
+          name="valor" required id="id_valor">
+          <option value="" selected>---------</option> 
+          <option value="0">0</option>   
+          <option value="1">1</option>
+          <option value="2">2</option>   
+          <option value="3">3</option>
+          <option value="4">4</option>   
+          <option value="5">5</option>
+          <option value="6">6</option>   
+          <option value="7">7</option>
+          <option value="8">8</option>  
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        
+        <div class="container-login100-form-btn">
+          <button type="submit" name="avaliar">
+            <h2 style="text-align: center">Postar avaliação</h2>
+          </button>
+        </div>
+    </div>
+      </form>
+  </section>
+</div>
+{% endblock %}
