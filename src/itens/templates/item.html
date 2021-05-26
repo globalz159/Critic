@@ -1,0 +1,41 @@
+{% extends 'base_item.html' %}
+
+{% load static %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+
+<div class="wrapper">
+  <section class="main-container" style="background-color: rgb(0, 0, 0);">
+      <div class="item-description" class="section-header" style="background-color: rgb(205, 145, 245);">
+          <h1>Título - {{obj.titulo}}</h1>
+          <img src= "/media/{{filme.imagem.thumbnail}}"/>
+          <p>Ano de lançamento - {{obj.ano_lancamento}}</p>
+          
+          {% if app_name != 'livro' %}
+          
+            <p>Diretor - {{obj.diretor}}</p>
+            <p>Elenco - {{obj.elenco}}</p>
+            {% if app_name == 'serie' %}
+              <p>Número de temporadas - {{serie.qtd_temporadas}}</p>
+            {% endif %}
+          
+          {% else %}
+            <p>Autor - {{obj.autor}}</p>
+            <p>Editora - {{obj.editora}}</p>
+            <p>Volume - {{obj.volume}}</p>
+          {% endif %}
+
+          <p>País - {{obj.pais}}</p>
+          <form action="{% url 'avaliar_item' tipo_item=app_name item_id=obj.id%}" method="post" autocomplete="off" enctype="multipart/form-data" class="login100-form validate-form form">
+            {% csrf_token %}
+              <button type="submit" class="" href="{% url 'avaliar_item' tipo_item=app_name item_id=obj.id %}">
+                <h2 style = font-family:Georgia;font-size:18px;>Fazer avaliação</h2>
+              </button>
+          </form>
+      </div>
+  </section>
+</div>
+
+{% endblock %}

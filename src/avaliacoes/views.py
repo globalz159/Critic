@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import AvaliacaoFilme, AvaliacaoLivro, AvaliacaoSerie
+
+from itens.views import item
 from .forms import  AvaliarFilme, AvaliarSerie, AvaliarLivro
+
+from .models import *
 from itens.models import *
 
 
@@ -41,7 +44,40 @@ def avaliar_item(request, tipo_item, item_id):
             return redirect(f"/itens/{tipo_item}/{item_id}")    
 
     context['form'] = form
-    
-    
 
     return render(request, 'avaliar_item.html', context)
+
+
+def avaliacao(request, tipo_item, item_id, av_id):
+    context = {}
+    context['app_name'] = tipo_item
+    context['id_item'] = item_id
+
+    if tipo_item == 'filme':
+        obj_class = Filme
+        obj_name = 'Filme'
+        plural_obj_name = 'Filmes'
+        search_params = ('titulo', 'pais', 'diretor')
+
+    elif tipo_item == 'livro':
+        obj_class = Livro
+        obj_name = 'Livro'
+        plural_obj_name = 'Livros'
+        search_params = ('titulo', 'pais', 'autor')
+
+    elif tipo_item == 'serie':
+        obj_class = Serie
+        obj_name = 'Série'
+        plural_obj_name = 'Séries'
+        search_params = ('titulo', 'pais', 'diretor')
+
+    obj = obj_class.objects.get(pk=av_id)
+
+    context.update({
+        'obj': obj,
+        'obj_name': obj_name,
+        'plural_obj_name': plural_obj_name,
+        'search_filters': search_params,
+    })
+
+    return render(request, 'avaliacao.html', context)

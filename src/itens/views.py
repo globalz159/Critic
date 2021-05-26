@@ -32,14 +32,14 @@ def item(request, tipo_item, pk):
         search_params = ('titulo', 'pais', 'diretor')
     
     obj = get_object_or_404(obj_class, id=pk)
-    
-    context = {
+
+    context.update({
         'obj': obj,
         'obj_name': obj_name,
         'plural_obj_name': plural_obj_name,
 
         'search_filters': search_params,
-    }
+    })
     return render(request, 'item.html', context)
 
 
