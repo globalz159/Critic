@@ -36,6 +36,10 @@ class AvaliacaoFilme(Avaliacao):
         like = LikeAvaliacaoFilme(user_id=user_id, avaliacao=self)
         like.save()
 
+    def descurtir(self, user_id):
+        like = LikeAvaliacaoFilme.objects.get(user_id=user_id)
+        like.delete()
+
 class AvaliacaoLivro(Avaliacao):
     item = models.ForeignKey(Livro, on_delete=models.CASCADE, blank=True)
     
@@ -43,12 +47,20 @@ class AvaliacaoLivro(Avaliacao):
         like = LikeAvaliacaoLivro(user_id=user_id, avaliacao=self)
         like.save()
 
+    def descurtir(self, user_id):
+        like = LikeAvaliacaoLivro.objects.get(user_id=user_id)
+        like.delete()
+
 class AvaliacaoSerie(Avaliacao):
     item = models.ForeignKey(Serie, on_delete=models.CASCADE, blank=True)
 
     def curtir(self, user_id):
         like = LikeAvaliacaoSerie(user_id=user_id, avaliacao=self)
         like.save()
+    
+    def descurtir(self, user_id):
+        like = LikeAvaliacaoSerie.objects.get(user_id=user_id)
+        like.delete()
 
 class LikeAv(models.Model):
     user_id = models.ForeignKey(Usuario, on_delete=models.CASCADE, verbose_name="user_id", blank=True)

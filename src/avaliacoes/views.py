@@ -85,17 +85,18 @@ def avaliacao(request, tipo_item, item_id, av_id):
         likes = obj.likeavaliacaolivro_set.all()
     elif tipo_item == 'serie':
         likes = obj.likeavaliacaoserie_set.all()
-    
-    liked_users = []
-    for like in likes:
-        liked_users.append(like.user_id)
 
     if request.method == 'POST':
         if 'curtir' in request.POST:
             obj.curtir(request.user)
-
+        elif 'descurtir' in request.POST:
+            obj.descurtir(request.user)
         elif 'comentar' in request.POST:
             obj.comentar()
+
+    liked_users = []
+    for like in likes:
+        liked_users.append(like.user_id)
 
     context.update({
         'obj': obj,

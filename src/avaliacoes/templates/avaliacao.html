@@ -12,7 +12,7 @@
 
         </div>
 
-        <div class="item-box" style="margin: 20px;">
+        <div class="item-box" style="margin-top: 20px;">
             <table style="width: 100%;">
                 <tr>
                     <td class="coluna-validar" style="width: 30%;">
@@ -48,11 +48,11 @@
                     <td>
                         <form action="{% url 'avaliacao' tipo_item=app_name item_id=item_obj.id av_id=obj.id %}" method="post">
                             {% csrf_token %}
-                            <button id="comentar" name='comentar' class="botao-avaliacao comentario"><i class="fa fa-comment"></i> Comentar</button>
+                            <button type="submit" id="comentar" name='comentar' class="botao-avaliacao comentario"><i class="fa fa-comment"></i> Comentar</button>
                             {% if user not in liked_users %}
-                            <button id="curtir" name='curtir' class="botao-avaliacao like"><i class="fa fa-thumbs-up"></i> Like</button>
+                            <button type="submit" id="curtir" name='curtir' class="botao-avaliacao like"><i class="fa fa-thumbs-up"></i> Like</button>
                             {% else %}
-                            <button id="descurtir" name='descurtir' class="botao-avaliacao like"><i class="fa fa-thumbs-down"></i> Descurtir</button>
+                            <button type="submit" id="descurtir" name='descurtir' class="botao-avaliacao like"><i class="fa fa-thumbs-down"></i> Descurtir</button>
                             {% endif %}
                         </form>
                     </td>
