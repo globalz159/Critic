@@ -52,8 +52,6 @@ def avaliacao(request, tipo_item, item_id, av_id):
     context = {}
     context['app_name'] = tipo_item
 
-    # import pdb; pdb.set_trace()
-
     if tipo_item == 'filme':
         obj_class = AvaliacaoFilme
         item_class = Filme

@@ -19,9 +19,10 @@
             <b>Diretor - </b> {{obj.diretor}}
             <hr>
             <b>Elenco - </b> {{obj.elenco}}
-            {% if app_name == 'serie' %}
             <hr>
+            {% if app_name == 'serie' %}
               <b>Número de temporadas - </b> {{serie.qtd_temporadas}}
+            <hr> 
             {% endif %}
           
           {% else %}
@@ -31,10 +32,14 @@
             <b>Editora - </b> {{obj.editora}}
             <hr>
             <b>Volume - </b> {{obj.volume}}
+            <hr>
           {% endif %}
 
-          <p>País - {{obj.pais}}</p>
-          <p>Categoria - {{obj.categoria}}</p>
+          <b>País - </b> {{obj.pais}}
+          <hr>
+          <b>Categoria - </b> {{obj.categoria}}
+          <br>
+          <br>
           <form action="{% url 'avaliar_item' tipo_item=app_name item_id=obj.id%}" method="post" autocomplete="off" enctype="multipart/form-data" class="login100-form validate-form form">
             {% csrf_token %}
               <button type="submit" class="" href="{% url 'avaliar_item' tipo_item=app_name item_id=obj.id %}">
