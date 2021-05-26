@@ -2,7 +2,7 @@ from datetime import datetime
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 
-from .models import Filme, Livro, Serie
+from .models import *
 from .forms import CadastroFilme, CadastroSerie, CadastroLivro
 
 from core.backend import bloquear_acesso, bloquear_acesso_admin
@@ -87,6 +87,7 @@ def itens(request, tipo_item):
 def cadastrar_item(request, app_name):
     context = {}
     context['app_name'] = app_name
+    context['categorias'] = CategoriaItem.objects.all()
 
     """status_message = False
     if 'status_message' in request.session:
@@ -105,7 +106,7 @@ def cadastrar_item(request, app_name):
         return redirect('')
 
     context['obj_name'] = obj_name
-
+   
     if request.method == 'POST':
         if app_name == 'filme':
             form = CadastroFilme(request.POST, request.FILES)

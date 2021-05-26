@@ -7,13 +7,27 @@
 {% block content %}
 <div class="wrapper">
   <section class="main-container">
-	<div class="container-login">
+	<div>
 
-	<form action="{% url 'cadastro_item' app_name=app_name %}" method="post" autocomplete="off" enctype="multipart/form-data" class="login100-form validate-form form">
+	<form class="cadastro-labels" action="{% url 'cadastro_item' app_name=app_name %}" method="post" autocomplete="off" enctype="multipart/form-data" class="login100-form validate-form form">
 		{% csrf_token %}
+		<br>
+		<br>
 		<h2 style="text-align: center; color:white">Cadastrar {{obj_name}}</h2>
 
-		{{ form.as_p }}
+
+		<fieldset class="fieldset_cadastrar">
+			{% if app_name == 'filme' %}
+			Filmes{% include 'cadastro_filme.html' %}
+
+			{% elif app_name == 'livro' %}
+			Livros{% include 'cadastro_livro.html' %}
+
+			{% elif app_name == 'serie' %}
+		    Séries{% include 'cadastro_serie.html' %}
+
+			{% endif %}
+        </fieldset>
 		
 		<div class="container-login100-form-btn">
 			<button type="submit">

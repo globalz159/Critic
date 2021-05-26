@@ -1,10 +1,17 @@
-.container-login {
-    margin-top: 60px;
-    width: 100%;
+.container-login100-form-btn {
+    margin-top: 55px;
+    width: 98%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 12px;
+  }
+  .cadastro-labels{
+    justify-content: center;
+    align-items: center;
+  }
+  .fieldset_cadastrar *{
+    margin: 10px;
   }
   

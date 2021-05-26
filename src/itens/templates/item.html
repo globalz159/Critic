@@ -32,10 +32,9 @@
             <hr>
             <b>Volume - </b> {{obj.volume}}
           {% endif %}
-          <hr>
-          <b>País - </b> {{obj.pais}}
-          <br>
-          <br>
+
+          <p>País - {{obj.pais}}</p>
+          <p>Categoria - {{obj.categoria}}</p>
           <form action="{% url 'avaliar_item' tipo_item=app_name item_id=obj.id%}" method="post" autocomplete="off" enctype="multipart/form-data" class="login100-form validate-form form">
             {% csrf_token %}
               <button type="submit" class="" href="{% url 'avaliar_item' tipo_item=app_name item_id=obj.id %}">

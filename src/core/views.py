@@ -181,7 +181,7 @@ def minha_conta(request):
 
     avaliacoes = av_filmes.union(av_livros)
     avaliacoes = avaliacoes.union(av_series)
-    avaliacoes = avaliacoes.order_by('data_criacao')
+    #avaliacoes = avaliacoes.order_by('data_criacao')
     
     context = {
         'user': user,
