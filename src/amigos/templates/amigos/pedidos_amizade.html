@@ -4,30 +4,55 @@
 {% block title %}Pedidos de Amizade{% endblock %}
 
 {% block content %}
-<div class="wrapper">  
-  <section class="main-container" >
+<div class="wrapper">
+    <section class="main-container" >
 
-    {% include 'base_header_section.html' %}
-
-    <div class="pedidos-amizade">
-
-        <div id="recebidos" class="box-pedidos">
-            {% for pedido in p_enviados %}
+        {% include 'base_header_section.html' %}
+            {% if status_message %}
+                <div class="message-status">
+                    {{status_message}}
+                </div>{% endif %}
+<table style="width: 100%; text-align: center;">
+<div class="pedidos-amizade">
+<td>
+<div id="recebidos" class="box-pedidos">
+<br><br>
                 <div class="pedido">
-
-
-
+                    <div class="message-status">
+                        <a class="botao-estilizado"> Pedidos recebidos</a>
+                         {% for pedido in p_recebidos %}
+                     <p>
+                        <b>Usuário:</b> {{pedido.remetente.username}}
+                            <button class="botao-validar validar-aprovar" type="submit" name="aceitar_solicitacao">Aprovar</button>
+                            <button class="botao-validar validar-excluir" type="submit" name="excluir_solicitacao">Excluir</button>
+                     </p>
+                         {% endfor %}
+                    </div>
                 </div>
-            {% endfor %}
-        </div>
+</div>
+</td>
+</div>
 
-        <div id="enviados" class="box-pedidos">
-            {% for pedido in p_enviados %}
+<br><br>
 
-            {% endfor %}
-        </div>
-
+<td>
+<div id="enviados" class="box-pedidos">
+<br><br>
+                <div class="pp">
+                    <div class="message-status">
+                                <a class="botao-estilizado">Pedidos enviados</a>
+                          {% for pedido in p_enviados %}
+                    <p>
+                    <b>Usuário:</b> {{pedido.destinatario.username}}
+                        <button class="botao-validar validar-excluir" type="submit" name="excluir_cadastro">Excluir</button>
+                    </p>
+                        {% endfor %}
+</td>
+                    </div>
+                </div>
+</div>
     </div>
-  </section>
+        </section>
+</table>
 </div>
 {% endblock %}
