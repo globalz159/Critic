@@ -68,9 +68,39 @@
 }
 
 .add_amigo{
-    background-color: rgb(33, 126, 33);
-    color: white;
-    font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid black;
+  
+  padding: 5px 16px;
+  margin: 4px;
+
+  text-decoration: none;
+  color: black;
+  background-color: rgb(60, 213, 0);
+}
+
+.add_amigo:hover{
+  border-color: rgb(60, 213, 0);
+  color: rgb(235, 235, 235);
+  background-color: rgb(59, 162, 0);
+}
+
+.excluir_amigo{
+  border-radius: 5px;
+  border: 1px solid black;
+  
+  padding: 5px 16px;
+  margin: 4px;
+
+  text-decoration: none;
+  color: black;
+  background-color: rgb(253, 95, 95);
+}
+
+.excluir_amigo:hover{
+  border-color: rgb(253, 95, 95);
+  color: rgb(235, 235, 235);
+  background-color: rgb(197, 0, 0);
 }
 
 /*** PEDIDOS AMIZADE ***/
