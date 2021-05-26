@@ -32,11 +32,23 @@ class Avaliacao(models.Model):
 class AvaliacaoFilme(Avaliacao):
     item = models.ForeignKey(Filme, on_delete=models.CASCADE, blank=True)
 
+    def curtir(self, user_id):
+        like = LikeAvaliacaoFilme(user_id=user_id, avaliacao=self)
+        like.save()
+
 class AvaliacaoLivro(Avaliacao):
     item = models.ForeignKey(Livro, on_delete=models.CASCADE, blank=True)
+    
+    def curtir(self, user_id):
+        like = LikeAvaliacaoLivro(user_id=user_id, avaliacao=self)
+        like.save()
 
 class AvaliacaoSerie(Avaliacao):
     item = models.ForeignKey(Serie, on_delete=models.CASCADE, blank=True)
+
+    def curtir(self, user_id):
+        like = LikeAvaliacaoSerie(user_id=user_id, avaliacao=self)
+        like.save()
 
 class LikeAv(models.Model):
     user_id = models.ForeignKey(Usuario, on_delete=models.CASCADE, verbose_name="user_id", blank=True)

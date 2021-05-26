@@ -36,12 +36,25 @@
                     </td>
                     <td>
                         <p>
-                            Likes: {{}}
+                            {% if app_name == 'filme' %}
+                            Likes: {{obj.likeavaliacaofilme_set.all.count}}
+                            {% elif app_name == 'livro' %}
+                            Likes: {{obj.likeavaliacaolivro_set.all.count}}
+                            {% elif app_name == 'serie' %}
+                            Likes: {{obj.likeavaliacaoserie_set.all.count}}
+                            {% endif %}
                         </p>
                     </td>
                     <td>
-                        <button class="botao-avaliacao comentario"><i class="fa fa-comment"></i> Comentar</button>
-                        <button class="botao-avaliacao like"><i class="fa fa-thumbs-up"></i> Like</button>
+                        <form action="{% url 'avaliacao' tipo_item=app_name item_id=item_obj.id av_id=obj.id %}" method="post">
+                            {% csrf_token %}
+                            <button id="comentar" name='comentar' class="botao-avaliacao comentario"><i class="fa fa-comment"></i> Comentar</button>
+                            {% if user not in liked_users %}
+                            <button id="curtir" name='curtir' class="botao-avaliacao like"><i class="fa fa-thumbs-up"></i> Like</button>
+                            {% else %}
+                            <button id="descurtir" name='descurtir' class="botao-avaliacao like"><i class="fa fa-thumbs-down"></i> Descurtir</button>
+                            {% endif %}
+                        </form>
                     </td>
                 </tr>
             </table>

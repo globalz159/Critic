@@ -52,11 +52,12 @@ def avaliacao(request, tipo_item, item_id, av_id):
     context = {}
     context['app_name'] = tipo_item
 
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
 
     if tipo_item == 'filme':
         obj_class = AvaliacaoFilme
         item_class = Filme
+        like_class = LikeAvaliacaoFilme
         obj_name = 'Filme'
         plural_obj_name = 'Filmes'
         search_params = ('titulo', 'pais', 'diretor')
@@ -64,6 +65,7 @@ def avaliacao(request, tipo_item, item_id, av_id):
     elif tipo_item == 'livro':
         obj_class = AvaliacaoLivro
         item_class = Livro
+        like_class = LikeAvaliacaoLivro
         obj_name = 'Livro'
         plural_obj_name = 'Livros'
         search_params = ('titulo', 'pais', 'autor')
@@ -71,6 +73,7 @@ def avaliacao(request, tipo_item, item_id, av_id):
     elif tipo_item == 'serie':
         obj_class = AvaliacaoSerie
         item_class = Serie
+        like_class = LikeAvaliacaoSerie
         obj_name = 'Série'
         plural_obj_name = 'Séries'
         search_params = ('titulo', 'pais', 'diretor')
@@ -78,12 +81,31 @@ def avaliacao(request, tipo_item, item_id, av_id):
     obj = obj_class.objects.get(pk=av_id)
     item_obj = item_class.objects.get(pk=item_id)
 
+    if tipo_item == 'filme':
+        likes = obj.likeavaliacaofilme_set.all()
+    elif tipo_item == 'livro':
+        likes = obj.likeavaliacaolivro_set.all()
+    elif tipo_item == 'serie':
+        likes = obj.likeavaliacaoserie_set.all()
+    
+    liked_users = []
+    for like in likes:
+        liked_users.append(like.user_id)
+
+    if request.method == 'POST':
+        if 'curtir' in request.POST:
+            obj.curtir(request.user)
+
+        elif 'comentar' in request.POST:
+            obj.comentar()
+
     context.update({
         'obj': obj,
         'item_obj': item_obj,
         'obj_name': obj_name,
         'plural_obj_name': plural_obj_name,
         'search_filters': search_params,
+        'liked_users': liked_users,
     })
 
     return render(request, 'avaliacao.html', context)

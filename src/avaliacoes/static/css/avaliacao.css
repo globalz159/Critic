@@ -11,8 +11,10 @@
     cursor: pointer;
 }
 .like {
+    width: 105px;
     background: #395ca7;
 }
 .comentario {
+    width: 120px;
     background: #61828b;
 }
