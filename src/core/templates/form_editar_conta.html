@@ -1,0 +1,52 @@
+{% load static %}
+    <form action="{% url 'minha_conta' %}" method="post" style="padding-bottom: 30px;">
+      <fieldset >
+        <div>
+            <label for="username">Nome de Usuário:</label>
+            <input type="text" id="id_username" name="username" size="40" value="{{user.username}}"/>
+        </div><br>
+        <div>
+            <label for="email">E-mail:</label>
+            <input type="email" id="id_email" name="email" size="40" value="{{user.email}}"/>
+        </div><br>
+        <div>
+            <label for="first_name">Primeiro Nome:</label>
+            <input type="text" id="id_first_name" name="first_name" size="40" value="{{user.first_name}}"/>
+        </div><br>
+        <div>
+            <label for="last_name">Ultimo Nome:</label>
+            <input type="text" id="id_last_name" name="last_name" size="40" value="{{user.last_name}}"/>
+        </div><br>
+        <div>
+          <label for="cidade">Cidade:</label>
+            <select id="id_cidade" name="cidade">
+              {% for cidade in cidades %}
+                {% if cidade.id != user.cidade.id %}
+                <option value={{cidade.id}}>{{cidade.nome}}</option>
+                {% else %}
+                <option value={{cidade.id}} selected>{{cidade.sigla}}</option>
+                {% endif %}
+              {% endfor %}
+              </select>
+        </div><br>
+        <div>
+            <label for="nome">Estado:</label>
+            <select id="id_estado" name="estado">
+            {% for estado in estados %}
+              {% if estado.id != user.estado.id %}
+              <option value={{estado.id}}>{{estado.sigla}}</option>
+              {% else %}
+              <option value={{estado.id}} selected>{{estado.sigla}}</option>
+              {% endif %}
+            {% endfor %}
+            </select>
+        </div><br>
+        <div>
+            <label for="data_nascimento">Data de nascimento:</label>
+            <input type="date" id="id_data_nascimento" name="data_nascimento" value="{{user.data_nascimento}}"/>
+        </div><br>
+        <div style="text-align: center;">
+          <input name="alterar_perfil" class="botao-avaliacao comentario" style="float: none;" type="submit">
+        </div>
+    </fieldset>
+    </form>

@@ -217,6 +217,7 @@ def user_view(request, pk):
         'usuario': user,
         'amigos': amigos,
         'amigos_em_comum': amigos_em_comum,
+        'len_amigos_comum':len(amigos_em_comum),
     })
 
     return render(request, 'usuario.html', context)
