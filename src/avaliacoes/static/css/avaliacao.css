@@ -10,11 +10,49 @@
     color: white;
     cursor: pointer;
 }
-.like {
+.liked {
     width: 105px;
+    background: #1689b6;
+}
+.like {
+    width: 100px;
     background: #395ca7;
 }
 .comentario {
     width: 120px;
-    background: #61828b;
+    min-width: 120px;
+    background: #1d9746;
+}
+
+
+.avaliacao-self {
+    width:90%;
+    margin: auto;
+    padding: 10px;
+    background-color: rgb(226, 194, 226);
+    border-radius: 6px;
+    color: black;
+  }
+
+
+.novo-comentario {
+    width:89%;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 15px;
+    background-color: rgb(169, 191, 238);
+    border-radius: 2px;
+    border: 3px solid black;
+    color: black;
+  }
+
+.comentarios-avaliacao {
+    width:86%;
+    height: 50px;
+    margin: auto;
+    padding: 0px 15px;
+    background-color: rgb(232, 255, 254);
+    border-radius: 2px;
+    border: 3px solid black;
+    color: black;
 }

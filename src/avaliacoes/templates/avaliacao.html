@@ -9,57 +9,100 @@
             <h1 class="header-title" style="padding-top: 10px;">
                 Avaliação d{% if app_name == 'serie' %}a{% else %}o{% endif %} {{obj_name}} ' {{item_obj.titulo}} '
             </h1>
-
         </div>
 
-        <div class="item-box" style="margin-top: 20px;">
+        {% if new_comentario %}
+            <div class="message-status">
+                Comentário registrado! 
+            </div>
+        {% endif %}
+
+        <div class="avaliacao-self" style="margin-top: 20px;">
             <table style="width: 100%;">
                 <tr>
                     <td class="coluna-validar" style="width: 30%;">
                         <p>
-                            <b style="font-size: 20px;">
-                                {{obj_name}}: {{item_obj.titulo}}
+                            <b style="font-size: 24px;">
+                                {{obj_name}}: <a style="text-decoration: none; color: rgb(79, 14, 85);" href="{% url 'item' tipo_item=app_name pk=item_obj.pk %}">{{item_obj.titulo}}</a>
                                 <br>
                                 Nota: {{obj.valor}}
                                 <br><br></b>
                                 </p>
                     </td>
-                    <td class="coluna-validar">
-                        <p>Comentário: {{obj.avaliacao}}</p>
+                    <td class="coluna-validar" colspan="2">
+                        <p style="font-size: 20px;"><b>Comentário</b>: {{obj.avaliacao}}</p>
                     </td>
                 </tr>
-                <tr>
+                <tr style="max-height: 50px;">
                     <td>
                         <p>
-                            Autor da avaliação: <a href="{% url 'item' tipo_item=app_name pk=item_obj.id %}">{{obj.user_id.username}}</a>
+                            <b>Autor da avaliação</b>: <a href="{% url 'item' tipo_item=app_name pk=item_obj.id %}">{{obj.user_id.username}}</a>
                         </p>
                     </td>
                     <td>
                         <p>
                             {% if app_name == 'filme' %}
-                            Likes: {{obj.likeavaliacaofilme_set.all.count}}
+                            <b>Likes:</b> {{obj.likeavaliacaofilme_set.all.count}}
                             {% elif app_name == 'livro' %}
-                            Likes: {{obj.likeavaliacaolivro_set.all.count}}
+                            <b>Likes:</b> {{obj.likeavaliacaolivro_set.all.count}}
                             {% elif app_name == 'serie' %}
-                            Likes: {{obj.likeavaliacaoserie_set.all.count}}
+                            <b>Likes:</b> {{obj.likeavaliacaoserie_set.all.count}}
+                            {% endif %}
+                        </p>
+                    </td>
+
+                    <td>
+                        <p>
+                            {% if app_name == 'filme' %}
+                            <b>Comentários</b>: {{obj.comentariofilme_set.all.count}}
+                            {% elif app_name == 'livro' %}
+                            <b>Comentários</b>: {{obj.comentariolivro_set.all.count}}
+                            {% elif app_name == 'serie' %}
+                            <b>Comentários</b>: {{obj.comentarioserie_set.all.count}}
                             {% endif %}
                         </p>
                     </td>
                     <td>
                         <form action="{% url 'avaliacao' tipo_item=app_name item_id=item_obj.id av_id=obj.id %}" method="post">
                             {% csrf_token %}
-                            <button type="submit" id="comentar" name='comentar' class="botao-avaliacao comentario"><i class="fa fa-comment"></i> Comentar</button>
+                            <button type="button" id="btn_comentar" name='comentar' class="botao-avaliacao comentario"><i class="fa fa-comment"></i> Comentar</button>
+                            
                             {% if user not in liked_users %}
                             <button type="submit" id="curtir" name='curtir' class="botao-avaliacao like"><i class="fa fa-thumbs-up"></i> Like</button>
                             {% else %}
-                            <button type="submit" id="descurtir" name='descurtir' class="botao-avaliacao like"><i class="fa fa-thumbs-down"></i> Descurtir</button>
+                            <button type="submit" id="descurtir" name='descurtir' class="botao-avaliacao liked"><i class="fa fa-thumbs-down"></i> Descurtir</button>
                             {% endif %}
                         </form>
                     </td>
                 </tr>
             </table>
-
         </div>
+
+        <div id="id_novo_comentario" class="novo-comentario" style="display: none;">
+            <form action="{% url 'avaliacao' tipo_item=app_name item_id=item_obj.id av_id=obj.id %}" method="post">
+                {% csrf_token %}
+                <label for="id_comentario_field">Comentário: </label><br>
+                <textarea id="id_comentario_field" name='comentario_field' style="width: 80%; height: 50px;"></textarea>
+                <button id="btn_comentar" name='comentar_action' class="botao-avaliacao comentario"><i class="fa fa-comment"></i> Comentar</button>
+            </form>
+        </div>
+
+        <div class="section-header" style="background-color: rgb(111, 48, 194);width: 90%;margin: auto;">
+            <h1 class="header-title" style="padding-top: 10px;">
+                Comentários dessa Avaliação
+            </h1>
+        </div>
+
+        {% for comentario in comentarios %}
+        <div class="comentarios-avaliacao">
+            <p style="padding:10px 0px 0px; margin: 0px;">
+            <a href="{% url 'minha_conta' %}" style="text-decoration: none;">
+                @{{comentario.user_id.username}}</a>: {{comentario.texto}}
+            </p>
+        </div>
+        {% endfor %}
+
+        <script src="{% static 'js/avaliacao.js'%}"></script>
 
     </section>
 </div>
