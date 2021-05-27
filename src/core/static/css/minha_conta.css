@@ -1,8 +1,5 @@
 .fotoperfil{
-    width: 300px;
-    height: 300px;
-    margin-left: 750px;
-    margin-top: 50px;
+    
     
     
 }
@@ -24,8 +21,7 @@
 fieldset{
     width: 100px;
     position:center;
-    margin-left: 700px;
-    
+    margin:auto;
 }
 .numeros{
     text-align: left;
