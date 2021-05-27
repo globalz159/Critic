@@ -19,7 +19,7 @@ class Avaliacao(models.Model):
         (10, 10)
     )
 
-    data_criacao = models.DateField(auto_now=True, blank=True), 
+    create_date = models.DateTimeField("Data de Criação", auto_now=True, blank=True)
     user_id = models.ForeignKey(Usuario, on_delete=models.CASCADE, verbose_name="user_id", blank=True)
     valor = models.IntegerField("Avaliação", choices=VALOR_CHOICES)
     avaliacao = models.CharField("Comentário", max_length=200, null=True)
