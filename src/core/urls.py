@@ -10,6 +10,7 @@ urlpatterns = [
     path('500', v500, name='v500'),
 
     path('minha_conta', minha_conta, name='minha_conta'),
+    path('usuario/<int:pk>', user_view, name='usuario'),
 
     path('busca/<str:app_name>', searchbar, name='searchbar'),
 

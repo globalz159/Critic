@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="wrapper">
+    <section class="main-container" >
+      <h2>Minha Conta</h2>
+      <table>
+      <tr>
+        <td>
+          {% if usuario.imagem %}
+          {{usuario.imagem}}
+          {% else %}
+          <div class="fotoperfil">
+            <a id="" href=""><img src="{% static 'images/semfoto.jpeg' %}" alt="Imagem" ></a> 
+          </div>
+          {% endif %}
+        </td>
+        <td>
+        <div class="fotonome">
+          <p>Nome</p>
+          <a href="">Alterar foto de Perfil</a>
+        </div>
+        </td>
+        <td>
+    </tr>
+    </table>
+    <div  class="numeros">
+      <h2>Números de Amigos: {{amigos.count}}</h2>
+      <h2>Números de Avaliações: {{avaliacoes.count}}</h2>
+      <h2>Filmes Cadastrados:</h2>
+      <h2>Séries Cadastrados:</h2>
+      <h2>Livros Cadastrados:</h2>
+    </div>
+    </section>
+</div>
+{% endblock %}

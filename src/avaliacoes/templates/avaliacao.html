@@ -36,7 +36,7 @@
                 <tr style="max-height: 50px;">
                     <td>
                         <p>
-                            <b>Autor da avaliação</b>: <a href="{% url 'item' tipo_item=app_name pk=item_obj.id %}">{{obj.user_id.username}}</a>
+                            <b>Autor da avaliação</b>: <a href="{% url 'usuario' pk=obj.user_id.id %}">{{obj.user_id.username}}</a>
                         </p>
                     </td>
                     <td>
@@ -96,7 +96,7 @@
         {% for comentario in comentarios %}
         <div class="comentarios-avaliacao">
             <p style="padding:10px 0px 0px; margin: 0px;">
-            <a href="{% url 'minha_conta' %}" style="text-decoration: none;">
+            <a href="{% url 'usuario' pk=comentario.user_id.id %}" style="text-decoration: none;">
                 @{{comentario.user_id.username}}</a>: {{comentario.texto}}
             </p>
         </div>

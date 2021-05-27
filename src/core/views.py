@@ -172,7 +172,7 @@ def searchbar(request, app_name):
     })
     return render(request, 'busca/base_busca.html', context)
 
-
+@bloquear_acesso
 def minha_conta(request):
     user = request.user
     av_filmes = user.avaliacaofilme_set.all()
@@ -188,3 +188,27 @@ def minha_conta(request):
         'avaliacoes':avaliacoes,
     }
     return render(request, 'minha_conta.html', context)
+
+@bloquear_acesso
+def user_view(request, pk):
+    context = {}
+    
+    user = Usuario.objects.get(pk=pk)
+    amigos = user.amigos.all()
+    amigos_em_comum = [amigo for amigo in amigos if amigo in request.user.amigos.all()]
+
+    av_filmes = user.avaliacaofilme_set.all()
+    av_livros = user.avaliacaolivro_set.all()
+    av_series = user.avaliacaoserie_set.all()
+
+    avaliacoes = av_filmes.union(av_livros)
+    avaliacoes = avaliacoes.union(av_series)
+    avaliacoes = avaliacoes.order_by('create_date')
+
+    context.update({
+        'usuario': user,
+        'amigos': amigos,
+        'amigos_em_comum': amigos_em_comum,
+    })
+
+    return render(request, 'usuario.html', context)
