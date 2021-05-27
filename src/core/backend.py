@@ -52,18 +52,22 @@ def filter_cidades(estado):
 # Busca
 
 def obtendo_objetos(app_name):
-    if app_name == 'filme':
-        objs = Filme.objects.all()
-    elif app_name == 'livro':
-        objs = Livro.objects.all()
-    elif app_name == 'serie':
-        objs = Serie.objects.all()    
+    if app_name in ('filme', 'livro', 'serie'):
+        if app_name == 'filme':
+            obj_class = Filme
+        elif app_name == 'livro':
+            obj_class = Livro.objects.all()
+        elif app_name == 'serie':
+            obj_class = Serie
+        objs = obj_class.objects.filter(ativo=True)
+ 
     elif app_name == 'usuarios':
         objs = Usuario.objects.all()
     elif app_name == 'amigos':
         objs = Usuario.objects.all()
     else:
         objs = []
+
     return objs
 
 def obtendo_parametros_busca(app_name):

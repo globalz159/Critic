@@ -23,7 +23,7 @@
                         <h1 class="botao-estilizado">Pedidos Recebidos ({{p_recebidos.count}})</h1>
                         {% for pedido in p_recebidos %}
                         <div class="item-box">
-                            <p><b>Usuário:</b> {{pedido.remetente.username}}</p>
+                            <p><b>Usuário:</b> <a href="{% url 'usuario' pk=pedido.remetente.id %}" style="text-decoration: none; color: rgb(39, 0, 29);">{{pedido.remetente.username}}</a></p>
                             <form action="{% url 'pedidos_amizade' %}" method="post">
                                 {% csrf_token %}
                                 <input type="text" name="pedido_id" value="{{pedido.id}}" style="display: none;">
@@ -44,7 +44,7 @@
                         <h1 class="botao-estilizado">Pedidos Enviados ({{p_enviados.count}})</h1>
                         {% for pedido in p_enviados %}
                         <div class="item-box">
-                            <p><b>Usuário:</b> {{pedido.destinatario.username}}</p>
+                            <p><b>Usuário:</b> <a href="{% url 'usuario' pk=pedido.destinatario.id %}" style="text-decoration: none; color: rgb(39, 0, 29);">{{pedido.destinatario.username}}</a></p>
                             <form action="{% url 'pedidos_amizade' %}" method="post">
                                 {% csrf_token %}
                                 <input type="text" name="pedido_id" value="{{pedido.id}}" style="display: none;">

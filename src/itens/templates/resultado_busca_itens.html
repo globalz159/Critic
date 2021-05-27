@@ -3,12 +3,22 @@
 <div class="resultados-container">
     <h1>{{objs}}</h1>
     {% if objs %}
-        {% for usuario in objs %}
+        {% for item in objs %}
         <div class="item-box">
             <table style="width:100%;">
                 <tr>
                     <td style="width:80%;">
-                        <h2><a href="{% url 'usuario' pk=usuario.id %}" style="text-decoration: none; color: rgb(58, 6, 59);">@{{ usuario.username }}</a></h2>
+                        <h2><a href="{% url 'avaliar_item' tipo_item=app_name item_id=item.id %}" style="text-decoration: none; color: rgb(58, 6, 59);">{{ item.titulo }}</a></h2>
+                        <p>
+                            {% if app_name != 'livro' %}
+                            <b>Diretor:</b> {{item.diretor}}
+                            {% else%}
+                            <b>Autor:</b> {{item.autor}}
+                            {% endif %}
+                        </p>
+                        <p>
+                            <b>País:</b> {{item.pais}}
+                        </p>
                     </td>
                     <td>
                         <form class="user-box-btn" action="{% url 'add_amigos' %}" method="post">
@@ -26,8 +36,9 @@
                             <input style="display: none;" type="text" id="implied_search" name="search" value="{{search_input}}">
                             <input style="display: none;" type="text" id="user_id" name="user_id" value="{{usuario.id}}">
 
-                            <button class="add_amigo" type="submit" id="add_amigo" name="add_amigo"><i class="fas fa-user-plus">Adicionar Amigo</i></button>
-                        
+                            <button type="submit" class="botao-avaliacao liked" style="width: 150px;">
+                                <i class="fas fa-smile"></i> Fazer avaliação
+                            </button>
 
                         {% endif %}
                         </form>
@@ -36,7 +47,6 @@
             </table>
         </div>
         {% endfor %}
-        
     {% else %}
         <div class="sem-resultados">
             <h2 style="color: white;">Nenhum resultado encontrado</h2>

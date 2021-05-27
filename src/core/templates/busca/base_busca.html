@@ -13,10 +13,12 @@
             {% if app_name == 'usuarios' %}
                 {% include 'busca/resultado_busca_usuarios.html' %}
             
-                {% elif app_name == 'amigos' %}
+            {% elif app_name == 'amigos' %}
                 {% include 'amigos/resultado_busca_amigos.html' %}
 
-            {% elif app_name == 'filmes' %}
+            {% elif app_name in itens_apps %}
+
+                {% include 'resultado_busca_itens.html' %}
 
             {% endif %}
 

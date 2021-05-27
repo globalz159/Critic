@@ -122,6 +122,7 @@ def searchbar(request, app_name):
             
             if app_name in ('usuarios', 'amigos'):
                 list_dict = []
+                len_amigos = []
                 user_amigos = {}
                 # Obtendo amigos em comum
                 for user in objs_filtered:
@@ -134,6 +135,7 @@ def searchbar(request, app_name):
                 # Mapeando amigos em comum com usuario
                 for item in list_dict:
                     objs_to_show.append(item['user'])
+                    len_amigos.append(item['user'].get_amigos_comum(request.user))
                 
                 usuarios_solicitados = []
                 for pedido in request.user.remetente.all():
@@ -142,7 +144,8 @@ def searchbar(request, app_name):
                 context.update({
                     'usuarios': objs_to_show, # -> List
                     'user_amigos': user_amigos, # -> Dict
-                    'usuarios_solicitados': usuarios_solicitados
+                    'len_amigos': len_amigos,
+                    'usuarios_solicitados': usuarios_solicitados,
                 })
 
             elif app_name in itens_apps:
@@ -181,11 +184,16 @@ def minha_conta(request):
 
     avaliacoes = av_filmes.union(av_livros)
     avaliacoes = avaliacoes.union(av_series)
-    #avaliacoes = avaliacoes.order_by('data_criacao')
+    avaliacoes = avaliacoes.order_by('create_date')
+
+    estados = Estado.objects.all().order_by('id')
+    cidades = Cidade.objects.all().order_by('id')
     
     context = {
         'user': user,
         'avaliacoes':avaliacoes,
+        'estados': estados,
+        'cidades': cidades,
     }
     return render(request, 'minha_conta.html', context)
 
