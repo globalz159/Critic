@@ -89,6 +89,12 @@ class Usuario(AbstractUser):
     def remover_amigo(self, amigo_id):
         amigo_obj = Usuario.objects.get(pk=amigo_id)
         self.amigos.remove(amigo_obj)
+    
+    def get_amigos_comum(self, user):
+        amigos = [amigo for amigo in self.amigos.all() if amigo in user.amigos.all()]
+        num_amigos = len(amigos)
+        return num_amigos
+
 
 
 class PedidosAmizade(models.Model):
