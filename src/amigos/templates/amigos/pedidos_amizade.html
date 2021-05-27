@@ -8,51 +8,57 @@
     <section class="main-container" >
 
         {% include 'base_header_section.html' %}
-            {% if status_message %}
-                <div class="message-status">
-                    {{status_message}}
-                </div>{% endif %}
-<table style="width: 100%; text-align: center;">
-<div class="pedidos-amizade">
-<td>
-<div id="recebidos" class="box-pedidos">
-<br><br>
-                <div class="pedido">
-                    <div class="message-status">
-                        <a class="botao-estilizado"> Pedidos recebidos</a>
-                         {% for pedido in p_recebidos %}
-                     <p>
-                        <b>Usuário:</b> {{pedido.remetente.username}}
-                            <button class="botao-validar validar-aprovar" type="submit" name="aceitar_solicitacao">Aprovar</button>
-                            <button class="botao-validar validar-excluir" type="submit" name="excluir_solicitacao">Excluir</button>
-                     </p>
-                         {% endfor %}
-                    </div>
-                </div>
-</div>
-</td>
-</div>
-
-<br><br>
-
-<td>
-<div id="enviados" class="box-pedidos">
-<br><br>
-                <div class="pp">
-                    <div class="message-status">
-                                <a class="botao-estilizado">Pedidos enviados</a>
-                          {% for pedido in p_enviados %}
-                    <p>
-                    <b>Usuário:</b> {{pedido.destinatario.username}}
-                        <button class="botao-validar validar-excluir" type="submit" name="excluir_cadastro">Excluir</button>
-                    </p>
+        {% if status_message %}
+        <div class="message-status" style="margin-top: 15px;">
+            {{status_message}}
+        </div>
+        {% endif %}
+                
+        <table style="width: 100%; text-align: center;">
+        <tr>
+        <td style="width: 50%;">
+            <div class="pedidos-amizade">
+                <div id="recebidos" class="box-pedidos">
+                    <div class="box-pedidos">
+                        <h1 class="botao-estilizado">Pedidos Recebidos ({{p_recebidos.count}})</h1>
+                        {% for pedido in p_recebidos %}
+                        <div class="item-box">
+                            <p><b>Usuário:</b> {{pedido.remetente.username}}</p>
+                            <form action="{% url 'pedidos_amizade' %}" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="pedido_id" value="{{pedido.id}}" style="display: none;">
+                                <button class="botao-validar validar-aprovar" type="submit" name="aceitar_solicitacao">Aprovar</button>
+                                <button class="botao-validar validar-excluir" type="submit" name="excluir_solicitacao">Excluir</button>
+                            </form>
+                        </div>
                         {% endfor %}
-</td>
                     </div>
                 </div>
-</div>
-    </div>
-        </section>
-</table>
+            </div>
+        </td>
+
+        <td style="width: 50%;">
+            <div class="pedidos-amizade">
+                <div id="enviados" class="box-pedidos">
+                    <div class="box-pedidos">
+                        <h1 class="botao-estilizado">Pedidos Enviados ({{p_enviados.count}})</h1>
+                        {% for pedido in p_enviados %}
+                        <div class="item-box">
+                            <p><b>Usuário:</b> {{pedido.destinatario.username}}</p>
+                            <form action="{% url 'pedidos_amizade' %}" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="pedido_id" value="{{pedido.id}}" style="display: none;">
+                                <button class="botao-validar validar-excluir" type="submit" name="excluir_solicitacao">Excluir</button>
+                            </form>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <br><br>
+    </table>
+    </section>
 </div>
 {% endblock %}

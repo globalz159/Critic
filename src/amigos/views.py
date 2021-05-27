@@ -53,8 +53,8 @@ def pedidos_amizade(request):
         if 'aceitar_solicitacao' in request.POST:
             pedido_obj.aceitar_pedido()
             status_message = f"Pedido aceito com sucesso! Agora você e {pedido_obj.remetente} são amigos"
-        elif 'excluir_solicitação' in request.POST:
-            pedido_obj.excluir_pedido()
+        elif 'excluir_solicitacao' in request.POST:
+            pedido_obj.recusar_pedido()
             status_message = f"Pedido de Amizade Recusado!"
 
     pedidos_enviados = request.user.remetente.filter(aceito=False)
