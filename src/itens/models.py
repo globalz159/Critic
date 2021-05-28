@@ -27,6 +27,7 @@ class Itens(models.Model):
     imagem = StdImageField("Imagem de capa", null=True, blank=True, upload_to='itens', variations={'thumbnail': (300, 300)})
     ativo = models.BooleanField("Ativo", default=False)
     categoria = models.ForeignKey(CategoriaItem, verbose_name="Categoria", on_delete=SET_NULL, null=True)
+    tipo_item = models.CharField("Tipo", max_length=100, default='filme')
 
     class Meta:
         abstract = True

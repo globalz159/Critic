@@ -28,6 +28,9 @@ class Avaliacao(models.Model):
         verbose_name = "Avaliação"
         verbose_name_plural = "Avaliações"
         abstract = True
+    
+    def get_class(self):
+        return self.__class__
 
 class AvaliacaoFilme(Avaliacao):
     item = models.ForeignKey(Filme, on_delete=models.CASCADE, blank=True)
