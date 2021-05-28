@@ -5,6 +5,7 @@
         <label for="id_elenco">Elenco:</label><br><textarea name="elenco" cols="40" rows="10" required id="id_elenco" ></textarea><br>
         <label for="id_pais">Pais:</label><br><input type="text" name="pais" maxlength="100" required id="id_pais" size="40"><br>
         <label for="id_ano_lancamento">Ano de Lançamento:</label><input type="number" name="ano_lancamento" value="2021" required id="id_ano_lancamento"><br>
+        <label for="id_volume">Volume:</label><input type="number" name="volume" value="1" required id="id_volume"><br>
         <label for="id_categoria">Categoria:</label>
         <select name="categoria" required id="id_categoria">
         {% for categoria in categorias %}<option value="{{categoria}}">{{categoria}}</option>{% endfor %}

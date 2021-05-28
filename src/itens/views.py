@@ -45,6 +45,7 @@ def item(request, tipo_item, pk):
 
 @bloquear_acesso
 def itens(request, tipo_item):
+    #import pdb; pdb.set_trace()
     context = {}
     context['app_name'] = tipo_item
 
