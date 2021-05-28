@@ -67,7 +67,16 @@ def itens(request, tipo_item):
         search_params = ('titulo', 'pais', 'diretor')
 
     objs = obj_class.objects.filter(ativo=True)
-    objs_add_recentemente = objs.order_by('data_atualizacao')
+    
+    objs_filter_recentemente = objs.order_by('data_atualizacao')
+    objs_add_recentemente = []
+    if objs_filter_recentemente:
+        if len(objs_filter_recentemente) >=10:
+            for i in range(0,9):
+                objs_add_recentemente.append(objs_filter_recentemente[i])
+        else:
+            for i in range(0,len(objs_add_recentemente)):
+                objs_add_recentemente.append(objs_filter_recentemente[i])
 
     context.update({
         'objs': objs,
