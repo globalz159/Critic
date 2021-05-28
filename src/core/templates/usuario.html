@@ -4,7 +4,7 @@
 {% block content %}
 <div class="wrapper">
     <section class="main-container" >
-      <h2>Usuário</h2>
+      <h2 align="center" style="padding-top: 80px;">Usuário</h2>
       <table style="width: 100%; margin-top: 50px;">
         <tr>
           <td style="width: 310px;">
@@ -27,6 +27,14 @@
           <td>
       </tr>
       </table>
+
+      <div class="section-header" style="background-color: rgb(111, 48, 194);width: 95%;margin: auto; margin-top: 60px;">
+        <h1 class="header-title" style="padding-top: 10px;">
+            Avaliações do usuário
+        </h1>
+      </div>
+
+      {% include 'avaliacoes.html' %}
 
       
     </section>

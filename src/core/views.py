@@ -9,6 +9,7 @@ from .forms import UsuarioCreateForm
 
 from .models import Cidade, Estado, Usuario
 from itens.models import Filme, Livro, Serie
+from avaliacoes.models import AvaliacaoFilme, AvaliacaoLivro, AvaliacaoSerie
 
 from django.db.models import Q
 from django.contrib import messages
@@ -218,6 +219,10 @@ def user_view(request, pk):
         'amigos': amigos,
         'amigos_em_comum': amigos_em_comum,
         'len_amigos_comum':len(amigos_em_comum),
+        'avaliacoes': avaliacoes,
+        'filme_av_class': AvaliacaoFilme,
+        'livro_av_class': AvaliacaoLivro,
+        'serie_av_class': AvaliacaoSerie,
     })
 
     return render(request, 'usuario.html', context)

@@ -1,0 +1,27 @@
+{% for avaliacao in avaliacoes %}
+<div class="item-box" style="margin-top: 10px; min-height: 50px;">
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 50px; text-align: center; padding: 10px;">
+                <a href="{% url 'avaliacao' tipo_item=avaliacao.item.tipo_item item_id=avaliacao.item.id av_id=avaliacao.id %}" style="text-decoration: none; color:black;">
+                    {% if avaliacao.item.tipo_item == 'filme' %}
+                    <i class="fas fa-film fa-3x"></i>
+                    {% elif avaliacao.item.tipo_item == 'livro' %}
+
+                    {% elif avaliacao.item.tipo_item == 'serie' %}
+
+                    {% endif %}
+                    <br><b>{{avaliacao.item.tipo_item}}</b>
+                </a>
+            </td>
+            <td class="coluna-validar" style="padding-left: 15px;">
+                <h1 style="margin:0px; margin-bottom:5px; font-size: 38px;">{{avaliacao.item.titulo}}</h1>
+                <span style="padding-top:15px;">{{avaliacao.item.categoria}}</span>
+            </td>
+            <td>
+                <p>Comentário: {{avaliacao.texto}}</p>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endfor %}
