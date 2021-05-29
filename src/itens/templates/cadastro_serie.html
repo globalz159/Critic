@@ -1,16 +1,16 @@
 
-        <br><br><label for="id_titulo">Título:</label><br><input type="text" name="titulo" maxlength="100" required id="id_titulo" size="40"><br>
-        <label for="id_diretor">Diretor:</label><br><input type="text" name="diretor" maxlength="100" required id="id_diretor" size="40"><br>
-        <label for="id_elenco">Elenco:</label><br><textarea name="elenco" cols="40" rows="10" required id="id_elenco" ></textarea><br>
-        <label for="id_pais">Pais:</label><br><input type="text" name="pais" maxlength="100" required id="id_pais" size="40"><br>
-        <label for="id_ano_lancamento">Ano de Lançamento:</label><input type="number" name="ano_lancamento" value="2021" required id="id_ano_lancamento"><br>
-        <label for="id_qtd_temporadas">Número de temporadas:</label><input type="number" name="qtd_temporadas" value="1" required id="id_qtd_temporadas"><br>
-        <label for="id_categoria">Categoria:</label>
-        <select name="categoria" required id="id_categoria">
-        {% for categoria in categorias %}<option value="{{categoria}}">{{categoria}}</option>{% endfor %}
-        </select><br>
-        <label for="id_imagem">Imagem de capa:</label><input type="file" name="imagem" accept="image/*" id="id_imagem"><br>
-        <select name="user_id" required id="id_user_id" style="display: none;">
-            <option value="{{user.id}}" selected>{{user.username}}</option>
-        </select>
-        <label for="id_tipo_item" style="display: none;">Tipo Item:</label><br><input type="text" name="tipo_item" value="{{app_name}}" maxlength="100" required id="id_tipo_item" size="40" style="display: none;"><br>
+<br><br><label for="id_titulo">Título:</label><br><input type="text" name="titulo" maxlength="100" required id="id_titulo" size="40"><br>
+<label for="id_diretor">Diretor:</label><br><input type="text" name="diretor" maxlength="100" required id="id_diretor" size="40"><br>
+<label for="id_elenco">Elenco:</label><br><textarea name="elenco" cols="40" rows="10" required id="id_elenco" ></textarea><br>
+<label for="id_pais">Pais:</label><br><input type="text" name="pais" maxlength="100" required id="id_pais" size="40"><br>
+<label for="id_ano_lancamento">Ano de Lançamento:</label><input type="number" name="ano_lancamento" value="2021" required id="id_ano_lancamento"><br>
+<label for="id_qtd_temporadas">Número de temporadas:</label><input type="number" name="qtd_temporadas" value="1" required id="id_qtd_temporadas"><br>
+<label for="id_categoria">Categoria:</label>
+<select name="categoria" required id="id_categoria">
+    {% for categoria in categorias %}<option value="{{categoria.id}}">{{categoria}}</option>{% endfor %}
+</select><br>
+<label for="id_imagem">Imagem de capa:</label><input type="file" name="imagem" accept="image/*" id="id_imagem"><br>
+<select name="user_id" required id="id_user_id" style="display: none;">
+    <option value="{{user.id}}" selected>{{user.username}}</option>
+</select>
+<label for="id_tipo_item" style="display: none;">Tipo Item:</label><br><input type="text" name="tipo_item" value="{{app_name}}" maxlength="100" required id="id_tipo_item" size="40" style="display: none;"><br>
