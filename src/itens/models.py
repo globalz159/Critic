@@ -20,7 +20,7 @@ class Itens(models.Model):
     data_criacao = models.DateField("Data de Criação", auto_now_add=True)
     data_atualizacao = models.DateField("Data de Atualização", auto_now=True)
     user_id = models.ForeignKey(Usuario, on_delete=models.CASCADE, verbose_name="user_id", null=True)
-    titulo = models.CharField("Título", max_length=100)
+    titulo = models.CharField("Título", max_length=100, unique=True)
     pais = models.CharField("Pais", max_length=100)
     ano_lancamento = models.IntegerField("Ano de Lançamento", default=datetime.now().year, validators=[MinValueValidator(1500), MaxValueValidator(datetime.now().year)])
     slug = models.SlugField("Slug", max_length=100, editable=False, unique=False)
