@@ -4,6 +4,9 @@ from django import forms
 
 from .models import Usuario, Cidade, Estado
 
+from django.contrib.auth import password_validation
+from django.core.exceptions import ValidationError
+
 class UsuarioCreateForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Usuario
@@ -50,3 +53,41 @@ class AlteracaoCadastro(UserChangeForm):
         model = Usuario
         fields = ['username', 'email', 'first_name', 'last_name', 'data_nascimento', 'estado', 'cidade']
 
+class SetPasswordForm(forms.Form):
+    error_messages = {
+        'wrong_password': 'A senha atual está incorreta.',
+        'password_mismatch': 'As senhas digitadas não são iguais.',
+    }
+    new_password1 = forms.CharField(
+        label="Nova Senha",
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
+        strip=False,
+    )
+    new_password2 = forms.CharField(
+        label="Confirmação da nova senha",
+        strip=False,
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
+    )
+
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+        super().__init__(*args, **kwargs)
+
+    def clean_new_password2(self):
+        password1 = self.cleaned_data.get('new_password1')
+        password2 = self.cleaned_data.get('new_password2')
+        if password1 and password2:
+            if password1 != password2:
+                raise ValidationError(
+                    self.error_messages['password_mismatch'],
+                    code='password_mismatch',
+                )
+        password_validation.validate_password(password2, self.user)
+        return password2
+
+    def save(self, commit=True):
+        password = self.cleaned_data["new_password1"]
+        self.user.set_password(password)
+        if commit:
+            self.user.save()
+        return self.user

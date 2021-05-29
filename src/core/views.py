@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView
 
 from django.contrib.auth import login, authenticate
-from .forms import UsuarioCreateForm, AlteracaoCadastro
+from .forms import UsuarioCreateForm, SetPasswordForm
 
 from .models import Cidade, Estado, Usuario
 from itens.models import Filme, Livro, Serie
@@ -193,17 +193,26 @@ def minha_conta(request):
 
     # import pdb; pdb.set_trace()
 
+    form_alterar_senha = SetPasswordForm(user)
+
     if request.method == 'POST':
         if 'editar_perfil' in request.POST:
             user.atualizar_registro(request.POST)
             status_message = "Dados Atualizados !"
             context['status_message'] = status_message
+        elif 'alterar_senha' in request.POST:
+            form_alterar_senha = SetPasswordForm(user, request.POST)
+            if form_alterar_senha.is_valid():
+                form_alterar_senha.save()
+                status_message = "Senha Alterada com sucesso !"
+                context['status_message'] = status_message
     
     context.update({
         'user': user,
         'avaliacoes':avaliacoes,
         'estados': estados,
         'cidades': cidades,
+        'form_alterar_senha': form_alterar_senha,
     })
     return render(request, 'minha_conta.html', context)
 

@@ -10,12 +10,12 @@
 <div class="wrapper">  
     <!-- MAIN CONTAINER -->
     <section class="main-container" >
+      <h1 align="center" style="padding-top: 80px;">Minha Conta</h1>
       {% if status_message %}
       <div class="message-status">
           {{status_message}}
       </div>
       {% endif %}
-        <h1 align="center" style="padding-top: 80px;">Minha Conta</h1>
       <table align="center">
         <tr>
           <td class="tabela-botao">
@@ -72,27 +72,19 @@
       <hr>
       <div style="text-align: center;">
       <h1 id="alterar_senha" style="padding-top: 70px;">Alterar Senha</h2>
-      <form action="" method="post" border="1">
-        <fieldset >
-        <div>
-            <label for="user">Senha Antiga:</label>
-            <input type="password" id="user" size="40" />
-        </div><br>
-        <div>
-            <label for="email">Nova Senha:</label>
-            <input type="password" id="email" size="40" />
-        </div><br>
-        <div>
-            <label for="nome">Confirmar nova senha:</label>
-            <input type="password" id="nome" size="40"/>
-        </div><br>
-        <input type="submit" class="botao-avaliacao comentario" style="float: none;" value="Alterar Senha"/>
+      <form action="{% url 'minha_conta' %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+          {{form_alterar_senha.as_p}}
         </fieldset>
+        <div style="text-align: center;">
+          <input name="alterar_senha" class="botao-avaliacao comentario" style="float: none;" type="submit">
+        </div>
       </form>
     </div>
     <hr>
     <div align="center">
-      <h2>Logout Off</h2>
+      <h2>Logout</h2>
       <a class="botao-estilizado" href="{% url 'logout' %}">Sair do CriticHub</a><br><br>
       <form action="{% url 'excluir_conta' user_id=user.id %}" method="post">
         {% csrf_token %}
