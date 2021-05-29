@@ -19,6 +19,8 @@
       </div>
     {% endif %}
 
+    {% include 'add_recentemente.html' %}
+
     <h1 id="ItemSection">{{plural_obj_name}}</h1>
     
     {% if app_name == 'filme' %}
@@ -46,8 +48,6 @@
     </div>
 
     {% endif %}
-
-    {% include 'add_recentemente.html' %}
 
     {% include 'indicados_p_vc.html' %}
    

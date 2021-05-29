@@ -69,15 +69,15 @@ def itens(request, tipo_item):
 
     objs = obj_class.objects.filter(ativo=True)
     
-    objs_filter_recentemente = objs.order_by('data_atualizacao')
-    objs_add_recentemente = []
-    if objs_filter_recentemente:
-        if len(objs_filter_recentemente) >=10:
-            for i in range(0,9):
-                objs_add_recentemente.append(objs_filter_recentemente[i])
-        else:
-            for i in range(0,len(objs_add_recentemente)):
-                objs_add_recentemente.append(objs_filter_recentemente[i])
+    objs_add_recentemente = objs.order_by('-data_atualizacao')
+   
+    cont=0
+    objs_add_recentemente_list= []
+
+    for obj in objs_add_recentemente:
+        if cont<=6:
+            objs_add_recentemente_list.append(obj)
+            cont+=1    
 
     context.update({
         'objs': objs,

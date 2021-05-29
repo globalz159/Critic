@@ -16,7 +16,6 @@ from django.db.models import Q
 from django.contrib import messages
 from pyUFbr.baseuf import ufbr
 import json
-
 from .backend import adicionar_cidades, filter_cidades, bloquear_acesso, bloquear_acesso_admin
 from .backend import obtendo_objetos, obtendo_parametros_busca, filtrando_objetos
 
@@ -28,8 +27,16 @@ class IndexView(TemplateView):
 ## Function Based View
 @bloquear_acesso
 def index(request):
+    #import pdb; pdb.set_trace()
+    context = {}
+    
+    filmes = Filme.objects.filter(ativo=True)
+    series = Serie.objects.filter(ativo=True)
+    livros = Livro.objects.filter(ativo=True)
+    
     usuario = request.user
     print(usuario)
+    
     # Botões Submit
     if request.method == 'POST':
         if 'adicionar_cidades' in request.POST:
@@ -39,8 +46,25 @@ def index(request):
             return redirect('/cadastro')
         elif 'do_logout' in request.POST:
             return redirect('/conta/logout')
+    objs_add_recentemente= filmes.union(series)
+    objs_add_recentemente= objs_add_recentemente.union(livros).order_by('-data_criacao')
+    
+    cont=0
+    objs_add_recentemente_list= []
 
-    return render(request, 'index.html')
+    for obj in objs_add_recentemente:
+        if cont<=6:
+            objs_add_recentemente_list.append(obj)
+            cont+=1    
+
+    context.update({
+        'filmes': filmes,
+        'series': series,
+        'livros': livros,
+        'objs_add_recentemente': objs_add_recentemente_list 
+    })
+
+    return render(request, 'index.html', context)
 
 
 def cadastro(request):

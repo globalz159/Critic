@@ -1,7 +1,19 @@
 {% load static %}
-<h1 id="home">Adicionado Recentemente</h1>
+<h1 id="home" style="padding-top: 50px;">Adicionado Recentemente</h1>
+  
     <div class="box">
       {% for obj in objs_add_recentemente %}
-        <a style="color: rgb(254, 247, 255); text-decoration: none;" href="{% url 'item' tipo_item=app_name pk=obj.pk %}" >{{obj.titulo}}<img src= "/media/{{obj.imagem.thumbnail}}"/></a>     
-      {% endfor %}         
-</div>
+        {% if obj.tipo_item == 'filme' %}
+        <a style="color: rgb(254, 247, 255); text-decoration: none; font-family: Georgia; font-size: 15px;" 
+        href="{% url 'item' tipo_item='obj.tipo_item' pk=obj.pk %}" >{{obj.titulo}}<br><img src= "/media/{{obj.imagem.thumbnail}}"/><br>Volume: {{obj.volume}}<br>Gênero: {{obj.categoria}}</a>     
+        {% elif obj.tipo_item == 'livro' %}
+        <a style="color: rgb(254, 247, 255); text-decoration: none; font-family: Georgia; font-size: 15px;" 
+        href="{% url 'item' tipo_item='obj.tipo_item' pk=obj.pk %}" >{{obj.titulo}}<br><img src= "/media/{{obj.imagem.thumbnail}}"/><br>Volume: {{obj.volume}}<br>Gênero: {{obj.categoria}}</a>     
+        {% elif obj.tipo_item == 'serie' %}
+        <a style="color: rgb(254, 247, 255); text-decoration: none; font-family: Georgia; font-size: 15px;" 
+        href="{% url 'item' tipo_item='obj.tipo_item' pk=obj.pk %}" >{{obj.titulo}}<br><img src= "/media/{{obj.imagem.thumbnail}}"/><br>Nº Temporadas: {{obj.qtd_temporadas}}<br>Gênero: {{obj.categoria}}</a>     
+        {% endif %}   
+      {% endfor %}               
+    </div>
+
+      
