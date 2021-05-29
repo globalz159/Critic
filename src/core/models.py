@@ -94,6 +94,33 @@ class Usuario(AbstractUser):
         amigos = [amigo for amigo in self.amigos.all() if amigo in user.amigos.all()]
         num_amigos = len(amigos)
         return num_amigos
+    
+    def atualizar_registro(self, values):
+        for field in values.keys():
+            if field == 'username':
+                if values[field] != self.username:
+                    self.username = values[field] 
+            elif field == 'email':
+                if values[field] != self.email:
+                    self.email = values[field] 
+            elif field == 'first_name':
+                if values[field] != self.first_name:
+                    self.first_name = values[field] 
+            elif field == 'last_name':
+                if values[field] != self.last_name:
+                    self.last_name = values[field] 
+            elif field == 'cidade':
+                if values[field] != self.cidade:
+                    self.cidade = Cidade.objects.get(pk=int(values[field]))
+            elif field == 'estado':
+                if values[field] != self.estado:
+                    self.estado = Estado.objects.get(pk=int(values[field]))
+            elif field == 'data_nascimento':
+                if values[field] != self.data_nascimento:
+                    self.data_nascimento = values[field]
+
+        self.save()
+
 
 
 

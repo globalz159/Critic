@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView
 
 from django.contrib.auth import login, authenticate
-from .forms import UsuarioCreateForm
+from .forms import UsuarioCreateForm, AlteracaoCadastro
 
 from .models import Cidade, Estado, Usuario
 from itens.models import Filme, Livro, Serie
@@ -178,6 +178,7 @@ def searchbar(request, app_name):
 
 @bloquear_acesso
 def minha_conta(request):
+    context = {}
     user = request.user
     av_filmes = user.avaliacaofilme_set.all()
     av_livros = user.avaliacaolivro_set.all()
@@ -189,13 +190,21 @@ def minha_conta(request):
 
     estados = Estado.objects.all().order_by('id')
     cidades = Cidade.objects.all().order_by('id')
+
+    # import pdb; pdb.set_trace()
+
+    if request.method == 'POST':
+        if 'editar_perfil' in request.POST:
+            user.atualizar_registro(request.POST)
+            status_message = "Dados Atualizados !"
+            context['status_message'] = status_message
     
-    context = {
+    context.update({
         'user': user,
         'avaliacoes':avaliacoes,
         'estados': estados,
         'cidades': cidades,
-    }
+    })
     return render(request, 'minha_conta.html', context)
 
 @bloquear_acesso
@@ -226,3 +235,8 @@ def user_view(request, pk):
     })
 
     return render(request, 'usuario.html', context)
+
+def excluir_conta(request, user_id):
+    context = {}
+
+    return render(request, 'excluir_conta.html', context)

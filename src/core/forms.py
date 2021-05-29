@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django import forms
 
 from .models import Usuario, Cidade, Estado
@@ -43,6 +44,8 @@ class UsuarioCreateForm(UserCreationForm):
         return user
 
 class AlteracaoCadastro(UserChangeForm):
+
+    password = ReadOnlyPasswordHashField()
     class Meta:
         model = Usuario
         fields = ['username', 'email', 'first_name', 'last_name', 'data_nascimento', 'estado', 'cidade']

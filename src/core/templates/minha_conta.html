@@ -10,6 +10,11 @@
 <div class="wrapper">  
     <!-- MAIN CONTAINER -->
     <section class="main-container" >
+      {% if status_message %}
+      <div class="message-status">
+          {{status_message}}
+      </div>
+      {% endif %}
         <h1 align="center" style="padding-top: 80px;">Minha Conta</h1>
       <table align="center">
         <tr>
@@ -81,7 +86,7 @@
             <label for="nome">Confirmar nova senha:</label>
             <input type="password" id="nome" size="40"/>
         </div><br>
-        <input type="submit" value="Alterar Senha" />
+        <input type="submit" class="botao-avaliacao comentario" style="float: none;" value="Alterar Senha"/>
         </fieldset>
       </form>
     </div>
@@ -89,7 +94,10 @@
     <div align="center">
       <h2>Logout Off</h2>
       <a class="botao-estilizado" href="{% url 'logout' %}">Sair do CriticHub</a><br><br>
-      <a href="">Excluir Conta</a>
+      <form action="{% url 'excluir_conta' user_id=user.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" class="botao-avaliacao validar-excluir" style="float: none;" value="Excluir Conta"/>
+      </form>
     </div>
 
   </section>

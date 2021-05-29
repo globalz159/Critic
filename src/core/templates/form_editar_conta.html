@@ -1,5 +1,6 @@
 {% load static %}
     <form action="{% url 'minha_conta' %}" method="post" style="padding-bottom: 30px;">
+      {% csrf_token %}
       <fieldset >
         <div>
             <label for="username">Nome de Usuário:</label>
@@ -43,10 +44,10 @@
         </div><br>
         <div>
             <label for="data_nascimento">Data de nascimento:</label>
-            <input type="date" id="id_data_nascimento" name="data_nascimento" value="{{user.data_nascimento}}"/>
+            <input type="date" id="id_data_nascimento" name="data_nascimento" required value="{{user.data_nascimento}}"/>
         </div><br>
         <div style="text-align: center;">
-          <input name="alterar_perfil" class="botao-avaliacao comentario" style="float: none;" type="submit">
+          <input name="editar_perfil" class="botao-avaliacao comentario" style="float: none;" type="submit">
         </div>
     </fieldset>
     </form>

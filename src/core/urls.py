@@ -11,6 +11,7 @@ urlpatterns = [
 
     path('minha_conta', minha_conta, name='minha_conta'),
     path('usuario/<int:pk>', user_view, name='usuario'),
+    path('excluir_conta/<int:user_id>', excluir_conta, name='excluir_conta'),
 
     path('busca/<str:app_name>', searchbar, name='searchbar'),
 
