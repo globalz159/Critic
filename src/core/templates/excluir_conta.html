@@ -1,11 +1,18 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<h1>Atenção, você clicou no botão de EXCLUIR CONTA deseja mesmo proseguir?</h1>
-<h3>Após a confirmação a operação não poderá ser revertida.</h3>
+{% block content %}
 
-<form action="{% url 'excluir_conta' user_id=user.id %}" method="post">
-    {% csrf_token %}
-    <input name="confirmar" type="submit" class="botao-avaliacao validar-excluir" style="float: none;" value="Excluir Conta"/>
-    <input name="voltar" type="submit" class="botao-avaliacao comentar" style="float: none;" value="Excluir Conta"/>
-    
-</form>
+<div class="wrapper">
+    <section class="main-container">
+        <h1 style="padding-top: 70px;">Atenção, você clicou no botão de EXCLUIR CONTA deseja mesmo proseguir?</h1>
+        <h3>Após a confirmação a operação não poderá ser revertida.</h3>
+
+        <form action="{% url 'excluir_conta' user_id=user.id %}" method="post">
+            {% csrf_token %}
+            <input name="confirmar" type="submit" class="botao-avaliacao validar-excluir" style="float: none;" value="Excluir Conta"/>
+            <input name="voltar" type="submit" class="botao-avaliacao validar-aprovar" style="float: none;" value="Voltar"/>
+        </form>
+    </section>
+</div>
+{% endblock %}

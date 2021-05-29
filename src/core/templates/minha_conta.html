@@ -86,7 +86,7 @@
     <div align="center">
       <h2>Logout</h2>
       <a class="botao-estilizado" href="{% url 'logout' %}">Sair do CriticHub</a><br><br>
-      <form action="{% url 'excluir_conta' user_id=user.id %}" method="post">
+      <form action="{% url 'excluir_conta' user_id=user.id %}" method="get">
         {% csrf_token %}
         <input type="submit" class="botao-avaliacao validar-excluir" style="float: none;" value="Excluir Conta"/>
       </form>

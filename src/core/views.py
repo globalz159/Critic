@@ -4,7 +4,8 @@ from django.urls import reverse_lazy
 
 from django.views.generic import TemplateView, CreateView
 
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout as auth_logout
+
 from .forms import UsuarioCreateForm, SetPasswordForm
 
 from .models import Cidade, Estado, Usuario
@@ -247,5 +248,15 @@ def user_view(request, pk):
 
 def excluir_conta(request, user_id):
     context = {}
+
+    user = request.user
+
+    if request.method == 'POST':
+        if 'confirmar' in request.POST:
+            auth_logout(request)
+            user.delete()
+            return redirect('/conta/login')
+        elif 'voltar' in request.POST:
+            return redirect('/minha_conta')
 
     return render(request, 'excluir_conta.html', context)
