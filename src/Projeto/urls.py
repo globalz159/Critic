@@ -13,7 +13,8 @@ urlpatterns = [
     path('', include('core.urls')),
     path('amigos/', include('amigos.urls')),
     path('itens/', include('itens.urls')),
-    path('avaliacoes/', include('avaliacoes.urls'))
+    path('avaliacoes/', include('avaliacoes.urls')),
+    path('comentario/', include('comentarios.urls'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
