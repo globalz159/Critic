@@ -65,8 +65,8 @@
                     <td>
                         <form action="{% url 'avaliacao' tipo_item=app_name item_id=item_obj.id av_id=obj.id %}" method="post">
                             {% csrf_token %}
+                            <input type="text" name="form_avaliacao" value="true" style="display: none;">
                             <button type="button" id="btn_comentar" name='comentar' class="botao-avaliacao comentario"><i class="fa fa-comment"></i> Comentar</button>
-                            
                             {% if user not in liked_users %}
                             <button type="submit" id="curtir" name='curtir' class="botao-avaliacao like"><i class="fa fa-thumbs-up"></i> Like</button>
                             {% else %}
@@ -95,18 +95,142 @@
 
         {% for comentario in comentarios %}
         <div class="comentarios-avaliacao">
-            <p style="padding:10px 0px 0px; margin: 0px;">
-                <a href="{% url 'usuario' pk=obj.id %}" style="text-decoration: none;">
-                    {% if obj.imagem %}
-                    {{obj.imagem}}
-                    {% else %}
-                    <img src="{% static 'images/semfoto.jpeg' %}" alt="Imagem" style="width: 50px;">
-                    {% endif %}
-                    </a>
-            <a href="{% url 'usuario' pk=comentario.user_id.id %}" style="text-decoration: none;">
-                {{comentario.user_id.username}}</a>: {{comentario.texto}}
-            </p>
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <p style="padding:10px 0px 0px; margin: 0px;">
+                        <a href="{% url 'usuario' pk=comentario.user_id.id %}" style="text-decoration: none;">
+                            @{{comentario.user_id.username}}</a>: <b>{{comentario.texto}}</b>
+                        </p>
+                    </td>
+                    <td style="float: right;">
+                        <p>
+                            Likes: 
+                            {% if app_name == 'filme' %}
+                            <b>{{comentario.likecomentariofilme_set.all.count}}</b>
+                            {% elif app_name == 'livro' %}
+                            <b>{{comentario.likecomentariolivro_set.all.count}}</b>
+                            {% elif app_name == 'serie' %}
+                            <b>{{comentario.likecomentarioserie_set.all.count}}</b>
+                            {% endif %}
+                        </p>
+                        <form action="{% url 'avaliacao' tipo_item=app_name item_id=item_obj.id av_id=obj.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="text" name="form_comentario" value="true" style="display: none;">
+                            <input type="text" name="comentario_id" required value="{{comentario.id}}" style="display:none;">
+                            <button type="submit" name='curtir' class="botao-avaliacao like"><i class="fa fa-thumbs-up"></i> Like</button>
+                        </form>
+                        <form action="{% url 'comentar' tipo_item=app_name pk=comentario.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="text" name="form_comentario" value="true" style="display: none;">
+                            <input type="text" name="url_avaliacao" value="{{url_avaliacao}}" style="display: none;">
+                            <input type="text" name="comentario_id" required value="{{comentario.id}}" style="display:none;">
+                            <button type="submit" name='comentar_comentario' class="botao-avaliacao comentario"><i class="fa fa-comment"></i> Comentar</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
         </div>
+        {% if app_name == 'filme' %}
+            {% for comentario_filho in comentario.comentariofilme_set.all %}
+            <div class="comentarios-avaliacao" style="width: 80%; padding-left: 20px; background-color: rgb(236, 213, 213);">
+                <table style="width: 100%; padding-left: 20px;">
+                    <tr>
+                        <td>
+                            <p style="padding:10px 0px 0px; margin: 0px;">
+                            <a href="{% url 'usuario' pk=comentario_filho.user_id.id %}" style="text-decoration: none;">
+                                @{{comentario_filho.user_id.username}}</a>: <b>{{comentario_filho.texto}}</b>
+                            </p>
+                        </td>
+                        <td style="float: right;">
+                            <p>
+                                Likes: 
+                                {% if app_name == 'filme' %}
+                                <b>{{comentario_filho.likecomentariofilme_set.all.count}}</b>
+                                {% elif app_name == 'livro' %}
+                                <b>{{comentario_filho.likecomentariolivro_set.all.count}}</b>
+                                {% elif app_name == 'serie' %}
+                                <b>{{comentario_filho.likecomentarioserie_set.all.count}}</b>
+                                {% endif %}
+                            </p>
+                            <form action="{% url 'avaliacao' tipo_item=app_name item_id=item_obj.id av_id=obj.id %}" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="form_comentario" value="true" style="display: none;">
+                                <input type="text" name="comentario_id" required value="{{comentario_filho.id}}" style="display:none;">
+                                <button type="submit" name='curtir' class="botao-avaliacao like"><i class="fa fa-thumbs-up"></i> Like</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            {% endfor %}
+        {% elif app_name == 'livro' %}
+            {% for comentario_filho in comentario.comentariolivro_set.all %}
+            <div class="comentarios-avaliacao" style="width: 80%; padding-left: 20px; background-color: rgb(236, 213, 213);">
+                <table style="width: 100%; padding-left: 20px;">
+                    <tr>
+                        <td>
+                            <p style="padding:10px 0px 0px; margin: 0px;">
+                            <a href="{% url 'usuario' pk=comentario_filho.user_id.id %}" style="text-decoration: none;">
+                                @{{comentario_filho.user_id.username}}</a>: <b>{{comentario_filho.texto}}</b>
+                            </p>
+                        </td>
+                        <td style="float: right;">
+                            <p>
+                                Likes: 
+                                {% if app_name == 'filme' %}
+                                <b>{{comentario_filho.likecomentariofilme_set.all.count}}</b>
+                                {% elif app_name == 'livro' %}
+                                <b>{{comentario_filho.likecomentariolivro_set.all.count}}</b>
+                                {% elif app_name == 'serie' %}
+                                <b>{{comentario_filho.likecomentarioserie_set.all.count}}</b>
+                                {% endif %}
+                            </p>
+                            <form action="{% url 'avaliacao' tipo_item=app_name item_id=item_obj.id av_id=obj.id %}" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="form_comentario" value="true" style="display: none;">
+                                <input type="text" name="comentario_id" required value="{{comentario_filho.id}}" style="display:none;">
+                                <button type="submit" name='curtir' class="botao-avaliacao like"><i class="fa fa-thumbs-up"></i> Like</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            {% endfor %}
+        {% elif app_name == 'serie' %}
+            {% for comentario_filho in comentario.comentarioserie_set.all %}
+            <div class="comentarios-avaliacao" style="width: 80%; padding-left: 20px; background-color: rgb(236, 213, 213);">
+                <table style="width: 100%; padding-left: 20px;">
+                    <tr>
+                        <td>
+                            <p style="padding:10px 0px 0px; margin: 0px;">
+                            <a href="{% url 'usuario' pk=comentario_filho.user_id.id %}" style="text-decoration: none;">
+                                @{{comentario_filho.user_id.username}}</a>: <b>{{comentario_filho.texto}}</b>
+                            </p>
+                        </td>
+                        <td style="float: right;">
+                            <p>
+                                Likes: 
+                                {% if app_name == 'filme' %}
+                                <b>{{comentario_filho.likecomentariofilme_set.all.count}}</b>
+                                {% elif app_name == 'livro' %}
+                                <b>{{comentario_filho.likecomentariolivro_set.all.count}}</b>
+                                {% elif app_name == 'serie' %}
+                                <b>{{comentario_filho.likecomentarioserie_set.all.count}}</b>
+                                {% endif %}
+                            </p>
+                            <form action="{% url 'avaliacao' tipo_item=app_name item_id=item_obj.id av_id=obj.id %}" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="form_comentario" value="true" style="display: none;">
+                                <input type="text" name="comentario_id" required value="{{comentario_filho.id}}" style="display:none;">
+                                <button type="submit" name='curtir' class="botao-avaliacao like"><i class="fa fa-thumbs-up"></i> Like</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        {% endfor %}
+        {% endif %}
         {% endfor %}
 
         <script src="{% static 'js/avaliacao.js'%}"></script>

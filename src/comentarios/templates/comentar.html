@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="wrapper">
+    <section class="main-container">
+        <h1 style="padding-top: 70px;">Comentar comentario de {{comentario_pai.user_id.username}}</h1>
+        
+        <form action="{% url 'comentar' tipo_item=app_name pk=comentario_pai.id %}" method="post">
+            {% csrf_token %}
+            <label for="texto">Comentário:</label><br>
+            <input type="text" name='texto' required>
+            <input type="text" name="url_avaliacao" value="{{url_avaliacao}}" style="display: none;">
+            <input type="number" name="comentario_pai_id" value="{{comentario_pai.id}}" required style="display: none;">
+            <input type="submit" class="botao-validar validar-aprovar" name="comentar">
+        </form>
+
+    </section>
+</div>
+{% endblock %}

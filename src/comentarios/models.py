@@ -20,6 +20,7 @@ class Comentario(models.Model):
 
 class ComentarioFilme(Comentario):
     avaliacao = models.ForeignKey(AvaliacaoFilme, on_delete=models.CASCADE, verbose_name="avaliacao")
+    comentario_pai = models.ForeignKey('ComentarioFilme', on_delete=models.CASCADE, null=True)
     
     def curtir(self, user_id):
         like = LikeComentarioFilme(user_id=user_id, comentario=self)
@@ -31,6 +32,7 @@ class ComentarioFilme(Comentario):
 
 class ComentarioLivro(Comentario):
     avaliacao = models.ForeignKey(AvaliacaoLivro, on_delete=models.CASCADE, verbose_name="avaliacao")
+    comentario_pai = models.ForeignKey('ComentarioLivro', on_delete=models.CASCADE, null=True)
 
     def curtir(self, user_id):
         like = LikeComentarioLivro(user_id=user_id, comentario=self)
@@ -42,7 +44,8 @@ class ComentarioLivro(Comentario):
 
 class ComentarioSerie(Comentario):
     avaliacao = models.ForeignKey(AvaliacaoSerie, on_delete=models.CASCADE, verbose_name="avaliacao")
-    
+    comentario_pai = models.ForeignKey('ComentarioSerie', on_delete=models.CASCADE, null=True)
+
     def curtir(self, user_id):
         like = LikeComentarioSerie(user_id=user_id, comentario=self)
         like.save()

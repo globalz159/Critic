@@ -48,7 +48,7 @@
 
 .comentarios-avaliacao {
     width:86%;
-    height: 50px;
+    min-height: 50px;
     margin: auto;
     padding: 0px 15px;
     background-color: rgb(232, 255, 254);
