@@ -6,14 +6,14 @@ from .models import Filme, Serie, Livro
 class CadastroFilme(forms.ModelForm):
     class Meta:
         model = Filme
-        fields = ['titulo', 'diretor', 'elenco', 'pais', 'ano_lancamento', 'imagem', 'categoria']
+        fields = ['titulo', 'diretor', 'elenco', 'pais', 'ano_lancamento', 'imagem', 'categoria', 'tipo_item']
 
 class CadastroSerie(forms.ModelForm):
     class Meta:
         model = Serie
-        fields = ['titulo', 'diretor', 'elenco', 'pais', 'ano_lancamento', 'qtd_temporadas', 'imagem', 'categoria']   
+        fields = ['titulo', 'diretor', 'elenco', 'pais', 'ano_lancamento', 'qtd_temporadas', 'imagem', 'categoria', 'tipo_item']   
 
 class CadastroLivro(forms.ModelForm):
     class Meta:
         model = Livro
-        fields = ['titulo', 'volume', 'autor', 'editora', 'pais', 'ano_lancamento', 'imagem', 'categoria']                
+        fields = ['titulo', 'volume', 'autor', 'editora', 'pais', 'ano_lancamento', 'imagem', 'categoria', 'tipo_item']                
