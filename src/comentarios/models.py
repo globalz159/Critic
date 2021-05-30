@@ -20,23 +20,40 @@ class Comentario(models.Model):
 
 class ComentarioFilme(Comentario):
     avaliacao = models.ForeignKey(AvaliacaoFilme, on_delete=models.CASCADE, verbose_name="avaliacao")
+    
+    def curtir(self, user_id):
+        like = LikeComentarioFilme(user_id=user_id, comentario=self)
+        like.save()
+
+    def descurtir(self, user_id):
+        like = LikeComentarioFilme.objects.get(user_id=user_id)
+        like.delete()
 
 class ComentarioLivro(Comentario):
     avaliacao = models.ForeignKey(AvaliacaoLivro, on_delete=models.CASCADE, verbose_name="avaliacao")
 
+    def curtir(self, user_id):
+        like = LikeComentarioLivro(user_id=user_id, comentario=self)
+        like.save()
+
+    def descurtir(self, user_id):
+        like = LikeComentarioLivro.objects.get(user_id=user_id)
+        like.delete()
+
 class ComentarioSerie(Comentario):
     avaliacao = models.ForeignKey(AvaliacaoSerie, on_delete=models.CASCADE, verbose_name="avaliacao")
     
+    def curtir(self, user_id):
+        like = LikeComentarioSerie(user_id=user_id, comentario=self)
+        like.save()
 
+    def descurtir(self, user_id):
+        like = LikeComentarioSerie.objects.get(user_id=user_id)
+        like.delete()
 
 class LikeComentario(models.Model):
-    LIKE_CHOICES = (
-        (1, 'Like'),
-        (2, 'Deslike')
-    )
     create_date = models.DateTimeField(auto_now=True)
     user_id = models.ForeignKey(Usuario, on_delete=models.CASCADE, verbose_name="user_id")
-    like = models.IntegerField("Like", choices=LIKE_CHOICES)
 
     class Meta:
         abstract = True
