@@ -81,6 +81,7 @@
         <div id="id_novo_comentario" class="novo-comentario" style="display: none;">
             <form action="{% url 'avaliacao' tipo_item=app_name item_id=item_obj.id av_id=obj.id %}" method="post">
                 {% csrf_token %}
+                <input type="text" name="form_avaliacao" value="true" style="display: none;">
                 <label for="id_comentario_field">Comentário: </label><br>
                 <textarea id="id_comentario_field" name='comentario_field' style="width: 80%; height: 50px;"></textarea>
                 <button id="btn_comentar" name='comentar_action' class="botao-avaliacao comentario"><i class="fa fa-comment"></i> Comentar</button>
