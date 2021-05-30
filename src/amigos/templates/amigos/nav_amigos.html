@@ -52,7 +52,16 @@
     <!-- Box de Amigos -->
     {% for amigo in user.amigos.all %}
     <div class="amigos-box">
-        <h2 class="nome-amigo">{{ amigo.username }}</h2>
+        <a href="{% url 'usuario' pk=amigo.id %}" style="text-decoration: none;">
+            {% if amigo.imagem %}
+            {{amigo.imagem}}
+            {% else %}
+            <img src="{% static 'images/semfoto.jpeg' %}" alt="Imagem" style="width: 80px; padding-top: 20px; padding-left: 8px;">
+            {% endif %}
+            </a>
+        <a href="{% url 'usuario' pk=amigo.id %}" >
+            <h2 class="nome-amigo">{{ amigo.username }}</h2>
+        </a>
         <div class="amigo-box-icon">
             <i id="icon-add" class="fas fa-user-plus"></i>
             <i id="icon-rm" class="fas fa-user-alt-slash"></i>

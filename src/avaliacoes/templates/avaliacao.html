@@ -96,8 +96,15 @@
         {% for comentario in comentarios %}
         <div class="comentarios-avaliacao">
             <p style="padding:10px 0px 0px; margin: 0px;">
+                <a href="{% url 'usuario' pk=obj.id %}" style="text-decoration: none;">
+                    {% if obj.imagem %}
+                    {{obj.imagem}}
+                    {% else %}
+                    <img src="{% static 'images/semfoto.jpeg' %}" alt="Imagem" style="width: 50px;">
+                    {% endif %}
+                    </a>
             <a href="{% url 'usuario' pk=comentario.user_id.id %}" style="text-decoration: none;">
-                @{{comentario.user_id.username}}</a>: {{comentario.texto}}
+                {{comentario.user_id.username}}</a>: {{comentario.texto}}
             </p>
         </div>
         {% endfor %}
