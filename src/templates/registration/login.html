@@ -5,8 +5,17 @@
 {% block content %}
 {% if user.is_authenticated %}
     <h1>Você ja está autenticado !</h1>
-    <a class="btn btn-primary" href="{% url 'index' %}">Voltar para Index</a>
-    <a class="btn btn-primary" href="{% url 'logout' %}">Fazer Logout</a>
+    <a class="btn btn-primary" href="{% url 'index' %}">Voltar para Index</a><br>
+    <a class="btn btn-primary" href="{% url 'logout' %}">Fazer Logout</a><br>
+
+    {% if user.is_superuser %}
+    <form action="{% url 'index' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" name="adicionar_cidades" class="btn btn-primary">
+            Adicionar Cidades
+        </button>
+    </form>
+    {% endif %}
 {% else %}
     <div class="container-login100">     
         <div class="wrap-login100">

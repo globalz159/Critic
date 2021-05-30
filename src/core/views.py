@@ -42,6 +42,7 @@ def index(request):
         if 'adicionar_cidades' in request.POST:
             adicionar_cidades()
             print("Cidades adicionadas")
+            return redirect('/')
         elif 'view_cadastro' in request.POST:
             return redirect('/cadastro')
         elif 'do_logout' in request.POST:
