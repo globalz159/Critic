@@ -1,35 +1,10 @@
 {% load static %}
 
 <div class="resultados-container">
-    <h1>{{objs}}</h1>
+    <h1></h1>
         {% if app_name == 'amigos' %}
-            {% for amigo in objs %}
-            <div class="usuarios-box">
-                <table style="width:100%;">
-                    <tr>
-                        <td style="width:80%;">
-                            <h2>{{ usuario.username }}</h2>
-                        </td>
-                        <td>
-                            <form class="user-box-btn" action="{% url 'add_amigos' %}" method="post" style="display: flex; float: right;">
-                            {% csrf_token %}
-
-                            {% if usuario in user.amigos.all %}
-                                <i id="icon-added" class="fas fa-user-check"> Amigos</i>
-                                <input name="amigo_id" type="text" value="{{usuario.id}}" style="display: none;">
-                                <button class="excluir_amigo" type="submit" name="excluir_cadastro">
-                                    <i id="icon-rm" class="fas fa-user-alt-slash"></i> Remover Amigo
-                                </button>
-
-                            {% elif usuario in usuarios_solicitados %}
-                                <i id="icon-added" class="fas fa-check"> Solicitação enviada</i>
-
-                            {% endif %}
-                            </form>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+            {% for usuario in objs %}
+                {% include 'usuario_box.html' %}
             {% endfor %}
         
         {% endif %}

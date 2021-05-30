@@ -27,9 +27,19 @@
       </tr>
       </table>
       <div>
-        <button class="botao-validar validar-aprovar" type="submit" name="adicionar_usuario">Adicionar Usuário</button>
-        <span style="padding-right: 80px;"></span>
-        <button class="botao-validar validar-excluir" type="submit" name="excluir_usuario">Excluir Usuário</button>
+        <form action="{% url 'usuario' pk=usuario.pk %}" method="POST">
+          {% csrf_token %}
+          {% if usuario in user.amigos.all %}
+            <button class="botao-validar validar-excluir" type="submit" name="excluir_usuario">Excluir Usuário</button>
+            <span style="padding-right: 80px;"></span>
+            
+            {% elif usuario in usuarios_solicitados %}            
+            <i id="icon-added" class="fas fa-check"> Solicitação enviada</i>
+          
+            {% else %}
+            <button class="botao-validar validar-aprovar" type="submit" name="adicionar_usuario">Adicionar Usuário</button>
+          {%endif%}
+        </form>
       </div>
 
       <div class="section-header" style="background-color: rgb(111, 48, 194);width: 95%;margin: auto; margin-top: 60px;">

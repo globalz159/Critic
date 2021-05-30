@@ -164,7 +164,7 @@ def searchbar(request, app_name):
                     len_amigos.append(item['user'].get_amigos_comum(request.user))
                 
                 usuarios_solicitados = []
-                for pedido in request.user.remetente.all():
+                for pedido in request.user.remetente.filter(aceito=False):
                     usuarios_solicitados.append(pedido.destinatario)
 
                 context.update({
@@ -243,9 +243,16 @@ def minha_conta(request):
 
 @bloquear_acesso
 def user_view(request, pk):
-    context = {}
-    
+    context = {}  
     user = Usuario.objects.get(pk=pk)
+    if request.method == 'POST':
+        #import pdb; pdb.set_trace()   
+        if 'excluir_usuario' in request.POST:
+            request.user.remover_amigo(pk)     
+        
+        elif 'adicionar_usuario' in request.POST:
+            request.user.enviar_pedido_amizade(pk)
+
     amigos = user.amigos.all()
     amigos_em_comum = [amigo for amigo in amigos if amigo in request.user.amigos.all()]
 
@@ -256,7 +263,11 @@ def user_view(request, pk):
     avaliacoes = av_filmes.union(av_livros)
     avaliacoes = avaliacoes.union(av_series)
     avaliacoes = avaliacoes.order_by('create_date')
-
+   
+    usuarios_solicitados = []
+    for pedido in request.user.remetente.filter(aceito=False):
+        usuarios_solicitados.append(pedido.destinatario)
+    
     context.update({
         'usuario': user,
         'amigos': amigos,
@@ -266,6 +277,7 @@ def user_view(request, pk):
         'filme_av_class': AvaliacaoFilme,
         'livro_av_class': AvaliacaoLivro,
         'serie_av_class': AvaliacaoSerie,
+        'usuarios_solicitados': usuarios_solicitados
     })
 
     return render(request, 'usuario.html', context)

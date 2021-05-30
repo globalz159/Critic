@@ -88,7 +88,7 @@
 .excluir_amigo{
   border-radius: 5px;
   border: 1px solid black;
-  
+  cursor: pointer;
   padding: 5px 16px;
   margin: 4px;
 

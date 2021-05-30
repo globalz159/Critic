@@ -1,0 +1,35 @@
+{%load static%}
+
+{% for obj in objs %}
+
+<div class="item-box">
+    <table style="width:100%;">
+        <tr>
+            <td style="width:9%;"><div class="fotoperfil">
+                <a href="{% url 'usuario' pk=obj.id %}" style="text-decoration: none;">
+                {% if obj.imagem %}
+                {{obj.imagem}}
+                {% else %}
+                <img src="{% static 'images/semfoto.jpeg' %}" alt="Imagem" style="width: 300px;">
+                {% endif %}
+                </a>
+              </div></td>
+            <td>  
+                <a href="{% url 'usuario' pk=obj.id %}" style="text-decoration: none;"><h2> {{ obj.username }}</h2></a>
+    
+            </td>
+            <td>
+                <form class="user-box-btn" action="{% url 'usuario' pk=obj.pk %}" method="POST" style="display: flex; float: right;">
+                {% csrf_token %}
+                    <i id="icon-added" class="fas fa-user-check"> Amigos</i>
+                    <input name="amigo_id" type="text" value="{{usuario.id}}" style="display: none;">
+                    <button class="excluir_amigo" type="submit" name="excluir_usuario" style="width: 120px;">
+                        <i id="icon-rm" class="fas fa-user-alt-slash"></i> Remover Amigo
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endfor %}
