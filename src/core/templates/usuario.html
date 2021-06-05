@@ -47,10 +47,10 @@
             Avaliações do usuário
         </h1>
       </div>
-
-      {% include 'avaliacoes.html' %}
-
       
+      {% for avaliacao in avaliacoes %}
+      {% include 'avaliacoes.html' %}
+      {% endfor %}
     </section>
 </div>
 {% endblock %}
