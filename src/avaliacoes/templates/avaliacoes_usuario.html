@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="wrapper">
+    <section class="main-container">
+        <div class="section-header">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 350px;">
+                        <h1 class="header-title" style="padding-top: 10px;">
+                            {% if user.id == usuario.id %}
+                            Suas Avaliações
+                            {% else %}
+                            Avaliações de {{usuario.username}}
+                            {% endif %}
+                        </h1>
+                    </td>
+                    <td>
+                        <select name="app_name" id="app_selector" style="font-size: 24px; padding:10px 20px;">
+                            <option value="filme" selected>Filmes</option>
+                            <option value="livro">Livros</option>
+                            <option value="serie">Séries</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <div id="id_avaliacoes_filmes">
+            {% for avaliacao in avaliacoes_filmes %}
+            {% include 'avaliacoes.html' %}
+            {% endfor %}
+        </div>
+        <div id="id_avaliacoes_livros">
+            {% for avaliacao in avaliacoes_livros %}
+            {% include 'avaliacoes.html' %}
+            {% endfor %}
+        </div>
+        <div id="id_avaliacoes_series">
+            {% for avaliacao in avaliacoes_series %}
+            {% include 'avaliacoes.html' %}
+            {% endfor %}
+        </div>
+    </section>
+</div>
+
+<script src="{% static 'js/mostrar_avaliacoes.js'%}"></script>
+<script>
+    mudar_visibilidade_avaliacoes();
+</script>
+{% endblock %}

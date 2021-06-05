@@ -156,7 +156,7 @@ def avaliacoes_item(request, tipo_item, item_id):
         search_params = ('titulo', 'pais', 'diretor')
         # Objects
         item_obj = item_class.objects.get(pk=item_id)
-        avaliacoes = item_obj.avaliacaofilme_set.all()
+        avaliacoes = item_obj.avaliacaofilme_set.all().order_by('create_date')
 
     elif tipo_item == 'livro':
         # Classes
@@ -169,7 +169,7 @@ def avaliacoes_item(request, tipo_item, item_id):
         search_params = ('titulo', 'pais', 'autor')
         # Objects
         item_obj = item_class.objects.get(pk=item_id)
-        avaliacoes = item_obj.avaliacaolivro_set.all()
+        avaliacoes = item_obj.avaliacaolivro_set.all().order_by('create_date')
 
     elif tipo_item == 'serie':
         # Classes
@@ -182,10 +182,7 @@ def avaliacoes_item(request, tipo_item, item_id):
         search_params = ('titulo', 'pais', 'diretor')
         # Objects
         item_obj = item_class.objects.get(pk=item_id)
-        avaliacoes = item_obj.avaliacaoserie_set.all()
-
-
-    avaliacoes = avaliacoes.order_by('create_date')
+        avaliacoes = item_obj.avaliacaoserie_set.all().order_by('create_date')
 
     """if request.method == 'POST':
         if 'curtir' in request.POST:
@@ -207,3 +204,20 @@ def avaliacoes_item(request, tipo_item, item_id):
     })
 
     return render(request, 'avaliacoes_item.html', context)
+
+def avaliacoes_usuario(request, user_id):
+    context = {}
+    usuario = Usuario.objects.get(pk=user_id)
+    # import pdb; pdb.set_trace()
+    avaliacoes_filmes = usuario.avaliacaofilme_set.all()
+    avaliacoes_livros = usuario.avaliacaolivro_set.all()
+    avaliacoes_series = usuario.avaliacaoserie_set.all()
+    #avaliacoes = avaliacoes.order_by('create_date')
+
+    context.update({
+        'usuario': usuario,
+        'avaliacoes_filmes': avaliacoes_filmes,
+        'avaliacoes_livros': avaliacoes_livros,
+        'avaliacoes_series': avaliacoes_series,
+    })
+    return render(request, 'avaliacoes_usuario.html', context)
