@@ -1,4 +1,4 @@
-<div class="item-box" style="margin-top: 10px; min-height: 50px;">
+<div class="item-box" style="margin-top: 10px; min-height: 50px;" onclick="location.href={% url '' %}">
     <table style="width: 100%;">
         <tr>
             <td style="width: 50px; text-align: center; padding: 10px;">
@@ -13,11 +13,11 @@
                     <br><b>{{avaliacao.item.tipo_item}}</b>
                 </a>
             </td>
-            <td class="coluna-validar" style="padding-left: 15px;width: 20%;">
+            <td class="coluna-validar" style="padding-left: 15px;width: 40%;">
                 <h1 style="margin:0px; margin-bottom:5px; font-size: 38px;">{{avaliacao.item.titulo}}</h1>
                 <span style="padding-top:15px;">{{avaliacao.item.categoria}}</span>
             </td>
-            <td class="coluna-validar" style="padding-left: 15px; width: 75%;">
+            <td class="coluna-validar" style="padding-left: 15px; width: auto;">
                 <p>Comentário: {{avaliacao.avaliacao}}</p>
             </td>
         </tr>
