@@ -141,42 +141,53 @@ def avaliacao(request, tipo_item, item_id, av_id):
 
     return render(request, 'avaliacao.html', context)
 
-def avaliacoes(request, tipo_item, item_id):
+def avaliacoes_item(request, tipo_item, item_id):
     context = {}
     context['app_name'] = tipo_item
 
     if tipo_item == 'filme':
-        obj_class = AvaliacaoFilme
+        # Classes
+        av_class = AvaliacaoFilme
         item_class = Filme
         comentario_class = ComentarioFilme
+        # Strings
         obj_name = 'Filme'
         plural_obj_name = 'Filmes'
         search_params = ('titulo', 'pais', 'diretor')
+        # Objects
+        item_obj = item_class.objects.get(pk=item_id)
+        avaliacoes = item_obj.avaliacaofilme_set.all()
 
     elif tipo_item == 'livro':
-        obj_class = AvaliacaoLivro
+        # Classes
+        av_class = AvaliacaoLivro
         item_class = Livro
         comentario_class = ComentarioLivro
+        # Strings
         obj_name = 'Livro'
         plural_obj_name = 'Livros'
         search_params = ('titulo', 'pais', 'autor')
+        # Objects
+        item_obj = item_class.objects.get(pk=item_id)
+        avaliacoes = item_obj.avaliacaolivro_set.all()
 
     elif tipo_item == 'serie':
-        obj_class = AvaliacaoSerie
+        # Classes
+        av_class = AvaliacaoSerie
         item_class = Serie
         comentario_class = ComentarioSerie
+        # Strings
         obj_name = 'Série'
         plural_obj_name = 'Séries'
         search_params = ('titulo', 'pais', 'diretor')
+        # Objects
+        item_obj = item_class.objects.get(pk=item_id)
+        avaliacoes = item_obj.avaliacaoserie_set.all()
 
-    item_obj = item_class.objects.get(pk=item_id)
-    avaliacoes = item_obj.avaliacaofilme_set.all()
-    avaliacoes = avaliacoes.union(item_obj.avaliacaolivro_set.all())
-    avaliacoes = avaliacoes.union(item_obj.avaliacaoserie_set.all())
 
     avaliacoes = avaliacoes.order_by('create_date')
 
-    if request.method == 'POST':
+    """if request.method == 'POST':
         if 'curtir' in request.POST:
             obj.curtir(request.user)
         elif 'descurtir' in request.POST:
@@ -186,7 +197,7 @@ def avaliacoes(request, tipo_item, item_id):
             if texto_comentario:
                 new_comentario = comentario_class(user_id=request.user, texto=texto_comentario, avaliacao=obj)
                 new_comentario.save()
-                context['new_comentario'] = new_comentario
+                context['new_comentario'] = new_comentario"""
 
     context.update({
         'item_obj': item_obj,
@@ -195,4 +206,4 @@ def avaliacoes(request, tipo_item, item_id):
         'search_filters': search_params,
     })
 
-    return render(request, 'avaliacao.html', context)
+    return render(request, 'avaliacoes_item.html', context)
