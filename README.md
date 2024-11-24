@@ -30,7 +30,7 @@ NOMES DOS INTEGRANTES DO GRUPO
 
 
 URL DE ACESSO AO REPOSITÓRIO DE CÓDIGO-FONTE DO GRUPO
-●	https://github.com/Rafael-Reis75/shopnow-project
+●	(https://github.com/globalz159/ShopNow1)
 URL DE ACESSO AO QUADRO DE ACOMPANHAMENTO DO PROJETO DO GRUPO
 ●	https://trello.com/invite/b/66f494cc67d0c8038c38d727/ATTI733e07ee50b33598ca96068e4283e659159BAD9F/shop-now
 ________________________________________
