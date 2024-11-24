@@ -1,28 +1,16 @@
-# Prat-Analise-de-Sistemas
 
-# Especificação de requisitos
-## PROJETO: Aplicativo para Recomendação de Filmes, Séries e Livros
-### Curso de Sistemas de Informação
-### Prática Profissional em ADS
-### Turmas 05K 
-### 1º semestre de 2021
 
-              UNIVERSIDADE PRESBITERIANA MACKENZIE
-                      
-              FACULDADE DE COMPUTAÇÃO E INFORMÁTICA
 
 
 
 
+ShopNow
+Plataforma de e-commerce
 
 
 
 
 
-              FELIPE MARTINEZ SILVA - TIA: 31923224
-              FERNANDO SAETA REBELATO - TIA: 31944078
-              GABRIEL NOVAES LEE - TIA: 31920462
-              GUSTAVO GONTARZIK - TIA: 31949142
 
 
 
@@ -31,388 +19,163 @@
 
 
 
-
-
-          Aplicativo para Recomendação de Filmes, Séries e Livros 
-                            Critic Hub
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                SÃO PAULO
-                                  2021
-
-
-
-# Introdução
-
-Este é um documento de especificação de requisitos para um novo aplicativo para recomendações de filmes, séries e livros. A promoção do engajamento de colaboradores é fundamental para o desenvolvimento de bons trabalhos no mundo corporativo. Nesta linha, empresas buscam formas de criar situações de compartilhamento de experiências para que as pessoas envolvidas se conheçam e promovam sinergia entre as pessoas, de modo a promover maior desempenho em grupos multidisciplinares, também conhecidos por Squads. Considerando que os serviços de streaming nunca estiveram tão em alta graças à pandemia do coronavírus, bem como, escolher entre milhares de filmes, séries ou livros disponíveis pode ser uma tarefa um tanto quanto estressante. Sendo assim, nossa empresa, optou por criar um aplicativo de recomendação para Filmes, Séries e Livros, capaz de permitir acesso e participação dos nossos colaboradores, de modo a prover interação com contribuições na forma de dicas e recomendações sobre filmes, séries e livros. 
-
-Este documento descreve os requisitos não funcionais, modelagem dos requisitos funcionais com casos de uso e modelar os conceitos do domínio do problema.
-
-
-# Informações sobre a empresa
-
-A rede social Critic Hub, chegou no mercado como mais uma forma interativa de recomendações de filmes, séries e livros. Essa rede social é a primeira desenvolvida pela empresa Y e o nosso objetivo é facilitar as conexões sociais entre as pessoas que compartilham do mesmo interesse e/ou valores, levando a uma interação favorável para todos. A base de dados da plataforma é imensa, onde reúne várias informações sobre as características de filmes, séries e livros, desde os clássicos até os recentes. A nossa plataforma é atualizada diariamente com filmes, séries e livros, para que os nossos membros aproveitem essas conexões.
-Devido à natureza técnica e inovadora do nosso produto, a empresa possui uma equipe de suporte para eventuais falhas, administradores que serão capazes de orientar e validar os cadastramentos. Esses administradores são especialistas no assunto, e estão focados na geração de documentos técnicos e nas especificações da rede social.
-
-
-# Escopo do projeto
-
-O escopo do projeto é um aplicativo de uma rede social, que dará recomendações, cadastramento e avaliações sobre filmes, séries e livros, através de membros, que podem ser qualquer usuários. Além disso, poderá montar sua própria lista indicações e terá a sua própria lista sobre filmes, livros e séries que desejam ver futuramente. A publicidade e a cobrança não são parte deste projeto
-A engine de pesquisa sobre filmes, séries e livros será adquirida como um componente pronto para o novo sistema. Os detalhes internos não serão tratados no projeto. Questões de segurança do site, além da proteção por senha no próprio site, somente pessoas autorizadas podem ter acessos às informações e recursos, onde o acesso do membro será feito somente a recursos que ele tem permissão. O acesso aos recursos mais importantes será feito por pessoas autorizadas e se for feito por outros usuários, o acesso será monitorado constantemente. Preservado a segurança da nossa rede social, existirá a verificação da integridade e vulnerabilidade, autenticação de usuários, ferramentas de segurança de rede, focando no acesso e trafego da rede. Focamos em criar programas seguros, fazendo com que o sistema seja mais difícil de ser invadido com as técnicas mais comuns de invasões.
-
-
-# Interessados
-
-Aqueles que irão se beneficiar diretamente e aqueles que serão afetados pelo novo sistema:
-
-Membros: Conseguirão navegar pelo site para cadastrar, recomendar, avaliar, os filmes, livros e séries. Terão uma vasta quantidade de opções de mecanismo na rede social.
-
-Administradores: Conseguirão navegar pelo site e serão responsáveis pela validação e verificação dos cadastramentos.
-
-Suporte: Em eventuais dúvidas e/ou falhas, eles serão responsáveis por facilitar essas informações.
-
-Departamento de Marketing: Os dados de navegação no site poderiam ser enviados para o departamento de marketing. Entendendo como um membro usa o site ao fazer uma recomendação ou cadastramento, por exemplo,  fazendo com que possa propor melhores implementações para manter o nosso usuário ativo. 
-
-Departamento de Tecnologia da Informação: Será responsável pela implementação da nova base de dados, hospedagem da aplicação e manutenção do sistema
-
-Serviço de Atendimento ao Consumidor(SAC): O sistema reduzirá a carga de trabalho no SAC, pois os clientes conseguirão encontrar de forma mais fácil as informações que necessitam
-
-
-RF1	O sistema deve permitir o cadastro do usuário e deverá conter: nome completo, username, senha , data de nascimento, cidade e estado.
-- O perfil do usuário sempre vai estar com as descrições importantes.
-
-RF2	O sistema deve permitir que o usuário possa fazer o login
-- Isto melhorará o controle sobre o seu perfil na rede social.
-
-RF3	O sistema permitirá que os membros façam alterações em seus cadastros.
-- Isto fará com que os dados sejam alterados em eventuais mudanças.
-
-RF4	O sistema deve permitir que o usuário possa excluir o seu cadastro pessoal.
-- Isto fará com que o membro saia permanentemente da rede social .
-
-RF5	O sistema deve permitir incluir descrição no seu perfil de membro
-- Isto fará para melhorar o seu perfil.
-
-RF6	O sistema deve permitir incluir fotos do membro em seu perfil
-- Isto fará para melhorar o seu perfil .
-
-RF7	O sistema deve apresentar uma descrição detalhada dos filmes, séries e livros.
-- Isto fará com que melhore a qualidade do conteúdo da rede social.
-
-RF8	O sistema deve permitir o cadastro de livro e conter: título, autor(es), editora, país, ano de lançamento.
-- Isto melhorará as informações sobre os detalhes dos livros
-
-RF9	O sistema deve permitir o cadastro de filme e conter: título, diretor, elenco principal, país, ano.
-- Isto melhorará as informações sobre os detalhes dos filmes.
-
-RF10	O sistema deve permitir o cadastro de série e conter: título, diretor, elenco principal, país, ano, número de temporadas.
-- Isto melhorará as informações sobre os detalhes das séries.
-
-RF11	O sistema deve permitir a realização de adicionar comentários às avaliações feitas pelo outro, desde que tenham relacionamento de amizade.
--Isto fará com que aumente o número de opiniões diferentes sobre o determinado filme,série ou livro.
-
-RF12	O sistema deve permitir que o membro possa “reagir” a avaliação do membro através de um emoticon “joinha”.
-- Isto fará o aumento de opiniões e avaliações
-
-RF13	O sistema deve permitir que o membro que reagiu a avaliação de outro membro, possa retirar o “joinha” dado.
-- Isto fará com que opiniões podem ser mudadas
-
-RF14	O sistema deve permitir que um usuário possa pedir relacionamento de amizade a outro membro.
-- Está informação fará com que o ciclo de amizade aumente.
-
-RF15	O sistema deve mostrar os amigos em comum, quando um usuário visita a página de outro.
-- Esta informação fará com que o ciclo de amizade aumente através de amigos em
-comum entre os membros.
-
-RF16	O sistema deve sugerir amizades de membros para o outro membro.
-- Isto melhorará o serviço de interatividade entre os membros da rede social, trazendo um maior número de recomendações.
-
-RF17	O sistema deve permitir que o administrador possa validar o cadastramento de filmes, livros e séries.
-- Isto melhorará a qualidade do conteúdo da rede social.
-
-RF18	O sistema deverá permitir que sejam realizados pesquisas em todo o texto das páginas web a que o membro tenha acesso.
-- Isto melhorará as formas de pesquisa do conteúdo.
-
-2.5	Requisitos Não Funcionais
-
-RNF1	O sistema deverá utilizar um algoritmo colaborativo para oferecer as recomendações a um
-determinado membro.
-
-RNF2	Após o sistema ter pelo menos 10 membros cadastrados e cada membro 10 avaliações, o sistema passará a apresentar para cada membro recomendações de filmes, séries e livros.
-
-RNF3	O sistema deverá receber a sugestão de 3 membros que poderiam ser seus amigos.
-
-RNF4	O sistema deverá permitir o número médio de amigos dos membros da rede social.
-
-RNF5	O sistema deverá permitir uma lista com os 10 membros mais conectados
-
-RNF6	O sistema deverá um gráfico mostrando a relação entre o número de amigos e o estado onde mora.
-
-RNF7	É desejável que o tempo de carga para uma página não seja superior a 5 segundos.
-
-RNF8	A disponibilidade da aplicação deverá atender o padrão 99.99%, em regime 24x7.
-
-RNF9	A documentação do sistema deverá apresentar indicativos de como os dados cadastrais e transacionais estão assegurados contra eventuais invasões ao site do sistema.
-
-RNF10	Os dados devem ser persistidos em uma base de dados
-
-RNF11	A aplicação deve ser responsiva e leve, evitando demoras no carregamento das funcionalidades.
-
-RNF12	A aplicação deve ser implantada em um provedor de serviços na Internet .
-
-RNF13	Desenvolvedores terão que dar suporte para os usuários e eventuais problemas no
-sistema.
-
-RNF14	Deve emitir relatórios por membros cadastrados.
-
-RNF15	Deve emitir relatórios por filmes, séries e livros cadastrados.
-
-RNF16	Deve ser executável em qualquer plataforma.
-
-RNF17	O sistema deve garantir que somente usuários com permissão tenham acesso às
-informações.
-
-RNF18	Integridade das informações: o sistema deve garantir a integridade das informações
-gravadas em banco de dados.
-
-RNF19	O sistema deve ter interfaces simplificadas, legível e sem poluição visual.
-
-RNF20	As informações do sistema devem ser de fácil consulta e possuir cadastros rápidos
-
-RNF21	O sistema deve manter o tempo de timeout ativo enquanto o usuário estiver utilizando.
-
-RNF22	O sistema deve estar sempre disponível.
-
-RNF23	O sistema deve ser executado em computadores Intel Core i3 ou superior, aceitando
-qualquer tipo de sistema operacional.
-
-# Casos de uso
-## Diagrama de casos de uso
-
-![Diagrama de casos de uso](diagramas/CasosDeUso/casos_de_uso.png)
-
-## Especificações dos casos de uso
-
-![Realizar Login](diagramas/CasosDeUso/Especificacoes/RealizarLogin.png)
-
-![Realizar Registro](diagramas/CasosDeUso/Especificacoes/RealizarRegistro.png)
-
-![Alterar Registro](diagramas/CasosDeUso/Especificacoes/AterarRegistro.png)
-
-![Excluir Registro](diagramas/CasosDeUso/Especificacoes/ExcluirRegistro.png)
-
-![Propor Relacionamento de Amizade](diagramas/CasosDeUso/Especificacoes/ProporRelacionamentoAmizade.png)
-
-![Receber sugestões de amizades](diagramas/CasosDeUso/Especificacoes/ReceberSugestoesAmizade.png)
-
-![Receber recomendações](diagramas/CasosDeUso/Especificacoes/ReceberRecomendacoes.png)
-
-![Cadastrar Livro](diagramas/CasosDeUso/Especificacoes/CadastrarLivro.png)
-
-![Cadastrar Filme](diagramas/CasosDeUso/Especificacoes/CadastrarFilme.png)
-
-![Cadastrar Serie](diagramas/CasosDeUso/Especificacoes/CadastrarSerie.png)
-
-![Validar Cadastro](diagramas/CasosDeUso/Especificacoes/ValidarCadastro.png)
-
-![Fazer Avaliação](diagramas/CasosDeUso/Especificacoes/FazerAvaliacao.png)
-
-![Reagir Avaliação](diagramas/CasosDeUso/Especificacoes/ReagirAvaliacao.png)
-
-![Reagir Comentario](diagramas/CasosDeUso/Especificacoes/ReagirComentario.png)
-
-![Responder Comentario](diagramas/CasosDeUso/Especificacoes/ResponderComentario.png)
-
-# Diagrama de Navegação
-
-![Diagrama de Navegação](diagramas/Navegacao/navegacao.png)
-&nbsp;
-
-# Wireframes
-###1. Tela de Login
-![Realizar Login](diagramas/Wireframes/FazerLogin.png)
-&nbsp;
-&nbsp;
-###2. Tela de Registro de Usuário
-![Realizar Registro](diagramas/Wireframes/FazerRegistro.png)
-&nbsp;
-&nbsp;
-###3. Alterar Registro
-![Alterar Registro](diagramas/Wireframes/AlterarRegistro.png)
-&nbsp;
-&nbsp;
-###4. Excluir Registro
-![Excluir Registro](diagramas/Wireframes/ExcluirRegistro.png)
-&nbsp;
-&nbsp;
-###5. Tela de senha/username incorretos
-![Excluir Registro](diagramas/Wireframes/LoginIncorreto.png)
-&nbsp;
-&nbsp;
-###6. Menu de opções no perfil do usuário
-![Menu de opções do perfil](diagramas/Wireframes/MenuOpcoesPerfil.png)
-&nbsp;
-&nbsp;
-###7. Tela Principal de Cadastro
-![Principal de Cadastro](diagramas/Wireframes/PrincipalDeCadastro.jpeg)
-&nbsp;
-&nbsp;
-###8. Tela de Cadastro de Filme
-![Principal de Cadastro](diagramas/Wireframes/CadastrarFilme.jpeg)
-&nbsp;
-&nbsp;
-###9. Tela de Cadastro de Serie
-![Principal de Cadastro](diagramas/Wireframes/CadastrarSerie.jpeg)
-&nbsp;
-&nbsp;
-###10. Tela de Cadastro de Livro
-![Principal de Cadastro](diagramas/Wireframes/CadastrarLivro.jpeg)
-&nbsp;
-&nbsp;
-###11. Tela de Cadastro Efetuado
-![Cadastro Efetuado](diagramas/Wireframes/CadastroEfetuado.jpeg)
-&nbsp;
-&nbsp;
-###12. Tela de Cadastro de livro inválido
-![Cadastro de livro inválido](diagramas/Wireframes/LivroCadastrado.jpg)
-&nbsp;
-&nbsp;
-###13. Tela de Cadastro de série inválido
-![Cadastro de série inválido](diagramas/Wireframes/SerieCadastrada.jpg)
-&nbsp;
-&nbsp;
-###13. Tela de Cadastro de filme inválido
-![Cadastro de filme inválido](diagramas/Wireframes/FilmeCadastrado.jpg)
-&nbsp;
-&nbsp;
-###14. Tela de Nova Avaliação
-![Nova Avaliação](diagramas/Wireframes/FazerAvaliacao.png)
-&nbsp;
-&nbsp;
-###15. Tela de Reagir e Comentar Avaliações e Comentários
-![Reações e comentarios](diagramas/Wireframes/ReagirAvaliacao.png)
-&nbsp;
-&nbsp;
-###16. Tela de Itens cadastrados a serem validados
-![Itens cadastrados](diagramas/Wireframes/ValidarCadastros.png)
-&nbsp;
-&nbsp;
-###17. Tela de validar Cadastro de Item
-![Validar cadastro](diagramas/Wireframes/ValidarCadastro.png)
-&nbsp;
-&nbsp;
-###18. Tela de Procurar Amigos
-![Validar cadastro](diagramas/Wireframes/ProcurarAmigos.jpeg)
-&nbsp;
-&nbsp;
-###19. Tela de Receber recomendações
-![Receber recomendações](diagramas/Wireframes/Recomendacoes.jpg)
-&nbsp;
-&nbsp;
-###20. Tela de Receber sugestões de amizades
-![Receber sugestões de amizades](diagramas/Wireframes/SugestoesAmizades.png)
-&nbsp;
-&nbsp;
-###21. Tela de Busca de amigos
-![Busca de amigos](diagramas/Wireframes/BuscaAmigos.png)
-&nbsp;
-&nbsp;
-###22. Tela de de amigos
-![Amigos](diagramas/Wireframes/Amigos.png)
-&nbsp;
-&nbsp;
-###23. Tela de Propor relacionamento
-![Propor relacionamento](diagramas/Wireframes/ProporRelacionamento.png)
-&nbsp;
-&nbsp;
-###24. Tela de avaliação excluida
-![Avaliação excluida](diagramas/Wireframes/AvaliacaoExcluida.png)
-&nbsp;
-&nbsp;
-###25. Tela de comentário excluido
-![Comentário excluido](diagramas/Wireframes/ComentarioExcluido.png)
-&nbsp;
-&nbsp;
-
-# Diagramas de Sequencias
-&nbsp;
-
-## Realizar Login
-![Realizar Login](diagramas/Sequencias/Seq_Fazer_Login.jpg)
-&nbsp;
-## Realizar Registro
-![Realizar Registro](diagramas/Sequencias/Seq_Fazer_Registro.jpg)
-&nbsp;
-## Alterar Registro
-![Alterar Registro](diagramas/Sequencias/Seq_Atualizar_Registro.jpg)
-&nbsp;
-## Excluir Registro
-![Excluir Registro](diagramas/Sequencias/Seq_Excluir_Registro.jpg)
-&nbsp;
-## Propor Relacionamento de Amizade
-![Propor Relacionamento de Amizade](diagramas/Sequencias/Seq_Propor_Amizade.jpg)
-&nbsp;
-## Cadastrar Livro
-![Cadastrar Livro](diagramas/Sequencias/Seq_Cadastrar_Livro.jpg)
-&nbsp;
-## Cadastrar Filme
-![Cadastrar Filme](diagramas/Sequencias/Seq_Cadastrar_Filme.jpg)
-&nbsp;
-## Cadastrar Serie
-![Cadastrar Serie](diagramas/Sequencias/Seq_Cadastrar_Serie.jpg)
-&nbsp;
-## Validar Cadastro
-![Validar Cadastro](diagramas/Sequencias/Seq_Validar_Item.jpg)
-&nbsp;
-## Fazer Avaliação
-![Fazer Avaliação](diagramas/Sequencias/Seq_Fazer_Avaliacao.jpg)
-&nbsp;
-## Reagir Avaliação
-![Reagir Avaliação](diagramas/Sequencias/Seq_Reagir_Avaliacao.jpg)
-&nbsp;
-## Reagir Comentario
-![Reagir Comentario](diagramas/Sequencias/Seq_Reagir_Comentario.jpg)
-&nbsp;
-## Responder Comentario
-![Responder Comentario](diagramas/Sequencias/Seq_Responder_Comentario.jpg)
-&nbsp;
-## Receber recomendações
-![Receber recomendações](diagramas/Sequencias/Seq_Recomendacoes.jpg)
-&nbsp;
-## Receber sugestão de amizade
-![Receber sugestão de amizade](diagramas/Sequencias/Seq_Receber_Sugestoes_Amizades.jpg)
-&nbsp;
-## Fluxo de Exceção Cadastrar Filme
-![Fluxo de Exceção Cadastrar Filme](diagramas/Sequencias/Seq_Excecao_Cadastro_Filme.jpg)
-&nbsp;
-## Fluxo de Exceção Login
-![Fluxo de Exceção Login](diagramas/Sequencias/Seq_Excecao_Login.jpg)
-&nbsp;
-## Fluxo de exceção responder comentário
-![Fluxo de exceção responder comentário](diagramas/Sequencias/Seq_Excecao_Responder_Comentario.jpg)
-&nbsp;
-## Fluxo de exceção rejeitar cadastro
-![Fluxo de exceção rejeitar cadastro](diagramas/Sequencias/Seq_Excecao_Rejeitar_Cadastro.jpg)
-&nbsp;
-## Fluxo de exceção com joinha no comentário
-![Fluxo de exceção com joinha no comentário](diagramas/Sequencias/Seq_Excecao_Responder_Comentario.jpg)
-&nbsp;
-
-# Diagrama de Classes
-
-![Diagrama de Classes](diagramas/Classes/classes.png)
-&nbsp;
-
-# Diagrama de Domínio
-![Diagrama de Dominio](diagramas/Dominio/Dominio.jpeg)
+NOMES DOS INTEGRANTES DO GRUPO
+●	David Silva
+●	Hugo Novaes
+●	Rafael Araujo Reis de Souza
+●	Marcos Vinicius Cerqueira Souto
+
+
+
+
+
+URL DE ACESSO AO REPOSITÓRIO DE CÓDIGO-FONTE DO GRUPO
+●	https://github.com/Rafael-Reis75/shopnow-project
+URL DE ACESSO AO QUADRO DE ACOMPANHAMENTO DO PROJETO DO GRUPO
+●	https://trello.com/invite/b/66f494cc67d0c8038c38d727/ATTI733e07ee50b33598ca96068e4283e659159BAD9F/shop-now
+________________________________________
+Sumário
+1.	Introdução
+2.	Interessados
+3.	Objetivos Funcionais
+4.	Objetivos Não Funcionais
+5.	Diagrama de Casos de Uso
+6.	Protótipos de tela
+7.	Modelo de Domínio
+8.	Diagrama de classes de projeto
+9.	Diagrama de sequência de projeto
+10.	
+11.	Descrição Detalhada dos Casos de Uso Principais
+12.	Conclusão
+13.	Referências
+________________________________________
+Lista de Figuras
+●	Figura 1: Diagrama de Casos de Uso da Plataforma ShopNow
+________________________________________
+
+Lista de Tabelas
+●	Tabela 1: Principais Casos de Uso da Plataforma ShopNow
+________________________________________
+
+
+1. Introdução
+O projeto ShopNow consiste no desenvolvimento de uma plataforma de e-commerce que visa oferecer aos usuários uma experiência de compra ágil e intuitiva. A plataforma permitirá que os usuários busquem produtos, adicionem ao carrinho, realizem pagamentos e acompanhem suas compras. O foco deste projeto é desenvolver um ambiente seguro e escalável que atenda às necessidades dos consumidores e vendedores.
+A plataforma será implementada utilizando tecnologias modernas como React para o frontend, Node.js para o backend, e um banco de dados MySQL para armazenar as informações. Este documento apresenta os objetivos funcionais e não funcionais, diagrama de casos de uso, e a descrição detalhada dos principais casos de uso.
+________________________________________
+2. Interessados
+Os principais interessados no projeto ShopNow incluem:
+●	Usuários finais: consumidores que realizarão compras na plataforma.
+●	Vendedores: empresas ou indivíduos que venderão produtos através da plataforma.
+●	Equipe de Desenvolvimento: responsáveis pela criação e manutenção do sistema.
+●	Equipe de Marketing: encarregados de promover a plataforma.
+●	Gerentes de Projeto: supervisionam o progresso do desenvolvimento.
+●	Equipe de Suporte: oferece assistência aos usuários e vendedores.
+________________________________________
+3. Objetivos Funcionais
+Os objetivos funcionais do sistema ShopNow são:
+●	Login e Cadastro: Permitir que os usuários criem contas e façam login de maneira segura.
+●	Busca de Produtos: Oferecer um mecanismo de busca que permita aos usuários encontrar produtos por nome, categoria ou preço.
+●	Carrinho de Compras: Implementar uma área onde os usuários podem adicionar, remover e revisar produtos antes da compra.
+●	Pagamento Online: Integrar a plataforma com gateways de pagamento para que os usuários possam pagar por produtos utilizando diversos métodos (cartão de crédito, boleto, etc.).
+●	Acompanhamento de Pedidos: Permitir que os usuários acompanhem o status de suas compras e recebam notificações sobre o envio.
+________________________________________
+
+
+
+4. Objetivos Não Funcionais
+Os objetivos não funcionais incluem:
+●	Segurança: Todas as transações e informações dos usuários deverão ser criptografadas.
+●	Desempenho: O sistema deve ser capaz de suportar até 1000 usuários simultâneos, mantendo um tempo de resposta de até 2 segundos.
+●	Escalabilidade: O sistema deve ser escalável para que novos módulos e funcionalidades possam ser adicionados no futuro.
+●	Compatibilidade: A plataforma deve ser responsiva, oferecendo uma experiência otimizada tanto para desktops quanto para dispositivos móveis.
+________________________________________
+5. Diagrama de Casos de Uso
+
+ 
+Figura 1: Diagrama de Casos de Uso da Plataforma ShopNow
+________________________________________
+6. Protótipos de Tela
+Os protótipos de tela mostram a interface que os usuários verão e interagirão no sistema. Para uma plataforma de e-commerce como o "ShopNow", os principais protótipos de tela podem incluir:
+●	Tela de Login/Cadastro:
+○	Campos de entrada para e-mail, senha, e botões para fazer login ou criar uma nova conta.
+●	Tela de Busca de Produtos:
+○	Barra de pesquisa para buscar produtos por nome ou categoria, lista de produtos filtrados.
+●	Tela de Carrinho de Compras:
+○	Lista de produtos adicionados ao carrinho, com botões para remover itens ou alterar a quantidade.
+●	Tela de Pagamento:
+○	Exibição de produtos selecionados, campos para inserir informações de pagamento, e um botão para finalizar a compra.
+7. Modelo de Domínio
+O modelo de domínio descreve as entidades principais do sistema e suas relações. Para a plataforma "ShopNow", o modelo de domínio pode incluir:
+●	Usuário
+○	Atributos: ID, Nome, Email, Senha
+○	Associações: Usuário tem Carrinho, Pedido
+●	Produto
+○	Atributos: ID, Nome, Preço, Quantidade em Estoque
+○	Associações: Produto está em Carrinho, Produto está em Pedido
+●	Carrinho
+○	Atributos: ID, Lista de Produtos
+○	Associações: Carrinho contém Produtos, Carrinho pertence a Usuário
+●	Pedido
+○	Atributos: ID, Status, Data de Criação, Total
+○	Associações: Pedido contém Produtos, Pedido está associado a Pagamento
+●	Pagamento
+○	Atributos: ID, Valor, Método de Pagamento, Status
+○	Associações: Pagamento está associado a Pedido
+8. Diagrama de Classes de Projeto
+O diagrama de classes de projeto detalha como o sistema será implementado, mostrando as classes, atributos, métodos e suas interações. Para "ShopNow", o diagrama pode incluir:
+●	Usuário
+○	Métodos: login(), registrar(), adicionarProdutoAoCarrinho(), finalizarCompra()
+●	Produto
+○	Métodos: getInformacoesProduto(), atualizarEstoque(), definirPreco()
+●	Carrinho
+○	Métodos: adicionarProduto(), removerProduto(), calcularTotal()
+●	Pedido
+○	Métodos: gerarPedido(), atualizarStatus(), calcularTotal()
+●	Pagamento
+○	Métodos: processarPagamento(), confirmarPagamento()
+9. Diagramas de Sequência de Projeto
+Os diagramas de sequência de projeto mostram a interação temporal entre as classes do sistema para um caso de uso específico. Os diagramas que poderiam ser criados incluem:
+●	Sequência para Login
+○	O Usuário envia as credenciais para a classe Sistema, que valida as informações no Banco de Dados e retorna uma resposta.
+●	Sequência para Busca de Produtos
+○	O Usuário envia uma solicitação de busca à classe Produto, que acessa o Banco de Dados e retorna uma lista de produtos correspondentes.
+●	Sequência para Finalizar Compra
+○	O Usuário envia um pedido de compra à classe Carrinho, que gera um Pedido e processa o Pagamento através da classe Pagamento.
+
+
+10. Descrição Detalhada dos Casos de Uso Principais
+Caso de Uso 1: Login e Cadastro
+●	Ator Principal: Usuário
+●	Descrição: O usuário acessa a página inicial do site e pode se cadastrar como um novo cliente ou fazer login caso já tenha uma conta.
+●	Fluxo Principal:
+1.	O usuário acessa a página de login.
+2.	O sistema exibe o formulário de login/cadastro.
+3.	O usuário insere suas informações de login (e-mail e senha) ou se cadastra preenchendo um formulário.
+4.	O sistema valida as informações e concede acesso à plataforma.
+Caso de Uso 2: Busca de Produtos
+●	Ator Principal: Usuário
+●	Descrição: O usuário pesquisa por produtos utilizando palavras-chave ou categorias.
+●	Fluxo Principal:
+1.	O usuário insere o nome do produto ou categoria na barra de busca.
+2.	O sistema retorna os produtos que correspondem à pesquisa.
+3.	O usuário visualiza a lista de produtos e pode acessar as informações detalhadas de cada um.
+Caso de Uso 3: Pagamento
+●	Ator Principal: Usuário
+●	Descrição: O usuário realiza o pagamento dos produtos adicionados ao carrinho utilizando métodos de pagamento disponíveis.
+●	Fluxo Principal:
+1.	O usuário finaliza a compra no carrinho.
+2.	O sistema redireciona o usuário para a página de pagamento.
+3.	O usuário seleciona o método de pagamento (cartão de crédito, boleto, etc.).
+4.	O sistema processa o pagamento e confirma a compra.
+________________________________________
+Wireframes
+                                          
+
+                                   
+
+11. Conclusão
+O projeto ShopNow é uma solução de e-commerce robusta, projetada para oferecer uma experiência de compra eficiente e segura aos usuários. A arquitetura modular da plataforma permite sua escalabilidade e a fácil integração de novas funcionalidades no futuro. Com a implementação dos objetivos funcionais e não funcionais definidos, espera-se que a plataforma atenda às necessidades tanto dos consumidores quanto dos vendedores, tornando-se uma ferramenta essencial no ambiente de comércio eletrônico.
+________________________________________
+12. Referências
+●	Sommerville, Ian. Software Engineering. Pearson, 2016.
+●	Gamma, Erich, et al. Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley, 1994.
